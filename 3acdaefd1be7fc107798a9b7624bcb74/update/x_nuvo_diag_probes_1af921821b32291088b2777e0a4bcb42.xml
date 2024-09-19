@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Key Management Framework's Module Access Policies for the recordBuilder SI and recordBuilderMS SI to Result = Reject instead of Result = track.</description>
+        <healthcheck_type/>
+        <name>Module Access reject Builder</name>
+        <order/>
+        <probe_type display_value="Mobile">e9dc377c1b681510ae5b21b5ec4bcb49</probe_type>
+        <remediation>Guidance to update the Key Management Framework's Module Access Policies for the recordBuilder SI and recordBuilderMS SI from Result = Reject, to Result = Track. </remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('sys_kmf_crypto_caller_policy');
+//Serch for the sys_id's of the recordBuilder and recordBuilderMS script includes
+gr.addEncodedQuery('target_scriptSTARTSWITH884ce9370f5ba600b7fe85ace1050e3d^ORtarget_scriptSTARTSWITH60782d140fbcb240b7fe85ace1050eaf');
+gr.addActiveQuery();
+gr.query();
+
+//If they exist they will activate the loop.
+while (gr.next()) {
+	//If their result field is set to reject an error needs to be sent.
+	if (gr.result == 'reject') {
+		//Check whihc script is throwing the warning
+		if (gr.target_script == '884ce9370f5ba600b7fe85ace1050e3d') {
+			//if the MS is in error print warning to change the module access control for the MS
+			util.handleOutput('The Module Access policy in the Key Managment for the recordBuilderMS script is set to reject please change to track and reset mobile users.' , 'warning','Mobile');
+		} else if (gr.target_script == '60782d140fbcb240b7fe85ace1050eaf') {
+			//if the base script is in error print warning to change the module access control for it.
+			util.handleOutput('The Module Access policy in the Key Managment for the recordBuilder script is set to reject please change to track and reset mobile users.' , 'warning','Mobile');
+		}
+		
+	}
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>michael.peck@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-15 17:50:36</sys_created_on>
+        <sys_id>1af921821b32291088b2777e0a4bcb42</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Module Access reject Builder</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_1af921821b32291088b2777e0a4bcb42</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:25</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

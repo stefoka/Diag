@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="DELETE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-11 08:31:48</sys_created_on>
+        <sys_id>aa851d0a47a05a109d9f9915126d43c1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_healthcheck_logs.x_nuvo_diag.healthcheck_logs_user</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_security_acl display_value="x_nuvo_diag_healthcheck_logs">e2851d0a47a05a109d9f9915126d43b1</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_aa851d0a47a05a109d9f9915126d43c1</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-11 08:31:48</sys_updated_on>
+        <sys_user_role display_value="x_nuvo_diag.healthcheck_logs_user" name="x_nuvo_diag.healthcheck_logs_user">8685190a47a05a109d9f9915126d43c5</sys_user_role>
+    </sys_security_acl_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>sys_security_acl_role_aa851d0a47a05a109d9f9915126d43c1</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by><sys_created_on>2024-09-11 08:31:48</sys_created_on><sys_id>aa851d0a47a05a109d9f9915126d43c1</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_nuvo_diag_healthcheck_logs.x_nuvo_diag.healthcheck_logs_user</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_security_acl display_value="x_nuvo_diag_healthcheck_logs">e2851d0a47a05a109d9f9915126d43b1</sys_security_acl><sys_update_name>sys_security_acl_role_aa851d0a47a05a109d9f9915126d43c1</sys_update_name><sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by><sys_updated_on>2024-09-11 08:31:48</sys_updated_on><sys_user_role display_value="x_nuvo_diag.healthcheck_logs_user" name="x_nuvo_diag.healthcheck_logs_user">8685190a47a05a109d9f9915126d43c5</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+        <payload_hash>-329810370</payload_hash>
+        <record_name>x_nuvo_diag_healthcheck_logs.x_nuvo_diag.healthcheck_logs_user</record_name>
+        <reverted_from/>
+        <source>0e9ec8b147201a109d9f9915126d4372</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-11 08:31:48</sys_created_on>
+        <sys_id>6a851d0a47a05a109d9f9915126d43c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>191e035cf670000001</sys_recorded_at>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-11 08:31:48</sys_updated_on>
+        <type>Access Roles</type>
+        <update_guid>ae851d0a1ba05a1076658d9c88147dc3</update_guid>
+        <update_guid_history>ae851d0a1ba05a1076658d9c88147dc3:-329810370</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_nuvo_diag_healthcheck_logs.x_nuvo_diag.healthcheck_logs_user">69c2d07347a4de109d9f9915126d43b1</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-16 14:09:28</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>084d3b278b6c46bc80d981f3c30f09e4</sys_id>
+        <sys_metadata>aa851d0a47a05a109d9f9915126d43c1</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_healthcheck_logs.x_nuvo_diag.healthcheck_logs_user</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent display_value="x_nuvo_diag_healthcheck_logs">e2851d0a47a05a109d9f9915126d43b1</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_aa851d0a47a05a109d9f9915126d43c1</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_aa851d0a47a05a109d9f9915126d43c1">6a851d0a47a05a109d9f9915126d43c4</sys_update_version>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-16 14:09:28</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

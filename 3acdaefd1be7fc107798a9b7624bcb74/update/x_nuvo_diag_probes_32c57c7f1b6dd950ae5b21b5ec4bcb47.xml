@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Probe for checking for Hierarchy breakages or mistakes that lead to maps not loading in reservations or space related applications. Should go through from the location level and make sure the string of hierarchy goes all the way to the highest level for each. &#13;
+&#13;
+Checks for Site having an associated space, checks that the space and site are either both active or both inactive, and checks if the site has a parent record.&#13;
+&#13;
+Need to add functionality in later releases to separate checks for spaces. </description>
+        <healthcheck_type/>
+        <name>Site Hierarchy Check</name>
+        <order>100</order>
+        <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
+        <remediation>If the error mesage says there is no space record, change space creation business rule to on change, edit all sites that are missing, and then turn back to on insert only. &#13;
+If the error message says there is no parent, add the correct campus to the site/building in question. &#13;
+If the error message says there is an issue with activity, change either the space or site to the other's so they are the same. </remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var topLevel = util.findTopLevel();
+
+var locGR = new GlideRecord('x_nuvo_eam_building');
+locGR.query();
+
+while (locGR.next()) {
+
+
+    if (locGR.space != null && locGR.space != '') { //this if statement is checking if the site has a valid space record.
+        var locSpace = locGR.space;
+        var spaceGR = new GlideRecord('x_nuvo_eam_space');
+        spaceGR.addQuery('sys_id',locSpace);
+		spaceGR.query();
+		if (spaceGR.getRowCount() == 1){ //check to see if there are multiple spaces associated with the site
+        //next section checks to see if the space and sites are both active or both inactive
+        if (locGR.active == true) {
+            if (spaceGR.active === false) {
+                util.handleOutput('The site named:' + locGR.name + ' is active, but its corresponding space is inactive. Please change one so the records are in sync, and check the business rules related to space sync.', 'Warning', 'Space');
+            }
+        } else {
+            if (spaceGR.active == true) {
+                util.handleOutput('The site named:' + locGR.name + ' is inactive, but its corresponding space is active. Please change one so the records are in sync, and check the business rules related to space sync.', 'Warning', 'Space');
+            }
+		}
+        } else {
+			util.handleOutput('The site named:' + locGR.name + ' has multiple spaces associated with it. Please remove any extra spaces.','Warning','Space');
+		}//end of active section
+
+        if (topLevel < 2) {
+            if (locGR.campus == null || locGR.campus == '') {
+                util.handleOutput('The site named:' + locGR.name + ' does not have a parent record, i.e. a campus.', 'Warning', 'Space');
+            }
+        }
+    } else {
+        util.handleOutput('The site named:' + locGR.name + ' does not have a corresponding space record.', 'Error', 'Space');
+    }
+
+
+
+
+
+} //while loop end
+	
+var spaceGR2 = new GlideRecord('x_nuvo_eam_space');
+spaceGR2.addEncodedQuery('location_level=site');
+spaceGR2.query();
+var total = spaceGR2.getRowCount();
+
+var spaceGR3 = new GlideRecord('x_nuvo_eam_space');
+spaceGR3.addEncodedQuery('location_level=site^document_idANYTHING');
+spaceGR3.query();
+var totalCorrect = spaceGR3.getRowCount();
+
+if ((total - totalCorrect) != 0){
+	util.handleOutput('There are space site records without a document ID, therefore without a linked building record.', 'Error', 'Space');
+}
+
+
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-09-02 01:00:39</sys_created_on>
+        <sys_id>32c57c7f1b6dd950ae5b21b5ec4bcb47</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Site Hierarchy Check</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_32c57c7f1b6dd950ae5b21b5ec4bcb47</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

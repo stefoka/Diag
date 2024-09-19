@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Duplicate Clinical Devices Asset Tag : Assets with Duplicate asset tag for pre-Qatar versions.</description>
+        <healthcheck_type/>
+        <name>Duplicate Clinical Devices Asset Tag</name>
+        <order>100</order>
+        <probe_type display_value="HTM Asset Management">5b9325951b609510ae5b21b5ec4bcb47</probe_type>
+        <remediation>Need to Add Duplicate Validation Business Rule on the Devices table to prevent duplicate asset tags.&#13;
+&#13;
+OR &#13;
+&#13;
+Upgrade to Qatar(It is available in Qatar or Higher versions)</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+//Checking if connected workplace version is previous Of Qatar 
+var nuvoloVersionQuery = "name=Connected Workplace^active=true^version<18";
+var nuvoloVersion = new GlideRecord("sys_scope");
+nuvoloVersion.addEncodedQuery(nuvoloVersionQuery);
+nuvoloVersion.query();
+if (nuvoloVersion.next()) {
+    util.handleOutput('If you are experiencing duplicate asset tage or validation,need to Add Duplicate Validation Business Rule on Devices table. It is available on Pakistan or Higher versions. ', 'warning', 'HTM Asset Management');
+} else {
+    var validationBR = new GlideRecord('sys_script');
+    validationBR.addEncodedQuery('sys_id=bb8c06621b70c954c8398480cd4bcb8a');
+    validationBR.query();
+    if (!validationBR.next()) {
+        util.handleOutput('Please Confirm Validation Business Rule is present. The name of Business Rule is "Validate Duplicate Clinical Asset Tag." ', 'warning', 'HTM Asset Management');
+    }
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Prasanna.Phadtare@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-29 09:33:46</sys_created_on>
+        <sys_id>e3fade641b85d910ae5b21b5ec4bcbf6</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Duplicate Clinical Devices Asset Tag</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_e3fade641b85d910ae5b21b5ec4bcbf6</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:34</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

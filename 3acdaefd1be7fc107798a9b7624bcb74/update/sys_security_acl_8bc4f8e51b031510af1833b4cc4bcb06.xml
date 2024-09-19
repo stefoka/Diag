@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>false</admin_overrides>
+        <advanced>false</advanced>
+        <condition/>
+        <description/>
+        <local_or_existing/>
+        <name>x_nuvo_diag_diagnostic_scan</name>
+        <operation display_value="read">read</operation>
+        <script/>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-11-08 14:44:30</sys_created_on>
+        <sys_id>8bc4f8e51b031510af1833b4cc4bcb06</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_diagnostic_scan</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_security_acl_8bc4f8e51b031510af1833b4cc4bcb06</sys_update_name>
+        <sys_updated_by>jake.ye@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-11-08 14:44:30</sys_updated_on>
+        <type display_value="ui_page">ui_page</type>
+    </sys_security_acl>
+</record_update>

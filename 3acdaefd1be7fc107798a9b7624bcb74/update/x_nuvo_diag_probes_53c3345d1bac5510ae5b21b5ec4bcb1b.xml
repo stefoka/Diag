@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>This is a check to see if there are old UI scripts that are still active on versions Norway or newer. </description>
+        <healthcheck_type/>
+        <name>Blank Reservation Page</name>
+        <order>100</order>
+        <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <remediation>Remove the older React scripts that were replaced by the CDN, that sometimes aren't removed upon upgrade. (There should be 9 UI scripts with react in the name, disable the 8 that aren't QRCode).</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('sys_ui_script');
+gr.addEncodedQuery('nameSTARTSWITHx_nuvo_sfm^descriptionSTARTSWITHReact App for Reservation (3.3.5)^active=true');
+gr.query();
+var count = 0;
+while (gr.next){
+	if (count == 2) {
+	util.handleOutput('There are older UI Scripts still active for the Reservation Application. Make sure any UI Script with the description of React App for Reservation (3.3.5) is inactive (except the one with QR in the name)', 'Error','Reservation');
+		break;
+	} else{
+	count +=1;
+}
+}
+]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-06 13:39:25</sys_created_on>
+        <sys_id>53c3345d1bac5510ae5b21b5ec4bcb1b</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>Blank Reservation Page</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_53c3345d1bac5510ae5b21b5ec4bcb1b</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

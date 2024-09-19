@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Open Space Editor when clicking on space record will just spin and spin and spin and not load the space record.&#13;
+&#13;
+Check console log on browser for error message:&#13;
+Uncaught ErrorType : Cannot read properties of undefined (reading 'value')&#13;
+(Attached error image for reference)&#13;
+&#13;
+ &#13;
+Steps to reproduce : &#13;
+&#13;
+-Open floor&#13;
+-Launch Space Editor&#13;
+-Click on space in space editor&#13;
+</description>
+        <healthcheck_type/>
+        <name>Space Editor spins not load space record</name>
+        <order>100</order>
+        <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
+        <remediation>Apply update set "Zones_Pakistan UPDATED 4_20_22"</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+util.handleOutput('When open Space Editor clicking on space record, it just spin and spin and spin and not load the space record. Check if there is any error on browser console like "Uncaught ErrorType : Cannot read properties of undefined (reading value)". If yes, reach out to Nuvolo Technical Engineering team for update set regarding the zone issue, and install it.', 'Warning','Space');]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Harshal.Sonawane@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-27 11:09:01</sys_created_on>
+        <sys_id>6e1ddc48db0119105f598b0505961993</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Space Editor spins not load space record</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_6e1ddc48db0119105f598b0505961993</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

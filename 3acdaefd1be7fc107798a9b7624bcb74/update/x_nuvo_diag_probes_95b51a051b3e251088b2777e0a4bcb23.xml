@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>When using the condition builder with "Between" operator as part of the Capital Plan Configurations or Capital Plan Scoring, any FX Currency field does not get proper values.&#13;
+&#13;
+Steps to reproduce&#13;
+&#13;
+1. Create a new Capital Plan Configuration.&#13;
+&#13;
+2. Add a new Capital Plan Configuration Item.&#13;
+&#13;
+3. Place x_nuvo_eam_lab_devices in the table field.&#13;
+&#13;
+4. Set Acquisition Cost to BETWEEN 0 AND 10000 in the Items to Include field.&#13;
+&#13;
+5. Create a new Capital Plan with this Configuration.</description>
+        <healthcheck_type/>
+        <name>FX Currency Fields Issue - Lab</name>
+        <order/>
+        <probe_type display_value="GxP Asset Management">6493ad591b609510ae5b21b5ec4bcbe7</probe_type>
+        <remediation>Change the operator to not be "Between" and use the "Greater than" and "Less than" operators instead.</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('x_nuvo_cp_capital_plan_configuration_item');
+
+//Query the table for any records using the lab devices table and the BETWEEN operator that has a capital configuration.
+gr.addEncodedQuery('table=x_nuvo_eam_lab_devices^conditionLIKEbetween^capital_plan_configISNOTEMPTY');
+gr.addActiveQuery();
+gr.query();
+
+//If atleast one is found.
+if(gr.next())
+		util.handleOutput('A Capital Plan Configuration is using the "between" operator. Currently it does not work. Use the "greater than" and "less than" operators instead. Capital Plan Configuration: ' + gr.getDisplayValue('capital_plan_config'), 'warning', 'GxP Asset Management');
+]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>pierson.arnold@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-12 18:26:03</sys_created_on>
+        <sys_id>95b51a051b3e251088b2777e0a4bcb23</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>FX Currency Fields Issue - Lab</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_95b51a051b3e251088b2777e0a4bcb23</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

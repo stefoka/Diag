@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_auto_flush">
+    <sys_auto_flush action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <age>1209600</age>
+        <cascade_delete>false</cascade_delete>
+        <clean_audit>false</clean_audit>
+        <clean_peripheral>false</clean_peripheral>
+        <cleanup_category/>
+        <conditions/>
+        <force_optimize>false</force_optimize>
+        <matchfield>sys_created_on</matchfield>
+        <sys_class_name>sys_auto_flush</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-09-02 17:34:18</sys_created_on>
+        <sys_id>5409d8481b7d1d50ae5b21b5ec4bcbaf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_probe_log</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_auto_flush_5409d8481b7d1d50ae5b21b5ec4bcbaf</sys_update_name>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-02 17:34:18</sys_updated_on>
+        <tablename>x_nuvo_diag_probe_log</tablename>
+    </sys_auto_flush>
+</record_update>

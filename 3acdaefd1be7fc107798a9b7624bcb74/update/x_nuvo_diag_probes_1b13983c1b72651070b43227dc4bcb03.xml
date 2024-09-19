@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Each version of Nuvolo has it's own version of NuvoloProperties. A probe is required to check if the script include that is installed matches the same copy that our OOB instance for that Nuvolo Version uses. </description>
+        <healthcheck_type/>
+        <name>Version of NuvoloProperties Script</name>
+        <order/>
+        <probe_type display_value="Mobile">e9dc377c1b681510ae5b21b5ec4bcb49</probe_type>
+        <remediation>Provide correct update set for thier version of Connected Workplace</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var grVersion = new GlideRecord('sys_scope');
+grVersion.addQuery('name', 'Connected Workplace');
+grVersion.query();
+if (grVersion.next()) {
+	//get the version of Connected Workplace
+    var versionId = grVersion.version;
+    var versionCode = parseInt(versionId.split('.')[0]);
+}
+var grScript = new GlideRecord('sys_script_include');
+grScript.addQuery('name', 'NuvoloProperties');
+grScript.query();
+if (grScript.next()) {
+	//Split the date into parts and then create a date variable
+    var date_String = grScript.sys_updated_on.split(' ')[0];
+    var date_Parse = date_String.split('-');
+    var dateUpdated = new Date(date_Parse[0], date_Parse[1], date_Parse[2]);
+}
+var scriptDate;
+//Set a veriable to the numberic value of a day
+var days = (24 * 60 * 60 * 1000) * 2;
+switch (versionCode) {
+    case 21: //for future version if problem persists
+		/* To extend this code for a new version check the update date of script include
+		named NuvoloProperties and if it is the same move the newest case down to below the break statment
+		and create a new case for the next version. If the update date is different copy the code in the below
+		case up and change the Scriptdate variable assignment to the new date.*/
+        break;
+    case 20:
+    case 19:
+    case 18:
+        scriptDate = new Date(2022, 2, 3);
+        if (dateUpdated > scriptDate - days && dateUpdated < scriptDate - -days) {
+            // Do nothing
+        } else {
+            util.handleOutput('The current version of the NuvoloProperties script include is out of date please update the script to the current version of the script for the version of Connected Workplace', 'Warning', 'Mobile');
+        }
+        break;
+    case 17:
+        scriptDate = new Date(2021, 7, 31);
+        if (dateUpdated > scriptDate - days && dateUpdated < scriptDate - -days) {
+            // Do nothing
+        } else {
+            util.handleOutput('The current version of the NuvoloProperties script include is out of date please update the script to the current version of the script for the version of Connected Workplace', 'Warning', 'Mobile');
+        }
+        break;
+    default:
+        //do nothing
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>michael.peck@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-11 14:17:43</sys_created_on>
+        <sys_id>1b13983c1b72651070b43227dc4bcb03</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Version of NuvoloProperties Script</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_1b13983c1b72651070b43227dc4bcb03</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:25</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

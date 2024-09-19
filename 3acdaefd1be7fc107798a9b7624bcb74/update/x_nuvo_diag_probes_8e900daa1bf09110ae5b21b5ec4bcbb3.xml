@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Non-standard characters in the Client Secret on the Mobius API record prevent login from completing for AutoCAD extension&#13;
+(the login browser does not close after signing in)</description>
+        <healthcheck_type/>
+        <name>Client Secret on Mobius API record</name>
+        <order>100</order>
+        <probe_type display_value="CAD Extension">67b285011bac1510ae5b21b5ec4bcbb5</probe_type>
+        <remediation>Update Client Secret to use only standard characters</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+//get the value from the Client Secret field on the Mobius API record
+var gr = new GlideRecord('oauth_entity');
+gr.get('name', 'MobiusAPI');
+
+var clientSecret = gr.getValue('client_secret');
+
+var test = "日本人";
+
+//check if it contains non-standard characters
+var hasMoreThanAscii = !/^[\u0000-\u007f]*$/.test(clientSecret);
+
+//if it does, return message to update the Client Secret
+if (hasMoreThanAscii== true) {
+    util.handleOutput('There is a non standard character in the value of the Client Secret field o the MobiusAPI record. Update the field to contain only standard characters', 'Warning', 'Cad Extension');
+}
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>jennifer.buck@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-22 21:49:25</sys_created_on>
+        <sys_id>8e900daa1bf09110ae5b21b5ec4bcbb3</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>Client Secret on Mobius API record</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_8e900daa1bf09110ae5b21b5ec4bcbb3</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

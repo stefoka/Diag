@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Workspace Manager-Over occupancy conflict window functionality is not working&#13;
+&#13;
+Steps to reproduce:&#13;
+Go to Space management-&gt;&#13;
+1)Organization &amp; spaces-&gt;Floor&#13;
+2)Go to any valid floor and Right-click on it &#13;
+3)Click on launch Workspace Manager app&#13;
+4)Assign some users in the location which Is occupied&#13;
+5)Result user should get a conflict window&#13;
+&#13;
+Expected: Over occupancy, conflict window should work as expected and User should be assigned to already occupied space.</description>
+        <healthcheck_type/>
+        <name>Over-Occupancy Functionality Not Working</name>
+        <order>100</order>
+        <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
+        <remediation>This issue is seen in Oman versions, Update Set is available which solves this issue, Please apply the Update Set which resolves the issue, &#13;
+Update Set name - SPACE-OMAN-SFM-9500</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+//Checking if connected workplace version is Oman
+var nuvoloVersionQuery = "name=Connected Workplace^active=true^versionSTARTSWITH16.";
+var nuvoloVersion = new GlideRecord("sys_scope");
+nuvoloVersion.addEncodedQuery(nuvoloVersionQuery);
+nuvoloVersion.query();
+if (nuvoloVersion.next()) {
+	var updSet = new GlideRecord('sys_update_set');
+	updSet.addEncodedQuery('name=SPACE-OMAN-SFM-9500');
+	updSet.query();
+	
+	if(!updSet.next()){
+		
+    util.handleOutput('There is already a Bug for Over-Occupancy Functionality Not Working issue in OMAN release, Please apply Update Set SPACE-OMAN-SFM-9500 which solves the issue for Oman Version.  ', 'warning', 'Space');
+}
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Prasanna.Phadtare@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-29 10:23:25</sys_created_on>
+        <sys_id>dfe4e6241bc5d910ae5b21b5ec4bcb8b</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Over-Occupancy Functionality Not Working</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_dfe4e6241bc5d910ae5b21b5ec4bcb8b</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:25</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

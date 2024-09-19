@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="6a869e8a93ec5a10052ef5cd0bba1008" label="Nuvolo Hashes" max_length="40" name="x_nuvo_diag_nuvolo_hashes" type="collection">
+        <element label="Hash Value" max_length="40" name="hash_value" type="string"/>
+        <element label="Nuvolo Version" max_length="40" name="nuvolo_version" read_only="true" type="string"/>
+        <element label="Script ID" max_length="40" name="script_id" read_only="true" type="string"/>
+        <element label="Script Name" max_length="400" name="script_name" type="string"/>
+        <element choice="1" label="Script Type" max_length="40" name="script_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Business Rule" value="business_rule"/>
+                <element inactive_on_update="false" label="Client Script" value="client_script"/>
+                <element inactive_on_update="false" label="Event" value="event"/>
+                <element inactive_on_update="false" label="Fix Script" value="fix_script"/>
+                <element inactive_on_update="false" label="Nuvolo Mobile Property" value="nuv_mobile_property"/>
+                <element inactive_on_update="false" label="Nuvolo System Property" value="nuv_sys_property"/>
+                <element inactive_on_update="false" label="Scheduled Job" value="scheduled_job"/>
+                <element inactive_on_update="false" label="Script Action" value="script_action"/>
+                <element inactive_on_update="false" label="Script Include" value="script_include"/>
+                <element inactive_on_update="false" label="UI Policy" value="ui_policy"/>
+                <element inactive_on_update="false" label="UI Policy Action" value="ui_policy_action"/>
+            </choice>
+        </element>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element label="Table Name" max_length="150" name="table_name" type="string"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>

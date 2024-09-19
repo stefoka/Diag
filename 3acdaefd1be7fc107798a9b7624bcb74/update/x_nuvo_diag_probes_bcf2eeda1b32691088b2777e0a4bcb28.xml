@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>When the records on the Rounds Execution Queue table are being processed, the code is looking at the record that is referenced in the "Rounds Schedule" field and expecting there to be a value in that records "Work Rounds" field.&#13;
+There were records that were missing that value. The most likely cause is that someone deleted the Work Rounds record instead of setting them to inactive.&#13;
+Since there is no value in that field, the code gets stuck and is not able to proceed to the next record.</description>
+        <healthcheck_type/>
+        <name>Empty Rounds Schedule Lab</name>
+        <order/>
+        <probe_type display_value="GxP Asset Management">6493ad591b609510ae5b21b5ec4bcbe7</probe_type>
+        <remediation>The solution is to delete the records that are causing the process stick. There is no longer a Work Round associated with them so there is no way for them to process.</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+// for lab mainentence
+var gr = new GlideRecord('x_nuvo_eam_lab_rounds_execution_queue');
+//populates glide record if any record's rounds definition field is empty
+gr.addNullQuery('rounds_definition');
+
+if (gr.next) {
+	//if a record exists fire error
+	util.handleOutput('The GxP Rounds Execution Queue table has records where the Rounds Schedule field are empty, this causes the shedule maintence to get stuck. Please delete the records which have an empty Rounds Schedule field or add the appropriate reference schedule.' , 'error','GxP Asset Management');
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>michael.peck@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-16 16:36:19</sys_created_on>
+        <sys_id>bcf2eeda1b32691088b2777e0a4bcb28</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Empty Rounds Schedule Lab</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_bcf2eeda1b32691088b2777e0a4bcb28</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

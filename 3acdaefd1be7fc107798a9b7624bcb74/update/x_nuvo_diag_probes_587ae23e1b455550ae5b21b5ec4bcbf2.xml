@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>User is not able to reserve the location for whole day.&#13;
+&#13;
+The user is not able to save the location for all day though he click the checkbox of "All Day" option on the reservation form.</description>
+        <healthcheck_type/>
+        <name>User is unable to reserve for whole day</name>
+        <order>100</order>
+        <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <remediation>Please update the property value of "reservation_default_duration" , Make its default value to all_day from any other value to Set the Default Duration to Whole day and it resolves the issue.</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var nuvPropGR = new GlideRecord('x_nuvo_mobile_nuvolo_property');
+nuvPropGR.addEncodedQuery('name=Reservation_Default_Duration^active=true^is_override=true^sys_scope=5fa3c0631b264410bf9a542d1e4bcbdf');
+nuvPropGR.query();
+if (nuvPropGR.next()) {
+    if (nuvPropGR.value != 'all_day') {
+		util.handleOutput('If you are having issues with reserving a location for a full day, please Update the Nuvolo Property "reservation_default_duration" to all_day' , 'information', 'Reservation');
+    }
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Prasanna.Phadtare@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-05 10:39:50</sys_created_on>
+        <sys_id>587ae23e1b455550ae5b21b5ec4bcbf2</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>User is unable to reserve for whole day</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_587ae23e1b455550ae5b21b5ec4bcbf2</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+</record_update>

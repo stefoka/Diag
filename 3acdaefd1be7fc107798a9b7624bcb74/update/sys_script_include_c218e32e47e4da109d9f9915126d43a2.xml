@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_nuvo_diag.HealthCheckProbeUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>All methods for gathering the HealthCheck data</description>
+        <name>HealthCheckProbeUtils</name>
+        <script><![CDATA[var HealthCheckProbeUtils = Class.create();
+HealthCheckProbeUtils.prototype = {
+    initialize: function() {
+    },
+
+    type: 'HealthCheckProbeUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-13 08:30:53</sys_created_on>
+        <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>HealthCheckProbeUtils</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-13 13:11:40</sys_updated_on>
+    </sys_script_include>
+</record_update>
