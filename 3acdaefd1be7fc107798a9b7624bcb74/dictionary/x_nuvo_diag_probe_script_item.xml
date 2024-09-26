@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="f33153ac4730d2509d9f9915126d4325" label="Probe Script Item" max_length="40" name="x_nuvo_diag_probe_script_item" type="collection">
+        <element label="Name" max_length="40" name="name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Probe" max_length="32" name="probe" reference="x_nuvo_diag_probes" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Script" max_length="8000" name="script" type="script"/>
+        <index name="index">
+            <element name="probe"/>
+        </index>
+    </element>
+</database>

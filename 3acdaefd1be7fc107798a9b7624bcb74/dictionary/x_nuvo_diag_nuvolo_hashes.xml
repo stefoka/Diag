@@ -6,17 +6,17 @@
         <element label="Script Name" max_length="400" name="script_name" type="string"/>
         <element choice="1" label="Script Type" max_length="40" name="script_type" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Business Rule" value="business_rule"/>
-                <element inactive_on_update="false" label="Client Script" value="client_script"/>
+                <element inactive_on_update="false" label="Business Rule" value="sys_script"/>
+                <element inactive_on_update="false" label="Client Script" value="sys_script_client"/>
                 <element inactive_on_update="false" label="Event" value="event"/>
-                <element inactive_on_update="false" label="Fix Script" value="fix_script"/>
-                <element inactive_on_update="false" label="Nuvolo Mobile Property" value="nuv_mobile_property"/>
-                <element inactive_on_update="false" label="Nuvolo System Property" value="nuv_sys_property"/>
-                <element inactive_on_update="false" label="Scheduled Job" value="scheduled_job"/>
-                <element inactive_on_update="false" label="Script Action" value="script_action"/>
-                <element inactive_on_update="false" label="Script Include" value="script_include"/>
-                <element inactive_on_update="false" label="UI Policy" value="ui_policy"/>
-                <element inactive_on_update="false" label="UI Policy Action" value="ui_policy_action"/>
+                <element inactive_on_update="false" label="Fix Script" value="sys_script_fix"/>
+                <element inactive_on_update="false" label="Nuvolo Mobile Property" value="x_nuvo_mobile_nuvolo_property"/>
+                <element inactive_on_update="false" label="Nuvolo System Property" value="sys_properties"/>
+                <element inactive_on_update="false" label="Scheduled Job" value="sysauto"/>
+                <element inactive_on_update="false" label="Script Action" value="sysevent_script_action"/>
+                <element inactive_on_update="false" label="Script Include" value="sys_script_include"/>
+                <element inactive_on_update="false" label="UI Policy" value="sys_ui_policy"/>
+                <element inactive_on_update="false" label="UI Policy Action" value="sys_ui_policy_action"/>
             </choice>
         </element>
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>

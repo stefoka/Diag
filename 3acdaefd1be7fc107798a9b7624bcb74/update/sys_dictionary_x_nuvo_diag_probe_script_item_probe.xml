@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_dictionary action="INSERT_OR_UPDATE" element="applications" table="x_nuvo_diag_healthcheck_instance">
+    <sys_dictionary action="INSERT_OR_UPDATE" element="probe" table="x_nuvo_diag_probe_script_item">
         <active>true</active>
         <array>false</array>
-        <attributes>edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true</attributes>
+        <attributes>edge_encryption_enabled=true,encode_utf8=false</attributes>
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -13,7 +13,7 @@
         <choice/>
         <choice_field/>
         <choice_table/>
-        <column_label>Applications</column_label>
+        <column_label>Probe</column_label>
         <comments/>
         <create_roles/>
         <default_value/>
@@ -26,21 +26,21 @@
         <dynamic_creation_script/>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
-        <element>applications</element>
+        <element>probe</element>
         <element_reference>false</element_reference>
         <foreign_database/>
         <formula/>
         <function_definition/>
         <function_field>false</function_field>
-        <internal_type display_value="">glide_list</internal_type>
+        <internal_type display_value="Reference">reference</internal_type>
         <mandatory>false</mandatory>
-        <max_length>1024</max_length>
-        <name>x_nuvo_diag_healthcheck_instance</name>
+        <max_length>32</max_length>
+        <name>x_nuvo_diag_probe_script_item</name>
         <next_element/>
         <primary>false</primary>
-        <read_only>true</read_only>
+        <read_only>false</read_only>
         <read_roles/>
-        <reference display_value="" name="x_nuvo_diag_probe_type">x_nuvo_diag_probe_type</reference>
+        <reference display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</reference>
         <reference_cascade_rule/>
         <reference_floats>false</reference_floats>
         <reference_key/>
@@ -51,14 +51,14 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
-        <sys_created_on>2024-09-10 08:50:25</sys_created_on>
-        <sys_name>Applications</sys_name>
+        <sys_created_on>2024-09-19 12:01:06</sys_created_on>
+        <sys_name>Probe</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_update_name>sys_dictionary_x_nuvo_diag_healthcheck_instance_applications</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-25 08:13:57</sys_updated_on>
+        <sys_update_name>sys_dictionary_x_nuvo_diag_probe_script_item_probe</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-19 12:01:06</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

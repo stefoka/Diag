@@ -20,44 +20,6 @@
             <element>script_type</element>
             <hint/>
             <inactive>false</inactive>
-            <label>Business Rule</label>
-            <language>en</language>
-            <name>x_nuvo_diag_nuvolo_hashes</name>
-            <sequence/>
-            <synonyms/>
-            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-16 14:22:53</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-16 14:22:53</sys_updated_on>
-            <value>business_rule</value>
-        </sys_choice>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>script_type</element>
-            <hint/>
-            <inactive>false</inactive>
-            <label>Client Script</label>
-            <language>en</language>
-            <name>x_nuvo_diag_nuvolo_hashes</name>
-            <sequence/>
-            <synonyms/>
-            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-16 14:23:47</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-16 14:23:47</sys_updated_on>
-            <value>client_script</value>
-        </sys_choice>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>script_type</element>
-            <hint/>
-            <inactive>false</inactive>
             <label>Event</label>
             <language>en</language>
             <name>x_nuvo_diag_nuvolo_hashes</name>
@@ -77,63 +39,6 @@
             <element>script_type</element>
             <hint/>
             <inactive>false</inactive>
-            <label>Fix Script</label>
-            <language>en</language>
-            <name>x_nuvo_diag_nuvolo_hashes</name>
-            <sequence/>
-            <synonyms/>
-            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-16 14:25:11</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-16 14:25:11</sys_updated_on>
-            <value>fix_script</value>
-        </sys_choice>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>script_type</element>
-            <hint/>
-            <inactive>false</inactive>
-            <label>Nuvolo Mobile Property</label>
-            <language>en</language>
-            <name>x_nuvo_diag_nuvolo_hashes</name>
-            <sequence/>
-            <synonyms/>
-            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-16 14:26:05</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-16 14:26:05</sys_updated_on>
-            <value>nuv_mobile_property</value>
-        </sys_choice>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>script_type</element>
-            <hint/>
-            <inactive>false</inactive>
-            <label>Nuvolo System Property</label>
-            <language>en</language>
-            <name>x_nuvo_diag_nuvolo_hashes</name>
-            <sequence/>
-            <synonyms/>
-            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-16 14:25:53</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-16 14:25:53</sys_updated_on>
-            <value>nuv_sys_property</value>
-        </sys_choice>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>script_type</element>
-            <hint/>
-            <inactive>false</inactive>
             <label>Scheduled Job</label>
             <language>en</language>
             <name>x_nuvo_diag_nuvolo_hashes</name>
@@ -143,10 +48,10 @@
             <sys_created_on>2024-09-16 14:24:43</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-16 14:24:43</sys_updated_on>
-            <value>scheduled_job</value>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-19 10:46:26</sys_updated_on>
+            <value>sysauto</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
@@ -162,10 +67,86 @@
             <sys_created_on>2024-09-16 14:24:58</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-16 14:24:58</sys_updated_on>
-            <value>script_action</value>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-19 10:47:17</sys_updated_on>
+            <value>sysevent_script_action</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>script_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Nuvolo System Property</label>
+            <language>en</language>
+            <name>x_nuvo_diag_nuvolo_hashes</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 14:25:53</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-19 10:47:06</sys_updated_on>
+            <value>sys_properties</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>script_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Business Rule</label>
+            <language>en</language>
+            <name>x_nuvo_diag_nuvolo_hashes</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 14:22:53</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-19 10:45:51</sys_updated_on>
+            <value>sys_script</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>script_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Client Script</label>
+            <language>en</language>
+            <name>x_nuvo_diag_nuvolo_hashes</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 14:23:47</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-19 10:45:58</sys_updated_on>
+            <value>sys_script_client</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>script_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Fix Script</label>
+            <language>en</language>
+            <name>x_nuvo_diag_nuvolo_hashes</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 14:25:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-19 10:49:08</sys_updated_on>
+            <value>sys_script_fix</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
@@ -181,10 +162,10 @@
             <sys_created_on>2024-09-16 14:25:25</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-16 14:25:25</sys_updated_on>
-            <value>script_include</value>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-19 10:47:23</sys_updated_on>
+            <value>sys_script_include</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
@@ -200,10 +181,10 @@
             <sys_created_on>2024-09-16 14:24:07</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-16 14:24:07</sys_updated_on>
-            <value>ui_policy</value>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-19 10:47:28</sys_updated_on>
+            <value>sys_ui_policy</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
@@ -219,10 +200,29 @@
             <sys_created_on>2024-09-16 14:24:26</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-16 14:24:26</sys_updated_on>
-            <value>ui_policy_action</value>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-19 10:47:33</sys_updated_on>
+            <value>sys_ui_policy_action</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>script_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Nuvolo Mobile Property</label>
+            <language>en</language>
+            <name>x_nuvo_diag_nuvolo_hashes</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 14:26:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-19 10:46:32</sys_updated_on>
+            <value>x_nuvo_mobile_nuvolo_property</value>
         </sys_choice>
     </sys_choice>
 </record_update>

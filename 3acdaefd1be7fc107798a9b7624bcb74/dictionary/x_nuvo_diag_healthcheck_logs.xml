@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="fe949dc647a05a109d9f9915126d43be" label="HealthCheck Logs" max_length="40" name="x_nuvo_diag_healthcheck_logs" type="collection">
         <element label="Error Message" max_length="200" name="error_message" read_only="true" type="string"/>
-        <element label="HealthCheck Instance" max_length="32" name="healthcheck_instance" read_only="true" reference="x_nuvo_diag_healthcheck_instance" type="reference"/>
-        <element choice="3" label="HealthCheck type" max_length="40" name="healthcheck_type" read_only="true" type="choice">
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="HealthCheck Instance" max_length="32" name="healthcheck_instance" read_only="true" reference="x_nuvo_diag_healthcheck_instance" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" label="HealthCheck type" max_length="40" name="healthcheck_type" read_only="true" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Data Integrity" value="data_integrity"/>
                 <element inactive_on_update="false" label="Feature Usage" value="feature_usage"/>
@@ -10,9 +10,9 @@
                 <element inactive_on_update="false" label="Upgrade conflicts" value="upgrade_conflicts"/>
             </choice>
         </element>
-        <element label="Probe Category" max_length="32" name="probe_category" read_only="true" reference="x_nuvo_diag_probe_type" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Probe Category" max_length="32" name="probe_category" read_only="true" reference="x_nuvo_diag_probe_type" type="reference"/>
         <element label="Result" max_length="400" name="result" read_only="true" type="string"/>
-        <element choice="1" default="pending" label="Status" max_length="40" name="status" read_only="true" type="choice">
+        <element attributes="edge_encryption_enabled=true" choice="1" default="pending" label="Status" max_length="40" name="status" read_only="true" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Pending" sequence="100" value="pending"/>
                 <element inactive_on_update="false" label="Completed" sequence="150" value="completed"/>

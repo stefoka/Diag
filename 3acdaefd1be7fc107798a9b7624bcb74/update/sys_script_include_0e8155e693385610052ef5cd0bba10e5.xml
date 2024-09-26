@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nuvo_diag.HealthCheckHelper</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>HealthCheckHelper</name>
+        <script><![CDATA[var HealthCheckHelper = Class.create();
+HealthCheckHelper.prototype = {
+    initialize: function() {},
+
+    getIntegrationUserCredentials: function() {
+        return JSON.stringify({
+            username: gs.getProperty('x_nuvo_diag.integration_user_name'),
+            password: gs.getProperty('x_nuvo_diag.integration_user_password')
+        });
+    },
+
+    populateHealthLog: function(helthcheckRecord) {
+
+        var apps = helthcheckRecord.getValue('applications').split(',');
+        var types = gs.getProperty('x_nuvo_diag.healthcheck _apps').split(',');
+
+        apps.forEach(function(app) {
+
+            for (var i = 0; i < types.length; i++) {
+
+                try {
+                    var obj = {};
+
+                    var probe = new GlideRecord('x_nuvo_diag_probes');
+                    probe.addQuery('probe_type', app);
+                    probe.addQuery('tool', 'health');
+                    probe.addQuery('healthcheck_type', types[i]);
+                    probe.query();
+
+                    while (probe.next()) {
+
+                        var probeName = probe.getValue('name');
+                        obj[probeName] = {};
+
+                        var scriptItem = new GlideRecord('x_nuvo_diag_probe_script_item');
+                        scriptItem.addQuery('probe', probe.sys_id);
+                        scriptItem.query();
+
+                        while (scriptItem.next()) {
+
+                            var evaluator = new GlideScopedEvaluator();
+                            var result = evaluator.evaluateScript(scriptItem, 'script');
+                            var scriptItemName = scriptItem.getValue('name');
+                            obj[probeName][scriptItemName] = result;
+
+                        }
+
+                    }
+
+                    var healthLog = new GlideRecord('x_nuvo_diag_healthcheck_logs');
+                    healthLog.initialize();
+                    healthLog.healthcheck_type = types[i];
+                    healthLog.probe_category = app;
+                    healthLog.healthcheck_instance = helthcheckRecord.sys_id;
+                    healthLog.result = JSON.stringify(obj);
+                    healthLog.setWorkflow(false);
+                    healthLog.insert();
+
+                } catch (error) {
+                    gs.error("Error processing health check for app: " + app + ", type: " + types[i] + ". Error: " + error.message);
+                }
+
+            }
+
+        });
+    },
+
+    type: 'HealthCheckHelper'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-25 07:48:21</sys_created_on>
+        <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>HealthCheckHelper</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-25 12:42:33</sys_updated_on>
+    </sys_script_include>
+</record_update>
