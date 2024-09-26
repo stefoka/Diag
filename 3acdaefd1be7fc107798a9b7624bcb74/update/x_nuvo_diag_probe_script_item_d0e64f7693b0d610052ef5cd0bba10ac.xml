@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE">
+        <name>Risk Parameters != Model Risk Parameters</name>
+        <probe display_value="Facilities Devices">cb4d549247fcd2109d9f9915126d4300</probe>
+        <script><![CDATA[var recordCount = new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_devices', 'model_name.probabilityNSAMEASmodel_name.probability^risk_scoreNSAMEASmodel_name.risk_score_raw^risk_factor_source_overrideNSAMEASmodel_name.override_risk_params^severityNSAMEASmodel_name.severity^risk_score_levelNSAMEASmodel_name.risk_score_level.asset_typeNSAMEASasset_type.manufacturerNSAMEASasset_manufacturer');
+
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-26 10:58:08</sys_created_on>
+        <sys_id>d0e64f7693b0d610052ef5cd0bba10ac</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Risk Parameters != Model Risk Parameters</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_d0e64f7693b0d610052ef5cd0bba10ac</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-26 10:58:42</sys_updated_on>
+    </x_nuvo_diag_probe_script_item>
+</record_update>
