@@ -4,13 +4,13 @@
             <element>script_type</element>
             <position>0</position>
             <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-18 08:53:59</sys_created_on>
-            <sys_id>6bbd999c477852509d9f9915126d430a</sys_id>
+            <sys_created_on>2024-09-30 13:46:45</sys_created_on>
+            <sys_id>55d3509447c9da109d9f9915126d4370</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" sys_domain="global" view="Default view">0ed1543347a4de109d9f9915126d4300</sys_ui_section>
             <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-18 08:53:59</sys_updated_on>
+            <sys_updated_on>2024-09-30 13:46:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,13 +18,13 @@
             <element>script_name</element>
             <position>1</position>
             <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-18 08:53:59</sys_created_on>
-            <sys_id>ebbd999c477852509d9f9915126d430a</sys_id>
+            <sys_created_on>2024-09-30 13:46:45</sys_created_on>
+            <sys_id>1dd3509447c9da109d9f9915126d4370</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" sys_domain="global" view="Default view">0ed1543347a4de109d9f9915126d4300</sys_ui_section>
             <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-18 08:53:59</sys_updated_on>
+            <sys_updated_on>2024-09-30 13:46:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,13 +32,13 @@
             <element>hash_value</element>
             <position>2</position>
             <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-18 08:53:59</sys_created_on>
-            <sys_id>6fbd999c477852509d9f9915126d430a</sys_id>
+            <sys_created_on>2024-09-30 13:46:45</sys_created_on>
+            <sys_id>9dd3509447c9da109d9f9915126d4370</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" sys_domain="global" view="Default view">0ed1543347a4de109d9f9915126d4300</sys_ui_section>
             <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-18 08:53:59</sys_updated_on>
+            <sys_updated_on>2024-09-30 13:46:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -46,13 +46,13 @@
             <element>.split</element>
             <position>3</position>
             <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-18 08:53:59</sys_created_on>
-            <sys_id>efbd999c477852509d9f9915126d430a</sys_id>
+            <sys_created_on>2024-09-30 13:46:45</sys_created_on>
+            <sys_id>11d3509447c9da109d9f9915126d4371</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" sys_domain="global" view="Default view">0ed1543347a4de109d9f9915126d4300</sys_ui_section>
             <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-18 08:53:59</sys_updated_on>
+            <sys_updated_on>2024-09-30 13:46:45</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -60,13 +60,13 @@
             <element>table_name</element>
             <position>4</position>
             <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-18 08:53:59</sys_created_on>
-            <sys_id>63bd999c477852509d9f9915126d430b</sys_id>
+            <sys_created_on>2024-09-30 13:46:45</sys_created_on>
+            <sys_id>91d3509447c9da109d9f9915126d4371</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" sys_domain="global" view="Default view">0ed1543347a4de109d9f9915126d4300</sys_ui_section>
             <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-18 08:53:59</sys_updated_on>
+            <sys_updated_on>2024-09-30 13:46:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -74,13 +74,27 @@
             <element>nuvolo_version</element>
             <position>5</position>
             <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-18 08:53:59</sys_created_on>
-            <sys_id>e3bd999c477852509d9f9915126d430b</sys_id>
+            <sys_created_on>2024-09-30 13:46:45</sys_created_on>
+            <sys_id>15d3509447c9da109d9f9915126d4371</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" sys_domain="global" view="Default view">0ed1543347a4de109d9f9915126d4300</sys_ui_section>
             <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-18 08:53:59</sys_updated_on>
+            <sys_updated_on>2024-09-30 13:46:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>script_id</element>
+            <position>6</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-30 13:46:45</sys_created_on>
+            <sys_id>95d3509447c9da109d9f9915126d4371</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" sys_domain="global" view="Default view">0ed1543347a4de109d9f9915126d4300</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-30 13:46:45</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

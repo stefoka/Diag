@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="d4fe001f93381a10052ef5cd0bba104a" label="Nuvolo Temporary Access" max_length="40" name="x_nuvo_diag_nuvolo_temporary_access" type="collection">
+        <element choice="1" label="Access Type" max_length="40" name="access_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Admin" value="admin"/>
+                <element inactive_on_update="false" label="Admin Read-Only" value="admin_read_only"/>
+            </choice>
+        </element>
+        <element label="Additional Assignee Email " max_length="150" name="additional_assignee_email" type="string"/>
+        <element label="Additional Assignee Password" max_length="150" name="additional_assignee_password" type="string"/>
+        <element label="Assigned To Email" max_length="150" name="assigned_to_email" type="string"/>
+        <element label="Assigned To Password" max_length="150" name="assigned_to_password" type="string"/>
+        <element label="Case Number" max_length="150" name="case_number" type="string"/>
+        <element label="End Of Access" max_length="40" name="end_of_access" read_only="true" type="glide_date"/>
+        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Error" value="error"/>
+                <element inactive_on_update="false" label="Expired" value="expired"/>
+                <element inactive_on_update="false" label="Granted" value="granted"/>
+                <element inactive_on_update="false" label="In Progress" value="in_progress"/>
+                <element inactive_on_update="false" label="Pending" value="pending"/>
+            </choice>
+        </element>
+    </element>
+</database>

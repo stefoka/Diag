@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="x_nuvo_diag_nuvolo_temporary_access" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>access_type</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_temporary_access" element="NULL" name="x_nuvo_diag_nuvolo_temporary_access" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">fb67d4d793781a10052ef5cd0bba1004</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-27 11:28:34</sys_created_on>
+            <sys_id>b767d4d793781a10052ef5cd0bba1006</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-27 11:28:34</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>additional_assignee_email</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_temporary_access" element="NULL" name="x_nuvo_diag_nuvolo_temporary_access" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">fb67d4d793781a10052ef5cd0bba1004</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-27 11:28:34</sys_created_on>
+            <sys_id>7f67d4d793781a10052ef5cd0bba1006</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-27 11:28:34</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>additional_assignee_password</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_temporary_access" element="NULL" name="x_nuvo_diag_nuvolo_temporary_access" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">fb67d4d793781a10052ef5cd0bba1004</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-27 11:28:34</sys_created_on>
+            <sys_id>ff67d4d793781a10052ef5cd0bba1006</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-27 11:28:34</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>assigned_to_email</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_temporary_access" element="NULL" name="x_nuvo_diag_nuvolo_temporary_access" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">fb67d4d793781a10052ef5cd0bba1004</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-27 11:28:34</sys_created_on>
+            <sys_id>7367d4d793781a10052ef5cd0bba1007</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-27 11:28:34</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>assigned_to_password</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_temporary_access" element="NULL" name="x_nuvo_diag_nuvolo_temporary_access" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">fb67d4d793781a10052ef5cd0bba1004</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-27 11:28:34</sys_created_on>
+            <sys_id>f367d4d793781a10052ef5cd0bba1007</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-27 11:28:34</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>case_number</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_temporary_access" element="NULL" name="x_nuvo_diag_nuvolo_temporary_access" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">fb67d4d793781a10052ef5cd0bba1004</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-27 11:28:34</sys_created_on>
+            <sys_id>7767d4d793781a10052ef5cd0bba1007</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-27 11:28:34</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>end_of_access</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_temporary_access" element="NULL" name="x_nuvo_diag_nuvolo_temporary_access" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">fb67d4d793781a10052ef5cd0bba1004</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-27 11:28:34</sys_created_on>
+            <sys_id>f767d4d793781a10052ef5cd0bba1007</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-27 11:28:34</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_nuvo_diag_nuvolo_temporary_access</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-27 11:28:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fb67d4d793781a10052ef5cd0bba1004</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_nuvo_diag_nuvolo_temporary_access</sys_name>
+            <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+            <sys_update_name>sys_ui_list_x_nuvo_diag_nuvolo_temporary_access_null</sys_update_name>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-27 11:28:34</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

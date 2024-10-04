@@ -15,9 +15,68 @@ HealthCheckProbeUtils.prototype = {
         var count = 0;
         var gr = new GlideRecord(tableName);
         gr.addEncodedQuery(encodedQuery);
-		gr.query();
+        gr.query();
         count = gr.getRowCount();
         return count;
+    },
+
+    getHashedValue: function(key, value) {
+        var name = '';
+        var table = '';
+
+        var resultObj = {};
+        var digest = new GlideDigest();
+
+        var arr = [];
+        var values = value.split(',');
+        var gr = new GlideRecord(key);
+        gr.addEncodedQuery('sys_scope.scopeSTARTSWITHx_nuvo');
+        gr.query();
+
+        while (gr.next()) {
+            var fieldValues = '';
+            for (var i = 0; i < values.length; i++) {
+                fieldValues += gr[values[i]];
+
+            }
+
+            var dash = digest.getSHA256Hex(fieldValues);
+            name = '';
+            table = '';
+            if (gr.name != undefined && gr.name != null && gr.name != '') {
+                name = gr.name.toString();
+            } else if (gr.short_description != undefined && gr.short_description != null && gr.short_description != '') {
+                name = gr.short_description.toString();
+            }
+
+            if (gr.collection != undefined && gr.collection != null && gr.collection != '') {
+                table = gr.collection.getDisplayValue().toString();
+            } else if (gr.table != undefined && gr.table != null && gr.table != '') {
+                table = gr.table.getDisplayValue().toString();
+            }
+
+            var sys_id = gr.sys_id.toString();
+            var sys_updated_on = gr.sys_updated_on.getDisplayValue();
+            arr.push({
+                Name: name.toString(),
+                Table: table,
+                Sys_Id: sys_id,
+                Sys_Updated_On: sys_updated_on,
+                Hash: dash
+            });
+			var localHashGr = new GlideRecord('x_nuvo_diag_nuvolo_local_script_hash');
+			localHashGr.initialize();
+			localHashGr.script_type = key;
+			localHashGr.script_name = name.toString();
+			localHashGr.table_name = table;
+			localHashGr.hash_value = dash;
+			localHashGr.script_id = sys_id,
+			localHashGr.insert();
+
+        }
+        resultObj[key] = arr;
+
+        return JSON.stringify(resultObj);
     },
 
     type: 'HealthCheckProbeUtils'
@@ -26,13 +85,13 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-24 09:56:27</sys_updated_on>
+        <sys_updated_on>2024-09-30 14:35:34</sys_updated_on>
     </sys_script_include>
 </record_update>

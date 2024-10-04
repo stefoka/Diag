@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name>sysverb_execute_hashes</action_name>
+        <active>true</active>
+        <client>false</client>
+        <client_script_v2><![CDATA[function onClick(g_form) {
+
+}]]></client_script_v2>
+        <comments/>
+        <condition/>
+        <form_action>false</form_action>
+        <form_button>false</form_button>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <form_menu_button_v2>false</form_menu_button_v2>
+        <form_style/>
+        <format_for_configurable_workspace>false</format_for_configurable_workspace>
+        <hint/>
+        <isolate_script>false</isolate_script>
+        <list_action>true</list_action>
+        <list_banner_button>true</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <messages/>
+        <name>Execute Hashing</name>
+        <onclick/>
+        <order>100</order>
+        <script><![CDATA[var nuvoloVersion = '';
+var servicenowVersion = gs.getProperty('glide.buildtag.last');
+
+var nuvoloVersionGr = new GlideRecord('sys_store_app');
+nuvoloVersionGr.addEncodedQuery('name=Connected Workplace');
+nuvoloVersionGr.setLimit(1);
+nuvoloVersionGr.query();
+if(nuvoloVersionGr.next()){
+	nuvoloVersion = nuvoloVersionGr.version;
+}
+
+function getHashedValue(key, value) {
+    var name = '';
+    var table = '';
+
+    var resultObj = {};
+    var digest = new GlideDigest();
+
+    var arr = [];
+    var values = value.split(',');
+    var gr = new GlideRecord(key);
+    gr.addEncodedQuery('sys_scope.scopeSTARTSWITHx_nuvo');
+    gr.query();
+
+    while (gr.next()) {
+        var fieldValues = '';
+        for (var i = 0; i < values.length; i++) {
+            fieldValues += gr[values[i]];
+
+        }
+
+        var dash = digest.getSHA256Hex(fieldValues);
+        name = '';
+        table = '';
+        if (gr.name != undefined && gr.name != null && gr.name != '') {
+            name = gr.name.toString();
+        } else if (gr.short_description != undefined && gr.short_description != null && gr.short_description != '') {
+            name = gr.short_description.toString();
+        }
+
+        if (gr.collection != undefined && gr.collection != null && gr.collection != '') {
+            table = gr.collection.getDisplayValue().toString();
+        } else if (gr.table != undefined && gr.table != null && gr.table != '') {
+            table = gr.table.getDisplayValue().toString();
+        }
+
+        var sys_id = gr.sys_id.toString();
+        var sys_updated_on = gr.sys_updated_on.getDisplayValue();
+        arr.push({
+            Name: name.toString(),
+            Table: table,
+            Sys_Id: sys_id,
+            Sys_Updated_On: sys_updated_on,
+            Hash: dash
+        });
+        var localHashGr = new GlideRecord('x_nuvo_diag_nuvolo_oob_script_hashes');
+        localHashGr.initialize();
+        localHashGr.script_type = key;
+        localHashGr.script_name = name.toString();
+        localHashGr.table_name = table;
+        localHashGr.hash_value = dash;
+        localHashGr.script_id = sys_id,
+		localHashGr.nuvolo_version = nuvoloVersion;
+		localHashGr.servicenow_version = servicenowVersion;
+            localHashGr.insert();
+
+    }
+    resultObj[key] = arr;
+
+    return JSON.stringify(resultObj);
+}
+
+function checkRecordsExist() {
+    var checkGr = new GlideRecord('x_nuvo_diag_nuvolo_oob_script_hashes');
+    checkGr.setLimit(1);
+    checkGr.query();
+    if (checkGr.next()) {
+        checkGr.deleteMultiple();
+    }
+}
+
+checkRecordsExist();
+getHashedValue('sys_script', 'script,active');
+getHashedValue('sys_script_client', 'type,active,script');
+getHashedValue('sys_script_fix', 'script');
+getHashedValue('x_nuvo_mobile_nuvolo_property', 'active,value,is_override');
+getHashedValue('sysauto', 'script');
+getHashedValue('sysevent_script_action', 'script,active,event_name');
+getHashedValue('sys_script_include', 'active,script');
+getHashedValue('sys_properties', 'value');
+getHashedValue('sys_ui_policy', 'condition,script_true');
+getHashedValue('sys_ui_policy_action', 'mandatory,visible,disabled,field');]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-01 09:04:37</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5a8bdce447c91e109d9f9915126d43e4</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>Execute Hashing</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ui_action_5a8bdce447c91e109d9f9915126d43e4</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-01 09:42:16</sys_updated_on>
+        <table>x_nuvo_diag_nuvolo_oob_script_hashes</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+</record_update>

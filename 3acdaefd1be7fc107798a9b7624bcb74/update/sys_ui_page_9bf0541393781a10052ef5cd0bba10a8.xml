@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category/>
+        <client_script><![CDATA[ function submitForm() {
+        var caseNumber = document.getElementById('case_number').value;
+        var endOfAccess = document.getElementById('end_of_access').value;
+        var accessType = document.getElementById('access_type').value;
+
+		if(caseNumber=='' || endOfAccess =='None' || accessType =='None'){
+			document.getElementById('result_message').innerHTML='';
+			document.getElementById('error_result_message').innerHTML = 'Please make sure all fields are populated before submitting the form';
+			return false;
+		}
+
+        var ga = new GlideAjax('NuvoloTempAccessAjax');
+        ga.addParam('sysparm_name', 'createTempAccessRecord');
+        ga.addParam('case_number', caseNumber);
+        ga.addParam('end_of_access', endOfAccess);
+        ga.addParam('access_type', accessType);
+
+        ga.getXMLAnswer(function(response) {
+           
+            if (response) {
+				document.getElementById('error_result_message').innerHTML = '';
+                document.getElementById('result_message').innerHTML = response;
+                document.getElementById('temp_access_form').reset();
+            } else {
+                document.getElementById('error_result_message').innerHTML = 'An error occurred. Please try again.';
+            }
+        });
+    }]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_nuvo_diag_nuvolo_temp_access_form.do</endpoint>
+        <html><![CDATA[<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+	 #temp_access_form_container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    #temp_access_form {
+        background: #fff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #000;
+        font-weight: bold; /* Bold black */
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: #000; /* Regular black */
+        font-weight: normal; /* Normal weight */
+    }
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: #000; /* Regular black */
+        font-weight: normal; /* Normal weight */
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 25px; /* More rounded corners */
+        background-color: #28a745; /* Green */
+        color: black; /* Black text */
+        cursor: pointer;
+        font-weight: bold; /* Bold text */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    }
+    button:hover {
+        background-color: #218838; /* Darker green */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Slightly larger shadow */
+    }
+    #result_message {
+        margin-top: 20px;
+        color: #28a745;
+        text-align: center;
+    }
+	#error_result_message {
+        margin-top: 20px;
+        color: #FF0000;
+        text-align: center;
+    }
+</style>
+
+<div>
+ <div id="temp_access_form_container">
+    <h1>Nuvolo Temporary Access Request</h1>
+    <form id="temp_access_form">
+        <label for="case_number">Case Number:</label>
+        <input type="text" id="case_number" name="case_number" required="required" />
+        
+        <label for="end_of_access">End of Access (Days):</label>
+        <select id="end_of_access" name="end_of_access" required="required">
+			<option value="None">None</option>
+            <option value="1">1 Day</option>
+            <option value="3">3 Days</option>
+            <option value="7">7 Days</option>
+            <option value="14">14 Days</option>
+            <option value="30">30 Days</option>
+        </select>
+        
+        <label for="access_type">Access Type:</label>
+        <select id="access_type" name="access_type" required="required">
+			<option value="None">None</option>
+            <option value="admin">Admin</option>
+            <option value="admin_read_only">Admin Read-Only</option>
+        </select>
+        
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+    <div id="result_message"></div>
+	<div id="error_result_message"></div>
+</div>
+</div>
+]]></html>
+        <name>nuvolo_temp_access_form</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-27 11:10:21</sys_created_on>
+        <sys_id>9bf0541393781a10052ef5cd0bba10a8</sys_id>
+        <sys_mod_count>55</sys_mod_count>
+        <sys_name>nuvolo_temp_access_form</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ui_page_9bf0541393781a10052ef5cd0bba10a8</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-04 08:16:24</sys_updated_on>
+    </sys_ui_page>
+</record_update>

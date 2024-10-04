@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Change status to Expired</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="Kaloyan Yanakov">1de5b79d93e0d610052ef5cd0bba10c7</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2024-10-04 08:55:51</run_start>
+        <run_time>1970-01-01 19:50:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[(function executeScheduledJob() {
+
+    var tempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    tempAccess.addEncodedQuery('status=granted^end_of_accessONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()');
+    tempAccess.query();
+
+
+    var emails = [];
+
+    while (tempAccess.next()) {
+
+        if (tempAccess.assigned_to_email) {
+            emails.push(tempAccess.assigned_to_email.toString());
+        }
+
+        if (tempAccess.additional_assignee_email) {
+
+            var additionalEmails = tempAccess.additional_assignee_email.split(',');
+            for (var i = 0; i < additionalEmails.length; i++) {
+                emails.push(additionalEmails[i].trim());
+            }
+        }
+
+
+        for (var j = 0; j < emails.length; j++) {
+            var userGR = new GlideRecord('sys_user');
+            userGR.addQuery('email', emails[j]);
+            userGR.query();
+
+            if (userGR.next()) {
+                userGR.active = false;
+                userGR.update();
+            }
+        }
+
+
+        tempAccess.status = 'expired';
+        tempAccess.update();
+    }
+
+})(current, previous);]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-04 09:05:16</sys_created_on>
+        <sys_id>c397bfd993459250052ef5cd0bba10d6</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Change status to Expired</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sysauto_script_c397bfd993459250052ef5cd0bba10d6</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-04 11:00:08</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

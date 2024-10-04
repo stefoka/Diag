@@ -73,6 +73,205 @@ HealthCheckHelper.prototype = {
 
         });
     },
+    getTemporaryAccessDetails: function(localSysID, caseNumber, exprDate, accesType) {
+        try {
+            var localInst = gs.getProperty('instance_name');
+            var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+            var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access';
+            var cred = JSON.parse(this.getIntegrationUserCredentials());
+            var username = cred.username;
+            var password = cred.password;
+
+            var r = new sn_ws.RESTMessageV2();
+            r.setEndpoint(apiEndpoint);
+            r.setHttpMethod('GET');
+            r.setRequestHeader('Content-Type', 'application/json');
+            r.setBasicAuth(username, password);
+            r.setQueryParameter('case_number', caseNumber);
+
+            var response = r.execute();
+            var responseBody = response.getBody();
+            var httpStatus = response.getStatusCode();
+
+            if (httpStatus == 200) {
+                var result = JSON.parse(responseBody).result;
+                var allRecords = [];
+
+                for (var i = 0; i < result.length; i++) {
+                    var record = result[i];
+                    var sysId = record.sys_id;
+
+                    var updateData = {
+                        status: 'granted',
+                        expiration_date: exprDate.toString(),
+                        access_type: accesType.toString(),
+                        instance_url: 'https://' + localInst + '.service-now.com'
+                    };
+
+                    this.updateClientEnvironmentAccessRecord(sysId, updateData);
+                    allRecords.push(record);
+
+                }
+                this.updateNuvoloTemporaryAccessRecord(localSysID, allRecords);
+            } else {
+                gs.error('Nuvolo API Error: HTTP Status ' + httpStatus + ' - Response: ' + responseBody);
+                return null;
+            }
+        } catch (ex) {
+            gs.error('Exception in getTemporaryAccessDetails: ' + ex.message);
+            return null;
+        }
+    },
+    updateClientEnvironmentAccessRecord: function(sysId, data) {
+        try {
+            var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+            var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access/' + sysId;
+            var cred = JSON.parse(this.getIntegrationUserCredentials());
+            var username = cred.username;
+            var password = cred.password;
+
+            var r = new sn_ws.RESTMessageV2();
+            r.setEndpoint(apiEndpoint);
+            r.setHttpMethod('PATCH');
+            r.setRequestHeader('Content-Type', 'application/json');
+            r.setBasicAuth(username, password);
+
+
+            var requestBody = JSON.stringify(data);
+            r.setRequestBody(requestBody);
+
+            var response = r.execute();
+            var httpStatus = response.getStatusCode();
+
+            if (httpStatus != 200 && httpStatus != 204) {
+                gs.error('Error updating record sys_id: ' + sysId + ', HTTP Status: ' + httpStatus);
+            }
+        } catch (ex) {
+            gs.error('Exception updating record sys_id: ' + sysId + ', Message: ' + ex.message);
+        }
+    },
+    updateNuvoloTemporaryAccessRecord: function(localSysID, allRecords) {
+
+        var tempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+
+        tempAccess.addQuery('sys_id', localSysID);
+        tempAccess.query();
+
+        var assigneeEmails = [];
+        var assigneePasswords = [];
+        var record;
+        if (tempAccess.next()) {
+            for (var i = 0; i < allRecords.length; i++) {
+                record = allRecords[i];
+                if (record.case_role == 'assigned_to') {
+
+                    tempAccess.assigned_to_email = record.email.toString();
+                    tempAccess.assigned_to_password = record.temp_password.toString();
+
+                } else if (record.case_role == 'additional_assignee') {
+
+                    assigneeEmails.push(record.email.toString());
+                    assigneePasswords.push(record.temp_password.toString());
+
+                }
+
+            }
+
+            if (assigneeEmails.length > 0) {
+
+                var emails = assigneeEmails.join(', ');
+                var passwords = assigneePasswords.join(', ');
+
+                tempAccess.additional_assignee_email = emails;
+                tempAccess.additional_assignee_password = passwords;
+
+            }
+        }
+
+        tempAccess.status = 'in_progress';
+        tempAccess.update();
+    },
+
+    assignRoles: function(userId, accessType) {
+        var admin = 'admin';
+        var adminReadOnly = 'admin_read_only';
+        var readOnly = 'snc_read_only';
+
+        if (accessType == 'admin') {
+            this.addRole(userId, admin);
+        }
+
+        if (accessType == 'admin_read_only') {
+            this.addRole(userId, adminReadOnly);
+            this.addRole(userId, readOnly);
+        }
+    },
+
+    addRole: function(userId, roleName) {
+
+        var userRole = new GlideRecord('sys_user_has_role');
+        userRole.addQuery('user', userId);
+        userRole.addQuery('role.name', roleName);
+        userRole.query();
+
+        if (!userRole.next()) {
+
+            var newRole = new GlideRecord('sys_user_has_role');
+            newRole.initialize();
+            newRole.state = 'active';
+            newRole.user = userId;
+            newRole.role.setDisplayValue(roleName);
+            newRole.insert();
+
+        }
+    },
+
+    updateClientEnvironmentAccessByCase: function(caseNumber) {
+		 try {
+            var localInst = gs.getProperty('instance_name');
+            var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+            var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access';
+            var cred = JSON.parse(this.getIntegrationUserCredentials());
+            var username = cred.username;
+            var password = cred.password;
+
+            var r = new sn_ws.RESTMessageV2();
+            r.setEndpoint(apiEndpoint);
+            r.setHttpMethod('GET');
+            r.setRequestHeader('Content-Type', 'application/json');
+            r.setBasicAuth(username, password);
+            r.setQueryParameter('case_number', caseNumber);
+            r.setQueryParameter('status', 'granted');
+
+            var response = r.execute();
+            var responseBody = response.getBody();
+            var httpStatus = response.getStatusCode();
+
+            if (httpStatus == 200) {
+                var result = JSON.parse(responseBody).result;
+              
+
+                for (var i = 0; i < result.length; i++) {
+                    var record = result[i];
+                    var sysId = record.sys_id;
+
+                    var updateData = {
+                        status: 'expired',
+                    };
+
+                    this.updateClientEnvironmentAccessRecord(sysId, updateData);
+                   
+                }
+            } else {
+                gs.error('Nuvolo API Error: HTTP Status ' + httpStatus + ' - Response: ' + responseBody);
+                return null;
+            }
+        } catch (ex) {
+            gs.error('Exception in getTemporaryAccessDetails: ' + ex.message);
+            return null;
+        }
+
+    },
 
     type: 'HealthCheckHelper'
 };]]></script>
@@ -80,13 +279,13 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>86</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-25 12:42:33</sys_updated_on>
+        <sys_updated_on>2024-10-04 12:33:25</sys_updated_on>
     </sys_script_include>
 </record_update>
