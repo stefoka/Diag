@@ -33,7 +33,8 @@
     var roleAssignment = new HealthCheckHelper();
 
     var userCred = [];
-
+    var additionalEmails=[];
+    var additionalPasswords=[];
     if (current.assigned_to_email) {
         userCred.push({
             email: current.assigned_to_email.trim(),
@@ -42,21 +43,22 @@
     }
 
     if (current.additional_assignee_email && current.additional_assignee_password) {
-
-        var additionalEmails = current.additional_assignee_email.split(',');
-        var additionalPasswords = current.additional_assignee_password.split(',');
+        if (current.additional_assignee_email.toString().indexOf(',') > -1) {
+            additionalEmails = current.additional_assignee_email.split(',');
+        } else {
+            additionalEmails.push(current.additional_assignee_email.toString());
+        }
+        if (current.additional_assignee_email.toString().indexOf(',') > -1) {
+            additionalPasswords = current.additional_assignee_password.split(',');
+        } else {
+            additionalPasswords.push(current.additional_assignee_password.toString());
+        }
 
         for (var i = 0; i < additionalEmails.length; i++) {
             userCred.push({
-                email: additionalEmails[i].trim()
+                email: additionalEmails[i].trim(),
+				password: additionalPasswords[i].trim()
             });
-        }
-
-        for (var k = 0; k < additionalPasswords.length; k++) {
-            userCred.push({
-                password: additionalPasswords[k].trim()
-            });
-
         }
 
     }
@@ -72,12 +74,12 @@
 
                 user.user_password.setDisplayValue(userCred[j].password);
                 user.password_needs_reset = true;
-				user.active = true;
-				user.locked_out = false;
-                
+                user.active = true;
+                user.locked_out = false;
+
                 user.update();
-				
-				roleAssignment.assignRoles(user.sys_id, current.access_type);
+
+                roleAssignment.assignRoles(user.sys_id, current.access_type);
 
             } else {
 
@@ -108,15 +110,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>496e174593815250052ef5cd0bba10d9</sys_id>
-        <sys_mod_count>27</sys_mod_count>
+        <sys_mod_count>28</sys_mod_count>
         <sys_name>Create user and pass</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_496e174593815250052ef5cd0bba10d9</sys_update_name>
-        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-04 11:03:19</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-07 08:22:44</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>
