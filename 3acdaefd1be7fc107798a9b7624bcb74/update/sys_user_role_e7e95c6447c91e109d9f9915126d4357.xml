@@ -8,7 +8,6 @@
         <grantable>true</grantable>
         <includes_roles/>
         <name>x_nuvo_diag.nuvolo_oob_script_hashes_user</name>
-        <requires_subscription>-1</requires_subscription>
         <scoped_admin>false</scoped_admin>
         <suffix>nuvolo_oob_script_hashes_user</suffix>
         <sys_class_name>sys_user_role</sys_class_name>

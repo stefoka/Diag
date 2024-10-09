@@ -3,6 +3,8 @@
         <cleared>false</cleared>
         <disabled>ignore</disabled>
         <field>script</field>
+        <field_message/>
+        <field_message_type>none</field_message_type>
         <mandatory>ignore</mandatory>
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
@@ -18,6 +20,8 @@
         <sys_updated_on>2024-09-25 07:23:39</sys_updated_on>
         <table>x_nuvo_diag_probes</table>
         <ui_policy display_value="To hide &quot;script&quot; field when tool field is &quot;Health&quot;">d0dbcde6477056109d9f9915126d4357</ui_policy>
+        <value/>
+        <value_action>ignore</value_action>
         <visible>false</visible>
     </sys_ui_policy_action>
 </record_update>

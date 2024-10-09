@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description/>
+        <mobile_callable>false</mobile_callable>
         <name>HealthCheckHelper</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[var HealthCheckHelper = Class.create();
 HealthCheckHelper.prototype = {
     initialize: function() {},

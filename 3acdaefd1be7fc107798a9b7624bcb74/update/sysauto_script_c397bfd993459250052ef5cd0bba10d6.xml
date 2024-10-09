@@ -6,7 +6,7 @@
         <conditional>false</conditional>
         <entered_time>1970-01-01 00:00:00</entered_time>
         <max_drift/>
-        <name>Change status to Expired</name>
+        <name>Remove Nuvolo Temp Access</name>
         <offset/>
         <offset_type>0</offset_type>
         <run_as display_value="Kaloyan Yanakov">1de5b79d93e0d610052ef5cd0bba10c7</run_as>
@@ -62,14 +62,14 @@
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-10-04 09:05:16</sys_created_on>
         <sys_id>c397bfd993459250052ef5cd0bba10d6</sys_id>
-        <sys_mod_count>7</sys_mod_count>
-        <sys_name>Change status to Expired</sys_name>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Remove Nuvolo Temp Access</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sysauto_script_c397bfd993459250052ef5cd0bba10d6</sys_update_name>
-        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-04 11:00:08</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-07 08:50:57</sys_updated_on>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>

@@ -3,6 +3,8 @@
         <cleared>false</cleared>
         <disabled>ignore</disabled>
         <field>healthcheck_type</field>
+        <field_message/>
+        <field_message_type>none</field_message_type>
         <mandatory>true</mandatory>
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
@@ -18,6 +20,8 @@
         <sys_updated_on>2024-09-18 11:04:21</sys_updated_on>
         <table>x_nuvo_diag_probes</table>
         <ui_policy display_value="Conditionally showing field when field &quot;tool&quot; is Health">d7fde05c93741a10052ef5cd0bba1088</ui_policy>
+        <value/>
+        <value_action>ignore</value_action>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

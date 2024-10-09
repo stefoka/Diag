@@ -18,6 +18,7 @@
         <override_menu_roles>false</override_menu_roles>
         <query>x_nuvo_diag_nuvolo_temp_access_form.do</query>
         <report/>
+        <require_confirmation>true</require_confirmation>
         <roles/>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>

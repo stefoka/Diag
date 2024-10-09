@@ -18,6 +18,7 @@
         <override_menu_roles>false</override_menu_roles>
         <query>x_nuvo_diag_diagnostic_scan.do</query>
         <report/>
+        <require_confirmation>true</require_confirmation>
         <roles/>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>

@@ -98,6 +98,20 @@
             <sys_user/>
             <type/>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>servicenow_version</element>
+            <position>7</position>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-10-08 13:14:41</sys_created_on>
+            <sys_id>a139997e93c91210052ef5cd0bba1039</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" sys_domain="global" view="Default view">0ed1543347a4de109d9f9915126d4300</sys_ui_section>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-10-08 13:14:41</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>
             <header>false</header>
