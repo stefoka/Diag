@@ -71,54 +71,40 @@ HealthCheckHelper.prototype = {
                 }
 
             }
+            this.populateHealthLogGeneral(helthcheckRecord);
 
         });
     },
     populateHealthLogGeneral: function(helthcheckRec) {
 
-        var apps = helthcheckRec.getValue('applications').split(',');
+
         var ootbType = gs.getProperty('x_nuvo_diag.ootb_app');
-		
-if (apps.includes("General Overview")) {
+
         try {
             var obj = {};
 
             var probe = new GlideRecord('x_nuvo_diag_probes');
-			probe.addQuery('tool', 'health');
-            probe.addQuery('healthcheck_type', ootbType);
+            probe.addEncodedQuery('tool=health^probe_type=ede6dc1b477cd6109d9f9915126d431d');
             probe.query();
 
             while (probe.next()) {
-                var probeName = probe.getValue('name');
-                obj[probeName] = {};
-
 
                 var scriptItem = new GlideRecord('x_nuvo_diag_probe_script_item');
                 scriptItem.addQuery('probe_type', 'app');
-
                 scriptItem.addQuery('probe', probe.sys_id);
                 scriptItem.query();
 
                 while (scriptItem.next()) {
                     var evaluator = new GlideScopedEvaluator();
                     var result = evaluator.evaluateScript(scriptItem, 'script');
-                    var scriptItemName = scriptItem.getValue('name');
-                    obj[probeName][scriptItemName] = result;
+
                 }
             }
-
-            var healthLog = new GlideRecord('x_nuvo_diag_healthcheck_logs');
-            healthLog.initialize();
-            healthLog.healthcheck_type = ootbType;
-            healthLog.probe_category = "General Overview";
-            healthLog.healthcheck_instance = helthcheckRec.sys_id;
-            healthLog.result = JSON.stringify(obj);
-            healthLog.insert();
 
         } catch (error) {
             gs.error("Error processing health check for general overview. Error: " + error.message);
         }
-}
+
     },
 
     getTemporaryAccessDetails: function(localSysID, caseNumber, exprDate, accesType) {
@@ -327,14 +313,14 @@ if (apps.includes("General Overview")) {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>88</sys_mod_count>
+        <sys_mod_count>91</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-09 14:08:09</sys_updated_on>
+        <sys_updated_on>2024-10-10 08:54:43</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>

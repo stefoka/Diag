@@ -6,35 +6,61 @@
         <event_name>x_nuvo_diag.local_script_hash_records</event_name>
         <name>Create hashes object</name>
         <order>100</order>
-        <script><![CDATA[    var result = {
+        <script><![CDATA[try {
+
+    var result = {
         New: [],
         Modified: []
     };
 
+
     var record = new GlideRecord('x_nuvo_diag_nuvolo_local_script_hash');
-    record.addEncodedQuery('script_state=new^ORscript_state=modified')
+    record.addEncodedQuery('script_state=new^ORscript_state=modified');
     record.query();
 
+  
     while (record.next()) {
-
         var fieldValues = {};
 
         for (var field in record) {
-
             if (record.isValidField(field) && !field.startsWith('sys')) {
                 fieldValues[field] = record.getValue(field);
             }
         }
 
+     
         if (record.script_state == 'new') {
             result.New.push(fieldValues);
-
         } else if (record.script_state == 'modified') {
             result.Modified.push(fieldValues);
         }
     }
 
-    gs.info(JSON.stringify(result));]]></script>
+   
+    var healthLog = new GlideRecord('x_nuvo_diag_healthcheck_logs');
+    healthLog.initialize();
+    healthLog.healthcheck_type = 'ootb';
+    healthLog.probe_category = 'General Overview';
+    healthLog.healthcheck_instance = '123test'; 
+    healthLog.result = JSON.stringify(result);
+    healthLog.insert();
+
+} catch (error) {
+    
+    var errorLog = new GlideRecord('x_nuvo_diag_healthcheck_logs');
+    errorLog.initialize();
+    errorLog.healthcheck_type = 'ootb';
+    errorLog.probe_category = 'General Overview';
+    errorLog.healthcheck_instance = '123test';
+    errorLog.result = JSON.stringify({
+        error: error.message,
+        stack: error.stack
+    });
+    errorLog.insert();
+
+    gs.error("Error encountered: " + error.message);
+}
+]]></script>
         <synchronous>false</synchronous>
         <sys_class_name>sysevent_script_action</sys_class_name>
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
@@ -42,7 +68,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>b3f1b28793099210052ef5cd0bba1072</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Create hashes object</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -50,7 +76,7 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sysevent_script_action_b3f1b28793099210052ef5cd0bba1072</sys_update_name>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-09 14:36:47</sys_updated_on>
+        <sys_updated_on>2024-10-10 08:58:41</sys_updated_on>
     </sysevent_script_action>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>b3f1b28793099210052ef5cd0bba1072</id>
