@@ -72,7 +72,7 @@
     //CREATE Instanece->Log relationship
 
     var request1 = new sn_ws.RESTMessageV2();
-    request.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_diag_healthcheck_logs');
+    request.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_health_scan_m2m_x_nuvo_diag_x_nuvo_healt');
     request.setHttpMethod('POST');
     request.setBasicAuth(user, password);
     request.setRequestHeader("Accept", "application/json");
@@ -95,7 +95,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>45d6b566473456109d9f9915126d43b0</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Send Logs to Nuvolo Instance</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -103,7 +103,7 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_45d6b566473456109d9f9915126d43b0</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-09 10:51:47</sys_updated_on>
+        <sys_updated_on>2024-10-10 12:16:31</sys_updated_on>
         <template/>
         <when>async_always</when>
     </sys_script>

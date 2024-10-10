@@ -23,64 +23,75 @@ HealthCheckProbeUtils.prototype = {
     },
 
     getHashedValue: function(key, value) {
-		try{
-			var name = '';
-			var table = '';
+        try {
+            var name = '';
+            var table = '';
+            var nuvoloVersion = '';
+            var resultObj = {};
+            var digest = new GlideDigest();
+            var serviceNowVersion = gs.getProperty('glide.buildname') || gs.getProperty('glide.war');
 
-			var resultObj = {};
-			var digest = new GlideDigest();
+            var grScope = new GlideRecord('sys_scope');
+            grScope.addEncodedQuery('scope=x_nuvo_eam');
+            grScope.query();
+            if (grScope.next()) {
+                nuvoloVersion = grScope.version.toString();
+            }
 
-			var arr = [];
-			var values = value.split(',');
-			var gr = new GlideRecord(key);
-			gr.addEncodedQuery('sys_scope.scopeSTARTSWITHx_nuvo');
-			gr.query();
+            var arr = [];
+            var values = value.split(',');
+            var gr = new GlideRecord(key);
+            gr.addEncodedQuery('sys_scope.scopeSTARTSWITHx_nuvo');
+            gr.query();
 
-			while (gr.next()) {
-				var fieldValues = '';
-				for (var i = 0; i < values.length; i++) {
-					fieldValues += gr[values[i]];
+            while (gr.next()) {
+                var fieldValues = '';
+                for (var i = 0; i < values.length; i++) {
+                    fieldValues += gr[values[i]];
 
-				}
+                }
 
-				var dash = digest.getSHA256Hex(fieldValues);
-				name = '';
-				table = '';
-				if (gr.name != undefined && gr.name != null && gr.name != '') {
-					name = gr.name.toString();
-				} else if (gr.short_description != undefined && gr.short_description != null && gr.short_description != '') {
-					name = gr.short_description.toString();
-				}
+                var dash = digest.getSHA256Hex(fieldValues);
+                name = '';
+                table = '';
+                if (gr.name != undefined && gr.name != null && gr.name != '') {
+                    name = gr.name.toString();
+                } else if (gr.short_description != undefined && gr.short_description != null && gr.short_description != '') {
+                    name = gr.short_description.toString();
+                }
 
-				if (gr.collection != undefined && gr.collection != null && gr.collection != '') {
-					table = gr.collection.getDisplayValue().toString();
-				} else if (gr.table != undefined && gr.table != null && gr.table != '') {
-					table = gr.table.getDisplayValue().toString();
-				}
+                if (gr.collection != undefined && gr.collection != null && gr.collection != '') {
+                    table = gr.collection.getDisplayValue().toString();
+                } else if (gr.table != undefined && gr.table != null && gr.table != '') {
+                    table = gr.table.getDisplayValue().toString();
+                }
 
-				var sys_id = gr.sys_id.toString();
-				var sys_updated_on = gr.sys_updated_on.getDisplayValue();
-				var localHashGr = new GlideRecord('x_nuvo_diag_nuvolo_local_script_hash');
-				localHashGr.initialize();
-				localHashGr.script_type = key;
-				localHashGr.script_name = name.toString();
-				localHashGr.table_name = table;
-				localHashGr.hash_value = dash;
-				localHashGr.script_id = sys_id,
-				localHashGr.insert();
+                var sys_id = gr.sys_id.toString();
+                var sys_updated_on = gr.sys_updated_on.getDisplayValue();
+                var localHashGr = new GlideRecord('x_nuvo_diag_nuvolo_local_script_hash');
+                localHashGr.initialize();
+                localHashGr.servicenow_version = serviceNowVersion;
+                localHashGr.nuvolo_version = nuvoloVersion;
+                 localHashGr.script_type = key;
+                localHashGr.script_name = name.toString();
+                localHashGr.table_name = table;
+                localHashGr.hash_value = dash;
+                localHashGr.script_id = sys_id,
+                localHashGr.insert();
 
-			}
-		}
-		catch(err){
-			var localHashGr = new GlideRecord('x_nuvo_diag_nuvolo_local_script_hash');
-				localHashGr.initialize();
-				localHashGr.script_type = "GENERAL ERROR";
-				localHashGr.script_name = err.toString();
-				localHashGr.table_name = "GENERAL ERROR";
-				localHashGr.hash_value = "GENERAL ERROR";
-				localHashGr.script_id = "GENERAL ERROR";
-				localHashGr.insert();
-		}
+            }
+        } catch (err) {
+            var localHashGrErr = new GlideRecord('x_nuvo_diag_nuvolo_local_script_hash');
+            localHashGrErr.initialize();
+            localHashGrErr.servicenow_version = "GENERAL ERROR";
+            localHashGrErr.nuvolo_version = "GENERAL ERROR";
+            localHashGrErr.script_type = "GENERAL ERROR";
+            localHashGrErr.script_name = err.toString();
+            localHashGrErr.table_name = "GENERAL ERROR";
+            localHashGrErr.hash_value = "GENERAL ERROR";
+            localHashGrErr.script_id = "GENERAL ERROR";
+            localHashGrErr.insert();
+        }
 
     },
 
@@ -90,14 +101,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>13</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-09 07:22:56</sys_updated_on>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-10 13:33:46</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>
