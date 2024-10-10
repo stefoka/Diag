@@ -35,15 +35,15 @@
     var result = current.getValue('result');
     var error_message = current.getValue('error_message');
 
-    var request = new sn_ws.RESTMessageV2();
-    request.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_diag_healthcheck_logs');
-    request.setHttpMethod('POST');
-
     var helper = new x_nuvo_diag.HealthCheckHelper();
     var credentials = JSON.parse(helper.getIntegrationUserCredentials());
     var user = credentials.username;
     var password = credentials.password;
 
+    /////////CREATE HEALTHCHECK LOG
+    var request = new sn_ws.RESTMessageV2();
+    request.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_diag_healthcheck_logs');
+    request.setHttpMethod('POST');
     request.setBasicAuth(user, password);
     request.setRequestHeader("Accept", "application/json");
     request.setRequestHeader('Content-Type', 'application/json');
@@ -60,8 +60,34 @@
 
     request.setRequestBody(requestBodyStr);
 
-    request.execute();
+    var response = request.execute();
+	var statusCode = response.getStatusCode();
+	if (statusCode >= 200 && statusCode < 300) {
+		var sysId = JSON.parse(response.getBody()).sysId;
+	}
+	else{
+		return;
+	}
 
+    //CREATE Instanece->Log relationship
+
+    var request1 = new sn_ws.RESTMessageV2();
+    request.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_diag_healthcheck_logs');
+    request.setHttpMethod('POST');
+    request.setBasicAuth(user, password);
+    request.setRequestHeader("Accept", "application/json");
+    request.setRequestHeader('Content-Type', 'application/json');
+
+    var requestBodyM2M = {
+        "x_nuvo_health_scan_healthcheck_instance": healthcheck_instance,
+        "x_nuvo_diag_healthcheck_logs": sysId,
+    };
+
+    var requestBodyStrM2m = JSON.stringify(requestBody);
+
+    request.setRequestBody(requestBodyStr);
+
+    request.execute();
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
@@ -69,7 +95,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>45d6b566473456109d9f9915126d43b0</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>Send Logs to Nuvolo Instance</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -77,9 +103,20 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_45d6b566473456109d9f9915126d43b0</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-09 08:58:13</sys_updated_on>
+        <sys_updated_on>2024-10-09 10:51:47</sys_updated_on>
         <template/>
         <when>async_always</when>
     </sys_script>
     <sys_translated_text action="delete_multiple" query="documentkey=45d6b566473456109d9f9915126d43b0"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>45d6b566473456109d9f9915126d43b0</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-09 10:51:47</sys_created_on>
+        <sys_id>3d12828393059210052ef5cd0bba1056</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-09 10:51:47</sys_updated_on>
+        <table>sys_script</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>

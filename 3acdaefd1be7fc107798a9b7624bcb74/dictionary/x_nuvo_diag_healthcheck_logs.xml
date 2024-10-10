@@ -2,7 +2,7 @@
     <element db_object_id="fe949dc647a05a109d9f9915126d43be" label="HealthCheck Logs" max_length="40" name="x_nuvo_diag_healthcheck_logs" type="collection">
         <element label="Error Message" max_length="200" name="error_message" read_only="true" type="string"/>
         <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="HealthCheck Instance" max_length="32" name="healthcheck_instance" read_only="true" reference="x_nuvo_diag_healthcheck_instance" type="reference"/>
-        <element attributes="edge_encryption_enabled=true" choice="3" label="HealthCheck type" max_length="40" name="healthcheck_type" read_only="true" type="choice">
+        <element attributes="edge_encryption_enabled=true" choice="3" display="true" label="HealthCheck type" max_length="40" name="healthcheck_type" read_only="true" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Data Integrity" value="data_integrity"/>
                 <element inactive_on_update="false" label="Feature Usage" value="feature_usage"/>
