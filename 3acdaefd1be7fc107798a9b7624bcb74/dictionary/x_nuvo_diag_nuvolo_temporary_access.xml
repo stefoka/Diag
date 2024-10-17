@@ -6,8 +6,6 @@
                 <element inactive_on_update="false" label="Admin Read-Only" value="admin_read_only"/>
             </choice>
         </element>
-        <element label="Additional Assignee Email " max_length="150" name="additional_assignee_email" type="string"/>
-        <element label="Additional Assignee Password" max_length="150" name="additional_assignee_password" type="string"/>
         <element label="Assigned To Email" max_length="150" name="assigned_to_email" type="string"/>
         <element label="Assigned To Password" max_length="150" name="assigned_to_password" type="string"/>
         <element label="Case Number" max_length="150" name="case_number" type="string"/>
