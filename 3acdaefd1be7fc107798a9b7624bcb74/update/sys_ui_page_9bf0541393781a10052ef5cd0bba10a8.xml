@@ -31,14 +31,17 @@
 	if (response) {
 		var obj = JSON.parse(response);
 
-		document.getElementById('error_result_message').innerHTML = '';
-		document.getElementById('temp_access_form').reset();
-
+		var resultMessage = document.getElementById('result_message');
+		var errorMessage = document.getElementById('error_result_message');
 		var relatedList = document.getElementById('related-list-table');
+		var relatedListContainer = document.getElementById('related-list-container');
+
+		errorMessage.innerHTML = '';
+		resultMessage.innerHTML = '';
+		document.getElementById('temp_access_form').reset();
 		
 		//Remove previous records in the related list if any
 		var oldTrs = document.querySelectorAll('.data-row');
-		jslog("IN007: " + JSON.stringify(oldTrs));
 	
 		for (var i = 0; i < oldTrs.length; i++){
 			oldTrs[i].classList.add('hidden');
@@ -71,19 +74,26 @@
 				relatedList.appendChild(tr);
 			}
 
-			document.getElementById('related-list-container').classList.remove('hidden');
-			document.getElementById('result_message').innerHTML = obj.message;
+			relatedListContainer.classList.remove('hidden');
+			resultMessage.innerHTML = obj.message;
 
 		}
 		else {
-			document.getElementById('error_result_message').innerHTML = obj.message;
+			errorMessage.innerHTML = obj.message;
+			if(!resultMessage.classList.contains('hidden')) {
+				relatedListContainer.classList.add('hidden');
+			}
 		}
 	} 
 	else {
-			document.getElementById('error_result_message').innerHTML = 'An error occurred. Please try again.';
+		errorMessage.innerHTML = 'An error occurred. Please try again.';
+		
+		if(!resultMessage.classList.contains('hidden')) {
+			relatedListContainer.classList.add('hidden');
+		}
 	}
-	});
- }]]></client_script>
+
+});}]]></client_script>
         <description/>
         <direct>false</direct>
         <endpoint>x_nuvo_diag_nuvolo_temp_access_form.do</endpoint>
@@ -272,14 +282,14 @@
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-27 11:10:21</sys_created_on>
         <sys_id>9bf0541393781a10052ef5cd0bba10a8</sys_id>
-        <sys_mod_count>155</sys_mod_count>
+        <sys_mod_count>157</sys_mod_count>
         <sys_name>nuvolo_temp_access_form</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_page_9bf0541393781a10052ef5cd0bba10a8</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-21 10:22:36</sys_updated_on>
+        <sys_updated_on>2024-10-21 11:36:17</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>9bf0541393781a10052ef5cd0bba10a8</id>
