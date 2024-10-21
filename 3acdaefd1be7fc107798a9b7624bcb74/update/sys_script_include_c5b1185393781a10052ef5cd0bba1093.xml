@@ -11,103 +11,154 @@
         <sandbox_callable>true</sandbox_callable>
         <script><![CDATA[var NuvoloTempAccessAjax = Class.create();
 NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
-    createTempAccessRecord: function() {
-		
-		var tempAccessObj = {
-			agents: [],
-			message: ''
-		};
-
+    
+	createTempAccessRecord: function() {
+	
         var caseNumber = this.getParameter('case_number');
         var endOfAccessString = this.getParameter('end_of_access');
         var accessType = this.getParameter('access_type');
+		var accessTypeText = this.getParameter('access_type_text');
+
+		var tempAccessObj = {
+			agents: [],
+			link: '',
+			message: ''
+		};
 
         var endOfAccessDays = parseInt(endOfAccessString, 10);
-
         var endOfAccessDate = new GlideDate();
         endOfAccessDate.addDaysUTC(endOfAccessDays);
 
+		var requestorDomain = '';
+
+		var requestorID = gs.getUserID();
+		var requestorGR = new GlideRecord('sys_user');
+		if(requestorGR.get(requestorID)){
+			requestorDomain = '@' + requestorGR.email.split('@')[1];
+		}
+
 		var localInst = gs.getProperty('instance_name');
 		var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
-		var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=case_numberLIKE' + caseNumber;
 
 		username = gs.getProperty('x_nuvo_diag.integration_user_name'),
-		password = gs.getProperty('x_nuvo_diag.integration_user_password')
+		password = gs.getProperty('x_nuvo_diag.integration_user_password');
 
-		var r = new sn_ws.RESTMessageV2();
-		r.setEndpoint(apiEndpoint);
-		r.setHttpMethod('GET');
-		r.setRequestHeader('Content-Type', 'application/json');
-		r.setBasicAuth(username, password);
-		// r.setQueryParameter('case_numberLIKE' + caseNumber);
+		var casesAPIEndpoint = 'https://' + inst + '.service-now.com/api/now/table/sn_customerservice_case?sysparm_query=numberLIKE' + caseNumber;
+
+		var casesR = new sn_ws.RESTMessageV2();
+		casesR.setEndpoint(casesAPIEndpoint);
+		casesR.setHttpMethod('GET');
+		casesR.setRequestHeader('Content-Type', 'application/json');
+		casesR.setBasicAuth(username, password);
 		
-		var response = r.execute();
-		var responseBody = response.getBody();
-		var httpStatus = response.getStatusCode();
-		var agentsAssigned = false;
+		var casesResponse = casesR.execute();
+		var casesResponseBody = casesResponse.getBody();
+		var casesHttpStatus = casesResponse.getStatusCode();
 
-		if (httpStatus == 200) {
-			var result = JSON.parse(responseBody).result;
+		if (casesHttpStatus == 200) {
+			var casesResult = JSON.parse(casesResponseBody).result;
+			
+			if(casesResult.length === 0) {
+				tempAccessObj.message = "Case " + caseNumber + " doesn't exist in the system!" ;
+				return JSON.stringify(tempAccessObj);
+			}
+			else 
+			{
+				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=case_numberLIKE' + caseNumber;
 
-			if(result.length !== 0) {
-				for (var i = 0; i < result.length; i++) {
-					var record = result[i];
-					
-					var newRecord = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
-					newRecord.addEncodedQuery('assigned_to_email=' + record.email + '^status=granted');
-					newRecord.query();
+				var r = new sn_ws.RESTMessageV2();
+				r.setEndpoint(apiEndpoint);
+				r.setHttpMethod('GET');
+				r.setRequestHeader('Content-Type', 'application/json');
+				r.setBasicAuth(username, password);
+				
+				var response = r.execute();
+				var responseBody = response.getBody();
+				var httpStatus = response.getStatusCode();
 
-					if(!newRecord.hasNext()) {
-						
-						var sysId = record.sys_id;
+				var agentsAssigned = false;
 
-						var tempObj = {
-							agent: record.agent_name,
-							email: record.email,
-							accessType: accessType,
-							expirationDate: ''
-						};
+				if (httpStatus == 200) {
+					var result = JSON.parse(responseBody).result;
+				
+					if(result.length !== 0) {
+						for (var j = 0; j < result.length; j++) {
+							var record = result[j];
+							var contactDomain = record.contact_domain;
 
-						tempAccessObj.agents.push(tempObj);
+							if (contactDomain !== requestorDomain) {
+								tempAccessObj.message = "Case " + caseNumber + " is not raised by your Company! Please make sure you have the right Case number in the request!";
 
-						newRecord.initialize();
-						newRecord.case_number = caseNumber;
-						newRecord.end_of_access = endOfAccessDate.getDisplayValue();
-						newRecord.assigned_to_email = record.email + '';
-						newRecord.assigned_to_password = record.temp_password + '';
-						newRecord.setValue('access_type', accessType);
-						newRecord.status = 'in_progress';
-					
-						var insertResult = newRecord.insert();
+								return JSON.stringify(tempAccessObj);
+							}
 
-						agentsAssigned = true;
+							var newRecord = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+							newRecord.addEncodedQuery('assigned_to_email=' + record.email + '^status=granted');
+							newRecord.query();
 
-						var updateData = {
-							status: 'granted',
-							expiration_date: endOfAccessDate.getDisplayValue(),
-							access_type: accessType + '',
-							instance_url: 'https://' + localInst + '.service-now.com'
-						};
+							if(!newRecord.hasNext()) {
+								
+								var sysId = record.sys_id;
+								var agentSysID = record.agent.value;
 
-						var api = new x_nuvo_diag.HealthCheckHelper();
-						api.updateClientEnvironmentAccessRecord(sysId, updateData);
+								var link = "https://" + inst + ".service-now.com/sys_user.do?sys_id=" + agentSysID;
+
+								var tempObj = {
+									agent: {
+										name:record.agent_name,
+										link: link
+									},
+									email: record.email,
+									accessType: accessTypeText,
+									endOfAccessDate: endOfAccessDate
+								};
+
+								tempAccessObj.agents.push(tempObj);
+
+								newRecord.initialize();
+								newRecord.case_number = caseNumber;
+								newRecord.end_of_access = endOfAccessDate.getDisplayValue();
+								newRecord.assigned_to_email = record.email + '';
+								newRecord.assigned_to_password = record.temp_password + '';
+								newRecord.setValue('access_type', accessType);
+								newRecord.status = 'in_progress';
+							
+								var insertResult = newRecord.insert();
+
+								agentsAssigned = true;
+
+								var updateData = {
+									status: 'granted',
+									expiration_date: endOfAccessDate.getDisplayValue(),
+									access_type: accessType + '',
+									instance_url: 'https://' + localInst + '.service-now.com'
+								};
+
+								var api = new x_nuvo_diag.HealthCheckHelper();
+								api.updateClientEnvironmentAccessRecord(sysId, updateData);
+							}
+						}
+
+						if(agentsAssigned) {
+							tempAccessObj.message = 'Temporary access record created successfully!';
+						}
+						else 
+						{
+							tempAccessObj.message = 'All agents assigned to Case ' + caseNumber + ' were already granted access!';
+						}
+					}
+					else 
+					{
+						tempAccessObj.message = 'No assigned agents for case ' + caseNumber + ' found!';
 					}
 				}
-
-				if(agentsAssigned) {
-					tempAccessObj.message = 'Temporary access record created successfully';
-				}
 				else {
-					tempAccessObj.message = 'All agents assigned to Case ' + caseNumber + ' were already granted access!';
+					tempAccessObj.message = 'Failed to create temporary access record!';
 				}
-			
-			}else {
-				tempAccessObj.message = 'No assigned agents found!';
 			}
-			
 		}
 		else {
-			tempAccessObj.message = 'Failed to create temporary access record';
+			tempAccessObj.message = 'Failed while trying to find the Case in the system!';
 		}
 
 		return JSON.stringify(tempAccessObj);
@@ -117,14 +168,14 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-27 11:04:24</sys_created_on>
         <sys_id>c5b1185393781a10052ef5cd0bba1093</sys_id>
-        <sys_mod_count>69</sys_mod_count>
+        <sys_mod_count>82</sys_mod_count>
         <sys_name>NuvoloTempAccessAjax</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c5b1185393781a10052ef5cd0bba1093</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-17 11:24:49</sys_updated_on>
+        <sys_updated_on>2024-10-21 09:25:27</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c5b1185393781a10052ef5cd0bba1093</id>

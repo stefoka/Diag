@@ -5,38 +5,40 @@
         <assessment/>
         <content_page/>
         <device_type/>
-        <filter/>
+        <filter table="x_nuvo_diag_nuvolo_temporary_access">status=granted^EQ<item display_value="Granted" endquery="false" field="status" goto="false" newquery="false" operator="=" or="false" value="granted"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter>
         <hint/>
         <homepage/>
         <image/>
-        <link_type>DIRECT</link_type>
+        <link_type>LIST</link_type>
         <map_page/>
-        <mobile_title>Temporary Access Form</mobile_title>
+        <mobile_title>Temporary Accesses</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
-        <name/>
-        <order>50</order>
+        <name>x_nuvo_diag_nuvolo_temporary_access</name>
+        <order>60</order>
         <override_menu_roles>false</override_menu_roles>
-        <query>x_nuvo_diag_nuvolo_temp_access_form.do</query>
+        <query/>
         <report/>
         <require_confirmation>true</require_confirmation>
         <roles/>
         <sys_class_name>sys_app_module</sys_class_name>
-        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
-        <sys_created_on>2024-09-27 11:07:44</sys_created_on>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-21 05:57:12</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>1d12109393781a10052ef5cd0bba1029</sys_id>
-        <sys_mod_count>6</sys_mod_count>
-        <sys_name>Temporary Access Form</sys_name>
+        <sys_id>15817eba471152506d8ba835126d4358</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Active Temporary Accesses</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_update_name>sys_app_module_1d12109393781a10052ef5cd0bba1029</sys_update_name>
+        <sys_update_name>sys_app_module_15817eba471152506d8ba835126d4358</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-21 06:02:24</sys_updated_on>
+        <sys_updated_on>2024-10-21 06:02:13</sys_updated_on>
         <timeline_page/>
-        <title>Temporary Access Form</title>
+        <title>Active Temporary Accesses</title>
         <uncancelable>false</uncancelable>
         <view_name/>
         <window_name/>
