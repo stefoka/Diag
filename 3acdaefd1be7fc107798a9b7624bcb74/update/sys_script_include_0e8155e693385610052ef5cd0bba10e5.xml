@@ -168,10 +168,8 @@ HealthCheckHelper.prototype = {
 
             var oldHashes = new GlideRecord('x_nuvo_diag_nuvolo_local_script_hash');
             oldHashes.query();
+			oldHashes.deleteMultiple();
 
-            while (oldHashes.next()) {
-                oldHashes.deleteMultiple();
-            }
 
 
         } catch (error) {
@@ -334,6 +332,48 @@ HealthCheckHelper.prototype = {
         }
     },
 
+	getExpiredClientEnvironmentAccessByEmails: function(emails) {
+        try {
+            var localInst = gs.getProperty('instance_name');
+            var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+            var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=emailIN' + emails;
+            var cred = JSON.parse(this.getIntegrationUserCredentials());
+            var username = cred.username;
+            var password = cred.password;
+
+            var r = new sn_ws.RESTMessageV2();
+            r.setEndpoint(apiEndpoint);
+            r.setHttpMethod('GET');
+            r.setRequestHeader('Content-Type', 'application/json');
+            r.setBasicAuth(username, password);
+            // r.setQueryParameter('status', 'expired');
+
+            var response = r.execute();
+            var responseBody = response.getBody();
+            var httpStatus = response.getStatusCode();
+
+            if (httpStatus == 200) {
+                var result = JSON.parse(responseBody).result;
+				var expiredAccessEmails = '';
+
+				for(var i = 0; i < result.length; i++) {
+					if(result[i].status == 'expired') {
+						expiredAccessEmails += result[i].email + ',';
+					}
+				}
+				return expiredAccessEmails;
+                
+            } else {
+                gs.error('Nuvolo API Error: HTTP Status ' + httpStatus + ' - Response: ' + responseBody);
+                return null;
+            }
+        } catch (ex) {
+            gs.error('Exception in getTemporaryAccessDetails: ' + ex.message);
+            return null;
+        }
+
+    },
+
     updateClientEnvironmentAccessByCase: function(caseNumber) {
         try {
             var localInst = gs.getProperty('instance_name');
@@ -387,14 +427,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>103</sys_mod_count>
+        <sys_mod_count>114</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-11 09:08:59</sys_updated_on>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-22 10:46:06</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>

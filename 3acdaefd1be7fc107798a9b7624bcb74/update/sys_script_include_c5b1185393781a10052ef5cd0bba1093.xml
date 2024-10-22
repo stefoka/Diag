@@ -59,6 +59,7 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
 			var casesResult = JSON.parse(casesResponseBody).result;
 			
 			if(casesResult.length === 0) {
+				// ERROR - Case not found
 				tempAccessObj.message = "Case " + caseNumber + " doesn't exist in the system!" ;
 				return JSON.stringify(tempAccessObj);
 			}
@@ -87,6 +88,7 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
 							var contactDomain = record.contact_domain;
 
 							if (contactDomain !== requestorDomain) {
+								//ERROR - Case not owned by the same Client
 								tempAccessObj.message = "Case " + caseNumber + " is not raised by your Company! Please make sure you have the right Case number in the request!";
 
 								return JSON.stringify(tempAccessObj);
@@ -144,20 +146,24 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
 						}
 						else 
 						{
+							//ERROR - All Agents assigned to the Case already have access granted to them
 							tempAccessObj.message = 'All agents assigned to Case ' + caseNumber + ' were already granted access!';
 						}
 					}
 					else 
 					{
+						//ERROR - No Agents assigned to the Case
 						tempAccessObj.message = 'No assigned agents for case ' + caseNumber + ' found!';
 					}
 				}
 				else {
+					//ERROR - Client Environment Access Table API Fail
 					tempAccessObj.message = 'Failed to create temporary access record!';
 				}
 			}
 		}
 		else {
+			//ERROR - Case Table API Fail
 			tempAccessObj.message = 'Failed while trying to find the Case in the system!';
 		}
 
@@ -168,14 +174,14 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-27 11:04:24</sys_created_on>
         <sys_id>c5b1185393781a10052ef5cd0bba1093</sys_id>
-        <sys_mod_count>83</sys_mod_count>
+        <sys_mod_count>84</sys_mod_count>
         <sys_name>NuvoloTempAccessAjax</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c5b1185393781a10052ef5cd0bba1093</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-21 11:26:02</sys_updated_on>
+        <sys_updated_on>2024-10-21 11:50:24</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c5b1185393781a10052ef5cd0bba1093</id>
