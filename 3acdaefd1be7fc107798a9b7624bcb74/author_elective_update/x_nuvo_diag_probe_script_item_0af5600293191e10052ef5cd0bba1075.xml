@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Active Without Checklist/Pre Checklist</name>
+        <probe display_value="Facilities Maintenance Definition">eeda6012473016109d9f9915126d43a1</probe>
+        <script><![CDATA[
+new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_scheduled_maint_definition', 'active=true^working_checklistISEMPTY^ORpre_checklistISEMPTY');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-18 11:51:03</sys_created_on>
+        <sys_id>0af5600293191e10052ef5cd0bba1075</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Active Without Checklist/Pre Checklist</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_0af5600293191e10052ef5cd0bba1075</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-18 11:51:18</sys_updated_on>
+    </x_nuvo_diag_probe_script_item>
+    <sys_es_latest_script action="DELETE">
+        <id>0af5600293191e10052ef5cd0bba1075</id>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-18 11:51:18</sys_created_on>
+        <sys_id>e906ecce93d51e10052ef5cd0bba10ed</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-18 11:51:18</sys_updated_on>
+        <table>x_nuvo_diag_probe_script_item</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_0af5600293191e10052ef5cd0bba1075</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;&lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;&lt;name&gt;Active Without Checklist/Pre Checklist&lt;/name&gt;&lt;probe display_value="Facilities Maintenance Definition"&gt;eeda6012473016109d9f9915126d43a1&lt;/probe&gt;&lt;script&gt;&lt;![CDATA[
+new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_scheduled_maint_definition', 'active=true^working_checklistISEMPTY^ORpre_checklistISEMPTY');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2024-10-18 11:51:03&lt;/sys_created_on&gt;&lt;sys_id&gt;0af5600293191e10052ef5cd0bba1075&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;Active Without Checklist/Pre Checklist&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_0af5600293191e10052ef5cd0bba1075&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-10-18 11:51:18&lt;/sys_updated_on&gt;&lt;/x_nuvo_diag_probe_script_item&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;0af5600293191e10052ef5cd0bba1075&lt;/id&gt;&lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2024-10-18 11:51:18&lt;/sys_created_on&gt;&lt;sys_id&gt;e906ecce93d51e10052ef5cd0bba10ed&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-10-18 11:51:18&lt;/sys_updated_on&gt;&lt;table&gt;x_nuvo_diag_probe_script_item&lt;/table&gt;&lt;use_es_latest&gt;false&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-404501243</payload_hash>
+        <record_name>Active Without Checklist/Pre Checklist</record_name>
+        <reverted_from/>
+        <source>202e23369374d610052ef5cd0bba1094</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-18 11:51:18</sys_created_on>
+        <sys_id>2d06acce93d51e10052ef5cd0bba105c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1929f77c1b40000001</sys_recorded_at>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-18 11:51:18</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>2106acceabd51e10004eaf24748f325c</update_guid>
+        <update_guid_history>2106acceabd51e10004eaf24748f325c:-404501243,caf5600299191e101d68b9e768b59576:747130753</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Active Without Checklist/Pre Checklist">db4db8d793559250052ef5cd0bba108a</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-22 10:45:24</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>010645bd45314ab2931e6968c63907a1</sys_id>
+        <sys_metadata>0af5600293191e10052ef5cd0bba1075</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Active Without Checklist/Pre Checklist</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_0af5600293191e10052ef5cd0bba1075</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_0af5600293191e10052ef5cd0bba1075">2d06acce93d51e10052ef5cd0bba105c</sys_update_version>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-22 10:45:24</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Without Description</name>
+        <probe display_value="Facilities Work Rounds">3aeaa012473016109d9f9915126d4390</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_work_rounds', 'active=true^short_descriptionISEMPTY');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-18 12:10:47</sys_created_on>
+        <sys_id>727aa4c293191e10052ef5cd0bba101b</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Without Description</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_727aa4c293191e10052ef5cd0bba101b</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-18 12:11:18</sys_updated_on>
+    </x_nuvo_diag_probe_script_item>
+    <sys_es_latest_script action="DELETE">
+        <id>727aa4c293191e10052ef5cd0bba101b</id>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-18 12:11:05</sys_created_on>
+        <sys_id>978aa44693191e10052ef5cd0bba100d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-18 12:11:05</sys_updated_on>
+        <table>x_nuvo_diag_probe_script_item</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_727aa4c293191e10052ef5cd0bba101b</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;&lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;&lt;name&gt;Without Description&lt;/name&gt;&lt;probe display_value="Facilities Work Rounds"&gt;3aeaa012473016109d9f9915126d4390&lt;/probe&gt;&lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_work_rounds', 'active=true^short_descriptionISEMPTY');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2024-10-18 12:10:47&lt;/sys_created_on&gt;&lt;sys_id&gt;727aa4c293191e10052ef5cd0bba101b&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Without Description&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_727aa4c293191e10052ef5cd0bba101b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-10-18 12:11:18&lt;/sys_updated_on&gt;&lt;/x_nuvo_diag_probe_script_item&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;727aa4c293191e10052ef5cd0bba101b&lt;/id&gt;&lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2024-10-18 12:11:05&lt;/sys_created_on&gt;&lt;sys_id&gt;978aa44693191e10052ef5cd0bba100d&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-10-18 12:11:05&lt;/sys_updated_on&gt;&lt;table&gt;x_nuvo_diag_probe_script_item&lt;/table&gt;&lt;use_es_latest&gt;false&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>2026468109</payload_hash>
+        <record_name>Without Description</record_name>
+        <reverted_from/>
+        <source>202e23369374d610052ef5cd0bba1094</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-18 12:11:18</sys_created_on>
+        <sys_id>a29a284693191e10052ef5cd0bba106b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1929f8a10e40000001</sys_recorded_at>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-18 12:11:18</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>a69a2846c5191e1083aeb77a280df06a</update_guid>
+        <update_guid_history>a69a2846c5191e1083aeb77a280df06a:2026468109,9f8a604606191e106141665351a850f0:95644769,367aa4c27b191e10b911821f7b83ae1c:1694143395</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Without Description">e5bdb05b93559250052ef5cd0bba107c</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-22 10:47:12</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>7fcfc3edc0754abca7bfdf18b51fc344</sys_id>
+        <sys_metadata>727aa4c293191e10052ef5cd0bba101b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Without Description</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_727aa4c293191e10052ef5cd0bba101b</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_727aa4c293191e10052ef5cd0bba101b">a29a284693191e10052ef5cd0bba106b</sys_update_version>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-22 10:47:12</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
