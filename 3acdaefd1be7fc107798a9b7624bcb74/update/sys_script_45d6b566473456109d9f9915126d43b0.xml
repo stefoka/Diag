@@ -35,7 +35,7 @@
         var healthcheck_type = current.getValue('healthcheck_type');
         var result = current.getValue('result');
         var error_message = current.getValue('error_message');
-
+		var feature_usage = current.getValue('feature_usage');
         var helper = new x_nuvo_diag.HealthCheckHelper();
         var credentials = JSON.parse(helper.getIntegrationUserCredentials());
         var user = credentials.username;
@@ -54,7 +54,7 @@
             "healthcheck_type": healthcheck_type,
             "result": result,
             "error_message": error_message,
-			"feature_usage": JSON.stringify(current.feature_usage)
+			"feature_usage": feature_usage
         };
 
         var requestBodyStr = JSON.stringify(requestBody);
@@ -94,7 +94,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>45d6b566473456109d9f9915126d43b0</sys_id>
-        <sys_mod_count>18</sys_mod_count>
+        <sys_mod_count>19</sys_mod_count>
         <sys_name>Send Logs to Nuvolo Instance</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -102,7 +102,7 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_45d6b566473456109d9f9915126d43b0</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-24 11:43:22</sys_updated_on>
+        <sys_updated_on>2024-10-24 11:49:31</sys_updated_on>
         <template/>
         <when>async_always</when>
     </sys_script>
