@@ -3,6 +3,7 @@
         <element label="Name" max_length="40" name="name" type="string"/>
         <element label="Probe" max_length="32" name="probe" reference="x_nuvo_diag_probes" type="reference"/>
         <element label="Script" max_length="8000" name="script" type="script"/>
+        <element label="Threshold" max_length="40" name="threshold" type="integer"/>
         <index name="index">
             <element name="probe"/>
         </index>

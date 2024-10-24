@@ -3,98 +3,112 @@
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.begin_split</element>
             <position>0</position>
-            <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-26 09:07:35</sys_created_on>
-            <sys_id>499d6a3647f496109d9f9915126d439b</sys_id>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-10-24 09:25:50</sys_created_on>
+            <sys_id>114e727b47dd56506d8ba835126d43ca</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_probe_script_item" sys_domain="global" view="Default view">459d623647f496109d9f9915126d4338</sys_ui_section>
-            <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-26 09:07:35</sys_updated_on>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-10-24 09:25:50</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>name</element>
             <position>1</position>
-            <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-26 09:07:35</sys_created_on>
-            <sys_id>019d6a3647f496109d9f9915126d439c</sys_id>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-10-24 09:25:50</sys_created_on>
+            <sys_id>954e727b47dd56506d8ba835126d43ca</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_probe_script_item" sys_domain="global" view="Default view">459d623647f496109d9f9915126d4338</sys_ui_section>
-            <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-26 09:07:35</sys_updated_on>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-10-24 09:25:50</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
             <position>2</position>
-            <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-26 09:07:35</sys_created_on>
-            <sys_id>819d6a3647f496109d9f9915126d439c</sys_id>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-10-24 09:25:50</sys_created_on>
+            <sys_id>1d4e727b47dd56506d8ba835126d43ca</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_probe_script_item" sys_domain="global" view="Default view">459d623647f496109d9f9915126d4338</sys_ui_section>
-            <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-26 09:07:35</sys_updated_on>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-10-24 09:25:50</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>sys_scope</element>
             <position>3</position>
-            <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-26 09:07:35</sys_created_on>
-            <sys_id>059d6a3647f496109d9f9915126d439c</sys_id>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-10-24 09:25:50</sys_created_on>
+            <sys_id>914e727b47dd56506d8ba835126d43cb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_probe_script_item" sys_domain="global" view="Default view">459d623647f496109d9f9915126d4338</sys_ui_section>
-            <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-26 09:07:35</sys_updated_on>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-10-24 09:25:50</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>probe</element>
             <position>4</position>
-            <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-26 09:07:35</sys_created_on>
-            <sys_id>859d6a3647f496109d9f9915126d439c</sys_id>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-10-24 09:25:50</sys_created_on>
+            <sys_id>194e727b47dd56506d8ba835126d43cb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_probe_script_item" sys_domain="global" view="Default view">459d623647f496109d9f9915126d4338</sys_ui_section>
-            <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-26 09:07:35</sys_updated_on>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-10-24 09:25:50</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>threshold</element>
+            <position>5</position>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-10-24 09:25:50</sys_created_on>
+            <sys_id>9d4e727b47dd56506d8ba835126d43cb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_probe_script_item" sys_domain="global" view="Default view">459d623647f496109d9f9915126d4338</sys_ui_section>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-10-24 09:25:50</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
-            <position>5</position>
-            <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-26 09:07:35</sys_created_on>
-            <sys_id>099d6a3647f496109d9f9915126d439c</sys_id>
+            <position>6</position>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-10-24 09:25:50</sys_created_on>
+            <sys_id>154e727b47dd56506d8ba835126d43cc</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_probe_script_item" sys_domain="global" view="Default view">459d623647f496109d9f9915126d4338</sys_ui_section>
-            <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-26 09:07:35</sys_updated_on>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-10-24 09:25:50</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>script</element>
-            <position>6</position>
-            <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-26 09:07:35</sys_created_on>
-            <sys_id>899d6a3647f496109d9f9915126d439c</sys_id>
+            <position>7</position>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-10-24 09:25:50</sys_created_on>
+            <sys_id>994e727b47dd56506d8ba835126d43cc</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_probe_script_item" sys_domain="global" view="Default view">459d623647f496109d9f9915126d4338</sys_ui_section>
-            <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-26 09:07:35</sys_updated_on>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-10-24 09:25:50</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
