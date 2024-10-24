@@ -53,7 +53,8 @@
             "probe_category": probe_category,
             "healthcheck_type": healthcheck_type,
             "result": result,
-            "error_message": error_message
+            "error_message": error_message,
+			"feature_usage": JSON.stringify(current.feature_usage)
         };
 
         var requestBodyStr = JSON.stringify(requestBody);
@@ -63,7 +64,6 @@
         var response = request.execute();
         var statusCode = response.getStatusCode();
         if (statusCode >= 200 && statusCode < 300) {
-            gs.info(JSON.stringify(response.getBody() + " 1vo Spopov"))
             var sysId = JSON.parse(response.getBody()).result.sys_id.toString();
         } else {
             return;
@@ -86,8 +86,6 @@
         var requestBodyStrM2m = JSON.stringify(requestBodyM2M);
 
         request1.setRequestBody(requestBodyStrM2m);
-
-        gs.info(JSON.stringify(request1.execute().getBody()));
     }
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -96,7 +94,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>45d6b566473456109d9f9915126d43b0</sys_id>
-        <sys_mod_count>17</sys_mod_count>
+        <sys_mod_count>18</sys_mod_count>
         <sys_name>Send Logs to Nuvolo Instance</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -104,7 +102,7 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_45d6b566473456109d9f9915126d43b0</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-11 09:45:11</sys_updated_on>
+        <sys_updated_on>2024-10-24 11:43:22</sys_updated_on>
         <template/>
         <when>async_always</when>
     </sys_script>
