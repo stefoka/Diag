@@ -3,11 +3,17 @@
         <category/>
         <client_script><![CDATA[ function submitForm() {
 
+	var button = document.getElementById('submit-btn');
+	button.disabled = true;
+	var isLoading = true;
+
 	var accessTypeMap = {
 		admin: "Admin",
 		admin_read_only: "Admin Read-Only"
 	};
-
+	
+	var loader = document.getElementById('loader');
+	
     var caseNumber = document.getElementById('case_number').value;
     var endOfAccess = document.getElementById('end_of_access').value;
     var accessType = document.getElementById('access_type').value;
@@ -48,6 +54,7 @@
 		}
 
 		if(obj.agents.length !== 0) {
+			loader.classList.remove('hidden');
 			for(var j = 0; j < obj.agents.length; j++) {
 
 				var tr = document.createElement("tr");
@@ -73,13 +80,21 @@
 
 				relatedList.appendChild(tr);
 			}
-
-			relatedListContainer.classList.remove('hidden');
-			resultMessage.innerHTML = obj.message;
-
+			
+			setTimeout(function(){
+				isLoading = false;
+				loader.classList.add('hidden');
+				button.disabled = false;
+				relatedListContainer.classList.remove('hidden');
+				resultMessage.innerHTML = obj.message;
+			}, 2000);
 		}
 		else {
 			errorMessage.innerHTML = obj.message;
+			isLoading = false;
+			loader.classList.add('hidden');
+			button.disabled = false;
+			
 			if(!resultMessage.classList.contains('hidden')) {
 				relatedListContainer.classList.add('hidden');
 			}
@@ -87,6 +102,10 @@
 	} 
 	else {
 		errorMessage.innerHTML = 'An error occurred. Please try again.';
+		
+		isLoading = false;
+		loader.classList.add('hidden');
+		button.disabled = false;
 		
 		if(!resultMessage.classList.contains('hidden')) {
 			relatedListContainer.classList.add('hidden');
@@ -230,6 +249,54 @@
 		color: blue;
 	}
 
+	//Loader
+	#loader {
+		position: relative !important;
+		width: 80px !important;
+		height: 80px !important;
+		animation: rotate 2s linear infinite !important;
+	}
+
+	svg circle {
+		width: 100%;
+		height: 100%;
+		fill: none;
+		stroke-width: 5;
+		stroke-linecap: round;
+		stroke: #00a1ff;
+		stroke-dasharray: 200;
+		stroke-dashoffset: 200;
+		animation: animate 1s linear infinite;
+	}
+
+	//ANIMATIONS
+
+	@keyframes rotate {
+		0%
+		{
+			transform: rotate(0deg);
+		}
+		100% 
+		{
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes animate {
+		0%, 100%
+		{
+			stroke-dashoffset: 200;
+		}
+		50% 
+		{
+			stroke-dashoffset: 0;
+		}
+		50.1% 
+		{
+			stroke-dashoffset: 400;
+		}
+	}
+
 </style>
 
 <div>
@@ -256,11 +323,16 @@
             <option value="admin_read_only">Admin Read-Only</option>
         </select>
         
-        <button type="button" onclick="submitForm()">Submit</button>
+        <button id="submit-btn" type="button" onclick="submitForm()">Submit</button>
 
 		<div id="result_message"></div>
 		<div id="error_result_message"></div>
     </form>
+
+	<svg id="loader" class="hidden">
+		<circle cx="150" cy="60" r="30">
+		</circle>
+	</svg>
 
 	<div id="related-list-container" class="hidden">
 		<h4>Access was granted to:</h4>
@@ -282,14 +354,14 @@
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-27 11:10:21</sys_created_on>
         <sys_id>9bf0541393781a10052ef5cd0bba10a8</sys_id>
-        <sys_mod_count>157</sys_mod_count>
+        <sys_mod_count>199</sys_mod_count>
         <sys_name>nuvolo_temp_access_form</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_page_9bf0541393781a10052ef5cd0bba10a8</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-21 11:36:17</sys_updated_on>
+        <sys_updated_on>2024-10-28 07:56:33</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>9bf0541393781a10052ef5cd0bba10a8</id>
