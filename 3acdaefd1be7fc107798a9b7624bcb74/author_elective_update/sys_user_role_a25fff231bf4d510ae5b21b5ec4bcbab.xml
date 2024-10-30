@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="DELETE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description/>
+        <elevated_privilege>false</elevated_privilege>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_nuvo_diag.probe_log_user</name>
+        <requires_subscription>-1</requires_subscription>
+        <scoped_admin>false</scoped_admin>
+        <suffix>probe_log_user</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-26 14:15:43</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>a25fff231bf4d510ae5b21b5ec4bcbab</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag.probe_log_user</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_user_role_a25fff231bf4d510ae5b21b5ec4bcbab</sys_update_name>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-26 14:15:43</sys_updated_on>
+    </sys_user_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>sys_user_role_a25fff231bf4d510ae5b21b5ec4bcbab</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role"><sys_user_role action="INSERT_OR_UPDATE"><assignable_by/><can_delegate>true</can_delegate><description/><elevated_privilege>false</elevated_privilege><grantable>true</grantable><includes_roles/><name>x_nuvo_diag.probe_log_user</name><requires_subscription>-1</requires_subscription><scoped_admin>false</scoped_admin><suffix>probe_log_user</suffix><sys_class_name>sys_user_role</sys_class_name><sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by><sys_created_on>2022-07-26 14:15:43</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>a25fff231bf4d510ae5b21b5ec4bcbab</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_nuvo_diag.probe_log_user</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>sys_user_role_a25fff231bf4d510ae5b21b5ec4bcbab</sys_update_name><sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by><sys_updated_on>2022-07-26 14:15:43</sys_updated_on></sys_user_role></record_update>]]></payload>
+        <payload_hash>1724105359</payload_hash>
+        <record_name>x_nuvo_diag.probe_log_user</record_name>
+        <reverted_from/>
+        <source>55f2c7d71b94d910ae5b21b5ec4bcbfd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-26 14:15:43</sys_created_on>
+        <sys_id>ee5fff231bf4d510ae5b21b5ec4bcbb1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1823add132f0000001</sys_recorded_at>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-26 14:15:43</sys_updated_on>
+        <type>Role</type>
+        <update_guid>e65fff234af4d510ca41d1f3b263beb1</update_guid>
+        <update_guid_history>e65fff234af4d510ca41d1f3b263beb1:1724105359</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">4a45fe44dbce95105f598b0505961983</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-09-15 15:11:50</sys_created_on>
+        <sys_db_object display_value="" name="sys_user_role">sys_user_role</sys_db_object>
+        <sys_id>0347a64cd9254bce8a6c88b900a3eb04</sys_id>
+        <sys_metadata>a25fff231bf4d510ae5b21b5ec4bcbab</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag.probe_log_user</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_user_role_a25fff231bf4d510ae5b21b5ec4bcbab</sys_update_name>
+        <sys_update_version display_value="sys_user_role_a25fff231bf4d510ae5b21b5ec4bcbab">ee5fff231bf4d510ae5b21b5ec4bcbb1</sys_update_version>
+        <sys_updated_by>jake.ye@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 15:11:50</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

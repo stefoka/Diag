@@ -52,7 +52,7 @@
         <update_guid_history>7f6b14e49cc91e1042b053a033f2edb2:303337537,33e910a48dc91e102416a1db30a28b3b:2029442636</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="Nuvolo Health">ea12196047cd1e109d9f9915126d43a9</sys_audit_delete>
+        <sys_audit_delete display_value="">ea12196047cd1e109d9f9915126d43a9</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
         <sys_created_on>2024-10-01 12:57:18</sys_created_on>
@@ -65,7 +65,7 @@
         <sys_parent/>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
         <sys_update_name>sys_app_application_33e910a447c91e109d9f9915126d4338</sys_update_name>
         <sys_update_version display_value="sys_app_application_33e910a447c91e109d9f9915126d4338">b76b14e447c91e109d9f9915126d43b3</sys_update_version>
         <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>

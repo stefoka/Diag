@@ -42,11 +42,11 @@
         <update_guid_history>07d958028ed51e10ac8f2b8bb0e89cd9:-62219582</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="Assets related to Knowledge Articles">198af05793559250052ef5cd0bba1070</sys_audit_delete>
+        <sys_audit_delete display_value="">198af05793559250052ef5cd0bba1070</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-10-22 10:33:16</sys_created_on>
-        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_db_object display_value="">x_nuvo_diag_probe_script_item</sys_db_object>
         <sys_id>203eadf171544c85ae5e89346d8d0c59</sys_id>
         <sys_metadata>0bd9580293d51e10052ef5cd0bba10d7</sys_metadata>
         <sys_mod_count>0</sys_mod_count>
@@ -55,7 +55,7 @@
         <sys_parent/>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
         <sys_update_name>x_nuvo_diag_probe_script_item_0bd9580293d51e10052ef5cd0bba10d7</sys_update_name>
         <sys_update_version display_value="x_nuvo_diag_probe_script_item_0bd9580293d51e10052ef5cd0bba10d7">43d9580293d51e10052ef5cd0bba10da</sys_update_version>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>

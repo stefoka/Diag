@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>false</active>
+        <description>CAD Record Details process is stuck at Space Creation - Processing status. Unable to proceed further.&#13;
+&#13;
+-&gt; geoCache Attachment not created&#13;
+-&gt; geoCache records are not created with active entries&#13;
+&#13;
+Check for CAD Record Datails with space creation - processing status for X amount of time (30 minutes) and check for the absence of attachment and geoCache records.&#13;
+&#13;
+The possible issues are due to the following:&#13;
+&#13;
+1.) Autocad user and password system property should be present and defined.  (check to ensure user exist, have the right roles (rest_api, x_nuvo_eam_space_admin), password matches by checking updated timestamp, user is active and not locked out)&#13;
+2.) check to make sure the endpoint is reachable with the user (rewrite it to be diagnostic do not run the actual logic)&#13;
+&#13;
+&#13;
+</description>
+        <name>CAD import stuck at space creation</name>
+        <order/>
+        <probe_type/>
+        <remediation>Click Build GeoCache UI Action related link from floor record on x_nuvo_eam_space table</remediation>
+        <script/>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 20:15:35</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>70d56c98db3c51505f598b0505961964</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CAD import stuck at space creation</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_70d56c98db3c51505f598b0505961964</sys_update_name>
+        <sys_updated_by>jake.ye@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-15 20:15:35</sys_updated_on>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>x_nuvo_diag_probes_70d56c98db3c51505f598b0505961964</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes"><x_nuvo_diag_probes action="INSERT_OR_UPDATE"><active>false</active><description>CAD Record Details process is stuck at Space Creation - Processing status. Unable to proceed further.&#13;
+&#13;
+-&gt; geoCache Attachment not created&#13;
+-&gt; geoCache records are not created with active entries&#13;
+&#13;
+Check for CAD Record Datails with space creation - processing status for X amount of time (30 minutes) and check for the absence of attachment and geoCache records.&#13;
+&#13;
+The possible issues are due to the following:&#13;
+&#13;
+1.) Autocad user and password system property should be present and defined.  (check to ensure user exist, have the right roles (rest_api, x_nuvo_eam_space_admin), password matches by checking updated timestamp, user is active and not locked out)&#13;
+2.) check to make sure the endpoint is reachable with the user (rewrite it to be diagnostic do not run the actual logic)&#13;
+&#13;
+&#13;
+</description><name>CAD import stuck at space creation</name><order/><probe_type/><remediation>Click Build GeoCache UI Action related link from floor record on x_nuvo_eam_space table</remediation><script/><sys_class_name>x_nuvo_diag_probes</sys_class_name><sys_created_by>jake.ye@nuvolo.com</sys_created_by><sys_created_on>2022-07-15 20:15:35</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>70d56c98db3c51505f598b0505961964</sys_id><sys_mod_count>0</sys_mod_count><sys_name>CAD import stuck at space creation</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>x_nuvo_diag_probes_70d56c98db3c51505f598b0505961964</sys_update_name><sys_updated_by>jake.ye@nuvolo.com</sys_updated_by><sys_updated_on>2022-07-15 20:15:35</sys_updated_on></x_nuvo_diag_probes></record_update>]]></payload>
+        <payload_hash>-1347757662</payload_hash>
+        <record_name>CAD import stuck at space creation</record_name>
+        <reverted_from/>
+        <source>55f2c7d71b94d910ae5b21b5ec4bcbfd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 20:15:35</sys_created_on>
+        <sys_id>4f38245cdb3c51505f598b050596199a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182038096be0000001</sys_recorded_at>
+        <sys_updated_by>jake.ye@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-15 20:15:35</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>4738245c5d3c5150908790448e19209a</update_guid>
+        <update_guid_history>4738245c5d3c5150908790448e19209a:-1347757662</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">a926929f1b219950ae5b21b5ec4bcb4b</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-31 18:44:40</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>be80e30e4b154c8096927dbdec7e4000</sys_id>
+        <sys_metadata>70d56c98db3c51505f598b0505961964</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CAD import stuck at space creation</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_70d56c98db3c51505f598b0505961964</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_70d56c98db3c51505f598b0505961964">4f38245cdb3c51505f598b050596199a</sys_update_version>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-08-31 18:44:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

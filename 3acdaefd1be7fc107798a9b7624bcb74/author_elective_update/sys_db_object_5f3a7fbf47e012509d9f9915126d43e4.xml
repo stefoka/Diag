@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object">
+    <sys_db_object action="DELETE">
+        <access>public</access>
+        <actions_access>false</actions_access>
+        <alter_access>false</alter_access>
+        <caller_access/>
+        <client_scripts_access>false</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>false</create_access>
+        <create_access_controls>true</create_access_controls>
+        <delete_access>false</delete_access>
+        <is_extendable>false</is_extendable>
+        <label>Nuvolo Local Script Hash</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_nuvo_diag_nuvolo_local_script_hash</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>true</read_access>
+        <scriptable_table>false</scriptable_table>
+        <super_class display_value="Nuvolo Hashes" name="x_nuvo_diag_nuvolo_hashes">6a869e8a93ec5a10052ef5cd0bba1008</super_class>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-17 07:03:49</sys_created_on>
+        <sys_id>5f3a7fbf47e012509d9f9915126d43e4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo Local Script Hash</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_db_object_5f3a7fbf47e012509d9f9915126d43e4</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 07:03:49</sys_updated_on>
+        <update_access>false</update_access>
+        <user_role/>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_db_object_5f3a7fbf47e012509d9f9915126d43e4</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object">
+    <sys_db_object action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <actions_access>false</actions_access>
+        <alter_access>false</alter_access>
+        <caller_access/>
+        <client_scripts_access>false</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>false</create_access>
+        <create_access_controls>true</create_access_controls>
+        <delete_access>false</delete_access>
+        <is_extendable>false</is_extendable>
+        <label>Nuvolo Local Script Hash</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_nuvo_diag_nuvolo_local_script_hash</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>true</read_access>
+        <scriptable_table>false</scriptable_table>
+        <super_class display_value="Nuvolo Hashes" name="x_nuvo_diag_nuvolo_hashes">6a869e8a93ec5a10052ef5cd0bba1008</super_class>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-17 07:03:49</sys_created_on>
+        <sys_id>5f3a7fbf47e012509d9f9915126d43e4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo Local Script Hash</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_db_object_5f3a7fbf47e012509d9f9915126d43e4</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 07:03:49</sys_updated_on>
+        <update_access>false</update_access>
+        <user_role/>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+</record_update>]]></payload>
+        <payload_hash>1265804362</payload_hash>
+        <record_name>Nuvolo Local Script Hash</record_name>
+        <reverted_from/>
+        <source/>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-19 08:37:33</sys_created_on>
+        <sys_id>3c93a6243bf01a1054a7cda036e45af2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192096df4290000001</sys_recorded_at>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-19 08:37:33</sys_updated_on>
+        <type>Table</type>
+        <update_guid>f893a624d5f01a10f047784571ca7ef2</update_guid>
+        <update_guid_history>b493a624c7f01a100d49cf6598898cef:-1518874892</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:14:24</sys_created_on>
+        <sys_db_object display_value="" name="sys_db_object">sys_db_object</sys_db_object>
+        <sys_id>50446eaabc4044eea44dea6fc4ea9724</sys_id>
+        <sys_metadata>5f3a7fbf47e012509d9f9915126d43e4</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo Local Script Hash</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_db_object_5f3a7fbf47e012509d9f9915126d43e4</sys_update_name>
+        <sys_update_version display_value="sys_db_object_5f3a7fbf47e012509d9f9915126d43e4">3c93a6243bf01a1054a7cda036e45af2</sys_update_version>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:14:24</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list action="DELETE" parent="" relationship="" sys_domain="global" table="x_nuvo_diag_nuvolo_ootb_scripts_hashes" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>script_type</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_ootb_scripts_hashes" element="NULL" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1523351447f852509d9f9915126d436d</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-18 10:27:29</sys_created_on>
+            <sys_id>5d23351447f852509d9f9915126d436e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-18 10:27:29</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>script_name</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_ootb_scripts_hashes" element="NULL" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1523351447f852509d9f9915126d436d</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-18 10:27:29</sys_created_on>
+            <sys_id>d123351447f852509d9f9915126d436f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-18 10:27:29</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>table_name</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_ootb_scripts_hashes" element="NULL" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1523351447f852509d9f9915126d436d</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-18 10:27:29</sys_created_on>
+            <sys_id>5523351447f852509d9f9915126d436f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-18 10:27:29</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>nuvolo_version</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_ootb_scripts_hashes" element="NULL" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1523351447f852509d9f9915126d436d</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-18 10:27:29</sys_created_on>
+            <sys_id>d523351447f852509d9f9915126d436f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-18 10:27:29</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-18 10:27:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1523351447f852509d9f9915126d436d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</sys_name>
+            <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+            <sys_update_name>sys_ui_list_x_nuvo_diag_nuvolo_ootb_scripts_hashes_null</sys_update_name>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-18 10:27:29</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_ui_list_x_nuvo_diag_nuvolo_ootb_scripts_hashes_null</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="x_nuvo_diag_nuvolo_ootb_scripts_hashes" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>script_type</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_ootb_scripts_hashes" element="NULL" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1523351447f852509d9f9915126d436d</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-18 10:27:29</sys_created_on>
+            <sys_id>5d23351447f852509d9f9915126d436e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-18 10:27:29</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>script_name</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_ootb_scripts_hashes" element="NULL" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1523351447f852509d9f9915126d436d</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-18 10:27:29</sys_created_on>
+            <sys_id>d123351447f852509d9f9915126d436f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-18 10:27:29</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>table_name</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_ootb_scripts_hashes" element="NULL" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1523351447f852509d9f9915126d436d</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-18 10:27:29</sys_created_on>
+            <sys_id>5523351447f852509d9f9915126d436f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-18 10:27:29</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>nuvolo_version</element>
+            <list_id display_value="x_nuvo_diag_nuvolo_ootb_scripts_hashes" element="NULL" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1523351447f852509d9f9915126d436d</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-18 10:27:29</sys_created_on>
+            <sys_id>d523351447f852509d9f9915126d436f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-18 10:27:29</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-18 10:27:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1523351447f852509d9f9915126d436d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</sys_name>
+            <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+            <sys_update_name>sys_ui_list_x_nuvo_diag_nuvolo_ootb_scripts_hashes_null</sys_update_name>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-18 10:27:29</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>]]></payload>
+        <payload_hash>313338635</payload_hash>
+        <record_name>Nuvolo OOTB Scripts Hashes</record_name>
+        <reverted_from/>
+        <source>af8366243bf01a1054a7cda036e45a18</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-19 08:37:50</sys_created_on>
+        <sys_id>74a3ae243bf01a1054a7cda036e45a92</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192096e345b0000001</sys_recorded_at>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-19 08:37:50</sys_updated_on>
+        <type>List Layout</type>
+        <update_guid>34a3ae24d6f01a10687ccf9707f8a292</update_guid>
+        <update_guid_history>34a3ae24d6f01a10687ccf9707f8a292:313338635</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:14:31</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_list">sys_ui_list</sys_db_object>
+        <sys_id>2aa0ef04dd5e42ce8462de99ced59a39</sys_id>
+        <sys_metadata>1523351447f852509d9f9915126d436d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent display_value="">e8428e1a47e09a109d9f9915126d43fb</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_ui_list_x_nuvo_diag_nuvolo_ootb_scripts_hashes_null</sys_update_name>
+        <sys_update_version display_value="sys_ui_list_x_nuvo_diag_nuvolo_ootb_scripts_hashes_null">74a3ae243bf01a1054a7cda036e45a92</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:14:31</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

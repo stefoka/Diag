@@ -6,7 +6,6 @@
 1.) service now version&#13;
 2.) nuvolo products installed and nuvolo version&#13;
 3.) Domain separated?</description>
-        <healthcheck_type/>
         <name>General Info</name>
         <order>100</order>
         <probe_type display_value="ServiceNow">285139dd1ba09510ae5b21b5ec4bcb64</probe_type>
@@ -49,14 +48,13 @@ util.handleOutput('The ServiceNow version : '+serviceNowVersion+' \n\n Nuvolo pr
         <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
         <sys_created_on>2022-07-15 19:14:33</sys_created_on>
         <sys_id>7ce99c1cdbf851505f598b05059619fa</sys_id>
-        <sys_mod_count>19</sys_mod_count>
+        <sys_mod_count>18</sys_mod_count>
         <sys_name>General Info</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_7ce99c1cdbf851505f598b05059619fa</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-10-19 02:36:32</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

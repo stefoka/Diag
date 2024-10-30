@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="DELETE">
+        <active>true</active>
+        <application display_value="Nuvolo HealthCheck">6d0ea04447f412509d9f9915126d4369</application>
+        <assessment/>
+        <content_page/>
+        <device_type/>
+        <filter table="x_nuvo_diag_probe_type">healthcheck=true^EQ<item endquery="false" field="healthcheck" goto="false" newquery="false" operator="=" or="false" value="true"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>HealthCheck Categories</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_nuvo_diag_probe_type</name>
+        <order>20</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <require_confirmation>true</require_confirmation>
+        <roles/>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-17 10:51:56</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d2fee84447f412509d9f9915126d4399</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Probe Categories</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_app_module_d2fee84447f412509d9f9915126d4399</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 10:53:16</sys_updated_on>
+        <timeline_page/>
+        <title>Probe Categories</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_app_module_d2fee84447f412509d9f9915126d4399</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Nuvolo HealthCheck">6d0ea04447f412509d9f9915126d4369</application>
+        <assessment/>
+        <content_page/>
+        <device_type/>
+        <filter table="x_nuvo_diag_probe_type">healthcheck=true^EQ<item endquery="false" field="healthcheck" goto="false" newquery="false" operator="=" or="false" value="true"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>HealthCheck Categories</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_nuvo_diag_probe_type</name>
+        <order>20</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <require_confirmation>true</require_confirmation>
+        <roles/>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-17 10:51:56</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d2fee84447f412509d9f9915126d4399</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Probe Categories</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_app_module_d2fee84447f412509d9f9915126d4399</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 10:53:16</sys_updated_on>
+        <timeline_page/>
+        <title>Probe Categories</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+</record_update>]]></payload>
+        <payload_hash>1095227065</payload_hash>
+        <record_name>Probe Categories</record_name>
+        <reverted_from/>
+        <source>90d92d473b8d5610bec04760c5e45a1e</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-09 09:05:46</sys_created_on>
+        <sys_id>09d96d473b8d5610bec04760c5e45a51</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1927086f9dd0000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-09 09:05:46</sys_updated_on>
+        <type>Module</type>
+        <update_guid>c1d96d47248d5610d5393d696a9f6451</update_guid>
+        <update_guid_history>c1d96d47248d5610d5393d696a9f6451:0,73932e2481f01a102241aa5c46edb544:1720797320</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Probe Categories">c1f9ba753b255610bec04760c5e45ae8</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:14:50</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_module">sys_app_module</sys_db_object>
+        <sys_id>943236b81c734eb29f480f68f47cad04</sys_id>
+        <sys_metadata>d2fee84447f412509d9f9915126d4399</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Probe Categories</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_app_module_d2fee84447f412509d9f9915126d4399</sys_update_name>
+        <sys_update_version display_value="sys_app_module_d2fee84447f412509d9f9915126d4399">09d96d473b8d5610bec04760c5e45a51</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:14:50</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

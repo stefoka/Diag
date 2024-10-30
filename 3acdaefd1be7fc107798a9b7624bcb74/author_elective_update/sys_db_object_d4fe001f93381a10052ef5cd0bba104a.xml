@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object">
+    <sys_db_object action="DELETE">
+        <access>public</access>
+        <actions_access>false</actions_access>
+        <alter_access>false</alter_access>
+        <caller_access/>
+        <client_scripts_access>false</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>false</create_access>
+        <create_access_controls>true</create_access_controls>
+        <delete_access>false</delete_access>
+        <is_extendable>false</is_extendable>
+        <label>Nuvolo Temporary Access</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_nuvo_diag_nuvolo_temporary_access</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>true</read_access>
+        <scriptable_table>false</scriptable_table>
+        <super_class/>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-27 10:52:00</sys_created_on>
+        <sys_id>d4fe001f93381a10052ef5cd0bba104a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo Temporary Access</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_db_object_d4fe001f93381a10052ef5cd0bba104a</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-27 10:52:00</sys_updated_on>
+        <update_access>false</update_access>
+        <user_role display_value="x_nuvo_diag.nuvolo_temporary_access_user" name="x_nuvo_diag.nuvolo_temporary_access_user">901f4c9793381a10052ef5cd0bba1080</user_role>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_db_object_d4fe001f93381a10052ef5cd0bba104a</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object">
+    <sys_db_object action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <actions_access>false</actions_access>
+        <alter_access>false</alter_access>
+        <caller_access/>
+        <client_scripts_access>false</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>false</create_access>
+        <create_access_controls>true</create_access_controls>
+        <delete_access>false</delete_access>
+        <is_extendable>false</is_extendable>
+        <label>Nuvolo Temporary Access</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_nuvo_diag_nuvolo_temporary_access</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>true</read_access>
+        <scriptable_table>false</scriptable_table>
+        <super_class/>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-27 10:52:00</sys_created_on>
+        <sys_id>d4fe001f93381a10052ef5cd0bba104a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo Temporary Access</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_db_object_d4fe001f93381a10052ef5cd0bba104a</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-27 10:52:00</sys_updated_on>
+        <update_access>false</update_access>
+        <user_role display_value="x_nuvo_diag.nuvolo_temporary_access_user" name="x_nuvo_diag.nuvolo_temporary_access_user">901f4c9793381a10052ef5cd0bba1080</user_role>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+</record_update>]]></payload>
+        <payload_hash>-2116703541</payload_hash>
+        <record_name>Nuvolo Temporary Access</record_name>
+        <reverted_from/>
+        <source>30caecad3b41d210bec04760c5e45ae2</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-04 12:39:24</sys_created_on>
+        <sys_id>a1ca20ed3b41d210bec04760c5e45aed</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192578ac1770000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-04 12:39:24</sys_updated_on>
+        <type>Table</type>
+        <update_guid>adca20eda041d210af4e9c0436e2e3ec</update_guid>
+        <update_guid_history>adca20eda041d210af4e9c0436e2e3ec:0,6dca20eddc41d210f30c9d749b8299e9:616623269</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:14:57</sys_created_on>
+        <sys_db_object display_value="" name="sys_db_object">sys_db_object</sys_db_object>
+        <sys_id>026a8d36ffa3475a8007f0cb0e31f4e4</sys_id>
+        <sys_metadata>d4fe001f93381a10052ef5cd0bba104a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo Temporary Access</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_db_object_d4fe001f93381a10052ef5cd0bba104a</sys_update_name>
+        <sys_update_version display_value="sys_db_object_d4fe001f93381a10052ef5cd0bba104a">a1ca20ed3b41d210bec04760c5e45aed</sys_update_version>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:14:57</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

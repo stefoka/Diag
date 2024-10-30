@@ -41,7 +41,7 @@
         <update_guid_history>2222dfac0230d25036c8f9aff59eb8ea:-219906399,e4c0667abbfc96108c81da88023f75e8:-159437923,2222dfac0230d25036c8f9aff59eb8ea:-219906399</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="x_nuvo_diag_probe_script_item.x_nuvo_diag.healthcheck_admin">a46c22f247f496109d9f9915126d4360</sys_audit_delete>
+        <sys_audit_delete display_value="">a46c22f247f496109d9f9915126d4360</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-26 09:02:23</sys_created_on>
@@ -54,7 +54,7 @@
         <sys_parent display_value="">1e22dfac4730d2509d9f9915126d43dd</sys_parent>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
         <sys_update_name>sys_security_acl_role_a622dfac4730d2509d9f9915126d43e5</sys_update_name>
         <sys_update_version display_value="sys_security_acl_role_a622dfac4730d2509d9f9915126d43e5">27b6ea729330d610052ef5cd0bba1055</sys_update_version>
         <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>

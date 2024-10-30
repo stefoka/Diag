@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>false</active>
+        <description>This Probe Checks for the following scenarios&#13;
+&#13;
+1.) If the system have the following X configuration set incorrectly or the existence of such configuration then the following Y behavior can be observed which is not good.  see remediation for correction steps&#13;
+&#13;
+lets do one check per probe.</description>
+        <name>Mobile Sync</name>
+        <order>301</order>
+        <probe_type display_value="Mobile">e9dc377c1b681510ae5b21b5ec4bcb49</probe_type>
+        <remediation>Once probe determines/confirms the issue, what steps should be done to correct it?</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+// If they are on pre cache for any schemas that are not e-location then we need to ensure that run as is set for "mobile pre-cache schema attachment"
+var gr_mobile_schema = new GlideRecord('x_nuvo_mobile_schema');
+gr_mobile_schema.addEncodedQuery('table!=x_nuvo_eam_elocation^ORtable=NULL^pre_cacheable=true');
+var preCacheScheme = false;
+var schemaStatus = "information";
+
+if (gr_mobile_schema.hasNext()) {
+    util.handleOutput('This Instance has schemas that are pre-cacheable', 'information', true);
+    preCacheScheme = true;
+    schemaStatus = "error";
+} else {
+    util.handleOutput('This Instance has NO schemas that are pre-cacheable', 'information', true);
+}
+
+
+var grUsers = new GlideRecord('sys_user');
+grUsers.get('name', 'nuvolo.mobius');
+
+if (!grUsers || !grUsers.name) {
+    util.handleOutput('nuvolo.mobius user does not exist', schemaStatus, true);
+}
+
+var grSysProperties = new GlideRecord('sys_properties');
+grSysProperties.get('name', 'x_nuvo_mobile.nuvolo.mobius.pwd');
+
+if (!grSysProperties || grSysProperties.value) {
+    util.handleOutput('Mobius Password not set in system properties', schemaStatus, 'true');
+}
+//name=Mobile Pre-Cache Schema Attachments
+var grSysAuto = new GlideRecord('sysauto');
+
+grSysAuto.addEncodedQuery('name=Mobile Pre-Cache Schema Attachments');
+grSysAuto.query();
+if (grSysAuto.hasNext()) {
+
+    if (!grSysAuto || !grSysAuto.run_as || grSysAuto.run_as == '') {
+        util.handleOutput('Mobile Pre-Cache Schema Attachments needs to run as user Nuvolo.mobius', schemaStatus, true);
+
+    }
+} else {
+    util.handleOutput('Mobile Pre-Cache Schema Attachments is missing from jobs', 'error', true);
+}
+
+
+//x_nuvo_mobile_client_schema
+
+//x_nuvo_mobile_schema_package
+//state reprocessed, ready, processed, failed
+
+/*
+
+var gr_mobile_schema_package = new GlideRecord('x_nuvo_mobile_schema_package');
+gr_mobile_schema_package.orderByDesc('created');
+gr_mobile_schema_package.setLimit(100);
+gr_mobile_schema_package.query();
+
+while (gr_mobile_schema_package.next()){
+
+//    gs.info(gr_mobile_schema_package.client_schema + ', ' + gr_mobile_schema_package.state);
+}
+*/
+
+
+var gr_mobile_schema_package_agg = new GlideAggregate('x_nuvo_mobile_schema_package');
+
+var date_time = new GlideDateTime().getDisplayValue();
+var gdt = new GlideDateTime();
+gdt.setDisplayValue(date_time);
+
+gdt.addDaysUTC(-1);
+
+gr_mobile_schema_package_agg.addAggregate('COUNT', 'state');
+gr_mobile_schema_package_agg.orderBy('state');
+gr_mobile_schema_package_agg.addQuery('sys_updated_on', '>=', gdt);
+gr_mobile_schema_package_agg.query();
+var schema_state = '';
+while (gr_mobile_schema_package_agg.next()) {
+    var scheme_package_count = gr_mobile_schema_package_agg.getAggregate('COUNT', 'state');
+
+    schema_state = gr_mobile_schema_package_agg.getDisplayValue('state');
+    var schema_package_message = ('From the past 24 hours there are ' + [scheme_package_count] + ' schema packages with a state of ' + schema_state);
+
+    util.handleOutput(schema_package_message, 'information', true);
+    if (schema_state.toLowerCase() == 'ready') {
+        util.handleOutput('A high number of schemas in a ready status is likely an indication of a larger issue', 'warning', 'false');
+    }
+
+}
+
+
+
+
+
+var gr_client_device_logs = new GlideRecord('x_nuvo_mobile_device_logs');
+gr_client_device_logs.addQuery('type', 'Error');
+gr_client_device_logs.addQuery('mobile_created_on', '>=', gdt);
+gr_client_device_logs.setLimit(50);
+gr_client_device_logs.orderByDesc('mobile_created_on');
+gr_client_device_logs.query();
+
+while (gr_client_device_logs.next()) {
+    util.handleOutput('Client Device Error, Mobile User: ' + gr_client_device_logs.client.user.name + ', error: ' + gr_client_device_logs.description, 'error', true);
+
+}
+
+var gr_mobile_client_devices = new GlideRecord('x_nuvo_mobile_client_devices');
+gr_mobile_client_devices.orderByDesc('sys_updated_on');
+gr_mobile_client_devices.setLimit(100);
+gr_mobile_client_devices.query();
+gdt.addDaysUTC(-30);
+while (gr_mobile_client_devices.next()) {
+    if (gr_mobile_client_devices.attachment_building == true) {
+
+        util.handleOutput('Attachment Build in Progress for ' + gr_mobile_client_devices.user.name + ' has been to true since ' + gr_mobile_client_devices.sys_updated_on + '. If more than one hour has passed then it could be indicate an issue. ', 'warning', 'true');
+    }
+
+    if (gr_mobile_client_devices.last_configuration_sync < gdt) {
+        util.handleOutput('Please have ' + gr_mobile_client_devices.user.name + ' restart their Nuvolo mobile app. This app was last restarted on ' + gr_mobile_client_devices.last_configuration_sync + '. Restarting the app will help ensure it remains up to date.', 'error', true);
+
+    }
+
+
+}
+
+
+// probe for schema build in progress. If schema build in progress is checked and is checked for longer than a few minutes and client schema still 0, indicates an issue with Client Schema generation.
+
+//x_nuvo_mobile_client_schema
+
+ 
+
+// check for mobile app version at least version 12 or 2 back. // check last scheme sync newer than 3 months
+
+
+
+//for schemas if cache on server is set to true by default. then cache on demand becomes true. IF cache cache on demand is false, log an error, - this causes issues as it looking for cached and there is not cached.
+
+
+// if the state of All Schema Packages on client devices are set to ready it could an error
+// after the process completes a file is downloaded to the device and the state is set to processed]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-17 18:48:14</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>7a4650871b3fb0907798a9b7624bcba7</sys_id>
+        <sys_mod_count>103</sys_mod_count>
+        <sys_name>Mobile Sync</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_7a4650871b3fb0907798a9b7624bcba7</sys_update_name>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-15 17:46:45</sys_updated_on>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>x_nuvo_diag_probes_7a4650871b3fb0907798a9b7624bcba7</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;false&lt;/active&gt;&lt;description&gt;This Probe Checks for the following scenarios&amp;#13;
+&amp;#13;
+1.) If the system have the following X configuration set incorrectly or the existence of such configuration then the following Y behavior can be observed which is not good.  see remediation for correction steps&amp;#13;
+&amp;#13;
+lets do one check per probe.&lt;/description&gt;&lt;name&gt;Mobile Sync&lt;/name&gt;&lt;order&gt;301&lt;/order&gt;&lt;probe_type display_value="Mobile"&gt;e9dc377c1b681510ae5b21b5ec4bcb49&lt;/probe_type&gt;&lt;remediation&gt;Once probe determines/confirms the issue, what steps should be done to correct it?&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+// If they are on pre cache for any schemas that are not e-location then we need to ensure that run as is set for "mobile pre-cache schema attachment"
+var gr_mobile_schema = new GlideRecord('x_nuvo_mobile_schema');
+gr_mobile_schema.addEncodedQuery('table!=x_nuvo_eam_elocation^ORtable=NULL^pre_cacheable=true');
+var preCacheScheme = false;
+var schemaStatus = "information";
+
+if (gr_mobile_schema.hasNext()) {
+    util.handleOutput('This Instance has schemas that are pre-cacheable', 'information', true);
+    preCacheScheme = true;
+    schemaStatus = "error";
+} else {
+    util.handleOutput('This Instance has NO schemas that are pre-cacheable', 'information', true);
+}
+
+
+var grUsers = new GlideRecord('sys_user');
+grUsers.get('name', 'nuvolo.mobius');
+
+if (!grUsers || !grUsers.name) {
+    util.handleOutput('nuvolo.mobius user does not exist', schemaStatus, true);
+}
+
+var grSysProperties = new GlideRecord('sys_properties');
+grSysProperties.get('name', 'x_nuvo_mobile.nuvolo.mobius.pwd');
+
+if (!grSysProperties || grSysProperties.value) {
+    util.handleOutput('Mobius Password not set in system properties', schemaStatus, 'true');
+}
+//name=Mobile Pre-Cache Schema Attachments
+var grSysAuto = new GlideRecord('sysauto');
+
+grSysAuto.addEncodedQuery('name=Mobile Pre-Cache Schema Attachments');
+grSysAuto.query();
+if (grSysAuto.hasNext()) {
+
+    if (!grSysAuto || !grSysAuto.run_as || grSysAuto.run_as == '') {
+        util.handleOutput('Mobile Pre-Cache Schema Attachments needs to run as user Nuvolo.mobius', schemaStatus, true);
+
+    }
+} else {
+    util.handleOutput('Mobile Pre-Cache Schema Attachments is missing from jobs', 'error', true);
+}
+
+
+//x_nuvo_mobile_client_schema
+
+//x_nuvo_mobile_schema_package
+//state reprocessed, ready, processed, failed
+
+/*
+
+var gr_mobile_schema_package = new GlideRecord('x_nuvo_mobile_schema_package');
+gr_mobile_schema_package.orderByDesc('created');
+gr_mobile_schema_package.setLimit(100);
+gr_mobile_schema_package.query();
+
+while (gr_mobile_schema_package.next()){
+
+//    gs.info(gr_mobile_schema_package.client_schema + ', ' + gr_mobile_schema_package.state);
+}
+*/
+
+
+var gr_mobile_schema_package_agg = new GlideAggregate('x_nuvo_mobile_schema_package');
+
+var date_time = new GlideDateTime().getDisplayValue();
+var gdt = new GlideDateTime();
+gdt.setDisplayValue(date_time);
+
+gdt.addDaysUTC(-1);
+
+gr_mobile_schema_package_agg.addAggregate('COUNT', 'state');
+gr_mobile_schema_package_agg.orderBy('state');
+gr_mobile_schema_package_agg.addQuery('sys_updated_on', '&gt;=', gdt);
+gr_mobile_schema_package_agg.query();
+var schema_state = '';
+while (gr_mobile_schema_package_agg.next()) {
+    var scheme_package_count = gr_mobile_schema_package_agg.getAggregate('COUNT', 'state');
+
+    schema_state = gr_mobile_schema_package_agg.getDisplayValue('state');
+    var schema_package_message = ('From the past 24 hours there are ' + [scheme_package_count] + ' schema packages with a state of ' + schema_state);
+
+    util.handleOutput(schema_package_message, 'information', true);
+    if (schema_state.toLowerCase() == 'ready') {
+        util.handleOutput('A high number of schemas in a ready status is likely an indication of a larger issue', 'warning', 'false');
+    }
+
+}
+
+
+
+
+
+var gr_client_device_logs = new GlideRecord('x_nuvo_mobile_device_logs');
+gr_client_device_logs.addQuery('type', 'Error');
+gr_client_device_logs.addQuery('mobile_created_on', '&gt;=', gdt);
+gr_client_device_logs.setLimit(50);
+gr_client_device_logs.orderByDesc('mobile_created_on');
+gr_client_device_logs.query();
+
+while (gr_client_device_logs.next()) {
+    util.handleOutput('Client Device Error, Mobile User: ' + gr_client_device_logs.client.user.name + ', error: ' + gr_client_device_logs.description, 'error', true);
+
+}
+
+var gr_mobile_client_devices = new GlideRecord('x_nuvo_mobile_client_devices');
+gr_mobile_client_devices.orderByDesc('sys_updated_on');
+gr_mobile_client_devices.setLimit(100);
+gr_mobile_client_devices.query();
+gdt.addDaysUTC(-30);
+while (gr_mobile_client_devices.next()) {
+    if (gr_mobile_client_devices.attachment_building == true) {
+
+        util.handleOutput('Attachment Build in Progress for ' + gr_mobile_client_devices.user.name + ' has been to true since ' + gr_mobile_client_devices.sys_updated_on + '. If more than one hour has passed then it could be indicate an issue. ', 'warning', 'true');
+    }
+
+    if (gr_mobile_client_devices.last_configuration_sync &lt; gdt) {
+        util.handleOutput('Please have ' + gr_mobile_client_devices.user.name + ' restart their Nuvolo mobile app. This app was last restarted on ' + gr_mobile_client_devices.last_configuration_sync + '. Restarting the app will help ensure it remains up to date.', 'error', true);
+
+    }
+
+
+}
+
+
+// probe for schema build in progress. If schema build in progress is checked and is checked for longer than a few minutes and client schema still 0, indicates an issue with Client Schema generation.
+
+//x_nuvo_mobile_client_schema
+
+ 
+
+// check for mobile app version at least version 12 or 2 back. // check last scheme sync newer than 3 months
+
+
+
+//for schemas if cache on server is set to true by default. then cache on demand becomes true. IF cache cache on demand is false, log an error, - this causes issues as it looking for cached and there is not cached.
+
+
+// if the state of All Schema Packages on client devices are set to ready it could an error
+// after the process completes a file is downloaded to the device and the state is set to processed]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Anthony.Santos@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2021-11-17 18:48:14&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;false&lt;/sys_customer_update&gt;&lt;sys_id&gt;7a4650871b3fb0907798a9b7624bcba7&lt;/sys_id&gt;&lt;sys_mod_count&gt;103&lt;/sys_mod_count&gt;&lt;sys_name&gt;Mobile Sync&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_7a4650871b3fb0907798a9b7624bcba7&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Michael.Piazza@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-07-15 17:46:45&lt;/sys_updated_on&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>276204918</payload_hash>
+        <record_name>Mobile Sync</record_name>
+        <reverted_from/>
+        <source>55f2c7d71b94d910ae5b21b5ec4bcbfd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 17:46:45</sys_created_on>
+        <sys_id>8726cc501b7c9150ae5b21b5ec4bcbe4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18202f856e30000001</sys_recorded_at>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-15 17:46:45</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>4f26cc50207c9150e8a5ff58058409e3</update_guid>
+        <update_guid_history>4f26cc50207c9150e8a5ff58058409e3:276204918,f47dbf7c4268151037fdf2fb74b7d4f5:1013805134,78a1839f8b94d9109b0042790e640dc0:1289957069</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">324ba29d1b655150ae5b21b5ec4bcb03</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-25 15:09:12</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>1bbc7e5adca84fe294f59732201e1c69</sys_id>
+        <sys_metadata>7a4650871b3fb0907798a9b7624bcba7</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Mobile Sync</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_7a4650871b3fb0907798a9b7624bcba7</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_7a4650871b3fb0907798a9b7624bcba7">8726cc501b7c9150ae5b21b5ec4bcbe4</sys_update_version>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-08-25 15:09:12</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

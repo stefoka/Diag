@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="DELETE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_nuvo_diag_healthcheck_logs</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Send Logs to Nuvolo Instance</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+    try {
+        if (!gs.getProperty('x_nuvo_health_scan.parent_instance')) {
+            var instance = gs.getProperty('x_nuvo_diag.nuvolo_instance');
+            var probe_category = current.getValue('probe_category');
+            var healthcheck_instance = current.healthcheck_instance.source.toString();
+            var healthcheck_type = current.getValue('healthcheck_type');
+            var result = current.getValue('result');
+            var error_message = current.getValue('error_message');
+            var feature_usage = current.getValue('feature_usage');
+            var helper = new x_nuvo_diag.HealthCheckHelper();
+            var credentials = JSON.parse(helper.getIntegrationUserCredentials());
+            var user = credentials.username;
+            var password = credentials.password;
+
+            /////////CREATE HEALTHCHECK LOG
+            var request = new sn_ws.RESTMessageV2();
+            request.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_diag_healthcheck_logs');
+            request.setHttpMethod('POST');
+            request.setBasicAuth(user, password);
+            request.setRequestHeader("Accept", "application/json");
+            request.setRequestHeader('Content-Type', 'application/json');
+
+            var requestBody = {
+                "probe_category": probe_category,
+                "healthcheck_type": healthcheck_type,
+                "result": result,
+                "error_message": error_message,
+                "feature_usage": feature_usage
+            };
+
+            var requestBodyStr = JSON.stringify(requestBody);
+
+            request.setRequestBody(requestBodyStr);
+
+            var response = request.execute();
+            var statusCode = response.getStatusCode();
+            if (statusCode >= 200 && statusCode < 300) {
+                var sysId = JSON.parse(response.getBody()).result.sys_id.toString();
+            } else {
+                return;
+            }
+
+            //CREATE Instanece->Log relationship
+
+            var m2mRequest = new sn_ws.RESTMessageV2();
+            m2mRequest.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_health_scan_m2m_x_nuvo_diag_x_nuvo_healt');
+            m2mRequest.setHttpMethod('POST');
+            m2mRequest.setBasicAuth(user, password);
+            m2mRequest.setRequestHeader("Accept", "application/json");
+            m2mRequest.setRequestHeader('Content-Type', 'application/json');
+
+            var requestBodyM2M = {
+                "x_nuvo_health_scan_healthcheck_instance": healthcheck_instance,
+                "x_nuvo_diag_healthcheck_logs": sysId,
+            };
+
+            var requestBodyStrM2m = JSON.stringify(requestBodyM2M);
+
+            m2mRequest.setRequestBody(requestBodyStrM2m);
+            response = m2mRequest.execute();
+            statusCode = response.getStatusCode();
+
+        }
+    } catch (err) {
+        gs.info("SPOPOV ERROR : " + err)
+    }
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-25 10:32:24</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>45d6b566473456109d9f9915126d43b0</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>Send Logs to Nuvolo Instance</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_script_45d6b566473456109d9f9915126d43b0</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-24 12:01:38</sys_updated_on>
+        <template/>
+        <when>async_always</when>
+    </sys_script>
+    <sys_translated_text action="DELETE" query="documentkey=45d6b566473456109d9f9915126d43b0"/>
+    <sys_es_latest_script action="DELETE">
+        <id>45d6b566473456109d9f9915126d43b0</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-09 10:51:47</sys_created_on>
+        <sys_id>3d12828393059210052ef5cd0bba1056</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-09 10:51:47</sys_updated_on>
+        <table>sys_script</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_script_45d6b566473456109d9f9915126d43b0</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script"&gt;
+    &lt;sys_script action="INSERT_OR_UPDATE"&gt;
+        &lt;abort_action&gt;false&lt;/abort_action&gt;
+        &lt;access&gt;package_private&lt;/access&gt;
+        &lt;action_delete&gt;false&lt;/action_delete&gt;
+        &lt;action_insert&gt;true&lt;/action_insert&gt;
+        &lt;action_query&gt;false&lt;/action_query&gt;
+        &lt;action_update&gt;false&lt;/action_update&gt;
+        &lt;active&gt;true&lt;/active&gt;
+        &lt;add_message&gt;false&lt;/add_message&gt;
+        &lt;advanced&gt;true&lt;/advanced&gt;
+        &lt;change_fields&gt;false&lt;/change_fields&gt;
+        &lt;client_callable&gt;false&lt;/client_callable&gt;
+        &lt;collection&gt;x_nuvo_diag_healthcheck_logs&lt;/collection&gt;
+        &lt;condition/&gt;
+        &lt;description/&gt;
+        &lt;execute_function&gt;false&lt;/execute_function&gt;
+        &lt;filter_condition/&gt;
+        &lt;is_rest&gt;false&lt;/is_rest&gt;
+        &lt;message/&gt;
+        &lt;name&gt;Send Logs to Nuvolo Instance&lt;/name&gt;
+        &lt;order&gt;100&lt;/order&gt;
+        &lt;priority&gt;100&lt;/priority&gt;
+        &lt;rest_method/&gt;
+        &lt;rest_method_text/&gt;
+        &lt;rest_service/&gt;
+        &lt;rest_service_text/&gt;
+        &lt;rest_variables/&gt;
+        &lt;role_conditions/&gt;
+        &lt;script&gt;&lt;![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+    try {
+        if (!gs.getProperty('x_nuvo_health_scan.parent_instance')) {
+            var instance = gs.getProperty('x_nuvo_diag.nuvolo_instance');
+            var probe_category = current.getValue('probe_category');
+            var healthcheck_instance = current.healthcheck_instance.source.toString();
+            var healthcheck_type = current.getValue('healthcheck_type');
+            var result = current.getValue('result');
+            var error_message = current.getValue('error_message');
+            var feature_usage = current.getValue('feature_usage');
+            var helper = new x_nuvo_diag.HealthCheckHelper();
+            var credentials = JSON.parse(helper.getIntegrationUserCredentials());
+            var user = credentials.username;
+            var password = credentials.password;
+
+            /////////CREATE HEALTHCHECK LOG
+            var request = new sn_ws.RESTMessageV2();
+            request.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_diag_healthcheck_logs');
+            request.setHttpMethod('POST');
+            request.setBasicAuth(user, password);
+            request.setRequestHeader("Accept", "application/json");
+            request.setRequestHeader('Content-Type', 'application/json');
+
+            var requestBody = {
+                "probe_category": probe_category,
+                "healthcheck_type": healthcheck_type,
+                "result": result,
+                "error_message": error_message,
+                "feature_usage": feature_usage
+            };
+
+            var requestBodyStr = JSON.stringify(requestBody);
+
+            request.setRequestBody(requestBodyStr);
+
+            var response = request.execute();
+            var statusCode = response.getStatusCode();
+            if (statusCode &gt;= 200 &amp;&amp; statusCode &lt; 300) {
+                var sysId = JSON.parse(response.getBody()).result.sys_id.toString();
+            } else {
+                return;
+            }
+
+            //CREATE Instanece-&gt;Log relationship
+
+            var m2mRequest = new sn_ws.RESTMessageV2();
+            m2mRequest.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_health_scan_m2m_x_nuvo_diag_x_nuvo_healt');
+            m2mRequest.setHttpMethod('POST');
+            m2mRequest.setBasicAuth(user, password);
+            m2mRequest.setRequestHeader("Accept", "application/json");
+            m2mRequest.setRequestHeader('Content-Type', 'application/json');
+
+            var requestBodyM2M = {
+                "x_nuvo_health_scan_healthcheck_instance": healthcheck_instance,
+                "x_nuvo_diag_healthcheck_logs": sysId,
+            };
+
+            var requestBodyStrM2m = JSON.stringify(requestBodyM2M);
+
+            m2mRequest.setRequestBody(requestBodyStrM2m);
+            response = m2mRequest.execute();
+            statusCode = response.getStatusCode();
+
+        }
+    } catch (err) {
+        gs.info("SPOPOV ERROR : " + err)
+    }
+})(current, previous);]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;sys_script&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;abraham.kannampuzha@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-09-25 10:32:24&lt;/sys_created_on&gt;
+        &lt;sys_domain&gt;global&lt;/sys_domain&gt;
+        &lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;
+        &lt;sys_id&gt;45d6b566473456109d9f9915126d43b0&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;20&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Send Logs to Nuvolo Instance&lt;/sys_name&gt;
+        &lt;sys_overrides/&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sys_script_45d6b566473456109d9f9915126d43b0&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-10-24 12:01:38&lt;/sys_updated_on&gt;
+        &lt;template/&gt;
+        &lt;when&gt;async_always&lt;/when&gt;
+    &lt;/sys_script&gt;
+    &lt;sys_translated_text action="delete_multiple" query="documentkey=45d6b566473456109d9f9915126d43b0"/&gt;
+    &lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;
+        &lt;id&gt;45d6b566473456109d9f9915126d43b0&lt;/id&gt;
+        &lt;sys_created_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-10-09 10:51:47&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;3d12828393059210052ef5cd0bba1056&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-10-09 10:51:47&lt;/sys_updated_on&gt;
+        &lt;table&gt;sys_script&lt;/table&gt;
+        &lt;use_es_latest&gt;false&lt;/use_es_latest&gt;
+    &lt;/sys_es_latest_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-1238890923</payload_hash>
+        <record_name>Send Logs to Nuvolo Instance</record_name>
+        <reverted_from/>
+        <source/>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-25 08:12:34</sys_created_on>
+        <sys_id>fd17f3883be5961054a7cda036e45a68</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192c2bc02a80000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-25 08:12:34</sys_updated_on>
+        <type>Business Rule</type>
+        <update_guid>bd17f388ebe5961035564d4b9a1d3868</update_guid>
+        <update_guid_history>1d716f33b9555610a2c1a75d110ee2ba:-1314887665,3e402f33ef555610783721ee53c5f02c:-1808740111,222e1bbf5e1556104754fa302cbcbfb2:0,4011fda3471dd2104a333efa8eb343f5:0,53347f17a709d6103e7cad8512fca590:461803285,48e1b3d3f609d610d357a822b01444c0:1651670177,e02f5f9fc585d610f07aded49f3bc5d1:1651670177,0d5e1f9fe185d6104c2cd127019973b5:556922135,88f097933885d610f00361cc40706414:0,50f606c721419610a589c3451e42e6cb:461803285,e5a44ac333419610bcd1f27b4207f75f:-818176467,2a64c6c38641961015c657e2492910e4:-46020781,1b444ac36c419610df9150840ef65d59:1436387155,cf04c6c300419610090d1f5aebe9a240:-1540977162,19d2028352419610e44f0d381c697809:1674869950,7e520e031f41961055815c1d0c500bb8:1212491086,1a2286433041961067bc6f94f6dd6af0:556922135,16abad875b8d5610daec53d6af2534f0:1357300471,89d96d47658d56102675f2e3ff66ce83:0,08172583d78d5610fcfd160ae8140652:-1823727695,9c6669435a8d5610d2be4963fb6ed1bf:-853388018,e6caa0eda141d2101d092fdf57ebe27f:0,18dc23c3cf30da5060163e5032b02539:-236547577,e75ca3835930da50c44510de04155db2:-1253418083,301c6f435b30da500ee593539e95bed7:1822104292,65db6f43e030da502f412f1b40de3576:886345856,5c5befcbbbfc9a50a76168f714f8fcb6:904606172,02ba6bcb34fc9a50b22d7347c4c73b5c:-1397707624,d023230bd4fc9a50fce8a4a7301b4d25:-1880245260,9e12a34740fc9a507f30b8cd6a2c212b:873299402,8961238744fc9a5042e5fb886d7734d1:-1880245260,f4106703c5fc9a509257beb71fdeb6c1:-786051824,fbcf170793fc9a50cac781347d2e52d4:-1880245260,a3fe5f43b4fc9a50178285fc6c28e875:-797913351,2bded3c341fc9a50100b30d8385583a0:811642085,4e9d5f4332fc9a50e45505385f2f026c:-750563040,c80d17cf83bc9a50ec363cfa5b01aacc:-1257776918,e2bc930346fc9a503777a7c52610c6bd:936420010,285bdb0fbdbc9a505b07656b9aa2abee:1566383672,ec1bd7cb09bc9a50c7b36517e5212685:1423008821,eca95b8b3fbc9a506d16778a76ecc86e:1817870269,2427d7c72cbc9a50d28d93f3eb7676bd:-22276690,59561fc79cbc9a50411513a30c5a473c:578607377,ae85d3c73abc9a50e4c396e3bbdcc5a5:429040352,6ab4178746bc9a501d28ab73b1d657f2:1616596466,cc1e7f3e4bfc5a50821385798a856a16:429040352,714dfbfa6afc5a50b840999f29960caf:0,5c1bf37adbfc5a50102aba23f4abcd2d:-1458570129,8479ffb642fc5a50be33927759770f58:0,de88bb7664fc5a505ba38671f0d4960c:-1684732537,4367f736eafc5a504a06ca41aa325a02:1178281821,ede6377215fc5a50ebdde7de14c2717d:-421108070,3364b372cbfc5a50b06eedf344fdb217:-1404045117,3f34bf32e0fc5a506817b4c325a0fb19:-1334990941,74347bfedcbc5a50d92dbb766fdf600b:677507646,6cd3b7fe03bc5a501457c994ab6f2856:1065942938,1c033fbe31bc5a508dc9205f6d0534c1:-1320623876,7382bfbe84bc5a50936f820d01bd69e8:1642980096,a8027b3e79bc5a507f1fb8fcb4b78e40:-1646432850,bf6177faf9bc5a5086d6e9d8f7f2c1b8:-1418631530,ba11b7fad1bc5a50b3b0a30639cb6f6e:-969299590,6f7f67fa66bc5a50c66c2ae9d4dba8ad:1229975556,22bc273a35bc5a5091a3cec06219c507:1813995746,ed5c27f69ebc5a500d58639a14577ab3:-237325062,394ba7b634bc5a5020cdfca754907605:1813995746,84dc1bb68e7c5a50261829e3327cf800:-332584262,113a53f2937c5a50ae2a55ca19a9f227:-364278819</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:15:03</sys_created_on>
+        <sys_db_object display_value="" name="sys_script">sys_script</sys_db_object>
+        <sys_id>43db940bc45f427092f2adf9b3b6dd10</sys_id>
+        <sys_metadata>45d6b566473456109d9f9915126d43b0</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Send Logs to Nuvolo Instance</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent display_value="">fe949dc647a05a109d9f9915126d43be</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_script_45d6b566473456109d9f9915126d43b0</sys_update_name>
+        <sys_update_version display_value="sys_script_45d6b566473456109d9f9915126d43b0">fd17f3883be5961054a7cda036e45a68</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:15:03</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>false</active>
+        <description>When using the condition builder with BETWEEN operator as part of the Capital Plan Configurations or Capital Plan Scoring, any FX Currency field does not get proper values. &#13;
+&#13;
+Steps to reproduce&#13;
+&#13;
+1. Create a new Capital Plan Configuration.&#13;
+&#13;
+2. Add a new Capital Plan Configuration Item.&#13;
+&#13;
+3. Place x_nuvo_eam_clinical_devices in the table field.&#13;
+&#13;
+4. Set Acquisition Cost to BETWEEN 0 AND 10000 in the Items to Include field.&#13;
+&#13;
+5. Create a new Capital Plan with this Configuration.</description>
+        <name>FX Currency Fields Issue</name>
+        <order/>
+        <probe_type display_value="Capital Planning">17d289091bac1510ae5b21b5ec4bcb27</probe_type>
+        <remediation>Instead it is recommended to use the GREATER THAN and LESS THAN to achieve this result.</remediation>
+        <script/>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 18:05:39</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>e04a00901b7c9150ae5b21b5ec4bcb0d</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>FX Currency Fields Issue</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_e04a00901b7c9150ae5b21b5ec4bcb0d</sys_update_name>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-15 18:05:47</sys_updated_on>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>x_nuvo_diag_probes_e04a00901b7c9150ae5b21b5ec4bcb0d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes"><x_nuvo_diag_probes action="INSERT_OR_UPDATE"><active>false</active><description>When using the condition builder with BETWEEN operator as part of the Capital Plan Configurations or Capital Plan Scoring, any FX Currency field does not get proper values. &#13;
+&#13;
+Steps to reproduce&#13;
+&#13;
+1. Create a new Capital Plan Configuration.&#13;
+&#13;
+2. Add a new Capital Plan Configuration Item.&#13;
+&#13;
+3. Place x_nuvo_eam_clinical_devices in the table field.&#13;
+&#13;
+4. Set Acquisition Cost to BETWEEN 0 AND 10000 in the Items to Include field.&#13;
+&#13;
+5. Create a new Capital Plan with this Configuration.</description><name>FX Currency Fields Issue</name><order/><probe_type display_value="Capital Planning">17d289091bac1510ae5b21b5ec4bcb27</probe_type><remediation>Instead it is recommended to use the GREATER THAN and LESS THAN to achieve this result.</remediation><script/><sys_class_name>x_nuvo_diag_probes</sys_class_name><sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by><sys_created_on>2022-07-15 18:05:39</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>e04a00901b7c9150ae5b21b5ec4bcb0d</sys_id><sys_mod_count>1</sys_mod_count><sys_name>FX Currency Fields Issue</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>x_nuvo_diag_probes_e04a00901b7c9150ae5b21b5ec4bcb0d</sys_update_name><sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by><sys_updated_on>2022-07-15 18:05:47</sys_updated_on></x_nuvo_diag_probes></record_update>]]></payload>
+        <payload_hash>-1615259300</payload_hash>
+        <record_name>FX Currency Fields Issue</record_name>
+        <reverted_from/>
+        <source>55f2c7d71b94d910ae5b21b5ec4bcbfd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 18:05:47</sys_created_on>
+        <sys_id>b98a0c941b7c9150ae5b21b5ec4bcb01</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1820309c27c0000001</sys_recorded_at>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-15 18:05:47</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>618a0c94ac7c9150bfa36ce89d1a9701</update_guid>
+        <update_guid_history>618a0c94ac7c9150bfa36ce89d1a9701:-1615259300,3b7a4854db7c91505ecbceb9b1f358a0:982166069</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">034b62111ba55150ae5b21b5ec4bcb98</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-25 15:09:13</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>0f685e0dea3445e3840ae67f4a73a9e1</sys_id>
+        <sys_metadata>e04a00901b7c9150ae5b21b5ec4bcb0d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FX Currency Fields Issue</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_e04a00901b7c9150ae5b21b5ec4bcb0d</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_e04a00901b7c9150ae5b21b5ec4bcb0d">b98a0c941b7c9150ae5b21b5ec4bcb01</sys_update_version>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-08-25 15:09:13</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

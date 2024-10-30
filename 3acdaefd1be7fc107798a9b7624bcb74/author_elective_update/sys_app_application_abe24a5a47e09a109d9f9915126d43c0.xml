@@ -52,7 +52,7 @@
         <update_guid_history>3a49a00075f41250e1f1c0b896cf5153:509834140,a7e24a5ab1e09a10261686367086e7c3:-1393223245</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="Nuvolo OOTB Scripts Hashes">e160695047b852509d9f9915126d438d</sys_audit_delete>
+        <sys_audit_delete display_value="">e160695047b852509d9f9915126d438d</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-18 09:05:35</sys_created_on>
@@ -65,7 +65,7 @@
         <sys_parent/>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
         <sys_update_name>sys_app_application_abe24a5a47e09a109d9f9915126d43c0</sys_update_name>
         <sys_update_version display_value="sys_app_application_abe24a5a47e09a109d9f9915126d43c0">7249a00047f412509d9f9915126d4354</sys_update_version>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>

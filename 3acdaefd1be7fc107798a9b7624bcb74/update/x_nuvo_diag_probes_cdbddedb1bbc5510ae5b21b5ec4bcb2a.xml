@@ -6,7 +6,6 @@
 If there is no checklist mentioned on the Scheduled Maintenance/Work round planned maintenance as well as for the asset or asset category,even then the Checklist is getting associated to the Work orders for the asset.&#13;
 &#13;
 Issue seen in Pre-Qatar Releases</description>
-        <healthcheck_type/>
         <name>Wrong Checklist gets attached to a WO</name>
         <order>100</order>
         <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
@@ -42,14 +41,13 @@ if (checkVersion.next()) {
         <sys_created_by>Prasanna.Phadtare@nuvolo.com</sys_created_by>
         <sys_created_on>2022-07-25 12:34:42</sys_created_on>
         <sys_id>cdbddedb1bbc5510ae5b21b5ec4bcb2a</sys_id>
-        <sys_mod_count>18</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>Wrong Checklist gets attached to a WO</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_cdbddedb1bbc5510ae5b21b5ec4bcb2a</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-10-24 13:46:37</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

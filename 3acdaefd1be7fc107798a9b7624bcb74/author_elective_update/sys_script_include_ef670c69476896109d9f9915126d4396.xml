@@ -72,7 +72,7 @@ Test.prototype = {
         <sys_parent/>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
         <sys_update_name>sys_script_include_ef670c69476896109d9f9915126d4396</sys_update_name>
         <sys_update_version display_value="sys_script_include_ef670c69476896109d9f9915126d4396">557704ed472896109d9f9915126d430d</sys_update_version>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>

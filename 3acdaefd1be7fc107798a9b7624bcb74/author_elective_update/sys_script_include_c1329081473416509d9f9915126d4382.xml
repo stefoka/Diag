@@ -86,7 +86,7 @@ HealthCheckHelper.prototype = {
         <sys_parent/>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
         <sys_update_name>sys_script_include_c1329081473416509d9f9915126d4382</sys_update_name>
         <sys_update_version display_value="sys_script_include_c1329081473416509d9f9915126d4382">e73cdc8d473416509d9f9915126d433e</sys_update_version>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>

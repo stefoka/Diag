@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="89f0c42d476496109d9f9915126d4394" label="Probe Log" max_length="40" name="x_nuvo_diag_probe_log" type="collection">
-        <element default="0" label="Level" max_length="40" name="level" type="string"/>
-        <element label="Message" max_length="10000" name="message" type="string"/>
-        <element label="Probe Category" max_length="32" name="probe_category" type="string"/>
-        <element label="Source" max_length="40" name="source" type="string"/>
-        <element label="Source application family" max_length="32" name="source_application_family" reference="license_family" type="reference"/>
-        <element label="Source package" max_length="32" name="source_package" reference="sys_package" type="reference"/>
+    <element db_object_id="9ea350281b4e5110af1833b4cc4bcba4" label="Probe Log" max_length="40" name="x_nuvo_diag_probe_log" type="collection">
+        <element attributes="encode_utf8=false" label="Source application family" max_length="32" name="source_application_family" reference="license_family" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Message" max_length="10000" name="message" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="0" label="Level" max_length="40" name="level" type="string"/>
+        <element attributes="encode_utf8=false" label="Source package" max_length="32" name="source_package" reference="sys_package" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Probe Category" max_length="32" name="probe_category" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Source" max_length="40" name="source" type="string"/>
         <index name="index">
             <element name="source_application_family"/>
         </index>

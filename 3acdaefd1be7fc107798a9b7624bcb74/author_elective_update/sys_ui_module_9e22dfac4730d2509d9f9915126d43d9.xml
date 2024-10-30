@@ -65,7 +65,7 @@
         <sys_parent/>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
         <sys_update_name>sys_ui_module_9e22dfac4730d2509d9f9915126d43d9</sys_update_name>
         <sys_update_version display_value="sys_ui_module_9e22dfac4730d2509d9f9915126d43d9">e7b6ea729330d610052ef5cd0bba107f</sys_update_version>
         <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>

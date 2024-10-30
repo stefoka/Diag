@@ -2,7 +2,6 @@
     <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
         <active>true</active>
         <description>For the Scheduled Job "Nuvolo Schedule Recurring Maintenances", the OOB time to run is sometime around 11pm. In order for the job to work, it has to run early in the morning, because the script checks for work orders to be generated "Today".</description>
-        <healthcheck_type/>
         <name>SM WO Generation - Clinical</name>
         <order/>
         <probe_type display_value="HTM Asset Management">5b9325951b609510ae5b21b5ec4bcb47</probe_type>
@@ -34,14 +33,13 @@ if (hoursInt < 6) {
         <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
         <sys_created_on>2023-05-25 20:58:13</sys_created_on>
         <sys_id>493539951b8f251070b43227dc4bcbe7</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>SM WO Generation - Clinical</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_493539951b8f251070b43227dc4bcbe7</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2023-05-25 20:58:41</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

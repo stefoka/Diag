@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Nuvolo Mobile Properties</description>
+        <order/>
+        <probe_type display_value="Mobile Properties">2d6f62c61be730507798a9b7624bcbd2</probe_type>
+        <remediation/>
+        <script/>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-02 17:12:07</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>8a90f60a1be730507798a9b7624bcbb0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_8a90f60a1be730507798a9b7624bcbb0</sys_update_name>
+        <sys_updated_by>Anthony.Santos@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2021-11-02 17:12:07</sys_updated_on>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>6fee0d601b37a0107d9d2f8dee4bcbea</instance_id>
+        <instance_name>ven04566</instance_name>
+        <name>x_nuvo_diag_probes_8a90f60a1be730507798a9b7624bcbb0</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes"><x_nuvo_diag_probes action="INSERT_OR_UPDATE"><active>true</active><description>Nuvolo Mobile Properties</description><order/><probe_type display_value="Mobile Properties">2d6f62c61be730507798a9b7624bcbd2</probe_type><remediation/><script/><sys_class_name>x_nuvo_diag_probes</sys_class_name><sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by><sys_created_on>2021-11-02 17:12:07</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>8a90f60a1be730507798a9b7624bcbb0</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>x_nuvo_diag_probes_8a90f60a1be730507798a9b7624bcbb0</sys_update_name><sys_updated_by>Anthony.Santos@nuvolo.com</sys_updated_by><sys_updated_on>2021-11-02 17:12:07</sys_updated_on></x_nuvo_diag_probes></record_update>]]></payload>
+        <payload_hash>-1202263330</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>8812f2f51b2bfc107798a9b7624bcbab</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-02 17:12:07</sys_created_on>
+        <sys_id>e1d0fa0a1be730507798a9b7624bcb46</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17ce1a2fd520000001</sys_recorded_at>
+        <sys_updated_by>Anthony.Santos@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2021-11-02 17:12:07</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>e9d0fa0af4e730508b8b14e08f638245</update_guid>
+        <update_guid_history>e9d0fa0af4e730508b8b14e08f638245:-1202263330</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">d8e2be8a1be730507798a9b7624bcbc6</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-02 17:21:03</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>04257603983e4c0080740557b2848900</sys_id>
+        <sys_metadata>8a90f60a1be730507798a9b7624bcbb0</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_8a90f60a1be730507798a9b7624bcbb0</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_8a90f60a1be730507798a9b7624bcbb0">e1d0fa0a1be730507798a9b7624bcb46</sys_update_version>
+        <sys_updated_by>Anthony.Santos@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2021-11-02 17:21:03</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

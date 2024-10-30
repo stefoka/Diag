@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="DELETE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Create HealthCheck Integration User</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="Stefan Popov">15e5b79d93e0d610052ef5cd0bba10d9</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2024-09-19 07:48:04</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[var gr = new GlideRecord('sys_user');
+gr.addQuery('user_name', 'healthcheck.integration.user');
+gr.query();
+
+if(!gr.next()){
+	var grCreateUser = new GlideRecord('sys_user')
+	grCreateUser.initialize();
+	grCreateUser.user_name = gs.getProperty('x_nuvo_diag.integration_user_name')
+	grCreateUser.active = true;
+	grCreateUser.user_password = gs.getProperty('x_nuvo_diag.integration_user_password');
+	var user = grCreateUser.insert();
+	var grUserHasRole = new GlideRecord('sys_user_has_role');
+	grUserHasRole.initialize()
+	grUserHasRole.setValue('user',user)
+	grUserHasRole.setValue('role','d62440b193a41a10052ef5cd0bba105c');
+	grUserHasRole.setValue('state','active');
+	grUserHasRole.insert()
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-19 08:00:22</sys_created_on>
+        <sys_id>ff389224477c92509d9f9915126d43f7</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Create HealthCheck Integration User</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sysauto_script_ff389224477c92509d9f9915126d43f7</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-19 08:06:40</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sysauto_script_ff389224477c92509d9f9915126d43f7</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sysauto_script"&gt;
+    &lt;sysauto_script action="INSERT_OR_UPDATE"&gt;
+        &lt;active&gt;true&lt;/active&gt;
+        &lt;business_calendar/&gt;
+        &lt;condition/&gt;
+        &lt;conditional&gt;false&lt;/conditional&gt;
+        &lt;entered_time&gt;1970-01-01 00:00:00&lt;/entered_time&gt;
+        &lt;max_drift/&gt;
+        &lt;name&gt;Create HealthCheck Integration User&lt;/name&gt;
+        &lt;offset/&gt;
+        &lt;offset_type&gt;0&lt;/offset_type&gt;
+        &lt;run_as display_value="Stefan Popov"&gt;15e5b79d93e0d610052ef5cd0bba10d9&lt;/run_as&gt;
+        &lt;run_as_tz/&gt;
+        &lt;run_dayofmonth&gt;1&lt;/run_dayofmonth&gt;
+        &lt;run_dayofweek&gt;1&lt;/run_dayofweek&gt;
+        &lt;run_period/&gt;
+        &lt;run_start&gt;2024-09-19 07:48:04&lt;/run_start&gt;
+        &lt;run_time&gt;1970-01-01 08:00:00&lt;/run_time&gt;
+        &lt;run_type&gt;daily&lt;/run_type&gt;
+        &lt;script&gt;&lt;![CDATA[var gr = new GlideRecord('sys_user');
+gr.addQuery('user_name', 'healthcheck.integration.user');
+gr.query();
+
+if(!gr.next()){
+	var grCreateUser = new GlideRecord('sys_user')
+	grCreateUser.initialize();
+	grCreateUser.user_name = gs.getProperty('x_nuvo_diag.integration_user_name')
+	grCreateUser.active = true;
+	grCreateUser.user_password = gs.getProperty('x_nuvo_diag.integration_user_password');
+	var user = grCreateUser.insert();
+	var grUserHasRole = new GlideRecord('sys_user_has_role');
+	grUserHasRole.initialize()
+	grUserHasRole.setValue('user',user)
+	grUserHasRole.setValue('role','d62440b193a41a10052ef5cd0bba105c');
+	grUserHasRole.setValue('state','active');
+	grUserHasRole.insert()
+}]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;sysauto_script&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-09-19 08:00:22&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;ff389224477c92509d9f9915126d43f7&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;4&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Create HealthCheck Integration User&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sysauto_script_ff389224477c92509d9f9915126d43f7&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-09-19 08:06:40&lt;/sys_updated_on&gt;
+        &lt;time_zone/&gt;
+        &lt;upgrade_safe&gt;false&lt;/upgrade_safe&gt;
+    &lt;/sysauto_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>1668720659</payload_hash>
+        <record_name>Create HealthCheck Integration User</record_name>
+        <reverted_from/>
+        <source>af8366243bf01a1054a7cda036e45a18</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>current</state>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-19 08:37:51</sys_created_on>
+        <sys_id>1da3ee243bf01a1054a7cda036e45a2e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192096e39430000001</sys_recorded_at>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-19 08:37:51</sys_updated_on>
+        <type>Scheduled Script Execution</type>
+        <update_guid>d9a3ee2434f01a10cc407a112481ab2e</update_guid>
+        <update_guid_history>d9a3ee2434f01a10cc407a112481ab2e:1668720659</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:15:18</sys_created_on>
+        <sys_db_object display_value="" name="sysauto_script">sysauto_script</sys_db_object>
+        <sys_id>0fea3a80b2f94d9c85ff961071319da4</sys_id>
+        <sys_metadata>ff389224477c92509d9f9915126d43f7</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Create HealthCheck Integration User</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sysauto_script_ff389224477c92509d9f9915126d43f7</sys_update_name>
+        <sys_update_version display_value="sysauto_script_ff389224477c92509d9f9915126d43f7">1da3ee243bf01a1054a7cda036e45a2e</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:15:18</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

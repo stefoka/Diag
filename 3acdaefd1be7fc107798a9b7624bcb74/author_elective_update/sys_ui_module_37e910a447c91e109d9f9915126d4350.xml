@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="DELETE">
+        <active>true</active>
+        <application display_value="Nuvolo OOB Script Hashes">bfe910a447c91e109d9f9915126d434c</application>
+        <filter/>
+        <name>Nuvolo OOB Script Hashes</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_nuvo_diag.nuvolo_oob_script_hashes_user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-01 08:51:53</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>37e910a447c91e109d9f9915126d4350</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo OOB Script Hashes</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ui_module_37e910a447c91e109d9f9915126d4350</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-01 08:51:53</sys_updated_on>
+        <table>x_nuvo_diag_nuvolo_oob_script_hashes</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_ui_module_37e910a447c91e109d9f9915126d4350</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Nuvolo OOB Script Hashes">bfe910a447c91e109d9f9915126d434c</application>
+        <filter/>
+        <name>Nuvolo OOB Script Hashes</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_nuvo_diag.nuvolo_oob_script_hashes_user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-01 08:51:53</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>37e910a447c91e109d9f9915126d4350</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo OOB Script Hashes</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ui_module_37e910a447c91e109d9f9915126d4350</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-01 08:51:53</sys_updated_on>
+        <table>x_nuvo_diag_nuvolo_oob_script_hashes</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+</record_update>]]></payload>
+        <payload_hash>-144898242</payload_hash>
+        <record_name>Nuvolo OOB Script Hashes</record_name>
+        <reverted_from/>
+        <source>30caecad3b41d210bec04760c5e45ae2</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-04 12:39:30</sys_created_on>
+        <sys_id>4bcae0ed3b41d210bec04760c5e45a55</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192578ad8690000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-04 12:39:30</sys_updated_on>
+        <type>Module</type>
+        <update_guid>0bcae0ed6e41d21083d2ce74e88d0855</update_guid>
+        <update_guid_history>0bcae0ed6e41d21083d2ce74e88d0855:-144898242</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:14:48</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_module">sys_ui_module</sys_db_object>
+        <sys_id>30ffd13335ad4ddebef84c51fcc78224</sys_id>
+        <sys_metadata>37e910a447c91e109d9f9915126d4350</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo OOB Script Hashes</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_ui_module_37e910a447c91e109d9f9915126d4350</sys_update_name>
+        <sys_update_version display_value="sys_ui_module_37e910a447c91e109d9f9915126d4350">4bcae0ed3b41d210bec04760c5e45a55</sys_update_version>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:14:48</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

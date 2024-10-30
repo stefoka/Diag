@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_definition">
+    <sys_ws_definition action="DELETE">
+        <active>true</active>
+        <base_uri>/api/x_nuvo_diag/diagnostic</base_uri>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_version>No active default version</default_version>
+        <doc_link/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <is_versioned>false</is_versioned>
+        <name>diagnostic</name>
+        <namespace>x_nuvo_diag</namespace>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <service_id>diagnostic</service_id>
+        <short_description/>
+        <sys_class_name>sys_ws_definition</sys_class_name>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-15 14:37:52</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>701acd561bb330907798a9b7624bcb7e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>diagnostic</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ws_definition_701acd561bb330907798a9b7624bcb7e</sys_update_name>
+        <sys_updated_by>Anthony.Santos@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2021-11-15 14:37:52</sys_updated_on>
+    </sys_ws_definition>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>sys_ws_definition_701acd561bb330907798a9b7624bcb7e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_definition">
+    <sys_ws_definition action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <base_uri>/api/x_nuvo_diag/diagnostic</base_uri>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_version>No active default version</default_version>
+        <doc_link/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <is_versioned>false</is_versioned>
+        <name>diagnostic</name>
+        <namespace>x_nuvo_diag</namespace>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <service_id>diagnostic</service_id>
+        <short_description/>
+        <sys_class_name>sys_ws_definition</sys_class_name>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-15 14:37:52</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>701acd561bb330907798a9b7624bcb7e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>diagnostic</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ws_definition_701acd561bb330907798a9b7624bcb7e</sys_update_name>
+        <sys_updated_by>Anthony.Santos@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2021-11-15 14:37:52</sys_updated_on>
+    </sys_ws_definition>
+</record_update>]]></payload>
+        <payload_hash>-1315909857</payload_hash>
+        <record_name>diagnostic</record_name>
+        <reverted_from/>
+        <source>3e918f5f1b94d910ae5b21b5ec4bcbe1</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-06-30 18:36:11</sys_created_on>
+        <sys_id>78a1839f1b94d910ae5b21b5ec4bcba8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>181b5e633060000001</sys_recorded_at>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-06-30 18:36:11</sys_updated_on>
+        <type>Scripted REST API</type>
+        <update_guid>38a1839f5594d9104d17c8689a7cc3a8</update_guid>
+        <update_guid_history>38a1839f5594d9104d17c8689a7cc3a8:-1315909857</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-09-16 14:28:51</sys_created_on>
+        <sys_db_object display_value="" name="sys_ws_definition">sys_ws_definition</sys_db_object>
+        <sys_id>034e51b7bc174b2990f1c192d0077529</sys_id>
+        <sys_metadata>701acd561bb330907798a9b7624bcb7e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>diagnostic</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_ws_definition_701acd561bb330907798a9b7624bcb7e</sys_update_name>
+        <sys_update_version display_value="sys_ws_definition_701acd561bb330907798a9b7624bcb7e">78a1839f1b94d910ae5b21b5ec4bcba8</sys_update_version>
+        <sys_updated_by>jake.ye@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-16 14:28:51</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

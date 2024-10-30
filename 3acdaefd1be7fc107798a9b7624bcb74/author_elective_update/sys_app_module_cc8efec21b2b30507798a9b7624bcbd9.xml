@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="DELETE">
+        <active>true</active>
+        <application display_value="Nuvolo Diagnostics">77533a391b2bfc107798a9b7624bcb39</application>
+        <assessment/>
+        <content_page/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>SCRIPT</link_type>
+        <map_page/>
+        <mobile_title>Mobile Property Scan</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name/>
+        <order/>
+        <override_menu_roles>false</override_menu_roles>
+        <query>new x_nuvo_diag.DiagnosticUtil().run('Reservation');</query>
+        <report/>
+        <roles/>
+        <survey/>
+        <survey_overwrite>true</survey_overwrite>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-02 18:13:32</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>cc8efec21b2b30507798a9b7624bcbd9</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Reservations Scan</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_app_module_cc8efec21b2b30507798a9b7624bcbd9</sys_update_name>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-07 16:01:56</sys_updated_on>
+        <timeline_page/>
+        <title>Reservations Scan</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>sys_app_module_cc8efec21b2b30507798a9b7624bcbd9</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Nuvolo Diagnostics">77533a391b2bfc107798a9b7624bcb39</application><assessment/><content_page/><device_type/><filter/><hint/><homepage/><image/><link_type>SCRIPT</link_type><map_page/><mobile_title>Mobile Property Scan</mobile_title><mobile_view_name>Mobile</mobile_view_name><name/><order/><override_menu_roles>false</override_menu_roles><query>new x_nuvo_diag.DiagnosticUtil().run('Reservation');</query><report/><roles/><survey/><survey_overwrite>true</survey_overwrite><sys_class_name>sys_app_module</sys_class_name><sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by><sys_created_on>2021-11-02 18:13:32</sys_created_on><sys_customer_update>false</sys_customer_update><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>cc8efec21b2b30507798a9b7624bcbd9</sys_id><sys_mod_count>5</sys_mod_count><sys_name>Reservations Scan</sys_name><sys_overrides/><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>sys_app_module_cc8efec21b2b30507798a9b7624bcbd9</sys_update_name><sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by><sys_updated_on>2022-07-07 16:01:56</sys_updated_on><timeline_page/><title>Reservations Scan</title><uncancelable>false</uncancelable><view_name/><window_name/></sys_app_module></record_update>]]></payload>
+        <payload_hash>1639967035</payload_hash>
+        <record_name>Reservations Scan</record_name>
+        <reverted_from/>
+        <source>55f2c7d71b94d910ae5b21b5ec4bcbfd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-07 16:01:56</sys_created_on>
+        <sys_id>29712ae91be4d510ae5b21b5ec4bcbec</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>181d965808b0000001</sys_recorded_at>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-07 16:01:56</sys_updated_on>
+        <type>Module</type>
+        <update_guid>ed712ae9f2e4d510911340b0292c78eb</update_guid>
+        <update_guid_history>ed712ae9f2e4d510911340b0292c78eb:1639967035,e46022a9d4e4d510ff6bb49c90165dcb:1100271487,4ca1439fbf94d9103a33b67f5b30703e:-778209564</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">6db956fb1bb59510ae5b21b5ec4bcb93</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-09-14 18:32:54</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_module">sys_app_module</sys_db_object>
+        <sys_id>22555b0ecf014e488642f1f83de86a40</sys_id>
+        <sys_metadata>cc8efec21b2b30507798a9b7624bcbd9</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Reservations Scan</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_app_module_cc8efec21b2b30507798a9b7624bcbd9</sys_update_name>
+        <sys_update_version display_value="sys_app_module_cc8efec21b2b30507798a9b7624bcbd9">29712ae91be4d510ae5b21b5ec4bcbec</sys_update_version>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-14 18:32:54</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

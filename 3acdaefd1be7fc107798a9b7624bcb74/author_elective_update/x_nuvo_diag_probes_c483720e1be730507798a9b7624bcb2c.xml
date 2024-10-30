@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>false</active>
+        <description>Mobile Properties Check</description>
+        <name>mobile_properties</name>
+        <order>100</order>
+        <probe_type display_value="Mobile SSO">e9dc377c1b681510ae5b21b5ec4bcb49</probe_type>
+        <remediation/>
+        <script><![CDATA[gs.info('************* System Properties for Mobile SSO ****************');
+var daig = new x_nuvo_diag.DiagnosticUtil();
+daig.printSystemProperties('x_nuvo_mobile.api_version,x_nuvo_mobile.authenticate.multisso.enabled,glide.authentication.external.disable_local_login,glide.authenticate.failed_requirement_redirect,glide.authenticate.multisso.enabled,glide.authenticate.sso.redirect.idp,x_nuvo_mobile.authentication.external.disable_local_login,glide.attachment.extensions,x_nuvo_mobile.schedule_event_for_future,x_nuvo_mobile.progress_worker_maximum');
+
+//glide.attachment.extensions  if not blank json will need to added as a valid extension
+//x_nuvo_mobile.schedule_event_for_future schedules x amount of seconds into the future if progress worker has been maxed
+//x_nuvo_mobile.progress_worker_maximum max number of progress workers that can be run at once]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-02 17:24:16</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>c483720e1be730507798a9b7624bcb2c</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>mobile_properties</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_c483720e1be730507798a9b7624bcb2c</sys_update_name>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-05 14:48:23</sys_updated_on>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>x_nuvo_diag_probes_c483720e1be730507798a9b7624bcb2c</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;false&lt;/active&gt;&lt;description&gt;Mobile Properties Check&lt;/description&gt;&lt;name&gt;mobile_properties&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type display_value="Mobile SSO"&gt;e9dc377c1b681510ae5b21b5ec4bcb49&lt;/probe_type&gt;&lt;remediation/&gt;&lt;script&gt;&lt;![CDATA[gs.info('************* System Properties for Mobile SSO ****************');
+var daig = new x_nuvo_diag.DiagnosticUtil();
+daig.printSystemProperties('x_nuvo_mobile.api_version,x_nuvo_mobile.authenticate.multisso.enabled,glide.authentication.external.disable_local_login,glide.authenticate.failed_requirement_redirect,glide.authenticate.multisso.enabled,glide.authenticate.sso.redirect.idp,x_nuvo_mobile.authentication.external.disable_local_login,glide.attachment.extensions,x_nuvo_mobile.schedule_event_for_future,x_nuvo_mobile.progress_worker_maximum');
+
+//glide.attachment.extensions  if not blank json will need to added as a valid extension
+//x_nuvo_mobile.schedule_event_for_future schedules x amount of seconds into the future if progress worker has been maxed
+//x_nuvo_mobile.progress_worker_maximum max number of progress workers that can be run at once]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Anthony.Santos@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2021-11-02 17:24:16&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;false&lt;/sys_customer_update&gt;&lt;sys_id&gt;c483720e1be730507798a9b7624bcb2c&lt;/sys_id&gt;&lt;sys_mod_count&gt;15&lt;/sys_mod_count&gt;&lt;sys_name&gt;mobile_properties&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_c483720e1be730507798a9b7624bcb2c&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Michael.Piazza@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-07-05 14:48:23&lt;/sys_updated_on&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>2025720182</payload_hash>
+        <record_name>mobile_properties</record_name>
+        <reverted_from/>
+        <source>55f2c7d71b94d910ae5b21b5ec4bcbfd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-05 14:48:23</sys_created_on>
+        <sys_id>247d7b3c1b681510ae5b21b5ec4bcbca</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>181ced5726b0000001</sys_recorded_at>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-05 14:48:23</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>2c7d7b3cd6681510764ce26512dd2fc9</update_guid>
+        <update_guid_history>2c7d7b3cd6681510764ce26512dd2fc9:2025720182,8da1839ff394d91056f17fa32aec84c8:339094019</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">7024fbcf1bb05510ae5b21b5ec4bcbec</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-25 00:09:44</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>c0f8a3c4ffc345589d30b393dc9eb384</sys_id>
+        <sys_metadata>c483720e1be730507798a9b7624bcb2c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>mobile_properties</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_c483720e1be730507798a9b7624bcb2c</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_c483720e1be730507798a9b7624bcb2c">247d7b3c1b681510ae5b21b5ec4bcbca</sys_update_version>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-25 00:09:44</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

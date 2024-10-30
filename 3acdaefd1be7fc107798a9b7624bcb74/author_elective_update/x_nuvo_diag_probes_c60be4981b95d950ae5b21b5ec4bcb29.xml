@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>false</active>
+        <description>There is a case where system generated checklist rules are not present for SMIs with prechecklist or working checklist due to import errors.  this will lead to work orders generated from SMI with no checklist</description>
+        <name>Checklist not generated</name>
+        <order/>
+        <probe_type/>
+        <remediation/>
+        <script/>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-09 17:00:30</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>c60be4981b95d950ae5b21b5ec4bcb29</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Checklist not generated</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_c60be4981b95d950ae5b21b5ec4bcb29</sys_update_name>
+        <sys_updated_by>jake.ye@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-08-09 17:00:30</sys_updated_on>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>x_nuvo_diag_probes_c60be4981b95d950ae5b21b5ec4bcb29</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes"><x_nuvo_diag_probes action="INSERT_OR_UPDATE"><active>false</active><description>There is a case where system generated checklist rules are not present for SMIs with prechecklist or working checklist due to import errors.  this will lead to work orders generated from SMI with no checklist</description><name>Checklist not generated</name><order/><probe_type/><remediation/><script/><sys_class_name>x_nuvo_diag_probes</sys_class_name><sys_created_by>jake.ye@nuvolo.com</sys_created_by><sys_created_on>2022-08-09 17:00:30</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>c60be4981b95d950ae5b21b5ec4bcb29</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Checklist not generated</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>x_nuvo_diag_probes_c60be4981b95d950ae5b21b5ec4bcb29</sys_update_name><sys_updated_by>jake.ye@nuvolo.com</sys_updated_by><sys_updated_on>2022-08-09 17:00:30</sys_updated_on></x_nuvo_diag_probes></record_update>]]></payload>
+        <payload_hash>298655153</payload_hash>
+        <record_name>Checklist not generated</record_name>
+        <reverted_from/>
+        <source>55f2c7d71b94d910ae5b21b5ec4bcbfd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-09 17:00:30</sys_created_on>
+        <sys_id>c95b24181b95d950ae5b21b5ec4bcba1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182838cfa380000001</sys_recorded_at>
+        <sys_updated_by>jake.ye@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-08-09 17:00:30</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>815b24183495d950e8b83cdb18762ca1</update_guid>
+        <update_guid_history>815b24183495d950e8b83cdb18762ca1:298655153</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">aa7709571be95950ae5b21b5ec4bcb7f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-31 13:00:57</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>3af09740579847ee9bdc906e63716f89</sys_id>
+        <sys_metadata>c60be4981b95d950ae5b21b5ec4bcb29</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Checklist not generated</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_c60be4981b95d950ae5b21b5ec4bcb29</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_c60be4981b95d950ae5b21b5ec4bcb29">c95b24181b95d950ae5b21b5ec4bcba1</sys_update_version>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-08-31 13:00:57</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_choice action="INSERT_OR_UPDATE" field="tool" table="x_nuvo_diag_probes" version="3">
-        <sys_choice_set action="INSERT_OR_UPDATE">
+    <sys_choice action="DELETE" field="tool" table="x_nuvo_diag_probes" version="3">
+        <sys_choice_set action="DELETE">
             <element>tool</element>
             <name>x_nuvo_diag_probes</name>
             <sys_class_name>sys_choice_set</sys_class_name>
             <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
             <sys_created_on>2024-09-17 10:13:37</sys_created_on>
+            <sys_id>9c93a6243bf01a1054a7cda036e45a31</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>tool</sys_name>
             <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -15,43 +16,50 @@
             <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
             <sys_updated_on>2024-09-17 10:13:37</sys_updated_on>
         </sys_choice_set>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>tool</element>
-            <hint/>
-            <inactive>false</inactive>
-            <label>Diagnostic</label>
-            <language>en</language>
-            <name>x_nuvo_diag_probes</name>
-            <sequence/>
-            <synonyms/>
-            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-17 10:13:37</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-17 10:13:37</sys_updated_on>
-            <value>diagnostic</value>
-        </sys_choice>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>tool</element>
-            <hint/>
-            <inactive>false</inactive>
-            <label>Health</label>
-            <language>en</language>
-            <name>x_nuvo_diag_probes</name>
-            <sequence/>
-            <synonyms/>
-            <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
-            <sys_created_on>2024-09-17 10:13:46</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-            <sys_updated_on>2024-09-17 10:13:46</sys_updated_on>
-            <value>health</value>
-        </sys_choice>
     </sys_choice>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_choice_x_nuvo_diag_probes_tool</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_choice action="INSERT_OR_UPDATE" field="tool" table="x_nuvo_diag_probes" version="3"><sys_choice_set action="INSERT_OR_UPDATE"><element>tool</element><name>x_nuvo_diag_probes</name><sys_class_name>sys_choice_set</sys_class_name><sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by><sys_created_on>2024-09-17 10:13:37</sys_created_on><sys_id>9c93a6243bf01a1054a7cda036e45a31</sys_id><sys_mod_count>0</sys_mod_count><sys_name>tool</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>sys_choice_x_nuvo_diag_probes_tool</sys_update_name><sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by><sys_updated_on>2024-09-17 10:13:37</sys_updated_on></sys_choice_set></sys_choice></record_update>]]></payload>
+        <payload_hash>-226014176</payload_hash>
+        <record_name>x_nuvo_diag_probes.tool</record_name>
+        <reverted_from/>
+        <source>c311df4d3b659210bec04760c5e45a90</source>
+        <source_table>sys_update_set</source_table>
+        <state>current</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:14:56</sys_created_on>
+        <sys_id>eef97e753b255610bec04760c5e45a0b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192ddc78fea0000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:14:56</sys_updated_on>
+        <type>Choice list</type>
+        <update_guid>e2f97e7554255610ed1bd0b3e07c500b</update_guid>
+        <update_guid_history>e2f97e7554255610ed1bd0b3e07c500b:-226014176,26f97e751b2556109a4d9a359f76c602:-465706053,86a32264f8f01a106789f4fb7f05d388:0,caa32264ebf01a10d169e59f6bc0d881:947791148</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:15:13</sys_created_on>
+        <sys_db_object display_value="" name="sys_choice_set">sys_choice_set</sys_db_object>
+        <sys_id>497eca9e565541c7a2b27c431ec23a59</sys_id>
+        <sys_metadata>9c93a6243bf01a1054a7cda036e45a31</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>tool</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent display_value="">4093a6243bf01a1054a7cda036e45a23</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_choice_x_nuvo_diag_probes_tool</sys_update_name>
+        <sys_update_version display_value="sys_choice_x_nuvo_diag_probes_tool">eef97e753b255610bec04760c5e45a0b</sys_update_version>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:15:13</sys_updated_on>
+    </sys_metadata_delete>
 </record_update>

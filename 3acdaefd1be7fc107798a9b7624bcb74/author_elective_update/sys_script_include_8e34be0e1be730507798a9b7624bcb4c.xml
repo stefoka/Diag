@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="DELETE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nuvo_diag.DiagnosticUtil</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>DiagnosticUtil</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var DiagnosticUtil = Class.create();
+DiagnosticUtil.prototype = {
+    initialize: function() {},
+    run: function(probeType) {
+
+        var probeTypeGR = this.getProbeType(probeType);
+        var probes = new GlideRecord('x_nuvo_diag_probes');
+        var encodedQuery = 'tool=diagnostic^active=true^probe_type=' + probeTypeGR;
+        probes.addEncodedQuery(encodedQuery);
+        probes.orderBy('order');
+        probes.query();
+        while (probes.next()) {
+            this.initiateLog(probes.name);
+            var evaluator = new GlideScopedEvaluator();
+            evaluator.evaluateScript(probes, 'script');
+        }
+    },
+
+    getProbeType: function(probeTypeName) {
+        var probeTypeGR = new GlideRecord('x_nuvo_diag_probe_type');
+        probeTypeGR.addQuery('name', probeTypeName);
+        probeTypeGR.query();
+	
+        if (probeTypeGR.hasNext()) {
+            probeTypeGR.next();
+            return probeTypeGR.sys_id;
+        }
+        return null;
+
+    },
+
+    //function to check system properties for incorrect/overwritten values
+    checkSystemProperty: function(property, expectedValue, stateIfNotExpectedValue) {
+        var propertiesGR = new GlideRecord('sys_properties');
+        propertiesGR.get('name', property);
+        var state = 'normal';
+        var message = "";
+        if (propertiesGR) {
+            if (propertiesGR.value && propertiesGR.value.toLowerCase() != expectedValue.toLowerCase()) {
+                state = stateIfNotExpectedValue;
+				message = "System Property: " + property + ' has a value of ' + propertiesGR.value + '. The expected value is ' + expectedValue;
+			this.handleOutput(message, state, "Mobile");
+            }
+            
+        } else {
+            state = 'warning';
+            message = 'System property: ' + property + ' was not found';
+			this.handleOutput(message, state, "Mobile");
+        }
+        
+
+        return propertiesGR;
+    },
+
+
+    // returns value of single property
+    getSystemProperties: function(property) {
+        var prop = gs.getProperty(property);
+        return prop;
+
+    },
+
+    //returns a printed list of what property values are
+    printSystemProperties: function(properties) {
+        var propertiesGR = this.getSystemProperties(properties);
+        while (propertiesGR.next()) {
+            this.handleOutput(propertiesGR.name + ': ' + propertiesGR.value, 'information', true);
+
+        }
+    },
+    //comma seperated property. Same thing as above but with Nuvolo properties. Unknown use
+    getNuvoloProperties: function(properties, context) {
+
+        var prop_array = properties.split(',');
+        var nuvProperties = new x_nuvo_mobile.NuvoloProperties();
+
+        for (var i = 0; i < prop_array.length; i++) {
+
+            var property = nuvProperties.getProperty(prop_array[i], context);
+            this.handleOutput(property, 'information', true);
+
+        }
+
+    },
+	//function that gives the highest level of the space hierarchy used on an instance
+	findTopLevel: function(){
+		var topLevel = -1;
+		var spaceGR = new GlideRecord('x_nuvo_eam_region');
+		spaceGR.query();
+		if (spaceGR.next() && topLevel == -1){
+			topLevel = 0;
+		}
+		var spaceGR2 = new GlideRecord('x_nuvo_eam_campus');
+		spaceGR2.query();
+		if (spaceGR2.next() && topLevel == -1){
+			topLevel = 1;
+		}
+		var spaceGR3 = new GlideRecord('x_nuvo_eam_building');
+		spaceGR3.query();
+		if (spaceGR3.next() && topLevel == -1){
+			topLevel = 2;
+		}
+		var spaceGR4 = new GlideRecord('x_nuvo_eam_floor');
+		spaceGR4.query();
+		if (spaceGR4.next() && topLevel == -1){
+			topLevel = 3;
+		}
+		return topLevel;
+	},
+
+    //same thing as above but with one single property
+    getNuvoloProperty: function(property, context) {
+
+        var nuvProperties = new x_nuvo_mobile.NuvoloProperties();
+        var result = nuvProperties.getProperty(property, context);
+        this.handleOutput(result, 'information', true);
+		
+    },
+
+    //checks for duplicate property values
+    checkDuplicateOverrides: function(context) {
+        var nuvPropGR = new GlideRecord('x_nuvo_mobile_nuvolo_property');
+        nuvPropGR.addEncodedQuery('is_override=True^active=True^context.name=' + context);
+        nuvPropGR.query();
+        var tempArr = new Array();
+
+        while (nuvPropGR.next()) {
+            if (tempArr.indexOf(nuvPropGR.getValue('name')) != -1) {
+                return nuvPropGR.name;
+            } else {
+                tempArr.push(nuvPropGR.getValue('name'));
+            }
+        }
+        return false;
+    },
+
+    //gets a parent table if one exists
+    getTableParent: function(tableName) {
+
+        var gr = new GlideRecord('sys_db_object'); //tables table
+        gr.addQuery('name', tableName);
+        gr.setLimit(1);
+        gr.query();
+        while (gr.next()) {
+
+            if (gr.super_class) {
+                return gr.super_class.name; //returns the parent table name here
+            } else {
+                return 'No Parent Table for :' + tableName;
+            }
+        }
+
+        return 'Table Not Found: ' + tableName;
+    },
+    //for printing schemas used for Mobile
+    printSchemasByApplicationScope: function(appscope) {
+        var encodedQuery = "application=" + appscope;
+        this.printSchemaRecords(encodedQuery);
+
+    },
+    //called from PrintSchemaRecords
+    getSchemaRecords: function(encodedQuery) {
+        var gr = new GlideRecord('x_nuvo_mobile_schema');
+        gr.addEncodedQuery(encodedQuery);
+        gr.query();
+        return gr;
+
+    },
+    //called by PrintSchemasByApplicationScope
+    printSchemaRecords: function(encodedQuery) {
+        var results = this.getSchemaRecords(encodedQuery);
+
+        this.handleOutput('Checking Schema records', 'information', false);
+
+        if (results && results.hasNext()) {
+            while (results.next()) {
+                this.handleOutput('table :' + results.table + ", application: " + results.sys_scope + ', active: ' + results.active + ' pre cacheable : ' + results.pre_cacheable, 'information', true);
+
+            }
+        }
+    },
+
+    //checks if there are relevant files skipped that should be checked
+    checkUpgradeHistory: function(targetName) {
+        var search = new global.DiagnosticInterScopeSearch();
+        var history = search.searchTable('sys_upgrade_history_log', 'dispositionIN4,9^type_priority=1^ORtype_priority=2^typeLIKEmacro^ORtypeLIKEui script^ORtypeLIKEscript include^ORtypeLIKEui page^ORtypeLIKEscripted rest resource^target_nameLIKE' + targetName);
+
+        if (history.length > 1) {
+            return true;
+        } else {
+            return false;
+        }
+		
+    },
+
+    listSkippedChanges: function(targetName) {
+        var search = new global.DiagnosticInterScopeSearch();
+        var history = search.searchTable('sys_upgrade_history_log', 'dispositionIN4,9^typeLIKEmacro^ORtypeLIKEui script^ORtypeLIKEscript include^ORtypeLIKEui page^ORtypeLIKEscripted rest resource^target_nameLIKE' + targetName);
+        return history;
+    },
+
+    initiateLog: function(name) {
+        this.handleOutput('Initiate Scan for ' + name, 'information', false);
+
+    },
+    handleOutput: function(message, level, cat) {
+
+        if (level == 'Error' || level == 'error') {
+            level = 'Error';
+        } else if (level == 'Warning' || level == 'warning') {
+            level = 'Warning';
+        } else if (level == 'Critical' || level == 'critical') {
+            level = 'Critical';
+        } else {
+            level = 'Information';
+        }
+        this.generateLog(level, message,cat);
+
+    },
+    generateLog: function(level, message, cat) {
+        var probeLogs = new GlideRecord("x_nuvo_diag_probe_log");
+        probeLogs.initialize();
+        probeLogs.setValue('level', level);
+        probeLogs.setValue('message', message);
+        probeLogs.setValue('probe_category', cat);
+        probeLogs.insert();
+    },
+    type: 'DiagnosticUtil'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-02 17:53:26</sys_created_on>
+        <sys_id>8e34be0e1be730507798a9b7624bcb4c</sys_id>
+        <sys_mod_count>131</sys_mod_count>
+        <sys_name>DiagnosticUtil</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy>protected</sys_policy>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_script_include_8e34be0e1be730507798a9b7624bcb4c</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:32:33</sys_updated_on>
+    </sys_script_include>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_script_include_8e34be0e1be730507798a9b7624bcb4c</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;
+    &lt;sys_script_include action="INSERT_OR_UPDATE"&gt;
+        &lt;access&gt;public&lt;/access&gt;
+        &lt;active&gt;true&lt;/active&gt;
+        &lt;api_name&gt;x_nuvo_diag.DiagnosticUtil&lt;/api_name&gt;
+        &lt;caller_access/&gt;
+        &lt;client_callable&gt;false&lt;/client_callable&gt;
+        &lt;description/&gt;
+        &lt;mobile_callable&gt;false&lt;/mobile_callable&gt;
+        &lt;name&gt;DiagnosticUtil&lt;/name&gt;
+        &lt;sandbox_callable&gt;false&lt;/sandbox_callable&gt;
+        &lt;script&gt;&lt;![CDATA[var DiagnosticUtil = Class.create();
+DiagnosticUtil.prototype = {
+    initialize: function() {},
+    run: function(probeType) {
+
+        var probeTypeGR = this.getProbeType(probeType);
+        var probes = new GlideRecord('x_nuvo_diag_probes');
+        var encodedQuery = 'tool=diagnostic^active=true^probe_type=' + probeTypeGR;
+        probes.addEncodedQuery(encodedQuery);
+        probes.orderBy('order');
+        probes.query();
+        while (probes.next()) {
+            this.initiateLog(probes.name);
+            var evaluator = new GlideScopedEvaluator();
+            evaluator.evaluateScript(probes, 'script');
+        }
+    },
+
+    getProbeType: function(probeTypeName) {
+        var probeTypeGR = new GlideRecord('x_nuvo_diag_probe_type');
+        probeTypeGR.addQuery('name', probeTypeName);
+        probeTypeGR.query();
+	
+        if (probeTypeGR.hasNext()) {
+            probeTypeGR.next();
+            return probeTypeGR.sys_id;
+        }
+        return null;
+
+    },
+
+    //function to check system properties for incorrect/overwritten values
+    checkSystemProperty: function(property, expectedValue, stateIfNotExpectedValue) {
+        var propertiesGR = new GlideRecord('sys_properties');
+        propertiesGR.get('name', property);
+        var state = 'normal';
+        var message = "";
+        if (propertiesGR) {
+            if (propertiesGR.value &amp;&amp; propertiesGR.value.toLowerCase() != expectedValue.toLowerCase()) {
+                state = stateIfNotExpectedValue;
+				message = "System Property: " + property + ' has a value of ' + propertiesGR.value + '. The expected value is ' + expectedValue;
+			this.handleOutput(message, state, "Mobile");
+            }
+            
+        } else {
+            state = 'warning';
+            message = 'System property: ' + property + ' was not found';
+			this.handleOutput(message, state, "Mobile");
+        }
+        
+
+        return propertiesGR;
+    },
+
+
+    // returns value of single property
+    getSystemProperties: function(property) {
+        var prop = gs.getProperty(property);
+        return prop;
+
+    },
+
+    //returns a printed list of what property values are
+    printSystemProperties: function(properties) {
+        var propertiesGR = this.getSystemProperties(properties);
+        while (propertiesGR.next()) {
+            this.handleOutput(propertiesGR.name + ': ' + propertiesGR.value, 'information', true);
+
+        }
+    },
+    //comma seperated property. Same thing as above but with Nuvolo properties. Unknown use
+    getNuvoloProperties: function(properties, context) {
+
+        var prop_array = properties.split(',');
+        var nuvProperties = new x_nuvo_mobile.NuvoloProperties();
+
+        for (var i = 0; i &lt; prop_array.length; i++) {
+
+            var property = nuvProperties.getProperty(prop_array[i], context);
+            this.handleOutput(property, 'information', true);
+
+        }
+
+    },
+	//function that gives the highest level of the space hierarchy used on an instance
+	findTopLevel: function(){
+		var topLevel = -1;
+		var spaceGR = new GlideRecord('x_nuvo_eam_region');
+		spaceGR.query();
+		if (spaceGR.next() &amp;&amp; topLevel == -1){
+			topLevel = 0;
+		}
+		var spaceGR2 = new GlideRecord('x_nuvo_eam_campus');
+		spaceGR2.query();
+		if (spaceGR2.next() &amp;&amp; topLevel == -1){
+			topLevel = 1;
+		}
+		var spaceGR3 = new GlideRecord('x_nuvo_eam_building');
+		spaceGR3.query();
+		if (spaceGR3.next() &amp;&amp; topLevel == -1){
+			topLevel = 2;
+		}
+		var spaceGR4 = new GlideRecord('x_nuvo_eam_floor');
+		spaceGR4.query();
+		if (spaceGR4.next() &amp;&amp; topLevel == -1){
+			topLevel = 3;
+		}
+		return topLevel;
+	},
+
+    //same thing as above but with one single property
+    getNuvoloProperty: function(property, context) {
+
+        var nuvProperties = new x_nuvo_mobile.NuvoloProperties();
+        var result = nuvProperties.getProperty(property, context);
+        this.handleOutput(result, 'information', true);
+		
+    },
+
+    //checks for duplicate property values
+    checkDuplicateOverrides: function(context) {
+        var nuvPropGR = new GlideRecord('x_nuvo_mobile_nuvolo_property');
+        nuvPropGR.addEncodedQuery('is_override=True^active=True^context.name=' + context);
+        nuvPropGR.query();
+        var tempArr = new Array();
+
+        while (nuvPropGR.next()) {
+            if (tempArr.indexOf(nuvPropGR.getValue('name')) != -1) {
+                return nuvPropGR.name;
+            } else {
+                tempArr.push(nuvPropGR.getValue('name'));
+            }
+        }
+        return false;
+    },
+
+    //gets a parent table if one exists
+    getTableParent: function(tableName) {
+
+        var gr = new GlideRecord('sys_db_object'); //tables table
+        gr.addQuery('name', tableName);
+        gr.setLimit(1);
+        gr.query();
+        while (gr.next()) {
+
+            if (gr.super_class) {
+                return gr.super_class.name; //returns the parent table name here
+            } else {
+                return 'No Parent Table for :' + tableName;
+            }
+        }
+
+        return 'Table Not Found: ' + tableName;
+    },
+    //for printing schemas used for Mobile
+    printSchemasByApplicationScope: function(appscope) {
+        var encodedQuery = "application=" + appscope;
+        this.printSchemaRecords(encodedQuery);
+
+    },
+    //called from PrintSchemaRecords
+    getSchemaRecords: function(encodedQuery) {
+        var gr = new GlideRecord('x_nuvo_mobile_schema');
+        gr.addEncodedQuery(encodedQuery);
+        gr.query();
+        return gr;
+
+    },
+    //called by PrintSchemasByApplicationScope
+    printSchemaRecords: function(encodedQuery) {
+        var results = this.getSchemaRecords(encodedQuery);
+
+        this.handleOutput('Checking Schema records', 'information', false);
+
+        if (results &amp;&amp; results.hasNext()) {
+            while (results.next()) {
+                this.handleOutput('table :' + results.table + ", application: " + results.sys_scope + ', active: ' + results.active + ' pre cacheable : ' + results.pre_cacheable, 'information', true);
+
+            }
+        }
+    },
+
+    //checks if there are relevant files skipped that should be checked
+    checkUpgradeHistory: function(targetName) {
+        var search = new global.DiagnosticInterScopeSearch();
+        var history = search.searchTable('sys_upgrade_history_log', 'dispositionIN4,9^type_priority=1^ORtype_priority=2^typeLIKEmacro^ORtypeLIKEui script^ORtypeLIKEscript include^ORtypeLIKEui page^ORtypeLIKEscripted rest resource^target_nameLIKE' + targetName);
+
+        if (history.length &gt; 1) {
+            return true;
+        } else {
+            return false;
+        }
+		
+    },
+
+    listSkippedChanges: function(targetName) {
+        var search = new global.DiagnosticInterScopeSearch();
+        var history = search.searchTable('sys_upgrade_history_log', 'dispositionIN4,9^typeLIKEmacro^ORtypeLIKEui script^ORtypeLIKEscript include^ORtypeLIKEui page^ORtypeLIKEscripted rest resource^target_nameLIKE' + targetName);
+        return history;
+    },
+
+    initiateLog: function(name) {
+        this.handleOutput('Initiate Scan for ' + name, 'information', false);
+
+    },
+    handleOutput: function(message, level, cat) {
+
+        if (level == 'Error' || level == 'error') {
+            level = 'Error';
+        } else if (level == 'Warning' || level == 'warning') {
+            level = 'Warning';
+        } else if (level == 'Critical' || level == 'critical') {
+            level = 'Critical';
+        } else {
+            level = 'Information';
+        }
+        this.generateLog(level, message,cat);
+
+    },
+    generateLog: function(level, message, cat) {
+        var probeLogs = new GlideRecord("x_nuvo_diag_probe_log");
+        probeLogs.initialize();
+        probeLogs.setValue('level', level);
+        probeLogs.setValue('message', message);
+        probeLogs.setValue('probe_category', cat);
+        probeLogs.insert();
+    },
+    type: 'DiagnosticUtil'
+};]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Anthony.Santos@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2021-11-02 17:53:26&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;8e34be0e1be730507798a9b7624bcb4c&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;131&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;DiagnosticUtil&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy&gt;protected&lt;/sys_policy&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sys_script_include_8e34be0e1be730507798a9b7624bcb4c&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-09-17 11:32:33&lt;/sys_updated_on&gt;
+    &lt;/sys_script_include&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-890807318</payload_hash>
+        <record_name>DiagnosticUtil</record_name>
+        <reverted_from/>
+        <source>90d92d473b8d5610bec04760c5e45a1e</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-09 09:05:47</sys_created_on>
+        <sys_id>c1d96d473b8d5610bec04760c5e45a8f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1927086fb7f0000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-09 09:05:47</sys_updated_on>
+        <type>Script Include</type>
+        <update_guid>8dd96d47748d5610d1244c911cdc9a8e</update_guid>
+        <update_guid_history>8dd96d47748d5610d1244c911cdc9a8e:0,54a36e24eaf01a10bf1acc6db4d1c93c:-711299002</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:15:10</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
+        <sys_id>60591a4106f742c0ae5c59772eeb8100</sys_id>
+        <sys_metadata>8e34be0e1be730507798a9b7624bcb4c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>DiagnosticUtil</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy>protected</sys_policy>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_script_include_8e34be0e1be730507798a9b7624bcb4c</sys_update_name>
+        <sys_update_version display_value="sys_script_include_8e34be0e1be730507798a9b7624bcb4c">c1d96d473b8d5610bec04760c5e45a8f</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:15:10</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -2,7 +2,6 @@
     <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
         <active>true</active>
         <description>The CDN URL Property for the Real Estate Dashboard and Real Estate Asset Management Applications are pointing to a Staging Server, instead of the Production Server, due to an Override Value contained in the Store Download used to install/upgrade the to the Sweden version of Nuvolo.</description>
-        <healthcheck_type/>
         <name>Incorrect Real Estate Properties</name>
         <order/>
         <probe_type display_value="Real Estate">6b21b1151ba09510ae5b21b5ec4bcb4e</probe_type>
@@ -22,14 +21,13 @@ if (gr_real.next()) {
         <sys_created_by>michael.peck@nuvolo.com</sys_created_by>
         <sys_created_on>2023-05-24 13:22:04</sys_created_on>
         <sys_id>76b28bb41b0f251088b2777e0a4bcbef</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Incorrect Real Estate Properties</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_76b28bb41b0f251088b2777e0a4bcbef</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2023-05-25 20:40:40</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

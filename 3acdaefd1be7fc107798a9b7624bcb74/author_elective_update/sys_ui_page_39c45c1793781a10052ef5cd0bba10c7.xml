@@ -60,7 +60,7 @@
         <sys_parent/>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
         <sys_update_name>sys_ui_page_39c45c1793781a10052ef5cd0bba10c7</sys_update_name>
         <sys_update_version display_value="sys_ui_page_39c45c1793781a10052ef5cd0bba10c7">a085549793781a10052ef5cd0bba1051</sys_update_version>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>

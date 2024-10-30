@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>false</active>
+        <description>Import PI job data CSV with attribute keys that contain parenthesis or dashes will fail to import.&#13;
+&#13;
+Steps to reproduce&#13;
+&#13;
+1. Create a PI job with an attribute key that includes any of these characters ( - ).&#13;
+&#13;
+2. Generate the CSV template.&#13;
+&#13;
+3. Notice the illegal attribute key is the column header name.&#13;
+&#13;
+4. Populate the template with data.&#13;
+&#13;
+5. Import the CSV file.</description>
+        <name>Unusable Characters</name>
+        <order/>
+        <probe_type display_value="Physical Inventory">86f2c5091bac1510ae5b21b5ec4bcb62</probe_type>
+        <remediation>Remove illegal characters from attribute keys.&#13;
+&#13;
+Generate a new CSV template.&#13;
+&#13;
+Populate the CSV with data.&#13;
+&#13;
+Import the CSV.</remediation>
+        <script><![CDATA[//This issue is not reproducible
+var util = new x_nuvo_diag.DiagnosticUtil();
+util.handleOutput('Please remove the illegal characters(-) from the attribute keys and then generate a new CSV template. Populate the CSV with data and Import the CSV. You can check the import log and confirm that the import has been done successfully. ','warning', 'true');]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 17:55:00</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>44a7c4d01b7c9150ae5b21b5ec4bcb50</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Unusable Characters</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_44a7c4d01b7c9150ae5b21b5ec4bcb50</sys_update_name>
+        <sys_updated_by>Apurva.Saxena@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-08-22 11:26:50</sys_updated_on>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>x_nuvo_diag_probes_44a7c4d01b7c9150ae5b21b5ec4bcb50</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;false&lt;/active&gt;&lt;description&gt;Import PI job data CSV with attribute keys that contain parenthesis or dashes will fail to import.&amp;#13;
+&amp;#13;
+Steps to reproduce&amp;#13;
+&amp;#13;
+1. Create a PI job with an attribute key that includes any of these characters ( - ).&amp;#13;
+&amp;#13;
+2. Generate the CSV template.&amp;#13;
+&amp;#13;
+3. Notice the illegal attribute key is the column header name.&amp;#13;
+&amp;#13;
+4. Populate the template with data.&amp;#13;
+&amp;#13;
+5. Import the CSV file.&lt;/description&gt;&lt;name&gt;Unusable Characters&lt;/name&gt;&lt;order/&gt;&lt;probe_type display_value="Physical Inventory"&gt;86f2c5091bac1510ae5b21b5ec4bcb62&lt;/probe_type&gt;&lt;remediation&gt;Remove illegal characters from attribute keys.&amp;#13;
+&amp;#13;
+Generate a new CSV template.&amp;#13;
+&amp;#13;
+Populate the CSV with data.&amp;#13;
+&amp;#13;
+Import the CSV.&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[//This issue is not reproducible
+var util = new x_nuvo_diag.DiagnosticUtil();
+util.handleOutput('Please remove the illegal characters(-) from the attribute keys and then generate a new CSV template. Populate the CSV with data and Import the CSV. You can check the import log and confirm that the import has been done successfully. ','warning', 'true');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Michael.Piazza@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-15 17:55:00&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;false&lt;/sys_customer_update&gt;&lt;sys_id&gt;44a7c4d01b7c9150ae5b21b5ec4bcb50&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Unusable Characters&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_44a7c4d01b7c9150ae5b21b5ec4bcb50&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Apurva.Saxena@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-08-22 11:26:50&lt;/sys_updated_on&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-377087763</payload_hash>
+        <record_name>Unusable Characters</record_name>
+        <reverted_from/>
+        <source>55f2c7d71b94d910ae5b21b5ec4bcbfd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Apurva.Saxena@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-22 11:26:50</sys_created_on>
+        <sys_id>9cab1ed4db611d105f598b050596195e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182c54e2bcb0000001</sys_recorded_at>
+        <sys_updated_by>Apurva.Saxena@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-08-22 11:26:50</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>d0ab1ed459611d10ed40fcb64eee1f5e</update_guid>
+        <update_guid_history>d0ab1ed459611d10ed40fcb64eee1f5e:-377087763,b58a0c943c7c9150a57d8f2eeb6fd007:831525357,fb0840149a7c91500781482bb273fb59:-839179258</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">dba749971be95950ae5b21b5ec4bcb3d</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-31 13:01:48</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>50edf528df4c4cb89d64f28a89dbfce4</sys_id>
+        <sys_metadata>44a7c4d01b7c9150ae5b21b5ec4bcb50</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Unusable Characters</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_44a7c4d01b7c9150ae5b21b5ec4bcb50</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_44a7c4d01b7c9150ae5b21b5ec4bcb50">9cab1ed4db611d105f598b050596195e</sys_update_version>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-08-31 13:01:48</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

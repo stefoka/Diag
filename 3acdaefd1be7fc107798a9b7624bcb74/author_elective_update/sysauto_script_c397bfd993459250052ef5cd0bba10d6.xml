@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="DELETE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Remove Nuvolo Temp Access</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="Kaloyan Yanakov">1de5b79d93e0d610052ef5cd0bba10c7</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2024-10-04 08:55:51</run_start>
+        <run_time>1970-01-01 19:50:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[(function executeScheduledJob() {
+
+    var tempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    tempAccess.addEncodedQuery('status=granted^end_of_accessONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()');
+    tempAccess.query();
+
+    var emails = [];
+
+    while (tempAccess.next()) {
+
+        if (tempAccess.assigned_to_email) {
+            emails.push(tempAccess.assigned_to_email.toString());
+        }
+
+        // if (tempAccess.additional_assignee_email) {
+
+        //     var additionalEmails = tempAccess.additional_assignee_email.split(',');
+        //     for (var i = 0; i < additionalEmails.length; i++) {
+        //         emails.push(additionalEmails[i].trim());
+        //     }
+        // }
+
+        for (var j = 0; j < emails.length; j++) {
+            var userGR = new GlideRecord('sys_user');
+            userGR.addQuery('email', emails[j]);
+            userGR.query();
+
+            if (userGR.next()) {
+                userGR.active = false;
+                userGR.update();
+            }
+        }
+
+        tempAccess.status = 'expired';
+        tempAccess.update();
+    }
+
+	//Expire Agent Accesses, where Expiration Date is in the future, but Client Environment Access is expired due to no more open Cases in Nuvolo for the Client
+	
+	var checkTempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    checkTempAccess.addEncodedQuery('status=granted');
+    checkTempAccess.query();
+
+	var tempEmailsStr = '';
+
+	while (checkTempAccess.next()) {
+		tempEmailsStr += checkTempAccess.assigned_to_email + ',';
+	}
+
+	var api = new HealthCheckHelper();
+	var expiredAccessEmails = api.getExpiredClientEnvironmentAccessByEmails(tempEmailsStr);
+
+	var tempAccessToExpire = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    tempAccessToExpire.addEncodedQuery('assigned_to_emailIN' + expiredAccessEmails + '^status=granted');
+    tempAccessToExpire.query();
+
+	while(tempAccessToExpire.next()) {
+
+		//Expire the Nuvolo Temporary Access record of the Agent
+		tempAccessToExpire.status = 'expired';
+		tempAccessToExpire.update();
+
+		var agent = new GlideRecord('sys_user');
+		agent.addQuery('email', tempAccessToExpire.assigned_to_email);
+		agent.query();
+
+		//Deactivate the related User record of the Agent
+		if (agent.next()) {
+			agent.active = false;
+			agent.update();
+		}
+	}
+
+
+
+})(current, previous);]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-04 09:05:16</sys_created_on>
+        <sys_id>c397bfd993459250052ef5cd0bba10d6</sys_id>
+        <sys_mod_count>25</sys_mod_count>
+        <sys_name>Remove Nuvolo Temp Access</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sysauto_script_c397bfd993459250052ef5cd0bba10d6</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-22 13:13:47</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+    <sys_es_latest_script action="DELETE">
+        <id>c397bfd993459250052ef5cd0bba10d6</id>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-21 12:26:19</sys_created_on>
+        <sys_id>7bca8043471952506d8ba835126d4373</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-21 12:26:19</sys_updated_on>
+        <table>sysauto_script</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sysauto_script_c397bfd993459250052ef5cd0bba10d6</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sysauto_script"&gt;
+    &lt;sysauto_script action="INSERT_OR_UPDATE"&gt;
+        &lt;active&gt;true&lt;/active&gt;
+        &lt;business_calendar/&gt;
+        &lt;condition/&gt;
+        &lt;conditional&gt;false&lt;/conditional&gt;
+        &lt;entered_time&gt;1970-01-01 00:00:00&lt;/entered_time&gt;
+        &lt;max_drift/&gt;
+        &lt;name&gt;Remove Nuvolo Temp Access&lt;/name&gt;
+        &lt;offset/&gt;
+        &lt;offset_type&gt;0&lt;/offset_type&gt;
+        &lt;run_as display_value="Kaloyan Yanakov"&gt;1de5b79d93e0d610052ef5cd0bba10c7&lt;/run_as&gt;
+        &lt;run_as_tz/&gt;
+        &lt;run_dayofmonth&gt;1&lt;/run_dayofmonth&gt;
+        &lt;run_dayofweek&gt;1&lt;/run_dayofweek&gt;
+        &lt;run_period/&gt;
+        &lt;run_start&gt;2024-10-04 08:55:51&lt;/run_start&gt;
+        &lt;run_time&gt;1970-01-01 19:50:00&lt;/run_time&gt;
+        &lt;run_type&gt;daily&lt;/run_type&gt;
+        &lt;script&gt;&lt;![CDATA[(function executeScheduledJob() {
+
+    var tempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    tempAccess.addEncodedQuery('status=granted^end_of_accessONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()');
+    tempAccess.query();
+
+    var emails = [];
+
+    while (tempAccess.next()) {
+
+        if (tempAccess.assigned_to_email) {
+            emails.push(tempAccess.assigned_to_email.toString());
+        }
+
+        // if (tempAccess.additional_assignee_email) {
+
+        //     var additionalEmails = tempAccess.additional_assignee_email.split(',');
+        //     for (var i = 0; i &lt; additionalEmails.length; i++) {
+        //         emails.push(additionalEmails[i].trim());
+        //     }
+        // }
+
+        for (var j = 0; j &lt; emails.length; j++) {
+            var userGR = new GlideRecord('sys_user');
+            userGR.addQuery('email', emails[j]);
+            userGR.query();
+
+            if (userGR.next()) {
+                userGR.active = false;
+                userGR.update();
+            }
+        }
+
+        tempAccess.status = 'expired';
+        tempAccess.update();
+    }
+
+	//Expire Agent Accesses, where Expiration Date is in the future, but Client Environment Access is expired due to no more open Cases in Nuvolo for the Client
+	
+	var checkTempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    checkTempAccess.addEncodedQuery('status=granted');
+    checkTempAccess.query();
+
+	var tempEmailsStr = '';
+
+	while (checkTempAccess.next()) {
+		tempEmailsStr += checkTempAccess.assigned_to_email + ',';
+	}
+
+	var api = new HealthCheckHelper();
+	var expiredAccessEmails = api.getExpiredClientEnvironmentAccessByEmails(tempEmailsStr);
+
+	var tempAccessToExpire = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    tempAccessToExpire.addEncodedQuery('assigned_to_emailIN' + expiredAccessEmails + '^status=granted');
+    tempAccessToExpire.query();
+
+	while(tempAccessToExpire.next()) {
+
+		//Expire the Nuvolo Temporary Access record of the Agent
+		tempAccessToExpire.status = 'expired';
+		tempAccessToExpire.update();
+
+		var agent = new GlideRecord('sys_user');
+		agent.addQuery('email', tempAccessToExpire.assigned_to_email);
+		agent.query();
+
+		//Deactivate the related User record of the Agent
+		if (agent.next()) {
+			agent.active = false;
+			agent.update();
+		}
+	}
+
+
+
+})(current, previous);]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;sysauto_script&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-10-04 09:05:16&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;c397bfd993459250052ef5cd0bba10d6&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;25&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Remove Nuvolo Temp Access&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sysauto_script_c397bfd993459250052ef5cd0bba10d6&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-10-22 13:13:47&lt;/sys_updated_on&gt;
+        &lt;time_zone/&gt;
+        &lt;upgrade_safe&gt;false&lt;/upgrade_safe&gt;
+    &lt;/sysauto_script&gt;
+    &lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;
+        &lt;id&gt;c397bfd993459250052ef5cd0bba10d6&lt;/id&gt;
+        &lt;sys_created_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-10-21 12:26:19&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;7bca8043471952506d8ba835126d4373&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-10-21 12:26:19&lt;/sys_updated_on&gt;
+        &lt;table&gt;sysauto_script&lt;/table&gt;
+        &lt;use_es_latest&gt;false&lt;/use_es_latest&gt;
+    &lt;/sys_es_latest_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-93629919</payload_hash>
+        <record_name>Remove Nuvolo Temp Access</record_name>
+        <reverted_from/>
+        <source>4517b3883be5961054a7cda036e45ab7</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>current</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-25 08:12:34</sys_created_on>
+        <sys_id>b517f3883be5961054a7cda036e45a84</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192c2bc03330000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-25 08:12:34</sys_updated_on>
+        <type>Scheduled Script Execution</type>
+        <update_guid>7117f38898e596103a94de11f4b00a84</update_guid>
+        <update_guid_history>7117f38898e596103a94de11f4b00a84:0,6741091fcd599650b3677bc21e354d49:0,fdd9ad47b68d5610cd31f1fc42f9ce8c:0,4bcae0ed1341d210828e0874a9af73be:932034054</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:15:15</sys_created_on>
+        <sys_db_object display_value="" name="sysauto_script">sysauto_script</sys_db_object>
+        <sys_id>70ebef67b0c24461bd40869ef9d86ac9</sys_id>
+        <sys_metadata>c397bfd993459250052ef5cd0bba10d6</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Remove Nuvolo Temp Access</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sysauto_script_c397bfd993459250052ef5cd0bba10d6</sys_update_name>
+        <sys_update_version display_value="sysauto_script_c397bfd993459250052ef5cd0bba10d6">b517f3883be5961054a7cda036e45a84</sys_update_version>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:15:15</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

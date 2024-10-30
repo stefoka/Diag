@@ -2,7 +2,6 @@
     <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
         <active>true</active>
         <description>In AutoCAD Graphic Sync Preview never finishes loading</description>
-        <healthcheck_type/>
         <name>AutoCAD Graphic Sync Preview issue</name>
         <order>100</order>
         <probe_type display_value="CAD Extension">67b285011bac1510ae5b21b5ec4bcbb5</probe_type>
@@ -28,14 +27,13 @@ if (updateSet.getRowCount() > 0 || checkVersion.getRowCount() < 1) {
         <sys_created_by>Harshal.Sonawane@nuvolo.com</sys_created_by>
         <sys_created_on>2022-08-22 12:59:20</sys_created_on>
         <sys_id>2d4ce69c1bed1d10ae5b21b5ec4bcb54</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_name>AutoCAD Graphic Sync Preview issue</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_2d4ce69c1bed1d10ae5b21b5ec4bcb54</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-10-20 14:04:11</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

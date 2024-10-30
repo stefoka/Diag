@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="DELETE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <applies_to/>
+        <condition/>
+        <decision_type>allow</decision_type>
+        <description>Default access control on x_nuvo_diag_nuvolo_ootb_scripts_hashes</description>
+        <local_or_existing>Local</local_or_existing>
+        <name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</name>
+        <operation display_value="read">read</operation>
+        <script/>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-12 06:28:37</sys_created_on>
+        <sys_id>33e24a5a47e09a109d9f9915126d43d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_security_acl_33e24a5a47e09a109d9f9915126d43d8</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-12 06:28:37</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_security_acl_33e24a5a47e09a109d9f9915126d43d8</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <applies_to/>
+        <condition/>
+        <decision_type>allow</decision_type>
+        <description>Default access control on x_nuvo_diag_nuvolo_ootb_scripts_hashes</description>
+        <local_or_existing>Local</local_or_existing>
+        <name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</name>
+        <operation display_value="read">read</operation>
+        <script/>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-12 06:28:37</sys_created_on>
+        <sys_id>33e24a5a47e09a109d9f9915126d43d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_security_acl_33e24a5a47e09a109d9f9915126d43d8</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-12 06:28:37</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>]]></payload>
+        <payload_hash>123942188</payload_hash>
+        <record_name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</record_name>
+        <reverted_from/>
+        <source>e0d4566f3b9dd21054a7cda036e45a4f</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-23 11:46:19</sys_created_on>
+        <sys_id>d5d4566f3b9dd21054a7cda036e45ae5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192b932fcbe0000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-23 11:46:19</sys_updated_on>
+        <type>Access Control</type>
+        <update_guid>91d4566f149dd210d9b44707834720e5</update_guid>
+        <update_guid_history>91d4566f149dd210d9b44707834720e5:0,cf1e75e752111a50190d593c01ae1fa8:-1229038369,50dbe36da3511250a778458519294260:0,85128d65a79d52507bf3da4f4a4e7c08:-1229038369,d0f09793e985d610be544311f45f3092:0,bde6f943fccd56102d5474465707cdee:-1229038369,91d96d47e28d56109c2c900bc21b31cb:0,6f4d687ad18916100fccfb35729e37ab:-1229038369,fb5ecf128681d210563e117b2c914dc0:0,166c5c3522411210b53d56e01ff970a8:-1229038369,3acaa0ed1341d210c01f1c4c1622feb6:0,194e30a0e7cd1290eefe8897f4ace3cd:-1229038369,9ca36e24a4f01a107bbcd38a8c023389:2067165721</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:14:29</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl">sys_security_acl</sys_db_object>
+        <sys_id>0b46c192ac1b42b88e4b36b9c69ca440</sys_id>
+        <sys_metadata>33e24a5a47e09a109d9f9915126d43d8</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_nuvolo_ootb_scripts_hashes</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent display_value="">ec93a6243bf01a1054a7cda036e45ac0</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_security_acl_33e24a5a47e09a109d9f9915126d43d8</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_33e24a5a47e09a109d9f9915126d43d8">d5d4566f3b9dd21054a7cda036e45ae5</sys_update_version>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:14:29</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

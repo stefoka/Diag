@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="DELETE">
+        <choices/>
+        <description>A system parameter to track the currently run probe category for the Nuvolo Diagnostic tool. </description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_nuvo_diag.current_probe_cat</name>
+        <read_roles/>
+        <suffix>current_probe_cat</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-30 17:54:40</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>bbe0c5c31b691950ae5b21b5ec4bcb81</sys_id>
+        <sys_mod_count>32</sys_mod_count>
+        <sys_name>x_nuvo_diag.current_probe_cat</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_properties_bbe0c5c31b691950ae5b21b5ec4bcb81</sys_update_name>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 18:24:21</sys_updated_on>
+        <type>string</type>
+        <value>Reservation</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="DELETE" query="documentkey=bbe0c5c31b691950ae5b21b5ec4bcb81"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>sys_properties_bbe0c5c31b691950ae5b21b5ec4bcb81</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties"><sys_properties action="INSERT_OR_UPDATE"><choices/><description>A system parameter to track the currently run probe category for the Nuvolo Diagnostic tool. </description><ignore_cache>true</ignore_cache><is_private>false</is_private><name>x_nuvo_diag.current_probe_cat</name><read_roles/><suffix>current_probe_cat</suffix><sys_class_name>sys_properties</sys_class_name><sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by><sys_created_on>2022-08-30 17:54:40</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>bbe0c5c31b691950ae5b21b5ec4bcb81</sys_id><sys_mod_count>32</sys_mod_count><sys_name>x_nuvo_diag.current_probe_cat</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>sys_properties_bbe0c5c31b691950ae5b21b5ec4bcb81</sys_update_name><sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by><sys_updated_on>2022-09-15 18:24:21</sys_updated_on><type>string</type><value>Reservation</value><write_roles/></sys_properties><sys_translated_text action="delete_multiple" query="documentkey=bbe0c5c31b691950ae5b21b5ec4bcb81"/></record_update>]]></payload>
+        <payload_hash>1558890105</payload_hash>
+        <record_name>x_nuvo_diag.current_probe_cat</record_name>
+        <reverted_from/>
+        <source>55f2c7d71b94d910ae5b21b5ec4bcbfd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-09-15 18:24:21</sys_created_on>
+        <sys_id>0251afc01b4ed510ae5b21b5ec4bcbe0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>183426509920000001</sys_recorded_at>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 18:24:21</sys_updated_on>
+        <type>System Property</type>
+        <update_guid>c651afc0ec4ed5106d64d0170aa231df</update_guid>
+        <update_guid_history>c651afc0ec4ed5106d64d0170aa231df:1558890105,5127c7080902d51036fcf81058998053:-604756567,57a243046102d510b776369c967ccca0:-871620448,d9b1c3c01b02d510c83af6741d56b270:1330995960,1384e9ffe7b19510f3929d49da047f10:1558890105,6533edbf4eb19510dba3e3b50884e2fd:-1494266945,285c817d51f9159073eb81124d0bf350:-604756567,5ff80c087d3d1d500a3c0c77a969ecb2:-1333915161,76f60884f23d1d5090185dcb7a5d61cc:-1494266945,bfb6c444a03d1d50e15916748e349155:792193978,a5468004313d1d503b24fbd50dcc214f:1558890105,f6fffbbf1be91d50a62799bbb7ef6469:-1333915161,eebefb3f91e91d50d1b04a5f11bacbfc:792193978,6d9ebb3f51e91d50bb410b6911523ee8:-1494266945,987e3f3fc6e91d50f0a5b8374c9b4745:1558890105,474e6277e9a51d50f4400c79663124b5:-604756567,c7b4183bd7e9d9500cc839e44625eaa5:-1494266945,62b4d43b6ee9d950f423146336f8683a:1558890105,dc2f48737fe9d95078201bd44e0c6428:-1494266945,ba01676fdbe5d95048ee00e929c120f3:1558890105,bb217ea7f625d9508fedeb634e900f54:-604756567,b610b6e71825d9502a980b7eb07248ee:-871620448,270032e77a25d9509c6ede034c94431a:-1494266945,60ef26af3b655950686bca6d8567f9f6:-604756567,7d4f66a7c825d9500d6e1f837db628bb:1558890105,247c82efc761d950843cfd2b6bb012d5:1521537214,4ad33dd775ad5950a21bbe0ad486020a:-871620448,691bc1cf90691950ae5fb05f39689717:1558890105,35ea054b626919506fbb89a29334e5f4:-194209959,b405c50b9469195079d80c3664a0aa58:-1494266945,c144c9c77b691950320f7d2caf94df13:1558890105,b1044d874369195003c68c177b570ec7:-1494266945,ef110107fa6919500f524b153672d0ac:1330995960</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-09-16 14:30:05</sys_created_on>
+        <sys_db_object display_value="" name="sys_properties">sys_properties</sys_db_object>
+        <sys_id>10653d57eb684766820d55f83b536fe4</sys_id>
+        <sys_metadata>bbe0c5c31b691950ae5b21b5ec4bcb81</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag.current_probe_cat</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_properties_bbe0c5c31b691950ae5b21b5ec4bcb81</sys_update_name>
+        <sys_update_version display_value="sys_properties_bbe0c5c31b691950ae5b21b5ec4bcb81">0251afc01b4ed510ae5b21b5ec4bcbe0</sys_update_version>
+        <sys_updated_by>jake.ye@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-16 14:30:05</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

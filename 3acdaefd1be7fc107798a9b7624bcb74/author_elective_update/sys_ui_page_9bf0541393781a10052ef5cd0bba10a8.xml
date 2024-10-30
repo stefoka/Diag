@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="DELETE">
+        <category/>
+        <client_script><![CDATA[ function submitForm() {
+
+	var button = document.getElementById('submit-btn');
+	button.disabled = true;
+	var isLoading = true;
+
+	var accessTypeMap = {
+		admin: "Admin",
+		admin_read_only: "Admin Read-Only"
+	};
+	
+	var loader = document.getElementById('loader');
+	
+    var caseNumber = document.getElementById('case_number').value;
+    var endOfAccess = document.getElementById('end_of_access').value;
+    var accessType = document.getElementById('access_type').value;
+	var accessTypeText = accessTypeMap[accessType];
+
+	if (caseNumber == '' || endOfAccess == 'None' || accessType == 'None') {
+		document.getElementById('result_message').innerHTML = '';
+		document.getElementById('error_result_message').innerHTML = 'Please make sure all fields are populated before submitting the form';
+		return false;
+	}
+
+	var ga = new GlideAjax('NuvoloTempAccessAjax');
+	ga.addParam('sysparm_name', 'createTempAccessRecord');
+	ga.addParam('case_number', caseNumber);
+	ga.addParam('end_of_access', endOfAccess);
+	ga.addParam('access_type', accessType);
+	ga.addParam('access_type_text', accessTypeText);
+
+	ga.getXMLAnswer(function(response) {
+
+	if (response) {
+		var obj = JSON.parse(response);
+
+		var resultMessage = document.getElementById('result_message');
+		var errorMessage = document.getElementById('error_result_message');
+		var relatedList = document.getElementById('related-list-table');
+		var relatedListContainer = document.getElementById('related-list-container');
+
+		errorMessage.innerHTML = '';
+		resultMessage.innerHTML = '';
+		document.getElementById('temp_access_form').reset();
+		
+		//Remove previous records in the related list if any
+		var oldTrs = document.querySelectorAll('.data-row');
+	
+		for (var i = 0; i < oldTrs.length; i++){
+			oldTrs[i].classList.add('hidden');
+		}
+
+		if(obj.agents.length !== 0) {
+			loader.classList.remove('hidden');
+			for(var j = 0; j < obj.agents.length; j++) {
+
+				var tr = document.createElement("tr");
+				tr.classList.add('data-row');
+
+				var agent = obj.agents[j];
+				for (column in agent) {
+					var th = document.createElement("th");
+
+					if(column === "agent") {
+						var link = document.createElement("a");
+						link.href = agent[column].link;
+						link.target = "_blank";
+						link.innerText = agent[column].name;
+						th.appendChild(link);
+					}
+					else {
+						th.innerHTML = agent[column];
+					}
+		
+					tr.appendChild(th);
+				}
+
+				relatedList.appendChild(tr);
+			}
+			
+			setTimeout(function(){
+				isLoading = false;
+				loader.classList.add('hidden');
+				button.disabled = false;
+				relatedListContainer.classList.remove('hidden');
+				resultMessage.innerHTML = obj.message;
+			}, 2000);
+		}
+		else {
+			errorMessage.innerHTML = obj.message;
+			isLoading = false;
+			loader.classList.add('hidden');
+			button.disabled = false;
+			
+			if(!resultMessage.classList.contains('hidden')) {
+				relatedListContainer.classList.add('hidden');
+			}
+		}
+	} 
+	else {
+		errorMessage.innerHTML = 'An error occurred. Please try again.';
+		
+		isLoading = false;
+		loader.classList.add('hidden');
+		button.disabled = false;
+		
+		if(!resultMessage.classList.contains('hidden')) {
+			relatedListContainer.classList.add('hidden');
+		}
+	}
+
+});}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_nuvo_diag_nuvolo_temp_access_form.do</endpoint>
+        <html><![CDATA[<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: max-content;
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+		font-size: 3rem;
+    }
+	 #temp_access_form_container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    #temp_access_form {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #000;
+        font-weight: bold; /* Bold black */
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: #000; /* Regular black */
+        font-weight: normal; /* Normal weight */
+    }
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: #000; /* Regular black */
+        font-weight: normal; /* Normal weight */
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 25px; /* More rounded corners */
+        background-color: #28a745; /* Green */
+        color: black; /* Black text */
+        cursor: pointer;
+        font-weight: bold; /* Bold text */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    }
+    button:hover {
+        background-color: #218838; /* Darker green */
+		color: #fff; /* White */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Slightly larger shadow */
+    }
+    #result_message {
+        margin-top: 5px;
+        color: #28a745;
+        text-align: center;
+    }
+	#error_result_message {
+        margin-top: 5px;
+        color: #FF0000;
+        text-align: center;
+    }
+
+	#related-list-container {
+		margin: 20px 0;
+		text-align: center;
+	}
+
+	table {
+		background: #fff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 560px;
+	}
+
+	tr {
+		border-bottom: 1px solid grey;
+	}
+	
+	tbody tr {
+		background-color: #F1F1F1; /* Light grey */
+		border-bottom: 1px solid grey;
+	}
+
+	table tr:last-child {
+		border-bottom: none;
+	}
+
+	th {
+		text-align: center;
+		margin-right: 10px;
+		padding: 8px;
+		border-right: 1px solid grey;
+	}
+
+	tr th:last-child {
+		border-right: none;
+	}
+
+	.data-row th{
+		font-weight: 500;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	a {
+		cursor: pointer;
+		color: blue;
+	}
+
+	//Loader
+	#loader {
+		position: relative !important;
+		width: 80px !important;
+		height: 80px !important;
+		animation: rotate 2s linear infinite !important;
+	}
+
+	svg circle {
+		width: 100%;
+		height: 100%;
+		fill: none;
+		stroke-width: 5;
+		stroke-linecap: round;
+		stroke: #00a1ff;
+		stroke-dasharray: 200;
+		stroke-dashoffset: 200;
+		animation: animate 1s linear infinite;
+	}
+
+	//ANIMATIONS
+
+	@keyframes rotate {
+		0%
+		{
+			transform: rotate(0deg);
+		}
+		100% 
+		{
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes animate {
+		0%, 100%
+		{
+			stroke-dashoffset: 200;
+		}
+		50% 
+		{
+			stroke-dashoffset: 0;
+		}
+		50.1% 
+		{
+			stroke-dashoffset: 400;
+		}
+	}
+
+</style>
+
+<div>
+ <div id="temp_access_form_container">
+    <h1>Nuvolo Temporary Access Request</h1>
+    <form id="temp_access_form">
+        <label for="case_number">Case Number:</label>
+        <input type="text" id="case_number" name="case_number" required="required" />
+        
+        <label for="end_of_access">End of Access (Days):</label>
+        <select id="end_of_access" name="end_of_access" required="required">
+			<option value="None">None</option>
+            <option value="1">1 Day</option>
+            <option value="3">3 Days</option>
+            <option value="7">7 Days</option>
+            <option value="14">14 Days</option>
+            <option value="30">30 Days</option>
+        </select>
+        
+        <label for="access_type">Access Type:</label>
+        <select id="access_type" name="access_type" required="required">
+			<option value="None">None</option>
+            <option value="admin">Admin</option>
+            <option value="admin_read_only">Admin Read-Only</option>
+        </select>
+        
+        <button id="submit-btn" type="button" onclick="submitForm()">Submit</button>
+
+		<div id="result_message"></div>
+		<div id="error_result_message"></div>
+    </form>
+
+	<svg id="loader" class="hidden">
+		<circle cx="150" cy="60" r="30">
+		</circle>
+	</svg>
+
+	<div id="related-list-container" class="hidden">
+		<h4>Access was granted to:</h4>
+		<table id="related-list-table">
+			<tr>
+				<th>Agent</th>
+				<th>Email</th>
+				<th>Access Type</th>
+				<th>End of Access</th>
+			</tr>
+		</table>
+	</div>
+</div>
+</div>
+]]></html>
+        <name>nuvolo_temp_access_form</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-27 11:10:21</sys_created_on>
+        <sys_id>9bf0541393781a10052ef5cd0bba10a8</sys_id>
+        <sys_mod_count>199</sys_mod_count>
+        <sys_name>nuvolo_temp_access_form</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ui_page_9bf0541393781a10052ef5cd0bba10a8</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-28 07:56:33</sys_updated_on>
+    </sys_ui_page>
+    <sys_es_latest_script action="DELETE">
+        <id>9bf0541393781a10052ef5cd0bba10a8</id>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-14 14:53:26</sys_created_on>
+        <sys_id>e2596cf493999610052ef5cd0bba10c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-14 14:53:26</sys_updated_on>
+        <table>sys_ui_page</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_ui_page_9bf0541393781a10052ef5cd0bba10a8</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_page"&gt;
+    &lt;sys_ui_page action="INSERT_OR_UPDATE"&gt;
+        &lt;category/&gt;
+        &lt;client_script&gt;&lt;![CDATA[ function submitForm() {
+
+	var button = document.getElementById('submit-btn');
+	button.disabled = true;
+	var isLoading = true;
+
+	var accessTypeMap = {
+		admin: "Admin",
+		admin_read_only: "Admin Read-Only"
+	};
+	
+	var loader = document.getElementById('loader');
+	
+    var caseNumber = document.getElementById('case_number').value;
+    var endOfAccess = document.getElementById('end_of_access').value;
+    var accessType = document.getElementById('access_type').value;
+	var accessTypeText = accessTypeMap[accessType];
+
+	if (caseNumber == '' || endOfAccess == 'None' || accessType == 'None') {
+		document.getElementById('result_message').innerHTML = '';
+		document.getElementById('error_result_message').innerHTML = 'Please make sure all fields are populated before submitting the form';
+		return false;
+	}
+
+	var ga = new GlideAjax('NuvoloTempAccessAjax');
+	ga.addParam('sysparm_name', 'createTempAccessRecord');
+	ga.addParam('case_number', caseNumber);
+	ga.addParam('end_of_access', endOfAccess);
+	ga.addParam('access_type', accessType);
+	ga.addParam('access_type_text', accessTypeText);
+
+	ga.getXMLAnswer(function(response) {
+
+	if (response) {
+		var obj = JSON.parse(response);
+
+		var resultMessage = document.getElementById('result_message');
+		var errorMessage = document.getElementById('error_result_message');
+		var relatedList = document.getElementById('related-list-table');
+		var relatedListContainer = document.getElementById('related-list-container');
+
+		errorMessage.innerHTML = '';
+		resultMessage.innerHTML = '';
+		document.getElementById('temp_access_form').reset();
+		
+		//Remove previous records in the related list if any
+		var oldTrs = document.querySelectorAll('.data-row');
+	
+		for (var i = 0; i &lt; oldTrs.length; i++){
+			oldTrs[i].classList.add('hidden');
+		}
+
+		if(obj.agents.length !== 0) {
+			loader.classList.remove('hidden');
+			for(var j = 0; j &lt; obj.agents.length; j++) {
+
+				var tr = document.createElement("tr");
+				tr.classList.add('data-row');
+
+				var agent = obj.agents[j];
+				for (column in agent) {
+					var th = document.createElement("th");
+
+					if(column === "agent") {
+						var link = document.createElement("a");
+						link.href = agent[column].link;
+						link.target = "_blank";
+						link.innerText = agent[column].name;
+						th.appendChild(link);
+					}
+					else {
+						th.innerHTML = agent[column];
+					}
+		
+					tr.appendChild(th);
+				}
+
+				relatedList.appendChild(tr);
+			}
+			
+			setTimeout(function(){
+				isLoading = false;
+				loader.classList.add('hidden');
+				button.disabled = false;
+				relatedListContainer.classList.remove('hidden');
+				resultMessage.innerHTML = obj.message;
+			}, 2000);
+		}
+		else {
+			errorMessage.innerHTML = obj.message;
+			isLoading = false;
+			loader.classList.add('hidden');
+			button.disabled = false;
+			
+			if(!resultMessage.classList.contains('hidden')) {
+				relatedListContainer.classList.add('hidden');
+			}
+		}
+	} 
+	else {
+		errorMessage.innerHTML = 'An error occurred. Please try again.';
+		
+		isLoading = false;
+		loader.classList.add('hidden');
+		button.disabled = false;
+		
+		if(!resultMessage.classList.contains('hidden')) {
+			relatedListContainer.classList.add('hidden');
+		}
+	}
+
+});}]]&gt;&lt;/client_script&gt;
+        &lt;description/&gt;
+        &lt;direct&gt;false&lt;/direct&gt;
+        &lt;endpoint&gt;x_nuvo_diag_nuvolo_temp_access_form.do&lt;/endpoint&gt;
+        &lt;html&gt;&lt;![CDATA[&lt;style&gt;
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: max-content;
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+		font-size: 3rem;
+    }
+	 #temp_access_form_container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    #temp_access_form {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #000;
+        font-weight: bold; /* Bold black */
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: #000; /* Regular black */
+        font-weight: normal; /* Normal weight */
+    }
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: #000; /* Regular black */
+        font-weight: normal; /* Normal weight */
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 25px; /* More rounded corners */
+        background-color: #28a745; /* Green */
+        color: black; /* Black text */
+        cursor: pointer;
+        font-weight: bold; /* Bold text */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    }
+    button:hover {
+        background-color: #218838; /* Darker green */
+		color: #fff; /* White */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Slightly larger shadow */
+    }
+    #result_message {
+        margin-top: 5px;
+        color: #28a745;
+        text-align: center;
+    }
+	#error_result_message {
+        margin-top: 5px;
+        color: #FF0000;
+        text-align: center;
+    }
+
+	#related-list-container {
+		margin: 20px 0;
+		text-align: center;
+	}
+
+	table {
+		background: #fff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 560px;
+	}
+
+	tr {
+		border-bottom: 1px solid grey;
+	}
+	
+	tbody tr {
+		background-color: #F1F1F1; /* Light grey */
+		border-bottom: 1px solid grey;
+	}
+
+	table tr:last-child {
+		border-bottom: none;
+	}
+
+	th {
+		text-align: center;
+		margin-right: 10px;
+		padding: 8px;
+		border-right: 1px solid grey;
+	}
+
+	tr th:last-child {
+		border-right: none;
+	}
+
+	.data-row th{
+		font-weight: 500;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	a {
+		cursor: pointer;
+		color: blue;
+	}
+
+	//Loader
+	#loader {
+		position: relative !important;
+		width: 80px !important;
+		height: 80px !important;
+		animation: rotate 2s linear infinite !important;
+	}
+
+	svg circle {
+		width: 100%;
+		height: 100%;
+		fill: none;
+		stroke-width: 5;
+		stroke-linecap: round;
+		stroke: #00a1ff;
+		stroke-dasharray: 200;
+		stroke-dashoffset: 200;
+		animation: animate 1s linear infinite;
+	}
+
+	//ANIMATIONS
+
+	@keyframes rotate {
+		0%
+		{
+			transform: rotate(0deg);
+		}
+		100% 
+		{
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes animate {
+		0%, 100%
+		{
+			stroke-dashoffset: 200;
+		}
+		50% 
+		{
+			stroke-dashoffset: 0;
+		}
+		50.1% 
+		{
+			stroke-dashoffset: 400;
+		}
+	}
+
+&lt;/style&gt;
+
+&lt;div&gt;
+ &lt;div id="temp_access_form_container"&gt;
+    &lt;h1&gt;Nuvolo Temporary Access Request&lt;/h1&gt;
+    &lt;form id="temp_access_form"&gt;
+        &lt;label for="case_number"&gt;Case Number:&lt;/label&gt;
+        &lt;input type="text" id="case_number" name="case_number" required="required" /&gt;
+        
+        &lt;label for="end_of_access"&gt;End of Access (Days):&lt;/label&gt;
+        &lt;select id="end_of_access" name="end_of_access" required="required"&gt;
+			&lt;option value="None"&gt;None&lt;/option&gt;
+            &lt;option value="1"&gt;1 Day&lt;/option&gt;
+            &lt;option value="3"&gt;3 Days&lt;/option&gt;
+            &lt;option value="7"&gt;7 Days&lt;/option&gt;
+            &lt;option value="14"&gt;14 Days&lt;/option&gt;
+            &lt;option value="30"&gt;30 Days&lt;/option&gt;
+        &lt;/select&gt;
+        
+        &lt;label for="access_type"&gt;Access Type:&lt;/label&gt;
+        &lt;select id="access_type" name="access_type" required="required"&gt;
+			&lt;option value="None"&gt;None&lt;/option&gt;
+            &lt;option value="admin"&gt;Admin&lt;/option&gt;
+            &lt;option value="admin_read_only"&gt;Admin Read-Only&lt;/option&gt;
+        &lt;/select&gt;
+        
+        &lt;button id="submit-btn" type="button" onclick="submitForm()"&gt;Submit&lt;/button&gt;
+
+		&lt;div id="result_message"&gt;&lt;/div&gt;
+		&lt;div id="error_result_message"&gt;&lt;/div&gt;
+    &lt;/form&gt;
+
+	&lt;svg id="loader" class="hidden"&gt;
+		&lt;circle cx="150" cy="60" r="30"&gt;
+		&lt;/circle&gt;
+	&lt;/svg&gt;
+
+	&lt;div id="related-list-container" class="hidden"&gt;
+		&lt;h4&gt;Access was granted to:&lt;/h4&gt;
+		&lt;table id="related-list-table"&gt;
+			&lt;tr&gt;
+				&lt;th&gt;Agent&lt;/th&gt;
+				&lt;th&gt;Email&lt;/th&gt;
+				&lt;th&gt;Access Type&lt;/th&gt;
+				&lt;th&gt;End of Access&lt;/th&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+]]&gt;&lt;/html&gt;
+        &lt;name&gt;nuvolo_temp_access_form&lt;/name&gt;
+        &lt;processing_script/&gt;
+        &lt;sys_class_name&gt;sys_ui_page&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-09-27 11:10:21&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;9bf0541393781a10052ef5cd0bba10a8&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;199&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;nuvolo_temp_access_form&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sys_ui_page_9bf0541393781a10052ef5cd0bba10a8&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-10-28 07:56:33&lt;/sys_updated_on&gt;
+    &lt;/sys_ui_page&gt;
+    &lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;
+        &lt;id&gt;9bf0541393781a10052ef5cd0bba10a8&lt;/id&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-10-14 14:53:26&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;e2596cf493999610052ef5cd0bba10c3&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-10-14 14:53:26&lt;/sys_updated_on&gt;
+        &lt;table&gt;sys_ui_page&lt;/table&gt;
+        &lt;use_es_latest&gt;false&lt;/use_es_latest&gt;
+    &lt;/sys_es_latest_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>28161027</payload_hash>
+        <record_name>nuvolo_temp_access_form</record_name>
+        <reverted_from/>
+        <source>47015f4d3b659210bec04760c5e45a32</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-28 08:00:20</sys_created_on>
+        <sys_id>bf019f4d3b659210bec04760c5e45a3b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192d223e4350000001</sys_recorded_at>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-28 08:00:20</sys_updated_on>
+        <type>UI Page</type>
+        <update_guid>7b019f4d02659210d55bf39d833d043b</update_guid>
+        <update_guid_history>7b019f4d02659210d55bf39d833d043b:0,20700407b5d156502479a7b1560dca22:0,3a20bb7e04515650c7546f31ad464198:0,1cdbe36d04511250fd0d4d9cf000297b:0,43cae0ed0641d21025fa0c542dbe3a58:1797181976</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:15:13</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_page">sys_ui_page</sys_db_object>
+        <sys_id>36ca91ce86934dd0ae10d6680723b240</sys_id>
+        <sys_metadata>9bf0541393781a10052ef5cd0bba10a8</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>nuvolo_temp_access_form</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_ui_page_9bf0541393781a10052ef5cd0bba10a8</sys_update_name>
+        <sys_update_version display_value="sys_ui_page_9bf0541393781a10052ef5cd0bba10a8">bf019f4d3b659210bec04760c5e45a3b</sys_update_version>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:15:13</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

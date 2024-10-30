@@ -2,7 +2,6 @@
     <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
         <active>true</active>
         <description>Checking for duplicate overrides of Nuvolo Properties</description>
-        <healthcheck_type/>
         <name>Duplicate Nuv Properties - Calibration</name>
         <order>100</order>
         <probe_type display_value="Calibration">41d2c9091bac1510ae5b21b5ec4bcbbf</probe_type>
@@ -31,14 +30,13 @@ if (z != false) {
         <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
         <sys_created_on>2022-07-13 16:19:06</sys_created_on>
         <sys_id>97ee9deb1bacdd10ae5b21b5ec4bcb46</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Duplicate Nuv Properties - Calibration</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_97ee9deb1bacdd10ae5b21b5ec4bcb46</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 19:18:29</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

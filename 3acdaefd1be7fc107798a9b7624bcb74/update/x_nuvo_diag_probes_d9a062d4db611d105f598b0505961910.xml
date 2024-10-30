@@ -16,7 +16,6 @@ User should see the pre checklist button.&#13;
 &#13;
 Actual Result:&#13;
 Pre checklist button not available on the work order created by rounds.</description>
-        <healthcheck_type/>
         <name>Checklist not available</name>
         <order>100</order>
         <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
@@ -42,14 +41,13 @@ if (updSet.next()) {
         <sys_created_by>Apurva.Saxena@nuvolo.com</sys_created_by>
         <sys_created_on>2022-08-22 11:50:13</sys_created_on>
         <sys_id>d9a062d4db611d105f598b0505961910</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Checklist not available</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_d9a062d4db611d105f598b0505961910</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 19:20:14</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

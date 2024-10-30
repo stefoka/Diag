@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_wizard_answer">
+    <sys_wizard_answer action="DELETE">
+        <active>true</active>
+        <answer>Probe Script Item</answer>
+        <button_label/>
+        <dependent_value/>
+        <element/>
+        <name>Probe Script Item</name>
+        <next_question/>
+        <order>100</order>
+        <payload_name/>
+        <question display_value="Application File" name="Application File">e488d802db0220106f7d1cbd1396193b</question>
+        <roles/>
+        <script/>
+        <sys_class_name>sys_wizard_answer</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-26 09:02:33</sys_created_on>
+        <sys_id>176ca2f247f496109d9f9915126d4361</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Probe Script Item</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_wizard_answer_176ca2f247f496109d9f9915126d4361</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-26 09:02:33</sys_updated_on>
+        <table/>
+        <target_url>x_nuvo_diag_probe_script_item.do</target_url>
+        <type>1</type>
+    </sys_wizard_answer>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_wizard_answer_176ca2f247f496109d9f9915126d4361</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_wizard_answer">
+    <sys_wizard_answer action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <answer>Probe Script Item</answer>
+        <button_label/>
+        <dependent_value/>
+        <element/>
+        <name>Probe Script Item</name>
+        <next_question/>
+        <order>100</order>
+        <payload_name/>
+        <question display_value="Application File" name="Application File">e488d802db0220106f7d1cbd1396193b</question>
+        <roles/>
+        <script/>
+        <sys_class_name>sys_wizard_answer</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-26 09:02:33</sys_created_on>
+        <sys_id>176ca2f247f496109d9f9915126d4361</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Probe Script Item</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_wizard_answer_176ca2f247f496109d9f9915126d4361</sys_update_name>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-26 09:02:33</sys_updated_on>
+        <table/>
+        <target_url>x_nuvo_diag_probe_script_item.do</target_url>
+        <type>1</type>
+    </sys_wizard_answer>
+</record_update>]]></payload>
+        <payload_hash>-1721208262</payload_hash>
+        <record_name>Probe Script Item</record_name>
+        <reverted_from/>
+        <source>3f2a9fb23b7c5a50bec04760c5e45a5c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-26 12:22:35</sys_created_on>
+        <sys_id>213a53f23b7c5a50bec04760c5e45a8f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1922e487de40000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-26 12:22:35</sys_updated_on>
+        <type>Answer</type>
+        <update_guid>ed3a53f24a7c5a50255dba857f3b7e8e</update_guid>
+        <update_guid_history>ed3a53f24a7c5a50255dba857f3b7e8e:-1721208262</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:14:39</sys_created_on>
+        <sys_db_object display_value="" name="sys_wizard_answer">sys_wizard_answer</sys_db_object>
+        <sys_id>1965f04dc5d741309ec6b58121a01224</sys_id>
+        <sys_metadata>176ca2f247f496109d9f9915126d4361</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Probe Script Item</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent display_value="Application File">e488d802db0220106f7d1cbd1396193b</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_wizard_answer_176ca2f247f496109d9f9915126d4361</sys_update_name>
+        <sys_update_version display_value="sys_wizard_answer_176ca2f247f496109d9f9915126d4361">213a53f23b7c5a50bec04760c5e45a8f</sys_update_version>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:14:39</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="update_synch=true" db_object_id="cdf0c42d476496109d9f9915126d43e9" extends="sys_metadata" label="Probes" max_length="40" name="x_nuvo_diag_probes" type="collection">
-        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
-        <element label="Description" max_length="4000" name="description" type="string"/>
-        <element choice="1" label="HealthCheck type" max_length="40" name="healthcheck_type" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Data integrity" value="data_integrity"/>
-                <element inactive_on_update="false" label="Feature Usage" value="feature_usage"/>
-                <element inactive_on_update="false" label="OOTB Percentage" value="ootb"/>
-                <element inactive_on_update="false" label="Upgrade Conflicts" value="upgrade_conflicts"/>
-            </choice>
-        </element>
-        <element label="Name" max_length="40" name="name" type="string"/>
-        <element label="Order" max_length="40" name="order" type="string"/>
-        <element label="Probe Category" mandatory="true" max_length="32" name="probe_type" reference="x_nuvo_diag_probe_type" type="reference"/>
-        <element label="Remediation" max_length="4000" name="remediation" type="string"/>
+    <element attributes="update_synch=true" db_object_id="07a390281b4e5110af1833b4cc4bcb39" extends="sys_metadata" label="Probes" max_length="40" name="x_nuvo_diag_probes" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Remediation" max_length="4000" name="remediation" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Description" max_length="4000" name="description" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Name" max_length="40" name="name" type="string"/>
         <element label="Script" max_length="8000" name="script" type="script"/>
-        <element choice="1" label="Tool" mandatory="true" max_length="40" name="tool" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Diagnostic" value="diagnostic"/>
-                <element inactive_on_update="false" label="Health" value="health"/>
-            </choice>
-        </element>
+        <element attributes="edge_encryption_enabled=true" label="Order" max_length="40" name="order" type="string"/>
+        <element attributes="encode_utf8=false" label="Probe Category" max_length="32" name="probe_type" reference="x_nuvo_diag_probe_type" type="reference"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
         <index name="index">
             <element name="probe_type"/>
         </index>

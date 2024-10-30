@@ -20,7 +20,6 @@ Default drawing units for AutoCAD DesignCenter blocks:&#13;
 16 = Hectometers; 17 = Gigameters; 18 = Astronomical&#13;
 units;&#13;
 19 = Light years; 20 = Parsec</description>
-        <healthcheck_type/>
         <name>Ensure DXF Unit Conversion Exist</name>
         <order>100</order>
         <probe_type display_value="CAD Extension">67b285011bac1510ae5b21b5ec4bcbb5</probe_type>
@@ -67,14 +66,13 @@ while (crdGR.next()){
         <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
         <sys_created_on>2022-07-15 20:01:26</sys_created_on>
         <sys_id>8e74ac58db3c51505f598b05059619e8</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>Ensure DXF Unit Conversion Exist</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_8e74ac58db3c51505f598b05059619e8</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-10-24 13:49:16</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

@@ -2,7 +2,6 @@
     <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
         <active>true</active>
         <description>If you modify an existing Asset so that it should no longer meet the Asset Condition of a Scheduled Maintenance Definition (SMD), the asset will still be considered a match for the SMD until after the next scheduled recurrence of that SMD</description>
-        <healthcheck_type/>
         <name>Updating or changing asset on SM</name>
         <order>100</order>
         <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
@@ -16,14 +15,13 @@ util.handleOutput("If you modify an existing Asset so that it should no longer m
         <sys_created_by>Harshal.Sonawane@nuvolo.com</sys_created_by>
         <sys_created_on>2022-08-02 11:27:15</sys_created_on>
         <sys_id>4b399739db8ddd105f598b05059619a2</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Updating or changing asset on SM</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_4b399739db8ddd105f598b05059619a2</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 19:18:58</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="DELETE">
+        <category>general</category>
+        <client_script><![CDATA[window.onload = function() {
+    var diableButton = document.getElementById('run_button');
+    diableButton.setAttribute('disabled', true);
+};
+
+function enableButton() {
+    if (gel('probe_type').value != null || gel('probe_type').value != '' || gel('probe_type').value != undefined) {
+        var enableButton = document.getElementById('run_button');
+        enableButton.disabled = false;
+    }
+}
+
+function runOrScanDiagnostic() {
+    var category = gel('probe_type').value;
+    var categoryDisplay = gel('sys_display.probe_type').value;
+    var user = "${gs.getUser().name}";
+    var loadingDialog = new GlideDialogWindow("dialog_loading", true);
+    loadingDialog.setPreference('table', 'loading');
+    loadingDialog.setTitle('Loading...');
+    loadingDialog.render();
+    setTimeout(function() {
+        var ga = new GlideAjax('x_nuvo_diag.DiagnosticUtilHelper');
+        ga.addParam('sysparm_name', 'probeRun');
+        ga.addParam('sysparm_category', categoryDisplay.toString());
+        ga.getXMLAnswer(getResponse);
+
+        function getResponse(response) {
+            var table = '<iframe src="x_nuvo_diag_probe_log_list.do?sysparm_query=sys_created_onRELATIVEGT@minute@ago@4^messageNOT LIKEinitiate^sys_created_by=' + user + '^probe_category=' + categoryDisplay + '^ORprobe_category=' + category + '" style="min-height:720px;width:100%;" scrolling="no" frameborder="0.1" ></iframe>';
+            document.getElementById('dvTable').innerHTML = table;
+            loadingDialog.destroy();
+        }
+    }, "3000");
+}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_nuvo_diag_diagnostic_scan.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+    <g2:macro_invoke macro="x_nuvo_diag_diagnostic_tool_header" title="Diagnostic Tool" />
+    <g:evaluate>
+    </g:evaluate>
+    <div class="card">
+        <form>
+            <div class="row mt-4 mx-5">
+                <div class="col-md-3 mt-1">
+                    <label>Select the Probe Category</label>
+                </div>
+                <div class="col-md-9" onclick="enableButton()">
+                    <g:ui_reference name="probe_type" id="probe_type" table="x_nuvo_diag_probe_type" displayValue="${sys_display.probe_type}" value="${name}" query="active=true" completer="AJAXTableCompleter" ref_decoration_disabled="true" show_popup="false" />
+                </div>
+            </div>
+            <div class="row mt-4 mx-5">
+                <div class="offset-md-10 col-md-2 mr-0">
+                    <div style="float:right;">
+                        <g:dialog_button onclick="runOrScanDiagnostic()" id="run_button"  disabled="true" type="button" class="btn btn-primary" style="width:100%;
+																																	   disabled = 'true';
+					font-weight: 400;																										color: #f7f7f7; 
+					float:right;
+					margin-left:12px;
+					background-color:#5bc0de;">
+                            Run/Scan Diagnostics
+                        </g:dialog_button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr style="color: #f7f7f7;" />
+        <div class="row mt-4 mx-5">
+            <div class="col-md-12">
+                <div id="dvTable"/>
+            </div>
+        </div>
+    </div>
+</j:jelly>]]></html>
+        <name>diagnostic_scan</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-12 15:21:22</sys_created_on>
+        <sys_id>ad37351d1b37f41467b05356624bcbf7</sys_id>
+        <sys_mod_count>93</sys_mod_count>
+        <sys_name>diagnostic_scan</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy>protected</sys_policy>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ui_page_ad37351d1b37f41467b05356624bcbf7</sys_update_name>
+        <sys_updated_by>jake.ye@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-11-08 14:43:47</sys_updated_on>
+    </sys_ui_page>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_ui_page_ad37351d1b37f41467b05356624bcbf7</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_page"&gt;
+    &lt;sys_ui_page action="INSERT_OR_UPDATE"&gt;
+        &lt;category&gt;general&lt;/category&gt;
+        &lt;client_script&gt;&lt;![CDATA[window.onload = function() {
+    var diableButton = document.getElementById('run_button');
+    diableButton.setAttribute('disabled', true);
+};
+
+function enableButton() {
+    if (gel('probe_type').value != null || gel('probe_type').value != '' || gel('probe_type').value != undefined) {
+        var enableButton = document.getElementById('run_button');
+        enableButton.disabled = false;
+    }
+}
+
+function runOrScanDiagnostic() {
+    var category = gel('probe_type').value;
+    var categoryDisplay = gel('sys_display.probe_type').value;
+    var user = "${gs.getUser().name}";
+    var loadingDialog = new GlideDialogWindow("dialog_loading", true);
+    loadingDialog.setPreference('table', 'loading');
+    loadingDialog.setTitle('Loading...');
+    loadingDialog.render();
+    setTimeout(function() {
+        var ga = new GlideAjax('x_nuvo_diag.DiagnosticUtilHelper');
+        ga.addParam('sysparm_name', 'probeRun');
+        ga.addParam('sysparm_category', categoryDisplay.toString());
+        ga.getXMLAnswer(getResponse);
+
+        function getResponse(response) {
+            var table = '&lt;iframe src="x_nuvo_diag_probe_log_list.do?sysparm_query=sys_created_onRELATIVEGT@minute@ago@4^messageNOT LIKEinitiate^sys_created_by=' + user + '^probe_category=' + categoryDisplay + '^ORprobe_category=' + category + '" style="min-height:720px;width:100%;" scrolling="no" frameborder="0.1" &gt;&lt;/iframe&gt;';
+            document.getElementById('dvTable').innerHTML = table;
+            loadingDialog.destroy();
+        }
+    }, "3000");
+}]]&gt;&lt;/client_script&gt;
+        &lt;description/&gt;
+        &lt;direct&gt;false&lt;/direct&gt;
+        &lt;endpoint&gt;x_nuvo_diag_diagnostic_scan.do&lt;/endpoint&gt;
+        &lt;html&gt;&lt;![CDATA[&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null"&gt;
+    &lt;g2:macro_invoke macro="x_nuvo_diag_diagnostic_tool_header" title="Diagnostic Tool" /&gt;
+    &lt;g:evaluate&gt;
+    &lt;/g:evaluate&gt;
+    &lt;div class="card"&gt;
+        &lt;form&gt;
+            &lt;div class="row mt-4 mx-5"&gt;
+                &lt;div class="col-md-3 mt-1"&gt;
+                    &lt;label&gt;Select the Probe Category&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class="col-md-9" onclick="enableButton()"&gt;
+                    &lt;g:ui_reference name="probe_type" id="probe_type" table="x_nuvo_diag_probe_type" displayValue="${sys_display.probe_type}" value="${name}" query="active=true" completer="AJAXTableCompleter" ref_decoration_disabled="true" show_popup="false" /&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="row mt-4 mx-5"&gt;
+                &lt;div class="offset-md-10 col-md-2 mr-0"&gt;
+                    &lt;div style="float:right;"&gt;
+                        &lt;g:dialog_button onclick="runOrScanDiagnostic()" id="run_button"  disabled="true" type="button" class="btn btn-primary" style="width:100%;
+																																	   disabled = 'true';
+					font-weight: 400;																										color: #f7f7f7; 
+					float:right;
+					margin-left:12px;
+					background-color:#5bc0de;"&gt;
+                            Run/Scan Diagnostics
+                        &lt;/g:dialog_button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+        &lt;hr style="color: #f7f7f7;" /&gt;
+        &lt;div class="row mt-4 mx-5"&gt;
+            &lt;div class="col-md-12"&gt;
+                &lt;div id="dvTable"/&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/j:jelly&gt;]]&gt;&lt;/html&gt;
+        &lt;name&gt;diagnostic_scan&lt;/name&gt;
+        &lt;processing_script/&gt;
+        &lt;sys_class_name&gt;sys_ui_page&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Anthony.Santos@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2021-11-12 15:21:22&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;ad37351d1b37f41467b05356624bcbf7&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;93&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;diagnostic_scan&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy&gt;protected&lt;/sys_policy&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sys_ui_page_ad37351d1b37f41467b05356624bcbf7&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;jake.ye@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2022-11-08 14:43:47&lt;/sys_updated_on&gt;
+    &lt;/sys_ui_page&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>1048517335</payload_hash>
+        <record_name>diagnostic_scan</record_name>
+        <reverted_from/>
+        <source>af8366243bf01a1054a7cda036e45a18</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-19 08:37:50</sys_created_on>
+        <sys_id>49a3ae243bf01a1054a7cda036e45ac9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192096e35ec0000001</sys_recorded_at>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-19 08:37:50</sys_updated_on>
+        <type>UI Page</type>
+        <update_guid>09a3ae24c1f01a10bb41cec3546e0ac9</update_guid>
+        <update_guid_history>09a3ae24c1f01a10bb41cec3546e0ac9:1048517335</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:15:14</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_page">sys_ui_page</sys_db_object>
+        <sys_id>0efb35db57b2466284d26efe6ad1ac64</sys_id>
+        <sys_metadata>ad37351d1b37f41467b05356624bcbf7</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>diagnostic_scan</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy>protected</sys_policy>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_ui_page_ad37351d1b37f41467b05356624bcbf7</sys_update_name>
+        <sys_update_version display_value="sys_ui_page_ad37351d1b37f41467b05356624bcbf7">49a3ae243bf01a1054a7cda036e45ac9</sys_update_version>
+        <sys_updated_by>jake.ye@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:15:14</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

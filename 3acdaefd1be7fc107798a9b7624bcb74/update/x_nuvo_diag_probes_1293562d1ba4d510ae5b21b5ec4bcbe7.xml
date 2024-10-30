@@ -2,7 +2,6 @@
     <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
         <active>true</active>
         <description>Checks Upgrade History for Reservation Related scripts that might have been skipped</description>
-        <healthcheck_type/>
         <name>Upgrade History - Res</name>
         <order>100</order>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
@@ -18,14 +17,13 @@ if (skippedChanges == true) {
         <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
         <sys_created_on>2022-07-07 15:11:31</sys_created_on>
         <sys_id>1293562d1ba4d510ae5b21b5ec4bcbe7</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Upgrade History - Res</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_1293562d1ba4d510ae5b21b5ec4bcbe7</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 19:21:24</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>false</active>
+        <description/>
+        <name>Mobile SSO Table Check</name>
+        <order>400</order>
+        <probe_type display_value="Mobile SSO">e9dc377c1b681510ae5b21b5ec4bcb49</probe_type>
+        <remediation/>
+        <script><![CDATA[var diag = new x_nuvo_diag.DiagnosticUtil();
+//var result = diag.getTableParent('oauth_entity');
+var result = diag.getTableParent('x_nuvo_wm_shelf');
+if (result.startsWith('No Parent Table')){
+	gs.info('');
+	gs.error('******************* HI TICKET NEEDED *******************');
+	gs.info('');
+	
+	gs.info('The table oauth_entity has a null value of for extends table');
+	gs.info('The table oauth_entity should inherit from the application file Table (sys_metadata)');
+	gs.info('Please open a HI ticket with ServiceNow to address');
+	
+	gs.info('');
+	gs.info('*********************************************************');
+	gs.info('');
+}
+
+//gs.info(result);
+]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
+        <sys_created_on>2021-11-03 19:40:09</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>bb2cd4261b6f70507798a9b7624bcbf4</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>Mobile SSO Table Check</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_bb2cd4261b6f70507798a9b7624bcbf4</sys_update_name>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-05 14:48:24</sys_updated_on>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>91ee8d201b3bac1032182f8dee4bcbbf</instance_id>
+        <instance_name>ven04567</instance_name>
+        <name>x_nuvo_diag_probes_bb2cd4261b6f70507798a9b7624bcbf4</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;false&lt;/active&gt;&lt;description/&gt;&lt;name&gt;Mobile SSO Table Check&lt;/name&gt;&lt;order&gt;400&lt;/order&gt;&lt;probe_type display_value="Mobile SSO"&gt;e9dc377c1b681510ae5b21b5ec4bcb49&lt;/probe_type&gt;&lt;remediation/&gt;&lt;script&gt;&lt;![CDATA[var diag = new x_nuvo_diag.DiagnosticUtil();
+//var result = diag.getTableParent('oauth_entity');
+var result = diag.getTableParent('x_nuvo_wm_shelf');
+if (result.startsWith('No Parent Table')){
+	gs.info('');
+	gs.error('******************* HI TICKET NEEDED *******************');
+	gs.info('');
+	
+	gs.info('The table oauth_entity has a null value of for extends table');
+	gs.info('The table oauth_entity should inherit from the application file Table (sys_metadata)');
+	gs.info('Please open a HI ticket with ServiceNow to address');
+	
+	gs.info('');
+	gs.info('*********************************************************');
+	gs.info('');
+}
+
+//gs.info(result);
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Anthony.Santos@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2021-11-03 19:40:09&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;false&lt;/sys_customer_update&gt;&lt;sys_id&gt;bb2cd4261b6f70507798a9b7624bcbf4&lt;/sys_id&gt;&lt;sys_mod_count&gt;22&lt;/sys_mod_count&gt;&lt;sys_name&gt;Mobile SSO Table Check&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_bb2cd4261b6f70507798a9b7624bcbf4&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Michael.Piazza@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-07-05 14:48:24&lt;/sys_updated_on&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-804172297</payload_hash>
+        <record_name>Mobile SSO Table Check</record_name>
+        <reverted_from/>
+        <source>55f2c7d71b94d910ae5b21b5ec4bcbfd</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-05 14:48:24</sys_created_on>
+        <sys_id>707dbf7c1b681510ae5b21b5ec4bcbf9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>181ced5736e0000001</sys_recorded_at>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-05 14:48:24</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>787dbf7c05681510f68e60255e3765f8</update_guid>
+        <update_guid_history>787dbf7c05681510f68e60255e3765f8:-804172297,41a1839fed94d910ca50f184a2048ec6:-2037468300</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">874b62111ba55150ae5b21b5ec4bcb93</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-25 15:09:12</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>22181235a13949c5a48109e408b109b9</sys_id>
+        <sys_metadata>bb2cd4261b6f70507798a9b7624bcbf4</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Mobile SSO Table Check</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_bb2cd4261b6f70507798a9b7624bcbf4</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_bb2cd4261b6f70507798a9b7624bcbf4">707dbf7c1b681510ae5b21b5ec4bcbf9</sys_update_version>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-08-25 15:09:12</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

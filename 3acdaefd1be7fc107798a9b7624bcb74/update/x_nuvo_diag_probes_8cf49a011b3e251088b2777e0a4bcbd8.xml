@@ -14,7 +14,6 @@ Steps to reproduce&#13;
 4. Set Acquisition Cost to BETWEEN 0 AND 10000 in the Items to Include field.&#13;
 &#13;
 5. Create a new Capital Plan with this Configuration.</description>
-        <healthcheck_type/>
         <name>FX Currency Fields Issue - Facilities</name>
         <order/>
         <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
@@ -36,14 +35,13 @@ if(gr.next())
         <sys_created_by>pierson.arnold@nuvolo.com</sys_created_by>
         <sys_created_on>2023-05-12 18:22:42</sys_created_on>
         <sys_id>8cf49a011b3e251088b2777e0a4bcbd8</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>FX Currency Fields Issue - Facilities</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_8cf49a011b3e251088b2777e0a4bcbd8</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2023-05-25 22:22:13</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

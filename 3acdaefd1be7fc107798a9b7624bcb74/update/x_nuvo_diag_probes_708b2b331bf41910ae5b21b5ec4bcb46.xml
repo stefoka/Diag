@@ -7,7 +7,6 @@ Every time when a part is ordered, multiple manufacturers, as well as models, ar
 &#13;
 When we create any CPOLITM of part type and purchase any part, System is creating a new record in parts &amp; models table with the same number as Model name(in model) and OEM part name(in parts).&#13;
 </description>
-        <healthcheck_type/>
         <name>PartsSource -System creating Records </name>
         <order>100</order>
         <probe_type display_value="HTM Asset Management">5b9325951b609510ae5b21b5ec4bcb47</probe_type>
@@ -21,14 +20,13 @@ util.handleOutput('If using PartSource Integration, please navigate to script in
         <sys_created_by>Prasanna.Phadtare@nuvolo.com</sys_created_by>
         <sys_created_on>2022-07-27 08:04:17</sys_created_on>
         <sys_id>708b2b331bf41910ae5b21b5ec4bcb46</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>PartsSource -System creating Records </sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_708b2b331bf41910ae5b21b5ec4bcb46</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 19:20:46</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

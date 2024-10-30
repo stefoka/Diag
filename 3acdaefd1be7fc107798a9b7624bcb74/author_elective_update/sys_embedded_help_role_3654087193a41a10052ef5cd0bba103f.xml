@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="DELETE">
+        <order>10</order>
+        <role display_value="x_nuvo_diag.healthcheck_admin" name="x_nuvo_diag.healthcheck_admin">d62440b193a41a10052ef5cd0bba105c</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-10 07:58:37</sys_created_on>
+        <sys_id>3654087193a41a10052ef5cd0bba103f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>d62440b193a41a10052ef5cd0bba105c</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_embedded_help_role_3654087193a41a10052ef5cd0bba103f</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-10 07:58:37</sys_updated_on>
+    </sys_embedded_help_role>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_embedded_help_role_3654087193a41a10052ef5cd0bba103f</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>10</order>
+        <role display_value="x_nuvo_diag.healthcheck_admin" name="x_nuvo_diag.healthcheck_admin">d62440b193a41a10052ef5cd0bba105c</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-10 07:58:37</sys_created_on>
+        <sys_id>3654087193a41a10052ef5cd0bba103f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>d62440b193a41a10052ef5cd0bba105c</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_embedded_help_role_3654087193a41a10052ef5cd0bba103f</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-10 07:58:37</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>]]></payload>
+        <payload_hash>755158354</payload_hash>
+        <record_name>d62440b193a41a10052ef5cd0bba105c</record_name>
+        <reverted_from/>
+        <source>af8366243bf01a1054a7cda036e45a18</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-19 08:37:46</sys_created_on>
+        <sys_id>33932e243bf01a1054a7cda036e45a49</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192096e24460000001</sys_recorded_at>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-19 08:37:46</sys_updated_on>
+        <type>Embedded Help Role Priority</type>
+        <update_guid>ff932e2407f01a10167b07844a0a2148</update_guid>
+        <update_guid_history>ff932e2407f01a10167b07844a0a2148:755158354</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:15:07</sys_created_on>
+        <sys_db_object display_value="" name="sys_embedded_help_role">sys_embedded_help_role</sys_db_object>
+        <sys_id>1405f77d6cab4eaf824ec828a8e93839</sys_id>
+        <sys_metadata>3654087193a41a10052ef5cd0bba103f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>d62440b193a41a10052ef5cd0bba105c</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_embedded_help_role_3654087193a41a10052ef5cd0bba103f</sys_update_name>
+        <sys_update_version display_value="sys_embedded_help_role_3654087193a41a10052ef5cd0bba103f">33932e243bf01a1054a7cda036e45a49</sys_update_version>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:15:07</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

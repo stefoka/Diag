@@ -6,7 +6,6 @@
 Checks for Site having an associated space, checks that the space and site are either both active or both inactive, and checks if the site has a parent record.&#13;
 &#13;
 Need to add functionality in later releases to separate checks for spaces. </description>
-        <healthcheck_type/>
         <name>Site Hierarchy Check</name>
         <order>100</order>
         <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
@@ -79,14 +78,13 @@ if ((total - totalCorrect) != 0){
         <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
         <sys_created_on>2022-09-02 01:00:39</sys_created_on>
         <sys_id>32c57c7f1b6dd950ae5b21b5ec4bcb47</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Site Hierarchy Check</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_32c57c7f1b6dd950ae5b21b5ec4bcb47</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 19:26:27</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

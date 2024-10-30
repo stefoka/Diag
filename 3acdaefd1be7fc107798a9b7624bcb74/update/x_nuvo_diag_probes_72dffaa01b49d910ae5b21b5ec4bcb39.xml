@@ -4,7 +4,6 @@
         <description>Nuvolo's back-end application runs on the ServiceNow platform. Each new release of Nuvolo will be certified on the latest supported ServiceNow releases available at the time of release. ServiceNow supports the latest version of its platform as well as two versions of lower.&#13;
 &#13;
 In this Probe, we are going to check if the installed ServiceNow version is compatible with the Nuvolo version.</description>
-        <healthcheck_type/>
         <name>Platform Compatibility with ServiceNow</name>
         <order>100</order>
         <probe_type display_value="ServiceNow">285139dd1ba09510ae5b21b5ec4bcb64</probe_type>
@@ -91,14 +90,13 @@ if (result == -1) {
         <sys_created_by>Samadhan.Gaikwad@nuvolo.com</sys_created_by>
         <sys_created_on>2022-07-29 12:13:55</sys_created_on>
         <sys_id>72dffaa01b49d910ae5b21b5ec4bcb39</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>Platform Compatibility with ServiceNow</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_72dffaa01b49d910ae5b21b5ec4bcb39</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 19:24:11</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

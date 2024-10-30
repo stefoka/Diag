@@ -4,7 +4,6 @@
         <description>When the records on the Rounds Execution Queue table are being processed, the code is looking at the record that is referenced in the "Rounds Schedule" field and expecting there to be a value in that records "Work Rounds" field.&#13;
 There were records that were missing that value. The most likely cause is that someone deleted the Work Rounds record instead of setting them to inactive.&#13;
 Since there is no value in that field, the code gets stuck and is not able to proceed to the next record.</description>
-        <healthcheck_type/>
         <name>Empty Rounds Schedule Facility</name>
         <order/>
         <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
@@ -23,14 +22,13 @@ if (gr.next) {
         <sys_created_by>michael.peck@nuvolo.com</sys_created_by>
         <sys_created_on>2023-05-15 18:44:27</sys_created_on>
         <sys_id>80b6b54e1b32291088b2777e0a4bcb9f</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Empty Rounds Schedule Facility</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_80b6b54e1b32291088b2777e0a4bcb9f</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2023-05-25 20:55:15</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

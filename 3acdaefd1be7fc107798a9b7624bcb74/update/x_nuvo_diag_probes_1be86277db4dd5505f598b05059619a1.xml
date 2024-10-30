@@ -8,7 +8,6 @@ Steps to reproduce :&#13;
 1.Go to the Nuvolo Property - x_nuvo_eam_np_fm_space_desktop_hover_attributes&#13;
 2.Add 'area_unit' in the property&#13;
 3.Check the hover on Workspace Manager</description>
-        <healthcheck_type/>
         <name>area_unit is not showing in the hover </name>
         <order>100</order>
         <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
@@ -37,14 +36,13 @@ if (checkPropertyValue.getRowCount > 1) {
         <sys_created_by>Harshal.Sonawane@nuvolo.com</sys_created_by>
         <sys_created_on>2022-08-08 12:53:50</sys_created_on>
         <sys_id>1be86277db4dd5505f598b05059619a1</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>area_unit is not showing in the hover </sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_1be86277db4dd5505f598b05059619a1</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-10-19 02:36:22</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

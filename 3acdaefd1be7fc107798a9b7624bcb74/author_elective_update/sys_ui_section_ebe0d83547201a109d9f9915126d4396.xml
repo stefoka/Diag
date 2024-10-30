@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section action="DELETE" caption="" section_id="ebe0d83547201a109d9f9915126d4396" sys_domain="global" table="x_nuvo_diag_healthcheck_instance" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>source</element>
+            <position>0</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>79d0b3234724de109d9f9915126d43e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>applications</element>
+            <position>1</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>f9d0b3234724de109d9f9915126d43e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>2</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>7dd0b3234724de109d9f9915126d43e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>status</element>
+            <position>3</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>fdd0b3234724de109d9f9915126d43e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>4</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>71d0b3234724de109d9f9915126d43ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>json</element>
+            <position>5</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>f1d0b3234724de109d9f9915126d43ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>error_message</element>
+            <position>6</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>75d0b3234724de109d9f9915126d43ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="DELETE">
+            <caption/>
+            <header>false</header>
+            <name>x_nuvo_diag_healthcheck_instance</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-10 08:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ebe0d83547201a109d9f9915126d4396</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_nuvo_diag_healthcheck_instance</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+            <sys_update_name>sys_ui_section_ebe0d83547201a109d9f9915126d4396</sys_update_name>
+            <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-10 08:53:34</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>1427c201dbe272041ddcf22ebf961933</instance_id>
+        <instance_name>ven02034</instance_name>
+        <name>sys_ui_section_ebe0d83547201a109d9f9915126d4396</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="ebe0d83547201a109d9f9915126d4396" sys_domain="global" table="x_nuvo_diag_healthcheck_instance" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>source</element>
+            <position>0</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>79d0b3234724de109d9f9915126d43e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>applications</element>
+            <position>1</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>f9d0b3234724de109d9f9915126d43e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>2</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>7dd0b3234724de109d9f9915126d43e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>status</element>
+            <position>3</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>fdd0b3234724de109d9f9915126d43e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>4</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>71d0b3234724de109d9f9915126d43ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>json</element>
+            <position>5</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>f1d0b3234724de109d9f9915126d43ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>error_message</element>
+            <position>6</position>
+            <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-16 11:41:13</sys_created_on>
+            <sys_id>75d0b3234724de109d9f9915126d43ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_nuvo_diag_healthcheck_instance" sys_domain="global" view="Default view">ebe0d83547201a109d9f9915126d4396</sys_ui_section>
+            <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-16 11:41:13</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_nuvo_diag_healthcheck_instance</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-09-10 08:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ebe0d83547201a109d9f9915126d4396</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_nuvo_diag_healthcheck_instance</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+            <sys_update_name>sys_ui_section_ebe0d83547201a109d9f9915126d4396</sys_update_name>
+            <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-09-10 08:53:34</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>]]></payload>
+        <payload_hash>-743756731</payload_hash>
+        <record_name>HealthCheck Instance</record_name>
+        <reverted_from/>
+        <source>af8366243bf01a1054a7cda036e45a18</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-19 08:37:51</sys_created_on>
+        <sys_id>49a3ee243bf01a1054a7cda036e45a21</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192096e38af0000001</sys_recorded_at>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-19 08:37:51</sys_updated_on>
+        <type>Form Layout</type>
+        <update_guid>09a3ee241df01a1063f5bf79dc561a21</update_guid>
+        <update_guid_history>09a3ee241df01a1063f5bf79dc561a21:-743756731</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-30 14:14:44</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_section">sys_ui_section</sys_db_object>
+        <sys_id>2c249ad374ee44188386e3e35b11f7c4</sys_id>
+        <sys_metadata>ebe0d83547201a109d9f9915126d4396</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_healthcheck_instance</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent display_value="">9dce8cb147201a109d9f9915126d4392</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="Diagnostic Tool">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_ui_section_ebe0d83547201a109d9f9915126d4396</sys_update_name>
+        <sys_update_version display_value="sys_ui_section_ebe0d83547201a109d9f9915126d4396">49a3ee243bf01a1054a7cda036e45a21</sys_update_version>
+        <sys_updated_by>abraham.kannampuzha@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-30 14:14:44</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

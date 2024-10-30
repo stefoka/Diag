@@ -15,7 +15,6 @@ UI Policies&#13;
 Script Actions&#13;
 UI Actions&#13;
 </description>
-        <healthcheck_type/>
         <name>Component verification of installed app</name>
         <order>100</order>
         <probe_type display_value="ServiceNow">285139dd1ba09510ae5b21b5ec4bcb64</probe_type>
@@ -128,14 +127,13 @@ while (index < noOfApps) {
         <sys_created_by>Harshal.Sonawane@nuvolo.com</sys_created_by>
         <sys_created_on>2022-08-01 09:10:42</sys_created_on>
         <sys_id>d052bd65dbc59d105f598b05059619ce</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>Component verification of installed app</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_d052bd65dbc59d105f598b05059619ce</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 23:08:50</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>

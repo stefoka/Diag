@@ -2,7 +2,6 @@
     <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
         <active>true</active>
         <description>This is a check to see if there are old UI scripts that are still active on versions Norway or newer. </description>
-        <healthcheck_type/>
         <name>Blank Reservation Page</name>
         <order>100</order>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
@@ -26,14 +25,13 @@ while (gr.next){
         <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
         <sys_created_on>2022-07-06 13:39:25</sys_created_on>
         <sys_id>53c3345d1bac5510ae5b21b5ec4bcb1b</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>Blank Reservation Page</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_53c3345d1bac5510ae5b21b5ec4bcb1b</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
-        <tool>diagnostic</tool>
+        <sys_updated_by>Michael.Piazza@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-09-15 22:56:57</sys_updated_on>
     </x_nuvo_diag_probes>
 </record_update>
