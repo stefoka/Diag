@@ -4,9 +4,6 @@
         <element label="Error Message" max_length="150" name="error_message" read_only="true" type="string"/>
         <element label="JSON" max_length="400" name="json" read_only="true" type="string"/>
         <element label="Source" max_length="40" name="source" read_only="true" type="string"/>
-        <element choice="1" label="Status" max_length="40" name="status" read_only="true" type="choice">
-            <choice/>
-        </element>
         <index name="index">
             <element name="applications"/>
         </index>

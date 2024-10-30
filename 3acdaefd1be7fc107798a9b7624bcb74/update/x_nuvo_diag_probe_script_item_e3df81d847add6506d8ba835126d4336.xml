@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE">
+        <name>Number of Labor Line Items</name>
+        <probe display_value="Facilities Purchase Requisition">6d4bacde47fcd2109d9f9915126d43a3</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_purchase_order_line_item', 'type=1');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-25 14:40:27</sys_created_on>
+        <sys_id>e3df81d847add6506d8ba835126d4336</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Number of Labor Line Items</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_e3df81d847add6506d8ba835126d4336</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-25 14:40:27</sys_updated_on>
+        <threshold>50</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>e3df81d847add6506d8ba835126d4336</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-25 14:40:41</sys_created_on>
+        <sys_id>72efc9d847add6506d8ba835126d430a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-25 14:40:41</sys_updated_on>
+        <table>x_nuvo_diag_probe_script_item</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
