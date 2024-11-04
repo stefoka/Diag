@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
-        <action_name>Revoke Agent Access</action_name>
+        <action_name>revoke_agent_access</action_name>
         <active>true</active>
         <client>true</client>
         <client_script_v2><![CDATA[function onClick(g_form) {
@@ -28,79 +28,68 @@
         <list_style>destructive</list_style>
         <messages/>
         <name>Revoke Agent Access</name>
-        <onclick>revokeNuvoloAccess()</onclick>
+        <onclick>revokeAccessClient()</onclick>
         <order>100</order>
-        <script><![CDATA[function revokeNuvoloAccess() {
+        <script><![CDATA[function revokeAccessClient() {
     try {
-        // Attempt to use g_form
-        if (typeof g_form !== 'undefined') {
-            var email = g_form.getValue('assigned_to_email');
+        if (g_list) {
+            var selectedItems = g_list.getChecked().toString();
 
-            if (!email) {
-                // displayErrorMessage("No email found to revoke access.");
+            if (!selectedItems || selectedItems.length === 0) {
+                
+                alert("No items selected. Please select at least one item.");
                 return;
             }
 
-            var ga = new GlideAjax('HealthCheckHelper');
-            ga.addParam('sysparm_name', 'revokeNuvoloAccess');
-            ga.addParam('emails', email);
+            var ga = new GlideAjax('NuvoloTempAccessAjax');
+            ga.addParam('sysparm_name', 'getEmailsFromSysIds');
+            ga.addParam('sysparm_sysIds', selectedItems);
 
             ga.getXMLAnswer(function(response) {
-                if (response === 'success') {
-                    // displayInfoMessage('Access revoked successfully.');
-                } else {
-                    // displayErrorMessage('Failed to revoke access.');
-                }
+                if (response != 'false') {
+                   
+                    var revoke = new GlideAjax('NuvoloTempAccessAjax');
+                    revoke.addParam('sysparm_name', 'revokeNuvoloAccessAjax');
+                    revoke.addParam('sysparm_emails', response);
+                    revoke.addParam('sysparm_msg', 'Access for the selected agents has been revoked.');
+
+
+                    revoke.getXMLAnswer(function(revokeResponse) {
+						
+                        // g_list.refresh();
+						
+                    });
+                } 
+				return;
             });
-        } else {
-            throw new Error("g_form is not available"); // Trigger catch block if g_form is undefined
         }
+
     } catch (e) {
-        // Fallback to g_list if g_form is not available
-        if (typeof g_list !== 'undefined') {
-            var selectedRecords = g_list.getChecked(); // Get selected records from list
 
-            if (!selectedRecords || selectedRecords.length === 0) {
-                // displayErrorMessage("Please select at least one record to revoke access.");
-                return;
-            }
+        var agentMail = g_form.getValue('assigned_to_email');
+        var status = g_form.getValue('status');
 
-            var ga = new GlideAjax('HealthCheckHelper');
-            ga.addParam('sysparm_name', 'getEmailsFromRecords');
-            ga.addParam('sys_ids', selectedRecords.join(',')); // Send selected record sys_ids
+        if (status != 'granted') {
+            g_form.addErrorMessage("Status must be granted");
+			return;
+        }
 
-            // Get the emails of the selected records
-            ga.getXMLAnswer(function(response) {
-                if (response) {
-                    // Use the response (comma-separated emails) to revoke access
-                    revokeAccess(response);
-                } else {
-                    // displayErrorMessage('Failed to retrieve email addresses.');
-                }
+        if (agentMail) {
+            var revokeAj = new GlideAjax('NuvoloTempAccessAjax');
+            revokeAj.addParam('sysparm_name', 'revokeNuvoloAccessAjax');
+            revokeAj.addParam('sysparm_emails', agentMail);
+			revokeAj.addParam('sysparm_msg', 'Access for the selected agent has been revoked.');
+
+            revokeAj.getXMLAnswer(function(response) {
+
+                
             });
-        } else {
-            // displayErrorMessage("This action can only be executed from a form or list view.");
+
+
         }
+
     }
-}
-
-
-
-
-function revokeAccess(emailString) {
-    var ga = new GlideAjax('HealthCheckHelper');
-    ga.addParam('sysparm_name', 'revokeNuvoloAccess');
-    ga.addParam('emails', emailString);
-
-    ga.getXMLAnswer(function(response) {
-        if (response === 'success') {
-            displayInfoMessage('Access revoked successfully for the selected records.');
-        } else {
-            displayErrorMessage('Failed to revoke access for the selected records.');
-        }
-    });
-}
-]]></script>
+}]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -111,7 +100,7 @@ function revokeAccess(emailString) {
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e91b653d4725de506d8ba835126d43b5</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>73</sys_mod_count>
         <sys_name>Revoke Agent Access</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -119,10 +108,10 @@ function revokeAccess(emailString) {
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_action_e91b653d4725de506d8ba835126d43b5</sys_update_name>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-30 14:16:16</sys_updated_on>
+        <sys_updated_on>2024-11-01 10:17:23</sys_updated_on>
         <table>x_nuvo_diag_nuvolo_temporary_access</table>
         <ui11_compatible>true</ui11_compatible>
-        <ui16_compatible>false</ui16_compatible>
+        <ui16_compatible>true</ui16_compatible>
     </sys_ui_action>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>e91b653d4725de506d8ba835126d43b5</id>

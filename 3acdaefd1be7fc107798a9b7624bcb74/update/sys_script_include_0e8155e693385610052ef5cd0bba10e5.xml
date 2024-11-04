@@ -31,11 +31,11 @@ HealthCheckHelper.prototype = {
             for (var i = 0; i < types.length; i++) {
 
                 try {
-					var featureUsage = false;
-					if(types[i] == 'feature_usage'){
+                    var featureUsage = false;
+                    if (types[i] == 'feature_usage') {
 
-						featureUsage = true;
-					}
+                        featureUsage = true;
+                    }
                     var obj = {};
                     var featUsageObj = {};
 
@@ -49,7 +49,7 @@ HealthCheckHelper.prototype = {
 
                         var probeName = probe.getValue('name');
                         obj[probeName] = {};
-						featUsageObj[probeName] = {}
+                        featUsageObj[probeName] = {}
                         var scriptItem = new GlideRecord('x_nuvo_diag_probe_script_item');
                         scriptItem.addQuery('probe', probe.sys_id);
                         scriptItem.query();
@@ -65,9 +65,9 @@ HealthCheckHelper.prototype = {
 
                             if (featureUsage) {
                                 var threshold = scriptItem.getValue('threshold');
-								if (threshold==''){
-									threshold = 0;
-								}
+                                if (threshold == '') {
+                                    threshold = 0;
+                                }
                                 if (parseInt(result) > threshold) {
                                     featUsageObj[probeName][scriptItemName] = true;
                                 } else {
@@ -76,7 +76,7 @@ HealthCheckHelper.prototype = {
                                 }
 
                             }
-						
+
 
                         }
 
@@ -85,7 +85,7 @@ HealthCheckHelper.prototype = {
                     var healthLog = new GlideRecord('x_nuvo_diag_healthcheck_logs');
                     healthLog.initialize();
                     healthLog.healthcheck_type = types[i];
-					healthLog.feature_usage = JSON.stringify(featUsageObj);
+                    healthLog.feature_usage = JSON.stringify(featUsageObj);
                     healthLog.probe_category = app;
                     healthLog.healthcheck_instance = healthcheckRecord.sys_id;
                     healthLog.result = JSON.stringify(obj);
@@ -356,8 +356,8 @@ HealthCheckHelper.prototype = {
 
         if (userRole.next()) {
             // userRole.deleteRecord();
-			userRole.state = "pending_approval";
-			userRole.update();
+            userRole.state = "pending_approval";
+            userRole.update();
         }
     },
 
@@ -376,13 +376,12 @@ HealthCheckHelper.prototype = {
             newRole.user = userId;
             newRole.role.setDisplayValue(roleName);
             newRole.insert();
+        } else {
+            if (userRole.state == "pending_approval") {
+                userRole.state = "active";
+                userRole.update();
+            }
         }
-		else {
-			if (userRole.state == "pending_approval") {
-				userRole.state = "active";
-				userRole.update();
-			}
-		}
     },
 
     getExpiredClientEnvironmentAccessByEmails: function(emails) {
@@ -474,8 +473,12 @@ HealthCheckHelper.prototype = {
 
     },
 
-	revokeNuvoloAccess: function(emails) {
-		
+    revokeNuvoloAccess: function(emails) {
+
+    if (typeof emails === 'string') {
+        emails = [emails];
+    }
+
     var currentdate = new GlideDate();
     var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
     var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access/';
@@ -483,12 +486,10 @@ HealthCheckHelper.prototype = {
     var username = cred.username;
     var password = cred.password;
 
-   
     for (var i = 0; i < emails.length; i++) {
         var email = emails[i];
 
         try {
-           
             var updateData = {
                 status: 'expired',
                 expiration_date: currentdate.toString(),
@@ -514,7 +515,7 @@ HealthCheckHelper.prototype = {
             gs.error('Exception updating record for email: ' + email + ', Message: ' + ex.message);
         }
 
-       
+      
         var tempAccess = new GlideRecord("x_nuvo_diag_nuvolo_temporary_access");
         tempAccess.addEncodedQuery('status=granted^assigned_to_email=' + email);
         tempAccess.query();
@@ -525,7 +526,7 @@ HealthCheckHelper.prototype = {
             tempAccess.update();
         }
 
-       
+     
         var grUser = new GlideRecord("sys_user");
         grUser.addEncodedQuery('active=true^email=' + email);
         grUser.query();
@@ -537,20 +538,21 @@ HealthCheckHelper.prototype = {
     }
 },
 
+
     type: 'HealthCheckHelper'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>125</sys_mod_count>
+        <sys_mod_count>129</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-29 14:32:02</sys_updated_on>
+        <sys_updated_on>2024-11-01 09:11:45</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>
