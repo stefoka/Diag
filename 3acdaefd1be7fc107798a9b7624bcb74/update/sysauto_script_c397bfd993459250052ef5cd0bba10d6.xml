@@ -20,7 +20,7 @@
         <script><![CDATA[(function executeScheduledJob() {
 
     var tempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
-    tempAccess.addEncodedQuery('status=granted^end_of_accessONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()');
+    tempAccess.addEncodedQuery('status=granted^end_of_access<=javascript:gs.endOfToday()');
     tempAccess.query();
 
     var emails = [];
@@ -76,6 +76,7 @@
 	while(tempAccessToExpire.next()) {
 
 		//Expire the Nuvolo Temporary Access record of the Agent
+		tempAccessToExpire.end_of_access = new GlideDate();
 		tempAccessToExpire.status = 'expired';
 		tempAccessToExpire.update();
 
@@ -97,14 +98,14 @@
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-10-04 09:05:16</sys_created_on>
         <sys_id>c397bfd993459250052ef5cd0bba10d6</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>31</sys_mod_count>
         <sys_name>Remove Nuvolo Temp Access</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sysauto_script_c397bfd993459250052ef5cd0bba10d6</sys_update_name>
-        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-22 13:13:47</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-07 12:30:56</sys_updated_on>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>

@@ -34,16 +34,16 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
         var requestorID = gs.getUserID();
         var requestorGR = new GlideRecord('sys_user');
         if (requestorGR.get(requestorID)) {
-            requestorDomain = '@' + requestorGR.email.split('@')[1];
+            requestorDomain = requestorGR.email.split('@')[1];
         }
 
         var localInst = gs.getProperty('instance_name');
         var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
 
         username = gs.getProperty('x_nuvo_diag.integration_user_name'),
-            password = gs.getProperty('x_nuvo_diag.integration_user_password');
+        password = gs.getProperty('x_nuvo_diag.integration_user_password');
 
-        var casesAPIEndpoint = 'https://' + inst + '.service-now.com/api/now/table/sn_customerservice_case?sysparm_query=numberLIKE' + caseNumber;
+        var casesAPIEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=case_numberLIKE' + caseNumber;
 
         var casesR = new sn_ws.RESTMessageV2();
         casesR.setEndpoint(casesAPIEndpoint);
@@ -63,22 +63,22 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
                 tempAccessObj.message = "Case " + caseNumber + " doesn't exist in the system!";
                 return JSON.stringify(tempAccessObj);
             } else {
-                var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=case_numberLIKE' + caseNumber;
+                // var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=case_numberLIKE' + caseNumber;
 
-                var r = new sn_ws.RESTMessageV2();
-                r.setEndpoint(apiEndpoint);
-                r.setHttpMethod('GET');
-                r.setRequestHeader('Content-Type', 'application/json');
-                r.setBasicAuth(username, password);
+                // var r = new sn_ws.RESTMessageV2();
+                // r.setEndpoint(apiEndpoint);
+                // r.setHttpMethod('GET');
+                // r.setRequestHeader('Content-Type', 'application/json');
+                // r.setBasicAuth(username, password);
 
-                var response = r.execute();
-                var responseBody = response.getBody();
-                var httpStatus = response.getStatusCode();
+                // var response = r.execute();
+                // var responseBody = response.getBody();
+                // var httpStatus = response.getStatusCode();
 
                 var agentsAssigned = false;
 
-                if (httpStatus == 200) {
-                    var result = JSON.parse(responseBody).result;
+              
+                    var result = JSON.parse(casesResponseBody).result;
 
                     if (result.length !== 0) {
                         for (var j = 0; j < result.length; j++) {
@@ -151,10 +151,6 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
                         //ERROR - No Agents assigned to the Case
                         tempAccessObj.message = 'No assigned agents for case ' + caseNumber + ' found!';
                     }
-                } else {
-                    //ERROR - Client Environment Access Table API Fail
-                    tempAccessObj.message = 'Failed to create temporary access record!';
-                }
             }
         } else {
             //ERROR - Case Table API Fail
@@ -171,7 +167,6 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
     getEmailsFromSysIds: function() {
         var sysIds = this.getParameter('sysparm_sysIds').split(',');
         var emailArr = [];
-        var caseNumbers = [];
 
         for (var i = 0; i < sysIds.length; i++) {
             var tempAccessGR = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
@@ -188,28 +183,24 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
                     emailArr.push(tempAccessGR.assigned_to_email.toString());
                 }
 
-                if (tempAccessGR.case_number) {
-                    caseNumbers.push(tempAccessGR.case_number.toString());
-                }
+            
             }
         }
 
         var result = {
             emails: emailArr.join(','),
-            caseNumbers: caseNumbers.join(',')
         };
+
         return JSON.stringify(result);
     },
 
     revokeNuvoloAccessAjax: function() {
         var emails = this.getParameter('sysparm_emails');
         var msg = this.getParameter('sysparm_msg');
-        var caseNumber = this.getParameter('sysparm_case');
 
         var emailsArr = emails.split(',');
-		var casesArr = caseNumber.split(',');
         var api = new x_nuvo_diag.HealthCheckHelper();
-        api.revokeNuvoloAccess(emailsArr, casesArr);
+        api.revokeNuvoloAccess(emailsArr);
         gs.addInfoMessage(msg);
     },
 
@@ -218,14 +209,14 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-27 11:04:24</sys_created_on>
         <sys_id>c5b1185393781a10052ef5cd0bba1093</sys_id>
-        <sys_mod_count>114</sys_mod_count>
+        <sys_mod_count>116</sys_mod_count>
         <sys_name>NuvoloTempAccessAjax</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c5b1185393781a10052ef5cd0bba1093</sys_update_name>
-        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-06 15:01:00</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-07 12:26:23</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c5b1185393781a10052ef5cd0bba1093</id>
