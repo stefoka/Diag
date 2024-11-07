@@ -22,8 +22,11 @@ HealthCheckHelper.prototype = {
 
     populateHealthLog: function(healthcheckRecord) {
 
-
         var apps = healthcheckRecord.getValue('applications').split(',');
+        var index = arr.indexOf('ede6dc1b477cd6109d9f9915126d431d');
+        if (index > -1) {
+            apps.splice(index, 1);
+        }
         var types = gs.getProperty('x_nuvo_diag.healthcheck _apps').split(',');
 
         apps.forEach(function(app) {
@@ -43,6 +46,7 @@ HealthCheckHelper.prototype = {
                     probe.addQuery('probe_type', app);
                     probe.addQuery('tool', 'health');
                     probe.addQuery('healthcheck_type', types[i]);
+                    probe.orderBy('order');
                     probe.query();
 
                     while (probe.next()) {
@@ -52,11 +56,10 @@ HealthCheckHelper.prototype = {
                         featUsageObj[probeName] = {}
                         var scriptItem = new GlideRecord('x_nuvo_diag_probe_script_item');
                         scriptItem.addQuery('probe', probe.sys_id);
+                        scriptItem.orderBy('order');
                         scriptItem.query();
 
                         while (scriptItem.next()) {
-
-
 
                             var evaluator = new GlideScopedEvaluator();
                             var result = evaluator.evaluateScript(scriptItem, 'script');
@@ -473,71 +476,86 @@ HealthCheckHelper.prototype = {
 
     },
 
-    revokeNuvoloAccess: function(emails) {
+    revokeNuvoloAccess: function(emails, caseNumbers) {
+        var currentdate = new GlideDate();
+        var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+        var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access/';
+        var cred = JSON.parse(this.getIntegrationUserCredentials());
+        var username = cred.username;
+        var password = cred.password;
 
-    if (typeof emails === 'string') {
-        emails = [emails];
-    }
+        if (typeof emails === 'string') {
+            emails = [emails];
+        }
 
-    var currentdate = new GlideDate();
-    var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
-    var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access/';
-    var cred = JSON.parse(this.getIntegrationUserCredentials());
-    var username = cred.username;
-    var password = cred.password;
+        if (typeof caseNumbers === 'string') {
+            caseNumbers = [caseNumbers];
+        }
 
-    for (var i = 0; i < emails.length; i++) {
-        var email = emails[i];
 
-        try {
-            var updateData = {
-                status: 'expired',
-                expiration_date: currentdate.toString(),
-            };
+        for (var i = 0; i < emails.length; i++) {
+            var email = emails[i];
 
-            var r = new sn_ws.RESTMessageV2();
-            r.setEndpoint(apiEndpoint);
-            r.setHttpMethod('PATCH');
-            r.setRequestHeader('Content-Type', 'application/json');
-            r.setQueryParameter('email', email);
-            r.setBasicAuth(username, password);
+            try {
+                var r = new sn_ws.RESTMessageV2();
+                r.setEndpoint(apiEndpoint);
+                r.setHttpMethod('GET');
+                r.setRequestHeader('Content-Type', 'application/json');
+                r.setBasicAuth(username, password);
 
-            var requestBody = JSON.stringify(updateData);
-            r.setRequestBody(requestBody);
 
-            var response = r.execute();
-            var httpStatus = response.getStatusCode();
+                r.setQueryParameter('email', email);
 
-            if (httpStatus != 200 && httpStatus != 204) {
-                gs.error('Error updating record for email: ' + email + ', HTTP Status: ' + httpStatus);
+
+                for (var j = 0; j < caseNumbers.length; j++) {
+                    var caseNumber = caseNumbers[j];
+                    r.setQueryParameter('case_number', caseNumber);
+
+                    var response = r.execute();
+                    var httpStatus = response.getStatusCode();
+                    var responseBody = response.getBody();
+
+                    if (httpStatus == 200) {
+                        var result = JSON.parse(responseBody).result;
+                        for (var k = 0; k < result.length; k++) {
+                            var record = result[k];
+                            var sysId = record.sys_id;
+
+                            var updateData = {
+                                status: 'expired',
+                                expiration_date: currentdate.toString(),
+                            };
+
+                            this.updateClientEnvironmentAccessRecord(sysId, updateData);
+                        }
+                    } else {
+                        gs.error('Error fetching records for email: ' + email + ', HTTP Status: ' + httpStatus + ', Response: ' + responseBody);
+                    }
+                }
+
+
+                var tempAccess = new GlideRecord("x_nuvo_diag_nuvolo_temporary_access");
+                tempAccess.addEncodedQuery('status=granted^assigned_to_email=' + email);
+                tempAccess.query();
+                while (tempAccess.next()) {
+                    tempAccess.status = 'expired';
+                    tempAccess.end_of_access = currentdate;
+                    tempAccess.update();
+                }
+
+                var grUser = new GlideRecord("sys_user");
+                grUser.addEncodedQuery('active=true^email=' + email);
+                grUser.query();
+                while (grUser.next()) {
+                    grUser.active = false;
+                    grUser.update();
+                }
+
+            } catch (ex) {
+                gs.error('Exception processing email: ' + email + ', Message: ' + ex.message);
             }
-        } catch (ex) {
-            gs.error('Exception updating record for email: ' + email + ', Message: ' + ex.message);
         }
-
-      
-        var tempAccess = new GlideRecord("x_nuvo_diag_nuvolo_temporary_access");
-        tempAccess.addEncodedQuery('status=granted^assigned_to_email=' + email);
-        tempAccess.query();
-
-        while (tempAccess.next()) {
-            tempAccess.status = 'expired';
-            tempAccess.end_of_access = currentdate;
-            tempAccess.update();
-        }
-
-     
-        var grUser = new GlideRecord("sys_user");
-        grUser.addEncodedQuery('active=true^email=' + email);
-        grUser.query();
-
-        while (grUser.next()) {
-            grUser.active = false;
-            grUser.update();
-        }
-    }
-},
-
+    },
 
     type: 'HealthCheckHelper'
 };]]></script>
@@ -545,14 +563,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>129</sys_mod_count>
+        <sys_mod_count>137</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-01 09:11:45</sys_updated_on>
+        <sys_updated_on>2024-11-06 15:23:27</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>

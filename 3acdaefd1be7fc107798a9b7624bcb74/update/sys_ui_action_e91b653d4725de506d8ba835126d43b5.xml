@@ -34,9 +34,7 @@
     try {
         if (g_list) {
             var selectedItems = g_list.getChecked().toString();
-
             if (!selectedItems || selectedItems.length === 0) {
-                
                 alert("No items selected. Please select at least one item.");
                 return;
             }
@@ -47,20 +45,20 @@
 
             ga.getXMLAnswer(function(response) {
                 if (response != 'false') {
-                   
+                    var result = JSON.parse(response);
+                    var emails = result.emails;
+                    var caseNumbers = result.caseNumbers;
+
                     var revoke = new GlideAjax('NuvoloTempAccessAjax');
                     revoke.addParam('sysparm_name', 'revokeNuvoloAccessAjax');
-                    revoke.addParam('sysparm_emails', response);
+                    revoke.addParam('sysparm_emails', emails);
+                    revoke.addParam('sysparm_case', caseNumbers);
                     revoke.addParam('sysparm_msg', 'Access for the selected agents has been revoked.');
 
-
                     revoke.getXMLAnswer(function(revokeResponse) {
-						
-                        // g_list.refresh();
-						
+                        g_list.refresh();
                     });
-                } 
-				return;
+                }
             });
         }
 
@@ -68,21 +66,23 @@
 
         var agentMail = g_form.getValue('assigned_to_email');
         var status = g_form.getValue('status');
+        var caseNum = g_form.getValue('case_number');
 
         if (status != 'granted') {
             g_form.addErrorMessage("Status must be granted");
-			return;
+            return;
         }
 
         if (agentMail) {
             var revokeAj = new GlideAjax('NuvoloTempAccessAjax');
             revokeAj.addParam('sysparm_name', 'revokeNuvoloAccessAjax');
             revokeAj.addParam('sysparm_emails', agentMail);
-			revokeAj.addParam('sysparm_msg', 'Access for the selected agent has been revoked.');
+            revokeAj.addParam('sysparm_case', caseNum);
+            revokeAj.addParam('sysparm_msg', 'Access for the selected agent has been revoked.');
 
             revokeAj.getXMLAnswer(function(response) {
 
-                
+
             });
 
 
@@ -100,7 +100,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e91b653d4725de506d8ba835126d43b5</sys_id>
-        <sys_mod_count>73</sys_mod_count>
+        <sys_mod_count>76</sys_mod_count>
         <sys_name>Revoke Agent Access</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -108,7 +108,7 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_action_e91b653d4725de506d8ba835126d43b5</sys_update_name>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-01 10:17:23</sys_updated_on>
+        <sys_updated_on>2024-11-06 14:53:32</sys_updated_on>
         <table>x_nuvo_diag_nuvolo_temporary_access</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

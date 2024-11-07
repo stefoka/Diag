@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="update_synch=true" db_object_id="78cbae7247f496109d9f9915126d43cb" extends="sys_metadata" label="Probe Script Item" max_length="40" name="x_nuvo_diag_probe_script_item" type="collection">
         <element label="Name" max_length="40" name="name" type="string"/>
+        <element label="Order" mandatory="true" max_length="40" name="order" type="integer"/>
         <element label="Probe" max_length="32" name="probe" reference="x_nuvo_diag_probes" type="reference"/>
         <element label="Script" max_length="8000" name="script" type="script"/>
         <element default="0" label="Threshold" max_length="40" name="threshold" type="integer"/>
