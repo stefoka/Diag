@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[function submitForm() {
+
+    document.getElementById("message").innerText = "";
+
+    var days = parseInt(document.getElementById("extendOptions").value, 10);
+
+
+    if (isNaN(days)) {
+        document.getElementById("message").style.color = "red";
+        document.getElementById("message").innerText = "Please select a valid extension duration.";
+        return;
+    }
+
+    var ga = new GlideAjax('x_nuvo_diag.NuvoloTempAccessAjax');
+    ga.addParam('sysparm_name', 'extendAccess');
+    ga.addParam('sysparm_days', days);
+    ga.addParam('sysparm_sys_id', g_form.getUniqueValue());
+
+    ga.getXMLAnswer(function() {
+
+        document.getElementById("message").style.color = "green";
+        document.getElementById("message").innerText = "Access extended successfully.";
+		
+        var dialogWindow = GlideDialogWindow.get();
+        if (dialogWindow) {
+            dialogWindow.destroy();
+        }
+    });
+}
+
+
+function cancelForm() {
+
+    var dialogWindow = GlideDialogWindow.get();
+    if (dialogWindow) {
+        dialogWindow.destroy();
+    }
+}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_nuvo_diag_extend_access_dialog.do</endpoint>
+        <html><![CDATA[<style>
+    .form-container {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        width: 100%; /* Full width */
+        box-sizing: border-box;
+    }
+
+    .form-container label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .form-container select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .form-container button {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .form-container button#submitButton {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .form-container button#submitButton:hover {
+        background-color: #0056b3;
+    }
+
+    .form-container button#cancelButton {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .form-container button#cancelButton:hover {
+        background-color: #c82333;
+    }
+</style>
+
+<div class="form-container">
+    <label for="extendOptions">Select extension duration:</label>
+    <select id="extendOptions">
+        <option value="">None</option>
+        <option value="1">1 day</option>
+        <option value="3">3 days</option>
+        <option value="7">7 days</option>
+        <option value="14">14 days</option>
+        <option value="30">30 days</option>
+    </select>
+
+	<div id="message"></div>
+
+    <div class="button-container">
+        <button id="cancelButton" onclick="cancelForm()">Cancel</button>
+        <button id="submitButton" onclick="submitForm()">Submit</button>
+    </div>
+</div>
+]]></html>
+        <name>extend_access_dialog</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-12 08:32:04</sys_created_on>
+        <sys_id>4f82644a47395e106d8ba835126d43ad</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>extend_access_dialog</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ui_page_4f82644a47395e106d8ba835126d43ad</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-12 10:01:54</sys_updated_on>
+    </sys_ui_page>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>4f82644a47395e106d8ba835126d43ad</id>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-12 08:32:04</sys_created_on>
+        <sys_id>0f2824c647395e106d8ba835126d436d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-12 08:32:04</sys_updated_on>
+        <table>sys_ui_page</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

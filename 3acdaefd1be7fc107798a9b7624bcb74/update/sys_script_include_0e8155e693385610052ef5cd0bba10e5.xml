@@ -349,6 +349,16 @@ HealthCheckHelper.prototype = {
             this.addRole(userId, admin);
             this.addRole(userId, readOnly);
         }
+        if (accessType == 'all_nuvolo_roles') {
+
+            var newRoles = new GlideRecord('sys_user_role');
+            newRoles.addEncodedQuery('nameLIKEadmin^nameLIKEx_nuvo');
+            newRoles.query();
+
+            while (newRoles.next()) {
+                this.addRole(userId, newRoles.name);
+            }
+        }
     },
 
     removeRole: function(userId, roleName) {
@@ -500,8 +510,8 @@ HealthCheckHelper.prototype = {
                 r.setRequestHeader('Content-Type', 'application/json');
                 r.setBasicAuth(username, password);
                 r.setQueryParameter('email', email);
-				r.setQueryParameter('contact_domain', usrDomain);
-				//gs.info('Method: ' + r.getHttpMethod());
+                r.setQueryParameter('contact_domain', usrDomain);
+                //gs.info('Method: ' + r.getHttpMethod());
 
                 var response = r.execute();
                 var httpStatus = response.getStatusCode();
@@ -558,14 +568,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>139</sys_mod_count>
+        <sys_mod_count>141</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-07 12:07:05</sys_updated_on>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-13 09:29:02</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>

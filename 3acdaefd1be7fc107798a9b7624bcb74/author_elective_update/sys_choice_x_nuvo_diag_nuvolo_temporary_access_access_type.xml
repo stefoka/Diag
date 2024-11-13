@@ -53,5 +53,24 @@
             <sys_updated_on>2024-10-04 07:57:44</sys_updated_on>
             <value>admin_read_only</value>
         </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>access_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>All Nuvolo Roles</label>
+            <language>en</language>
+            <name>x_nuvo_diag_nuvolo_temporary_access</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+            <sys_created_on>2024-11-13 09:24:54</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+            <sys_updated_on>2024-11-13 09:24:54</sys_updated_on>
+            <value>all_nuvolo_roles</value>
+        </sys_choice>
     </sys_choice>
 </record_update>

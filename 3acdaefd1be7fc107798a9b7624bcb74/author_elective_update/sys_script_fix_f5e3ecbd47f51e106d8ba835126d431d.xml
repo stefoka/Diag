@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="DELETE">
+        <before>false</before>
+        <description/>
+        <name>Nuvolo All Roles group</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[var groupName = "Nuvolo Temporary Access";
+
+var groupGR = new GlideRecord("sys_user_group");
+groupGR.addQuery("name", groupName);
+groupGR.query();
+
+if (!groupGR.hasNext()) {
+
+    var newGroup = new GlideRecord("sys_user_group");
+    newGroup.initialize();
+    newGroup.name = groupName;
+    newGroup.description = "Group created for Nuvolo Temporary Access with specific roles";
+    var newGroupSysId = newGroup.insert();
+
+
+    if (newGroupSysId) {
+        var roleGR = new GlideRecord("sys_user_role");
+        roleGR.addEncodedQuery("nameLIKEx_nuvo^nameLIKEadmin");
+        roleGR.query();
+
+        while (roleGR.next()) {
+            var groupRole = new GlideRecord("sys_group_has_role");
+            groupRole.initialize();
+            groupRole.group = newGroupSysId;
+            groupRole.role = roleGR.sys_id;
+            groupRole.insert();
+        }
+    }
+}]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-11 13:38:34</sys_created_on>
+        <sys_id>f5e3ecbd47f51e106d8ba835126d431d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo All Roles group</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_script_fix_f5e3ecbd47f51e106d8ba835126d431d</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-11 13:38:34</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+    <sys_es_latest_script action="DELETE">
+        <id>f5e3ecbd47f51e106d8ba835126d431d</id>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-11 13:38:34</sys_created_on>
+        <sys_id>3ab4e0bd47f51e106d8ba835126d43a2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-11 13:38:34</sys_updated_on>
+        <table>sys_script_fix</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>sys_script_fix_f5e3ecbd47f51e106d8ba835126d431d</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_fix"&gt;&lt;sys_script_fix action="INSERT_OR_UPDATE"&gt;&lt;before&gt;false&lt;/before&gt;&lt;description/&gt;&lt;name&gt;Nuvolo All Roles group&lt;/name&gt;&lt;record_for_rollback&gt;true&lt;/record_for_rollback&gt;&lt;script&gt;&lt;![CDATA[var groupName = "Nuvolo Temporary Access";
+
+var groupGR = new GlideRecord("sys_user_group");
+groupGR.addQuery("name", groupName);
+groupGR.query();
+
+if (!groupGR.hasNext()) {
+
+    var newGroup = new GlideRecord("sys_user_group");
+    newGroup.initialize();
+    newGroup.name = groupName;
+    newGroup.description = "Group created for Nuvolo Temporary Access with specific roles";
+    var newGroupSysId = newGroup.insert();
+
+
+    if (newGroupSysId) {
+        var roleGR = new GlideRecord("sys_user_role");
+        roleGR.addEncodedQuery("nameLIKEx_nuvo^nameLIKEadmin");
+        roleGR.query();
+
+        while (roleGR.next()) {
+            var groupRole = new GlideRecord("sys_group_has_role");
+            groupRole.initialize();
+            groupRole.group = newGroupSysId;
+            groupRole.role = roleGR.sys_id;
+            groupRole.insert();
+        }
+    }
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_fix&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2024-11-11 13:38:34&lt;/sys_created_on&gt;&lt;sys_id&gt;f5e3ecbd47f51e106d8ba835126d431d&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Nuvolo All Roles group&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_fix_f5e3ecbd47f51e106d8ba835126d431d&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-11-11 13:38:34&lt;/sys_updated_on&gt;&lt;unloadable&gt;false&lt;/unloadable&gt;&lt;/sys_script_fix&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;f5e3ecbd47f51e106d8ba835126d431d&lt;/id&gt;&lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2024-11-11 13:38:34&lt;/sys_created_on&gt;&lt;sys_id&gt;3ab4e0bd47f51e106d8ba835126d43a2&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-11-11 13:38:34&lt;/sys_updated_on&gt;&lt;table&gt;sys_script_fix&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-616316872</payload_hash>
+        <record_name>Nuvolo All Roles group</record_name>
+        <reverted_from/>
+        <source>720a658393819210052ef5cd0bba10e6</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-11 13:38:34</sys_created_on>
+        <sys_id>43b4a4fd47f51e106d8ba835126d43c9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1931b7296040000001</sys_recorded_at>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-11 13:38:34</sys_updated_on>
+        <type>Fix Script</type>
+        <update_guid>83b4a4fde4f51e100808e6b465f282c8</update_guid>
+        <update_guid_history>83b4a4fde4f51e100808e6b465f282c8:-616316872</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-11 14:07:13</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_fix">sys_script_fix</sys_db_object>
+        <sys_id>801eb2b0d80b484a8d1ea804280397a4</sys_id>
+        <sys_metadata>f5e3ecbd47f51e106d8ba835126d431d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvolo All Roles group</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_script_fix_f5e3ecbd47f51e106d8ba835126d431d</sys_update_name>
+        <sys_update_version display_value="sys_script_fix_f5e3ecbd47f51e106d8ba835126d431d">43b4a4fd47f51e106d8ba835126d43c9</sys_update_version>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-11 14:07:13</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
