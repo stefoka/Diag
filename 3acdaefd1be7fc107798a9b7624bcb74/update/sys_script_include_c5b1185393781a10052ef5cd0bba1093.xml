@@ -12,226 +12,241 @@
         <script><![CDATA[var NuvoloTempAccessAjax = Class.create();
 NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 
-createTempAccessRecord: function() {
+    createTempAccessRecord: function() {
 
-    var caseNumber = this.getParameter('case_number');
-    var endOfAccessString = this.getParameter('end_of_access');
-    var accessType = this.getParameter('access_type');
-    var accessTypeText = this.getParameter('access_type_text');
+        var caseNumber = this.getParameter('case_number');
+        var endOfAccessString = this.getParameter('end_of_access');
+        var accessType = this.getParameter('access_type');
+        var accessTypeText = this.getParameter('access_type_text');
 
-    var tempAccessObj = {
-        agents: [],
-        link: '',
-        message: ''
-    };
+        var tempAccessObj = {
+            agents: [],
+            link: '',
+            message: ''
+        };
 
-    var endOfAccessDays = parseInt(endOfAccessString, 10);
-    var endOfAccessDate = new GlideDate();
-    endOfAccessDate.addDaysUTC(endOfAccessDays);
+        var endOfAccessDays = parseInt(endOfAccessString, 10);
+        var endOfAccessDate = new GlideDate();
+        endOfAccessDate.addDaysUTC(endOfAccessDays);
 
-    var requestorDomain = '';
+        var requestorDomain = '';
 
-    var requestorID = gs.getUserID();
-    var requestorGR = new GlideRecord('sys_user');
-    if (requestorGR.get(requestorID)) {
-        requestorDomain = requestorGR.email.split('@')[1];
-    }
+        var requestorID = gs.getUserID();
+        var requestorGR = new GlideRecord('sys_user');
+        if (requestorGR.get(requestorID)) {
+            requestorDomain = requestorGR.email.split('@')[1];
+        }
 
-    var localInst = gs.getProperty('instance_name');
-    var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+        var localInst = gs.getProperty('instance_name');
+        var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
 
-    username = gs.getProperty('x_nuvo_diag.integration_user_name'),
-        password = gs.getProperty('x_nuvo_diag.integration_user_password');
+        username = gs.getProperty('x_nuvo_diag.integration_user_name'),
+            password = gs.getProperty('x_nuvo_diag.integration_user_password');
 
-    var casesAPIEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=case_numberLIKE' + caseNumber;
+        var casesAPIEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=case_numberLIKE' + caseNumber;
 
-    var casesR = new sn_ws.RESTMessageV2();
-    casesR.setEndpoint(casesAPIEndpoint);
-    casesR.setHttpMethod('GET');
-    casesR.setRequestHeader('Content-Type', 'application/json');
-    casesR.setBasicAuth(username, password);
+        var casesR = new sn_ws.RESTMessageV2();
+        casesR.setEndpoint(casesAPIEndpoint);
+        casesR.setHttpMethod('GET');
+        casesR.setRequestHeader('Content-Type', 'application/json');
+        casesR.setBasicAuth(username, password);
 
-    var casesResponse = casesR.execute();
-    var casesResponseBody = casesResponse.getBody();
-    var casesHttpStatus = casesResponse.getStatusCode();
+        var casesResponse = casesR.execute();
+        var casesResponseBody = casesResponse.getBody();
+        var casesHttpStatus = casesResponse.getStatusCode();
 
-    if (casesHttpStatus == 200) {
-        var casesResult = JSON.parse(casesResponseBody).result;
+        if (casesHttpStatus == 200) {
+            var casesResult = JSON.parse(casesResponseBody).result;
 
-        if (casesResult.length === 0) {
-            // ERROR - Case not found
-            tempAccessObj.message = "Case " + caseNumber + " doesn't exist in the system!";
-            return JSON.stringify(tempAccessObj);
-        } else {
-            // var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=case_numberLIKE' + caseNumber;
-
-            // var r = new sn_ws.RESTMessageV2();
-            // r.setEndpoint(apiEndpoint);
-            // r.setHttpMethod('GET');
-            // r.setRequestHeader('Content-Type', 'application/json');
-            // r.setBasicAuth(username, password);
-
-            // var response = r.execute();
-            // var responseBody = response.getBody();
-            // var httpStatus = response.getStatusCode();
-
-            var agentsAssigned = false;
-
-
-            var result = JSON.parse(casesResponseBody).result;
-
-            if (result.length !== 0) {
-                for (var j = 0; j < result.length; j++) {
-                    var record = result[j];
-                    var contactDomain = record.contact_domain;
-
-                    if (contactDomain !== requestorDomain) {
-                        //ERROR - Case not owned by the same Client
-                        tempAccessObj.message = "Case " + caseNumber + " is not raised by your Company! Please make sure you have the right Case number in the request!";
-
-                        return JSON.stringify(tempAccessObj);
-                    }
-
-                    var newRecord = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
-                    newRecord.addEncodedQuery('assigned_to_email=' + record.email + '^status=granted');
-                    newRecord.query();
-
-                    if (!newRecord.hasNext()) {
-
-                        var sysId = record.sys_id;
-                        var agentSysID = record.agent.value;
-
-                        // var link = "https://" + localInst + ".service-now.com/sys_user.do?sys_id=" + agentSysID;
-
-                        var link = "https://" + localInst + ".service-now.com/sys_user_list.do?sysparm_query=email=" + record.email;
-
-                        var tempObj = {
-                            agent: {
-                                name: record.agent_name,
-                                link: link
-                            },
-                            email: record.email,
-                            accessType: accessTypeText,
-                            endOfAccessDate: endOfAccessDate.getDisplayValue()
-                        };
-
-                        tempAccessObj.agents.push(tempObj);
-
-                        newRecord.initialize();
-                        newRecord.case_number = caseNumber;
-                        newRecord.end_of_access = endOfAccessDate.getDisplayValue();
-                        newRecord.assigned_to_email = record.email + '';
-                        newRecord.assigned_to_password = record.temp_password + '';
-                        newRecord.setValue('access_type', accessType);
-                        newRecord.status = 'in_progress';
-
-                        var insertResult = newRecord.insert();
-
-                        agentsAssigned = true;
-
-                        var updateData = {
-                            status: 'granted',
-                            expiration_date: endOfAccessDate.getDisplayValue(),
-                            access_type: accessType + '',
-                            instance_url: 'https://' + localInst + '.service-now.com'
-                        };
-
-                        var api = new x_nuvo_diag.HealthCheckHelper();
-                        api.updateClientEnvironmentAccessRecord(sysId, updateData);
-                    }
-                }
-
-                if (agentsAssigned) {
-                    tempAccessObj.message = 'Temporary access record created successfully!';
-                } else {
-                    //ERROR - All Agents assigned to the Case already have access granted to them
-                    tempAccessObj.message = 'All agents assigned to Case ' + caseNumber + ' were already granted access!';
-                }
+            if (casesResult.length === 0) {
+                // ERROR - Case not found
+                tempAccessObj.message = "Case " + caseNumber + " doesn't exist in the system!";
+                return JSON.stringify(tempAccessObj);
             } else {
-                //ERROR - No Agents assigned to the Case
-                tempAccessObj.message = 'No assigned agents for case ' + caseNumber + ' found!';
+                // var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=case_numberLIKE' + caseNumber;
+
+                // var r = new sn_ws.RESTMessageV2();
+                // r.setEndpoint(apiEndpoint);
+                // r.setHttpMethod('GET');
+                // r.setRequestHeader('Content-Type', 'application/json');
+                // r.setBasicAuth(username, password);
+
+                // var response = r.execute();
+                // var responseBody = response.getBody();
+                // var httpStatus = response.getStatusCode();
+
+                var agentsAssigned = false;
+
+
+                var result = JSON.parse(casesResponseBody).result;
+
+                if (result.length !== 0) {
+                    for (var j = 0; j < result.length; j++) {
+                        var record = result[j];
+                        var contactDomain = record.contact_domain;
+
+                        if (contactDomain !== requestorDomain) {
+                            //ERROR - Case not owned by the same Client
+                            tempAccessObj.message = "Case " + caseNumber + " is not raised by your Company! Please make sure you have the right Case number in the request!";
+
+                            return JSON.stringify(tempAccessObj);
+                        }
+
+                        var newRecord = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+                        newRecord.addEncodedQuery('assigned_to_email=' + record.email + '^status=granted');
+                        newRecord.query();
+
+                        if (!newRecord.hasNext()) {
+
+                            var sysId = record.sys_id;
+                            var agentSysID = record.agent.value;
+
+                            // var link = "https://" + localInst + ".service-now.com/sys_user.do?sys_id=" + agentSysID;
+
+                            var link = "https://" + localInst + ".service-now.com/sys_user_list.do?sysparm_query=email=" + record.email;
+
+                            var tempObj = {
+                                agent: {
+                                    name: record.agent_name,
+                                    link: link
+                                },
+                                email: record.email,
+                                accessType: accessTypeText,
+                                endOfAccessDate: endOfAccessDate.getDisplayValue()
+                            };
+
+                            tempAccessObj.agents.push(tempObj);
+
+                            newRecord.initialize();
+                            newRecord.case_number = caseNumber;
+                            newRecord.end_of_access = endOfAccessDate.getDisplayValue();
+                            newRecord.assigned_to_email = record.email + '';
+                            newRecord.assigned_to_password = record.temp_password + '';
+                            newRecord.setValue('access_type', accessType);
+                            newRecord.status = 'in_progress';
+
+                            var insertResult = newRecord.insert();
+
+                            agentsAssigned = true;
+
+                            var updateData = {
+                                status: 'granted',
+                                expiration_date: endOfAccessDate.getDisplayValue(),
+                                access_type: accessType + '',
+                                instance_url: 'https://' + localInst + '.service-now.com'
+                            };
+
+                            var api = new x_nuvo_diag.HealthCheckHelper();
+                            api.updateClientEnvironmentAccessRecord(sysId, updateData);
+                        }
+                    }
+
+                    if (agentsAssigned) {
+                        tempAccessObj.message = 'Temporary access record created successfully!';
+                    } else {
+                        //ERROR - All Agents assigned to the Case already have access granted to them
+                        tempAccessObj.message = 'All agents assigned to Case ' + caseNumber + ' were already granted access!';
+                    }
+                } else {
+                    //ERROR - No Agents assigned to the Case
+                    tempAccessObj.message = 'No assigned agents for case ' + caseNumber + ' found!';
+                }
+            }
+        } else {
+            //ERROR - Case Table API Fail
+            tempAccessObj.message = 'Failed while trying to find the Case in the system!';
+        }
+
+        return JSON.stringify(tempAccessObj);
+    },
+    getInstanceType: function() {
+        var instanceType = gs.getProperty('sn_appclient.instance_type');
+        return instanceType;
+    },
+
+    getEmailsFromSysIds: function() {
+        var sysIds = this.getParameter('sysparm_sysIds').split(',');
+        var emailArr = [];
+
+        for (var i = 0; i < sysIds.length; i++) {
+            var tempAccessGR = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+            tempAccessGR.addQuery('sys_id', sysIds[i]);
+            tempAccessGR.query();
+
+            while (tempAccessGR.next()) {
+                if (tempAccessGR.status != 'granted') {
+                    gs.addErrorMessage("All selected records must have a status of 'Granted'");
+                    return false;
+                }
+
+                if (tempAccessGR.assigned_to_email) {
+                    emailArr.push(tempAccessGR.assigned_to_email.toString());
+                }
+
+
             }
         }
-    } else {
-        //ERROR - Case Table API Fail
-        tempAccessObj.message = 'Failed while trying to find the Case in the system!';
-    }
 
-    return JSON.stringify(tempAccessObj);
-},
-getInstanceType: function() {
-    var instanceType = gs.getProperty('sn_appclient.instance_type');
-    return instanceType;
-},
+        var result = {
+            emails: emailArr.join(','),
+        };
 
-getEmailsFromSysIds: function() {
-    var sysIds = this.getParameter('sysparm_sysIds').split(',');
-    var emailArr = [];
+        return JSON.stringify(result);
+    },
 
-    for (var i = 0; i < sysIds.length; i++) {
-        var tempAccessGR = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
-        tempAccessGR.addQuery('sys_id', sysIds[i]);
-        tempAccessGR.query();
+    revokeNuvoloAccessAjax: function() {
+        var emails = this.getParameter('sysparm_emails');
+        var msg = this.getParameter('sysparm_msg');
 
-        while (tempAccessGR.next()) {
-            if (tempAccessGR.status != 'granted') {
-                gs.addErrorMessage("All selected records must have a status of 'Granted'");
-                return false;
-            }
+        var emailsArr = emails.split(',');
+        var api = new x_nuvo_diag.HealthCheckHelper();
+        api.revokeNuvoloAccess(emailsArr);
 
-            if (tempAccessGR.assigned_to_email) {
-                emailArr.push(tempAccessGR.assigned_to_email.toString());
-            }
+    },
 
+    getEmailBySysId: function() {
+        var sysId = this.getParameter('sysparm_sys_id');
+        var tempAccessRec = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
 
+        if (tempAccessRec.get(sysId)) {
+            return tempAccessRec.assigned_to_email.toString();
         }
-    }
 
-    var result = {
-        emails: emailArr.join(','),
-    };
+    },
 
-    return JSON.stringify(result);
-},
+    extendAccess: function() {
+        var email = this.getParameter('sysparm_email');
+        var days = parseInt(this.getParameter('sysparm_days'), 10);
+        var recordSysId = this.getParameter('sysparm_sys_id');
 
-revokeNuvoloAccessAjax: function() {
-    var emails = this.getParameter('sysparm_emails');
-    var msg = this.getParameter('sysparm_msg');
+        var helper = new x_nuvo_diag.HealthCheckHelper();
+        helper.updateExpirationDate(email, days);
 
-    var emailsArr = emails.split(',');
-    var api = new x_nuvo_diag.HealthCheckHelper();
-    api.revokeNuvoloAccess(emailsArr);
-    gs.addInfoMessage(msg);
-},
-extendAccess: function() {
+        var tempAccessRecord = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+        if (tempAccessRecord.get(recordSysId)) {
 
-    var days = parseInt(this.getParameter('sysparm_days'), 10);
-    var recordSysId = this.getParameter('sysparm_sys_id');
+            var newEndDate = new GlideDateTime(tempAccessRecord.end_of_access);
+            newEndDate.addDaysUTC(days);
 
-    var tempAccessRecord = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
-    if (tempAccessRecord.get(recordSysId)) {
+            tempAccessRecord.end_of_access = newEndDate;
+            tempAccessRecord.update();
+        }
+    },
 
-        var newEndDate = new GlideDateTime(tempAccessRecord.end_of_access);
-        newEndDate.addDaysUTC(days);
-
-        tempAccessRecord.end_of_access = newEndDate;
-        tempAccessRecord.update();
-    } 
-},
 
 });]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-27 11:04:24</sys_created_on>
         <sys_id>c5b1185393781a10052ef5cd0bba1093</sys_id>
-        <sys_mod_count>118</sys_mod_count>
+        <sys_mod_count>123</sys_mod_count>
         <sys_name>NuvoloTempAccessAjax</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c5b1185393781a10052ef5cd0bba1093</sys_update_name>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-12 11:35:34</sys_updated_on>
+        <sys_updated_on>2024-11-18 09:41:38</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c5b1185393781a10052ef5cd0bba1093</id>

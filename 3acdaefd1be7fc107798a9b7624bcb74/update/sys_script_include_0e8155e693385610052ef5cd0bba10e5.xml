@@ -511,7 +511,6 @@ HealthCheckHelper.prototype = {
                 r.setBasicAuth(username, password);
                 r.setQueryParameter('email', email);
                 r.setQueryParameter('contact_domain', usrDomain);
-                //gs.info('Method: ' + r.getHttpMethod());
 
                 var response = r.execute();
                 var httpStatus = response.getStatusCode();
@@ -562,20 +561,75 @@ HealthCheckHelper.prototype = {
         }
     },
 
+    updateExpirationDate: function(email, daysToAdd) {
+        try {
+            var currentdate = new GlideDate();
+            var usrDomain = gs.getUser().getEmail().split('@')[1];
+
+            gs.info('DOMAIN ' + usrDomain);
+            var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+            var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access';
+            var cred = JSON.parse(this.getIntegrationUserCredentials());
+            var username = cred.username;
+            var password = cred.password;
+
+            try {
+                var r = new sn_ws.RESTMessageV2();
+                r.setEndpoint(apiEndpoint);
+                r.setHttpMethod('GET');
+                r.setRequestHeader('Content-Type', 'application/json');
+                r.setBasicAuth(username, password);
+                r.setQueryParameter('email', email);
+                r.setQueryParameter('contact_domain', usrDomain);
+
+                var response = r.execute();
+                var httpStatus = response.getStatusCode();
+                var responseBody = response.getBody();
+
+                if (httpStatus === 200) {
+                    var result = JSON.parse(responseBody).result;
+                    var sysId = result[0].sys_id;
+                    var expDate = result[0].expiration_date;
+
+                    var currentExpiration = new GlideDateTime(expDate);
+
+                    currentExpiration.addDaysUTC(daysToAdd);
+					
+                    gs.info('EXP DATE ' + currentExpiration)
+
+                    var updateData = {
+                        expiration_date: currentExpiration.toString()
+                    };
+
+
+                    this.updateClientEnvironmentAccessRecord(sysId, updateData);
+
+                } else {
+                    gs.error('Error: Failed to retrieve data from API. HTTP Status: ' + httpStatus);
+                }
+            } catch (ex) {
+                gs.error('Exception in making API call: ' + ex.message);
+            }
+        } catch (ex) {
+            gs.error('Exception in updateExpirationDate: ' + ex.message);
+        }
+    },
+
+
     type: 'HealthCheckHelper'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>141</sys_mod_count>
+        <sys_mod_count>152</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
         <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-13 09:29:02</sys_updated_on>
+        <sys_updated_on>2024-11-15 14:53:30</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>
