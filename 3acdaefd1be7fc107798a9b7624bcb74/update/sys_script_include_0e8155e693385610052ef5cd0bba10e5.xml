@@ -24,7 +24,7 @@ HealthCheckHelper.prototype = {
 
     populateHealthLog: function(healthcheckRecord) {
 
-
+		var lastHealthCheck;
         function getLastHealthCheck(category, type) {
             var gr = new GlideRecord('x_nuvo_diag_healthcheck_logs');
             gr.addEncodedQuery('probe_category=' + category + '^healthcheck_type=' + type);
@@ -50,7 +50,12 @@ HealthCheckHelper.prototype = {
         apps.forEach(function(app) {
 
             for (var i = 0; i < types.length; i++) {
-                var lastHealthCheck = JSON.parse(getLastHealthCheck(app, types[i]))
+                try{
+					lastHealthCheck = JSON.parse(getLastHealthCheck(app, types[i]))
+				}
+				catch(err){
+					lastHealthCheck = '';
+				}
                 try {
                     var featureUsage = false;
                     if (types[i] == 'feature_usage') {
@@ -645,14 +650,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>158</sys_mod_count>
+        <sys_mod_count>159</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-28 12:40:56</sys_updated_on>
+        <sys_updated_on>2024-11-28 12:56:06</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>
