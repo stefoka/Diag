@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="DELETE">
+        <choices/>
+        <description>All Nuvolo Roles that start with x_nuvo and contain admin</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_nuvo_diag.all.nuvolo.roles</name>
+        <read_roles/>
+        <suffix>all.nuvolo.roles</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>prashant.kulkarni@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-11 15:55:59</sys_created_on>
+        <sys_id>4e4238bd47391e106d8ba835126d4327</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>x_nuvo_diag.all.nuvolo.roles</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_properties_4e4238bd47391e106d8ba835126d4327</sys_update_name>
+        <sys_updated_by>prashant.kulkarni@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-11 16:18:15</sys_updated_on>
+        <type>string</type>
+        <value>x_nuvo_eam.call_center_admin,x_nuvo_eam.clinical_asset_admin,x_nuvo_eam.security_admin,x_nuvo_eam.move_admin,x_nuvo_eam.reservation_admin,x_nuvo_eam.revenue_admin,x_nuvo_nps.timecard_admin,x_nuvo_eam.admin,x_nuvo_nps.template_admin,x_nuvo_eam.visitor_app_admin,x_nuvo_eam.calibration_admin,x_nuvo_nps.cloud_sync_admin,x_nuvo_eam.sustainability_admin,x_nuvo_eam.geo_admin,x_nuvo_eam.manufacturing_asset_admin,x_nuvo_eam.lab_asset_admin,x_nuvo_nps.transform_map_admin,x_nuvo_mobile.data_lookup_admin,x_nuvo_eam.capital_project_admin,x_nuvo_eam.sourcing_admin,x_nuvo_eam.sourcing_process_request_admin,x_nuvo_eam.fca_admin,x_nuvo_eam.real_estate_admin,x_nuvo_eam.integration_admin,x_nuvo_nps.critical_date_admin,x_nuvo_eam.space_CAD_admin,x_nuvo_diag.healthcheck_admin,x_nuvo_eam.facilities_asset_admin,x_nuvo_eam.expense_admin,x_nuvo_eam.space_admin,x_nuvo_nps.index_admin</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="DELETE" query="documentkey=4e4238bd47391e106d8ba835126d4327"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>sys_properties_4e4238bd47391e106d8ba835126d4327</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties"><sys_properties action="INSERT_OR_UPDATE"><choices/><description>All Nuvolo Roles that start with x_nuvo and contain admin</description><ignore_cache>true</ignore_cache><is_private>false</is_private><name>x_nuvo_diag.all.nuvolo.roles</name><read_roles/><suffix>all.nuvolo.roles</suffix><sys_class_name>sys_properties</sys_class_name><sys_created_by>prashant.kulkarni@nuvolo.com</sys_created_by><sys_created_on>2024-11-11 15:55:59</sys_created_on><sys_id>4e4238bd47391e106d8ba835126d4327</sys_id><sys_mod_count>4</sys_mod_count><sys_name>x_nuvo_diag.all.nuvolo.roles</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>sys_properties_4e4238bd47391e106d8ba835126d4327</sys_update_name><sys_updated_by>prashant.kulkarni@nuvolo.com</sys_updated_by><sys_updated_on>2024-11-11 16:18:15</sys_updated_on><type>string</type><value>x_nuvo_eam.call_center_admin,x_nuvo_eam.clinical_asset_admin,x_nuvo_eam.security_admin,x_nuvo_eam.move_admin,x_nuvo_eam.reservation_admin,x_nuvo_eam.revenue_admin,x_nuvo_nps.timecard_admin,x_nuvo_eam.admin,x_nuvo_nps.template_admin,x_nuvo_eam.visitor_app_admin,x_nuvo_eam.calibration_admin,x_nuvo_nps.cloud_sync_admin,x_nuvo_eam.sustainability_admin,x_nuvo_eam.geo_admin,x_nuvo_eam.manufacturing_asset_admin,x_nuvo_eam.lab_asset_admin,x_nuvo_nps.transform_map_admin,x_nuvo_mobile.data_lookup_admin,x_nuvo_eam.capital_project_admin,x_nuvo_eam.sourcing_admin,x_nuvo_eam.sourcing_process_request_admin,x_nuvo_eam.fca_admin,x_nuvo_eam.real_estate_admin,x_nuvo_eam.integration_admin,x_nuvo_nps.critical_date_admin,x_nuvo_eam.space_CAD_admin,x_nuvo_diag.healthcheck_admin,x_nuvo_eam.facilities_asset_admin,x_nuvo_eam.expense_admin,x_nuvo_eam.space_admin,x_nuvo_nps.index_admin</value><write_roles/></sys_properties><sys_translated_text action="delete_multiple" query="documentkey=4e4238bd47391e106d8ba835126d4327"/></record_update>]]></payload>
+        <payload_hash>1467888276</payload_hash>
+        <record_name>x_nuvo_diag.all.nuvolo.roles</record_name>
+        <reverted_from/>
+        <source>720a658393819210052ef5cd0bba10e6</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>prashant.kulkarni@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-11 16:18:15</sys_created_on>
+        <sys_id>0249853947b91e106d8ba835126d4305</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1931c04c6b10000001</sys_recorded_at>
+        <sys_updated_by>prashant.kulkarni@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-11 16:18:15</sys_updated_on>
+        <type>System Property</type>
+        <update_guid>824985393cb91e10d4206a196ff25404</update_guid>
+        <update_guid_history>824985393cb91e10d4206a196ff25404:1467888276,eac84df5fab91e10cdc7a5efe2e6caf7:-1485530596,f6384d75b9b91e1066bf6e997c9244c6:-1583760742,421841f506b91e10706ae7657cbfaa91:1643748358,b724c9b1e1b91e10f0bf91f123ab1221:1150044972</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>prashant.kulkarni@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-28 10:58:09</sys_created_on>
+        <sys_db_object display_value="" name="sys_properties">sys_properties</sys_db_object>
+        <sys_id>0431b63f4c764519817b041f1230d359</sys_id>
+        <sys_metadata>4e4238bd47391e106d8ba835126d4327</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag.all.nuvolo.roles</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_properties_4e4238bd47391e106d8ba835126d4327</sys_update_name>
+        <sys_update_version display_value="sys_properties_4e4238bd47391e106d8ba835126d4327">0249853947b91e106d8ba835126d4305</sys_update_version>
+        <sys_updated_by>prashant.kulkarni@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-28 10:58:09</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

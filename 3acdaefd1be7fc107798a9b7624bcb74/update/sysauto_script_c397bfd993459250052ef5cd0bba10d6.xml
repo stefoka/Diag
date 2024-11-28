@@ -31,13 +31,17 @@
             emails.push(tempAccess.assigned_to_email.toString());
         }
 
-        // if (tempAccess.additional_assignee_email) {
+        var apiFunc = new HealthCheckHelper();
 
-        //     var additionalEmails = tempAccess.additional_assignee_email.split(',');
-        //     for (var i = 0; i < additionalEmails.length; i++) {
-        //         emails.push(additionalEmails[i].trim());
-        //     }
-        // }
+        apiFunc.revokeNuvoloAccess(emails);
+
+        if (tempAccess.additional_assignee_email) {
+
+            var additionalEmails = tempAccess.additional_assignee_email.split(',');
+            for (var i = 0; i < additionalEmails.length; i++) {
+                emails.push(additionalEmails[i].trim());
+            }
+        }
 
         for (var j = 0; j < emails.length; j++) {
             var userGR = new GlideRecord('sys_user');
@@ -54,42 +58,42 @@
         tempAccess.update();
     }
 
-	//Expire Agent Accesses, where Expiration Date is in the future, but Client Environment Access is expired due to no more open Cases in Nuvolo for the Client
-	
-	var checkTempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    //Expire Agent Accesses, where Expiration Date is in the future, but Client Environment Access is expired due to no more open Cases in Nuvolo for the Client
+
+    var checkTempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
     checkTempAccess.addEncodedQuery('status=granted');
     checkTempAccess.query();
 
-	var tempEmailsStr = '';
+    var tempEmailsStr = '';
 
-	while (checkTempAccess.next()) {
-		tempEmailsStr += checkTempAccess.assigned_to_email + ',';
-	}
+    while (checkTempAccess.next()) {
+        tempEmailsStr += checkTempAccess.assigned_to_email + ',';
+    }
 
-	var api = new HealthCheckHelper();
-	var expiredAccessEmails = api.getExpiredClientEnvironmentAccessByEmails(tempEmailsStr);
+    var api = new HealthCheckHelper();
+    var expiredAccessEmails = api.getExpiredClientEnvironmentAccessByEmails(tempEmailsStr);
 
-	var tempAccessToExpire = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    var tempAccessToExpire = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
     tempAccessToExpire.addEncodedQuery('assigned_to_emailIN' + expiredAccessEmails + '^status=granted');
     tempAccessToExpire.query();
 
-	while(tempAccessToExpire.next()) {
+    while (tempAccessToExpire.next()) {
 
-		//Expire the Nuvolo Temporary Access record of the Agent
-		tempAccessToExpire.end_of_access = new GlideDate();
-		tempAccessToExpire.status = 'expired';
-		tempAccessToExpire.update();
+        //Expire the Nuvolo Temporary Access record of the Agent
+        tempAccessToExpire.end_of_access = new GlideDate();
+        tempAccessToExpire.status = 'expired';
+        tempAccessToExpire.update();
 
-		var agent = new GlideRecord('sys_user');
-		agent.addQuery('email', tempAccessToExpire.assigned_to_email);
-		agent.query();
+        var agent = new GlideRecord('sys_user');
+        agent.addQuery('email', tempAccessToExpire.assigned_to_email);
+        agent.query();
 
-		//Deactivate the related User record of the Agent
-		if (agent.next()) {
-			agent.active = false;
-			agent.update();
-		}
-	}
+        //Deactivate the related User record of the Agent
+        if (agent.next()) {
+            agent.active = false;
+            agent.update();
+        }
+    }
 
 
 
@@ -98,14 +102,14 @@
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-10-04 09:05:16</sys_created_on>
         <sys_id>c397bfd993459250052ef5cd0bba10d6</sys_id>
-        <sys_mod_count>31</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>Remove Nuvolo Temp Access</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sysauto_script_c397bfd993459250052ef5cd0bba10d6</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-07 12:30:56</sys_updated_on>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-22 12:38:32</sys_updated_on>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>

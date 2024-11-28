@@ -14,12 +14,15 @@ HealthCheckProbeUtils.prototype = {
     initialize: function() {},
 
     getRecordsCount: function(tableName, encodedQuery) {
+		var clientInstance = gs.getProperty('instance_name')
         var count = 0;
         var gr = new GlideRecord(tableName);
         gr.addEncodedQuery(encodedQuery);
         gr.query();
         count = gr.getRowCount();
-        return count;
+		var instanceName = gs.getProperty('instance_name');
+		var url = "https://"+ clientInstance + ".service-now.com/"+tableName+"_list.do?sysparm_query=" + encodedQuery;
+        return count + '@-@' + url;
     },
 
     getHashedValue: function(key, value) {
@@ -118,14 +121,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>21</sys_mod_count>
+        <sys_mod_count>22</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-18 15:31:15</sys_updated_on>
+        <sys_updated_on>2024-11-25 08:42:46</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>

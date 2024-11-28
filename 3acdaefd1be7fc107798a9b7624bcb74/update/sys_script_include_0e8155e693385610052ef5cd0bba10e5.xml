@@ -20,7 +20,25 @@ HealthCheckHelper.prototype = {
         });
     },
 
+
+
     populateHealthLog: function(healthcheckRecord) {
+
+
+        function getLastHealthCheck(category, type) {
+            var gr = new GlideRecord('x_nuvo_diag_healthcheck_logs');
+            gr.addEncodedQuery('probe_category=' + category + '^healthcheck_type=' + type);
+            gr.orderByDesc('sys_created_on');
+            gr.setLimit(1);
+            gr.query();
+
+            if (gr.next()) {
+                return (gr.result.toString());
+				
+            }
+            return '';
+
+        }
 
         var apps = healthcheckRecord.getValue('applications').split(',');
         var index = apps.indexOf('ede6dc1b477cd6109d9f9915126d431d');
@@ -32,7 +50,7 @@ HealthCheckHelper.prototype = {
         apps.forEach(function(app) {
 
             for (var i = 0; i < types.length; i++) {
-
+                var lastHealthCheck = JSON.parse(getLastHealthCheck(app, types[i]))
                 try {
                     var featureUsage = false;
                     if (types[i] == 'feature_usage') {
@@ -53,7 +71,7 @@ HealthCheckHelper.prototype = {
 
                         var probeName = probe.getValue('name');
                         obj[probeName] = {};
-                        featUsageObj[probeName] = {}
+                        featUsageObj[probeName] = {};
                         var scriptItem = new GlideRecord('x_nuvo_diag_probe_script_item');
                         scriptItem.addQuery('probe', probe.sys_id);
                         scriptItem.orderBy('order');
@@ -64,7 +82,14 @@ HealthCheckHelper.prototype = {
                             var evaluator = new GlideScopedEvaluator();
                             var result = evaluator.evaluateScript(scriptItem, 'script');
                             var scriptItemName = scriptItem.getValue('name');
-                            obj[probeName][scriptItemName] = result;
+                            obj[probeName][scriptItemName] = {};
+                            obj[probeName][scriptItemName]['count'] = result.split('@-@')[0];
+                            obj[probeName][scriptItemName]['url'] = result.split('@-@')[1];
+                            try {
+                                obj[probeName][scriptItemName]['pastCount'] = lastHealthCheck[probeName][scriptItemName]['count'];
+                            } catch (err) {
+                                obj[probeName][scriptItemName]['pastCount'] = 0;
+                            }
 
                             if (featureUsage) {
                                 var threshold = scriptItem.getValue('threshold');
@@ -566,7 +591,6 @@ HealthCheckHelper.prototype = {
             var currentdate = new GlideDate();
             var usrDomain = gs.getUser().getEmail().split('@')[1];
 
-            gs.info('DOMAIN ' + usrDomain);
             var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
             var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access';
             var cred = JSON.parse(this.getIntegrationUserCredentials());
@@ -594,8 +618,6 @@ HealthCheckHelper.prototype = {
                     var currentExpiration = new GlideDateTime(expDate);
 
                     currentExpiration.addDaysUTC(daysToAdd);
-					
-                    gs.info('EXP DATE ' + currentExpiration)
 
                     var updateData = {
                         expiration_date: currentExpiration.toString()
@@ -616,20 +638,21 @@ HealthCheckHelper.prototype = {
     },
 
 
+
     type: 'HealthCheckHelper'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>152</sys_mod_count>
+        <sys_mod_count>158</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
-        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-15 14:53:30</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-28 12:40:56</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>
