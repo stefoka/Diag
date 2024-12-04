@@ -11,6 +11,7 @@
         <element label="Assigned To Password" max_length="150" name="assigned_to_password" read_only="true" type="string"/>
         <element label="Case Number" max_length="150" name="case_number" read_only="true" type="string"/>
         <element label="End Of Access" max_length="40" name="end_of_access" read_only="true" type="glide_date"/>
+        <element label="External Key" max_length="100" name="external_key" read_only="true" type="string"/>
         <element choice="1" label="Status" max_length="40" name="status" read_only="true" type="choice">
             <choice>
                 <element inactive="true" inactive_on_update="true" label="Error" value="error"/>

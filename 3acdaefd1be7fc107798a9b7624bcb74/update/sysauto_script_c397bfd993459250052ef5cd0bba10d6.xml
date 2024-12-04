@@ -9,7 +9,7 @@
         <name>Add/Remove Nuvolo Temp Access</name>
         <offset/>
         <offset_type>0</offset_type>
-        <run_as display_value="Kaloyan Yanakov">1de5b79d93e0d610052ef5cd0bba10c7</run_as>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
         <run_dayofweek>1</run_dayofweek>
@@ -138,14 +138,14 @@
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-10-04 09:05:16</sys_created_on>
         <sys_id>c397bfd993459250052ef5cd0bba10d6</sys_id>
-        <sys_mod_count>38</sys_mod_count>
+        <sys_mod_count>39</sys_mod_count>
         <sys_name>Add/Remove Nuvolo Temp Access</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sysauto_script_c397bfd993459250052ef5cd0bba10d6</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-04 07:13:25</sys_updated_on>
+        <sys_updated_on>2024-12-04 10:26:17</sys_updated_on>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
