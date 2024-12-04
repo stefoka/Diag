@@ -12,13 +12,12 @@
         <script><![CDATA[var NuvoloTempAccessAjax = Class.create();
 NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 
-    createTempAccessRecord: function() {
-
-        var caseNumber = this.getParameter('case_number');
-        var endOfAccessString = this.getParameter('end_of_access');
-        var accessType = this.getParameter('access_type');
-        var accessTypeText = this.getParameter('access_type_text');
-
+    createTempAccessRecord: function(caseNumber, endOfAccessString, accessType, accessTypeText) {
+		
+        caseNumber = caseNumber || this.getParameter('case_number');
+        endOfAccessString = endOfAccessString || this.getParameter('end_of_access');
+        accessType = accessType || this.getParameter('access_type');
+        accessTypeText = accessTypeText || this.getParameter('access_type_text'); 
         var tempAccessObj = {
             agents: [],
             link: '',
@@ -57,7 +56,6 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
 
         if (casesHttpStatus == 200) {
             var casesResult = JSON.parse(casesResponseBody).result;
-
             if (casesResult.length === 0) {
                 // ERROR - Case not found
                 tempAccessObj.message = "Case " + caseNumber + " doesn't exist in the system!";
@@ -87,7 +85,7 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
 
                         if (contactDomain !== requestorDomain) {
                             //ERROR - Case not owned by the same Client
-                            tempAccessObj.message = "Case " + caseNumber + " is not raised by your Company! Please make sure you have the right Case number in the request!";
+                            tempAccessObj.message = "Case " + caseNumber + " cannot be accessed because it was not raised by your company, or the contact's email domain does not match your company's domain";
 
                             return JSON.stringify(tempAccessObj);
                         }
@@ -97,7 +95,12 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
                         newRecord.query();
 
                         if (!newRecord.hasNext()) {
-
+                            var updateData = {
+                                status: 'granted',
+                                expiration_date: endOfAccessDate.getDisplayValue(),
+                                access_type: accessType + '',
+                                instance_url: 'https://' + localInst + '.service-now.com'
+                            };
                             var sysId = record.sys_id;
                             var agentSysID = record.agent.value;
 
@@ -126,18 +129,52 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
                             newRecord.status = 'in_progress';
 
                             var insertResult = newRecord.insert();
-
+                            var api = new x_nuvo_diag.HealthCheckHelper();
                             agentsAssigned = true;
 
-                            var updateData = {
-                                status: 'granted',
-                                expiration_date: endOfAccessDate.getDisplayValue(),
-                                access_type: accessType + '',
-                                instance_url: 'https://' + localInst + '.service-now.com'
-                            };
+                            if (record.instance_url == "" || record.instance_url == 'https://' + localInst + '.service-now.com') {
 
-                            var api = new x_nuvo_diag.HealthCheckHelper();
-                            api.updateClientEnvironmentAccessRecord(sysId, updateData);
+                                api.updateClientEnvironmentAccessRecord(sysId, updateData);
+                            } else {
+                                var query = encodeURIComponent('case_numberLIKE' + caseNumber + '^instance_url=https://' + localInst + '.service-now.com^email=' + record.email)
+                                var newCaseAPIEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=' + query;
+                                var case1 = new sn_ws.RESTMessageV2();
+                                case1.setEndpoint(newCaseAPIEndpoint);
+                                case1.setHttpMethod('GET');
+                                case1.setRequestHeader('Content-Type', 'application/json');
+                                case1.setBasicAuth(username, password);
+
+                                var caseResponse = case1.execute();
+                                var caseResponseBody = caseResponse.getBody();
+                                var caseHttpStatus = caseResponse.getStatusCode();
+
+                                if (caseHttpStatus == 200) {
+                                    var caseResult = JSON.parse(caseResponseBody).result;
+                                    if (caseResult.length === 0) {
+                                        record.status = 'granted';
+                                        record.expiration_date = endOfAccessDate.getDisplayValue();
+                                        record.access_type = accessType + '';
+                                        record.instance_url = 'https://' + localInst + '.service-now.com';
+										record.agent = record.agent.value;
+                                        record.account = record.account_text;
+                                        if (record.hasOwnProperty('sys_id')) {
+                                            delete record.sys_id;
+                                        }
+                                        api.createTempAccessInNUSD(record);
+                                    } else {
+
+                                        api.updateClientEnvironmentAccessRecord(sysId, updateData);
+                                    }
+                                }
+                            }
+                        } else if (newRecord.next() && newRecord.case_number.indexOf(caseNumber) < 0) {
+                            newRecord.case_number = newRecord.case_number + ',' + caseNumber;
+                            var currentEndOfAccess = new GlideDateTime();
+                            currentEndOfAccess.setValue(newRecord.end_of_access);
+                            if (endOfAccessDate.getNumericValue() > currentEndOfAccess.getNumericValue()) {
+                                newRecord.end_of_access = endOfAccessDate.getDisplayValue();
+                            }
+                            newRecord.update();
                         }
                     }
 
@@ -145,19 +182,22 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
                         tempAccessObj.message = 'Temporary access record created successfully!';
                     } else {
                         //ERROR - All Agents assigned to the Case already have access granted to them
-                        tempAccessObj.message = 'All agents assigned to Case ' + caseNumber + ' were already granted access!';
+
+                        tempAccessObj.message = 'All assigned agents have already been granted access for case ' + caseNumber;
                     }
                 } else {
                     //ERROR - No Agents assigned to the Case
-                    tempAccessObj.message = 'No assigned agents for case ' + caseNumber + ' found!';
+                    tempAccessObj.message = 'No agents are currently assigned to this case.';
                 }
             }
+
         } else {
             //ERROR - Case Table API Fail
             tempAccessObj.message = 'Failed while trying to find the Case in the system!';
         }
 
         return JSON.stringify(tempAccessObj);
+
     },
     getInstanceType: function() {
         var instanceType = gs.getProperty('sn_appclient.instance_type');
@@ -234,19 +274,20 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
     },
 
 
-});]]></script>
+});
+]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-27 11:04:24</sys_created_on>
         <sys_id>c5b1185393781a10052ef5cd0bba1093</sys_id>
-        <sys_mod_count>123</sys_mod_count>
+        <sys_mod_count>136</sys_mod_count>
         <sys_name>NuvoloTempAccessAjax</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c5b1185393781a10052ef5cd0bba1093</sys_update_name>
-        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-18 09:41:38</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-04 08:37:26</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c5b1185393781a10052ef5cd0bba1093</id>

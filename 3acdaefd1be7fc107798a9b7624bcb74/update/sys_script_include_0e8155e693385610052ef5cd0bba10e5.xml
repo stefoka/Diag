@@ -24,7 +24,8 @@ HealthCheckHelper.prototype = {
 
     populateHealthLog: function(healthcheckRecord) {
 
-		var lastHealthCheck;
+        var lastHealthCheck;
+
         function getLastHealthCheck(category, type) {
             var gr = new GlideRecord('x_nuvo_diag_healthcheck_logs');
             gr.addEncodedQuery('probe_category=' + category + '^healthcheck_type=' + type);
@@ -34,7 +35,7 @@ HealthCheckHelper.prototype = {
 
             if (gr.next()) {
                 return (gr.result.toString());
-				
+
             }
             return '';
 
@@ -50,12 +51,11 @@ HealthCheckHelper.prototype = {
         apps.forEach(function(app) {
 
             for (var i = 0; i < types.length; i++) {
-                try{
-					lastHealthCheck = JSON.parse(getLastHealthCheck(app, types[i]))
-				}
-				catch(err){
-					lastHealthCheck = '';
-				}
+                try {
+                    lastHealthCheck = JSON.parse(getLastHealthCheck(app, types[i]))
+                } catch (err) {
+                    lastHealthCheck = '';
+                }
                 try {
                     var featureUsage = false;
                     if (types[i] == 'feature_usage') {
@@ -430,11 +430,13 @@ HealthCheckHelper.prototype = {
     getExpiredClientEnvironmentAccessByEmails: function(emails) {
         try {
             var localInst = gs.getProperty('instance_name');
+            var query = encodeURIComponent('emailIN' + emails + '^instance_url=https://' + localInst + '.service-now.com');
             var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
-            var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=emailIN' + emails;
+            var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=' + query
             var cred = JSON.parse(this.getIntegrationUserCredentials());
             var username = cred.username;
             var password = cred.password;
+            var obj = {}
 
             var r = new sn_ws.RESTMessageV2();
             r.setEndpoint(apiEndpoint);
@@ -452,11 +454,12 @@ HealthCheckHelper.prototype = {
                 var expiredAccessEmails = '';
 
                 for (var i = 0; i < result.length; i++) {
-                    if (result[i].status == 'expired') {
-                        expiredAccessEmails += result[i].email + ',';
-                    }
+
+                    //expiredAccessEmails += result[i].email + ',';
+                    obj[result[i].email] = result[i].case_number;
+
                 }
-                return expiredAccessEmails;
+                return JSON.stringify(obj);
 
             } else {
                 gs.error('Nuvolo API Error: HTTP Status ' + httpStatus + ' - Response: ' + responseBody);
@@ -485,6 +488,8 @@ HealthCheckHelper.prototype = {
             r.setBasicAuth(username, password);
             r.setQueryParameter('contact_domain', domain);
             r.setQueryParameter('status', 'granted');
+            r.setQueryParameter('instance_url', 'https://' + localInst + '.service-now.com');
+
 
             var response = r.execute();
             var responseBody = response.getBody();
@@ -517,6 +522,7 @@ HealthCheckHelper.prototype = {
     },
 
     revokeNuvoloAccess: function(emails) {
+        var localInst = gs.getProperty('instance_name');
         var currentdate = new GlideDate();
         var usrDomain = gs.getUser().getEmail().split('@')[1];
         var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
@@ -541,12 +547,11 @@ HealthCheckHelper.prototype = {
                 r.setBasicAuth(username, password);
                 r.setQueryParameter('email', email);
                 r.setQueryParameter('contact_domain', usrDomain);
+                r.setQueryParameter('instance_url', 'https://' + localInst + '.service-now.com');
 
                 var response = r.execute();
                 var httpStatus = response.getStatusCode();
                 var responseBody = response.getBody();
-
-
 
                 if (httpStatus == 200) {
                     var result = JSON.parse(responseBody).result;
@@ -610,6 +615,8 @@ HealthCheckHelper.prototype = {
                 r.setBasicAuth(username, password);
                 r.setQueryParameter('email', email);
                 r.setQueryParameter('contact_domain', usrDomain);
+                r.setQueryParameter('instance_url', 'https://' + localInst + '.service-now.com');
+
 
                 var response = r.execute();
                 var httpStatus = response.getStatusCode();
@@ -641,8 +648,33 @@ HealthCheckHelper.prototype = {
             gs.error('Exception in updateExpirationDate: ' + ex.message);
         }
     },
+    //this fundtion will create a record in NUSD only if access has been provided to one of the client's environments and access needs to be provided to a second instance
+    createTempAccessInNUSD: function(record) {
+        // Modify the record.url value (example: append '/new' to the URL)
+        var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+        var cred = JSON.parse(this.getIntegrationUserCredentials());
+        var username = cred.username;
+        var password = cred.password;
+        // Specify the target ServiceNow environment details
+        var targetInstance = 'https://' + inst + '.service-now.com';
+        var targetTable = 'x_nuvo_health_scan_client_environment_access'; // Replace with the desired table name
+        //var auth = 'Basic ' + btoa('username:password'); // Provide basic authentication
+        // Make the API call to create the new record
+        var request = new sn_ws.RESTMessageV2();
+        var requestBody = JSON.stringify(record);
+        request.setRequestBody(requestBody);
+        request.setBasicAuth(username, password);
+        request.setHttpMethod('POST');
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.setEndpoint(targetInstance + '/api/now/table/' + targetTable);
+        var response = request.execute();
+        var httpStatus = response.getStatusCode();
 
-
+        if (httpStatus != 200 && httpStatus != 204) {
+            gs.error('Error creating temp record for object: ' + JSON.stringify(record) + ', HTTP Status: ' + httpStatus);
+        }
+        // Send the modified record as JSON
+    },
 
     type: 'HealthCheckHelper'
 };]]></script>
@@ -650,14 +682,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>159</sys_mod_count>
+        <sys_mod_count>169</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-28 12:56:06</sys_updated_on>
+        <sys_updated_on>2024-12-04 07:11:58</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>
