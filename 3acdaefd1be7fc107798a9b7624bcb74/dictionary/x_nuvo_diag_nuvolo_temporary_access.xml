@@ -17,7 +17,7 @@
                 <element inactive="true" inactive_on_update="true" label="Error" value="error"/>
                 <element inactive_on_update="false" label="Expired" value="expired"/>
                 <element inactive_on_update="false" label="Granted" value="granted"/>
-                <element inactive="true" inactive_on_update="true" label="In Progress" value="in_progress"/>
+                <element inactive_on_update="false" label="In Progress" value="in_progress"/>
                 <element inactive="true" inactive_on_update="true" label="Pending" value="pending"/>
             </choice>
         </element>
