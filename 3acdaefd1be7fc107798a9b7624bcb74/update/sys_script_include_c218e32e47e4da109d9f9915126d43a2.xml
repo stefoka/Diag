@@ -13,16 +13,25 @@
 HealthCheckProbeUtils.prototype = {
     initialize: function() {},
 
-    getRecordsCount: function(tableName, encodedQuery) {
-		var clientInstance = gs.getProperty('instance_name')
-        var count = 0;
-        var gr = new GlideRecord(tableName);
-        gr.addEncodedQuery(encodedQuery);
-        gr.query();
-        count = gr.getRowCount();
-		var instanceName = gs.getProperty('instance_name');
-		var url = "https://"+ clientInstance + ".service-now.com/"+tableName+"_list.do?sysparm_query=" + encodedQuery;
-        return count + '@-@' + url;
+     getRecordsCount: function(tableName, encodedQuery) {
+        try{
+			var clientInstance = gs.getProperty('instance_name')
+			
+			var url = "https://"+ clientInstance + ".service-now.com/"+tableName+"_list.do?sysparm_query=" + encodedQuery;
+			var count = 0;
+			
+			var gr = new GlideRecord(tableName);
+			gr.addEncodedQuery(encodedQuery);
+			gr.query();
+			count = gr.getRowCount();
+			
+			var instanceName = gs.getProperty('instance_name');
+			return count + '@-@' + url;
+        }
+        catch(err){
+            gs.error('"SI: HealthCheckProbeUtils -> Error when executing Probe Scrip Item with encoded query -  ' + encodedQuery + '. Error is - ' + err)
+            return '-1@-@'+url
+        }
     },
 
     getHashedValue: function(key, value) {
@@ -112,8 +121,233 @@ HealthCheckProbeUtils.prototype = {
 
     },
 
+	pullProbes: function(){
+		try{
+			gs.info("IN001: Inside pullProbes!");
+			
+			var probeTypes = [
+				{
+					label: "Feature Usage",
+					name: "feature_usage"
+				},
+				{
+					label: "Data Integrity",
+					name: "data_integrity"
+				},
+				{
+					label: "Upgrade Conflicts",
+					name: "upgrade_conflicts"
+				},
+				{
+					label: "OOTB Percentage",
+					name: "ootb"
+				},
+			];
 
+			var allPobes = [];
+			var probeSysIDs = [];
+			var allProbeScriptItems = [];
 
+			// GET Client's version of Connected Workplace
+			var cw_version = '';
+
+			var cw_versionGR = new GlideRecord('sys_store_app');
+			cw_versionGR.addQuery('scope', 'x_nuvo_eam');
+
+			cw_versionGR.query();
+
+			if(cw_versionGR.next()){
+				cw_version = cw_versionGR.version + '';
+			}
+
+			var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
+			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+			
+			for (var i = 0; i < probeTypes.length; i++) {
+				gs.info("IN003 Probe Type: " + probeTypes[i].name);
+
+				var query = encodeURIComponent('active=true^tool=health^product_version=' + cw_version + '^healthcheck_type=' + probeTypes[i].name);
+
+				gs.info("IN003 Query: " + query);
+
+				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_probes?sysparm_query=' + query;
+
+				var r = new sn_ws.RESTMessageV2();
+
+				r.setEndpoint(apiEndpoint);
+				r.setHttpMethod('GET');
+				r.setRequestHeader('Content-Type', 'application/json');
+				r.setBasicAuth(username, password);
+
+				var response = r.execute();
+				var responseBody = response.getBody();
+				var httpStatus = response.getStatusCode();
+
+				if (httpStatus == 200) {
+					gs.info("IN001: pullProbes API SUCCESS!");
+					var result = JSON.parse(responseBody).result;
+					
+					for (var j = 0; j < result.length; j++) {
+						var record = result[j];
+						probeSysIDs.push(record.sys_id);
+
+						var probeObj = {
+							sys_id: record.sys_id,
+							record: record
+						};
+						
+						allPobes.push(probeObj);
+					}
+
+					gs.info("IN003: Probes: " + JSON.stringify(allPobes));
+					gs.info("IN003: Probe SYS_IDs: " + JSON.stringify(probeSysIDs));
+
+					//GET ALL RELATED PROBE SCRIPT ITEMS
+					allProbeScriptItems = this.pullProbeScriptItems(inst, probeSysIDs);
+				
+					//GET THE CLIENT HEALTHCHECK CONFIGURATION RECORD IN NUVOLO
+					var client_config = this.getClientConfig(inst);
+
+					//UPDATE THE CLIENT HEALTHCHECK CONFIG RECORD IN NUVOLO
+					if(client_config) {
+						this.updateClientConfig(inst, client_config);
+					}
+				}
+				else {
+					gs.info("IN001: pullProbes API FAIL!");
+				}
+			}
+		}catch (ex) {
+            gs.error("IN001: " + ex.message);
+        }	
+	},
+
+	pullProbeScriptItems: function(inst, probes) {
+		
+		try{
+			gs.info("IN001: Inside pullProbeScriptItems!");
+
+			gs.info("IN001: PROBE SYS IDs: " + probes);
+			var probeScriptItems = [];
+
+			var query = encodeURIComponent('probe.sys_idIN' + probes);
+			var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_probe_script_item?sysparm_query=' + query;
+
+			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
+			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+			
+
+			var r = new sn_ws.RESTMessageV2();
+			r.setEndpoint(apiEndpoint);
+			r.setHttpMethod('GET');
+			r.setRequestHeader('Content-Type', 'application/json');
+			r.setBasicAuth(username, password);
+			r.setQueryParameter('probe.sys_id', 'IN', probes);
+
+			var response = r.execute();
+			var responseBody = response.getBody();
+			var httpStatus = response.getStatusCode();
+
+			if (httpStatus == 200) {
+				gs.info("IN001: pullProbeScriptItems API SUCCESS!");
+				var result = JSON.parse(responseBody).result;
+				
+				for (var i = 0; i < result.length; i++) {
+					var record = result[i];
+					probeScriptItems.push(record);
+				}
+
+				gs.info("IN001: Probe Script Items: " + JSON.stringify(probeScriptItems));
+
+				return probeScriptItems;
+			}else {
+				gs.info("IN001: pullProbeScriptItems API FAIL!");
+			}
+		}catch (ex) {
+            gs.error("IN001: " + ex.message);
+        }
+		
+	},
+
+	getClientConfig: function(inst) {
+		
+		try{
+			gs.info("IN004: Inside getClientConfig!");
+
+			var clientInstance = gs.getProperty('instance_name');
+			gs.info("IN004 Client Instance: " + clientInstance);
+
+			var query = encodeURIComponent('active=true^client_instance=' + clientInstance);
+
+			var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_healthcheck_config?sysparm_query=' + query;
+
+			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
+			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+			
+			var r = new sn_ws.RESTMessageV2();
+			r.setEndpoint(apiEndpoint);
+			r.setHttpMethod('GET');
+			r.setRequestHeader('Content-Type', 'application/json');
+			r.setBasicAuth(username, password);
+
+			var response = r.execute();
+			var httpStatus = response.getStatusCode();
+
+			if (httpStatus == 200) {
+				gs.info("IN004: getClientConfig API SUCCESS!");
+				var result = JSON.parse(responseBody).result;
+
+				gs.info("IN004 CLIENT CONFIG SYS_ID: ", result.sys_id);
+
+				return result.sys_id + '';
+			}else {
+				gs.info("IN004: getClientConfig API FAIL!");
+			}
+		}catch (ex) {
+            gs.error("IN004: " + ex.message);
+        }
+		
+	},
+
+	updateClientConfig: function(inst, sys_id) {
+		
+		try{
+			gs.info("IN005: Inside updateClientConfig!");
+
+			var updateData = {
+				last_probes_pull: new GlideDateTime()
+			};
+
+			gs.info("IN005 Last Probes Pull Date: " + updateData.last_probes_pull);
+
+			var clientInstance = gs.getProperty('instance_name');
+
+			var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_healthcheck_config/' + sys_id;
+
+			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
+			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+			
+			var r = new sn_ws.RESTMessageV2();
+			r.setEndpoint(apiEndpoint);
+			r.setHttpMethod('PATCH');
+			r.setRequestHeader('Content-Type', 'application/json');
+			r.setBasicAuth(username, password);
+
+			var requestBody = JSON.stringify(updateData);
+            r.setRequestBody(requestBody);
+
+			var response = r.execute();
+			var httpStatus = response.getStatusCode();
+
+			if (httpStatus != 200 && httpStatus != 204) {
+                gs.error('IN005 Error updating record sys_id: ' + sysId + ', HTTP Status: ' + httpStatus);
+            }
+		}catch (ex) {
+            gs.error("IN005: " + ex.message);
+        }
+		
+	},
 
     type: 'HealthCheckProbeUtils'
 };]]></script>
@@ -121,14 +355,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>49</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-25 08:42:46</sys_updated_on>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-05 09:54:02</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>
