@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Remove Nuvolo Temp Access If Agent is no longer assigned to Active Cases</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="Stefan Popov">15e5b79d93e0d610052ef5cd0bba10d9</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period>1970-01-01 12:00:00</run_period>
+        <run_start>2024-12-04 13:15:05</run_start>
+        <run_time>1969-12-31 23:00:00</run_time>
+        <run_type>periodically</run_type>
+        <script><![CDATA[//Expire Agent Accesses, where Expiration Date is in the future, but Client Environment Access is expired due to no more open Cases in Nuvolo for the Client
+(function executeScheduledJob() {
+    var checkTempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    checkTempAccess.addEncodedQuery('status=granted');
+    checkTempAccess.query();
+
+    var tempEmailsStr = '';
+    var cases = '';
+
+    while (checkTempAccess.next()) {
+        tempEmailsStr += checkTempAccess.assigned_to_email + ',';
+    }
+
+    var api = new HealthCheckHelper();
+    var obj = JSON.parse(api.getExpiredClientEnvironmentAccessByEmails(tempEmailsStr));
+    var removeCases = []
+
+    for (var key in obj) {
+        var keepAccess = false;
+        var tempAccessToExpire = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+        tempAccessToExpire.addEncodedQuery('assigned_to_email=' + key.toString() + '^status=granted');
+        tempAccessToExpire.query();
+
+        if (tempAccessToExpire.next()) {
+            var caseArr = tempAccessToExpire.case_number.split(',');
+            for (var i = 0; i < caseArr.length; i++) {
+                if (obj[key].toString().indexOf(caseArr[i]) > -1) {
+                    keepAccess = true;
+                }
+
+            }
+            if (keepAccess == false || keepAccess == 'false') {
+                //Expire the Nuvolo Temporary Access record of the Agent
+                tempAccessToExpire.end_of_access = new GlideDate();
+                tempAccessToExpire.status = 'expired';
+                tempAccessToExpire.update();
+
+                var agent = new GlideRecord('sys_user');
+                agent.addQuery('email', tempAccessToExpire.assigned_to_email);
+                agent.query();
+
+                //Deactivate the related User record of the Agent
+                if (agent.next()) {
+                    agent.active = false;
+                    agent.update();
+                }
+            }
+        }
+    }
+});]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-04 13:16:38</sys_created_on>
+        <sys_id>8beb328d93da5e50052ef5cd0bba1076</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Remove Nuvolo Temp Access If Agent is no longer assigned to Active Cases</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sysauto_script_8beb328d93da5e50052ef5cd0bba1076</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-05 09:45:44</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>8beb328d93da5e50052ef5cd0bba1076</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-04 13:16:38</sys_created_on>
+        <sys_id>b54c768d93da5e50052ef5cd0bba10c9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-04 13:16:38</sys_updated_on>
+        <table>sysauto_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

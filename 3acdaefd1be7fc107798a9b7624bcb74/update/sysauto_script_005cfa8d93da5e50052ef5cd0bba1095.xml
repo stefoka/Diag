@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Nuvo Temp Access - Grant Access to Newly Assigned Agents</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="Stefan Popov">15e5b79d93e0d610052ef5cd0bba10d9</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period>1970-01-01 01:00:00</run_period>
+        <run_start>2024-12-04 13:16:48</run_start>
+        <run_time>1969-12-31 23:00:00</run_time>
+        <run_type>periodically</run_type>
+        <script><![CDATA[//Grant Agent Accesses, where Case Access has already been granted
+(function executeScheduledJob() {
+    var casesArr = [];
+    var checkCases = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    checkCases.addEncodedQuery('status=granted');
+    checkCases.query();
+
+    while (checkCases.next()) {
+        var tempAccessCasesArr = checkCases.case_number.split(',');
+        for (var i = 0; i < tempAccessCasesArr.length; i++) {
+            if (casesArr.indexOf(tempAccessCasesArr[i]) < 0) {
+				var endOfAccess = checkCases.end_of_access.getDisplayValue();
+				var endDateTime = new GlideDateTime();
+				endDateTime.setDisplayValue(endOfAccess);
+				var today = new GlideDateTime();
+				var differenceMillis = endDateTime.getNumericValue() - today.getNumericValue();
+
+				// Convert the difference from milliseconds to days
+				var differenceDays = Math.ceil(differenceMillis / (1000 * 60 * 60 * 24));
+				
+				var accessType = checkCases.access_type;
+				var accessTypeText = checkCases.access_type.getDisplayValue();
+                casesArr.push(tempAccessCasesArr[i]);
+				new x_nuvo_diag.NuvoloTempAccessAjax().createTempAccessRecord(tempAccessCasesArr[i],differenceDays,accessType,accessTypeText);
+            }
+        }
+    }
+});]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-04 13:19:16</sys_created_on>
+        <sys_id>005cfa8d93da5e50052ef5cd0bba1095</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nuvo Temp Access - Grant Access to Newly Assigned Agents</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sysauto_script_005cfa8d93da5e50052ef5cd0bba1095</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-04 13:19:16</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>005cfa8d93da5e50052ef5cd0bba1095</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-04 13:19:15</sys_created_on>
+        <sys_id>98ec72cd93da5e50052ef5cd0bba10c0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-04 13:19:15</sys_updated_on>
+        <table>sysauto_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
