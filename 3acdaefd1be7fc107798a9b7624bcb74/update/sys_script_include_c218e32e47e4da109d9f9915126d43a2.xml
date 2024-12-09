@@ -128,18 +128,18 @@ HealthCheckProbeUtils.prototype = {
 					label: "Feature Usage",
 					name: "feature_usage"
 				},
-				{
-					label: "Data Integrity",
-					name: "data_integrity"
-				},
-				{
-					label: "Upgrade Conflicts",
-					name: "upgrade_conflicts"
-				},
-				{
-					label: "OOTB Percentage",
-					name: "ootb"
-				},
+				// {
+				// 	label: "Data Integrity",
+				// 	name: "data_integrity"
+				// },
+				// {
+				// 	label: "Upgrade Conflicts",
+				// 	name: "upgrade_conflicts"
+				// },
+				// {
+				// 	label: "OOTB Percentage",
+				// 	name: "ootb"
+				// },
 			];
 
 			var allPobes = [];
@@ -200,6 +200,40 @@ HealthCheckProbeUtils.prototype = {
 
 					//GET ALL RELATED PROBE SCRIPT ITEMS
 					allProbeScriptItems = this.pullProbeScriptItems(inst, probeSysIDs);
+
+					//GET ALL CLIENT PROBE SCRIPT ITEMS FOR THE CURRENT PROBE TYPE
+					var clientProbeItems = [];
+
+					var clientProbeItemsGR = new GlideRecord('x_nuvo_diag_probe_script_item');
+					clientProbeItemsGR.addEncodedQuery('probe.healthcheck_type=' + probeTypes[i]);
+					clientProbeItemsGR.query();
+
+					while(clientProbeItemsGR.next()) {
+						clientProbeItems.push(clientProbeItemsGR.getUniqueValue());
+					}
+
+					gs.info("IN009 " + probeTypes[i] + " Client Probes Script Items: " + JSON.stringify(clientProbeItems));
+
+					//DELETE ALL CLIENT PROBE SCRIPT ITEMS FOR THE CUREENT PROBE TYPE
+
+					//GET ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
+					var clientProbes = [];
+
+					var clientProbesGR = new GlideRecord('x_nuvo_diag_probes');
+					clientProbesGR.addEncodedQuery('healthcheck_type=' + probeTypes[i]);
+					clientProbesGR.query();
+
+					while(clientProbesGR.next()) {
+						clientProbes.push(clientProbesGR.getUniqueValue());
+					}
+
+					gs.info("IN009 " + probeTypes[i] + " Client Probes: " + JSON.stringify(clientProbes));
+
+					//DELETE ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
+
+					//CREATE ALL NEW PROBES IN THE CLIENT FOR THE CURRENT PROBE TYPE
+
+					//CREATE ALL NEW PROBE SCRIPT ITEMS IN THE CLIENT FOR THE CURRENT PROBE TYPE
 				}
 				else {
 					gs.info("PullProbes API FAIL!");
@@ -335,14 +369,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>82</sys_mod_count>
+        <sys_mod_count>85</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-06 08:04:46</sys_updated_on>
+        <sys_updated_on>2024-12-09 11:52:04</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>
