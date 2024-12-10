@@ -122,36 +122,79 @@ HealthCheckProbeUtils.prototype = {
     },
 
 
-	deleteOldProbes: function(type) {
+	getOldProbeItemsToDelete: function(type) {
 		try 
-		{
-			//GET ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
-			var clientProbes = [];
+			{
+				//GET ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
+				var clientProbeItems = [];
 
-			var clientProbesGR = new GlideRecord('x_nuvo_diag_probes');
-			clientProbesGR.addEncodedQuery('healthcheck_type=' + type);
-			clientProbesGR.query();
+				var clientProbeItemsGR = new GlideRecord('x_nuvo_diag_probes');
+				clientProbeItemsGR.addEncodedQuery('healthcheck_type=' + type);
+				clientProbeItemsGR.query();
 
-			//DELETE ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
-			clientProbesGR.deleteMultiple();
+				while(clientProbeItemsGR.next()) {
+					clientProbeItems.push(clientProbeItemsGR.getUniqueValue());
+				}
 
-        } catch (error) {
-            gs.error("Error deleting old Probe records for Healthcheck Type: " + type + ". Error: " + error.message);
+				//RETURN ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
+				return JSON.stringify(clientProbeItems);
+
+			} catch (error) {
+            	gs.error("Error getting old Probe records for Healthcheck Type: " + type + ". Error: " + error.message);
         }
 	},
 
-	deleteOldProbeItems: function(type) {
+
+	deleteOldProbeItems: function(probeItems) {
+		try 
+		{
+			var clientProbeItemsGR = new GlideRecord('x_nuvo_diag_probe_script_item');
+			clientProbeItemsGR.addEncodedQuery('sys_idIN' + probeItems);
+			clientProbeItemsGR.query();
+
+			//DELETE ALL CLIENT PROBE SCRIPT ITEMS FOR THE CUREENT PROBE TYPE
+			clientProbeItemsGR.deleteMultiple();
+
+        } catch (error) {
+            gs.error("Error deleting old Probe Script Items records for HealthCheck Type: " + type + ". Error: " + error.message);
+        }
+	},
+
+	getOldProbesToDelete: function(type) {
+		try 
+			{
+				//GET ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
+				var clientProbes = [];
+
+				var clientProbesGR = new GlideRecord('x_nuvo_diag_probes');
+				clientProbesGR.addEncodedQuery('healthcheck_type=' + type);
+				clientProbesGR.query();
+
+				while(clientProbesGR.next()) {
+					clientProbes.push(clientProbesGR.getUniqueValue());
+				}
+
+				//RETURN ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
+				return JSON.stringify(clientProbes);
+				// clientProbesGR.deleteMultiple();
+
+			} catch (error) {
+            	gs.error("Error getting old Probe records for Healthcheck Type: " + type + ". Error: " + error.message);
+        }
+	},
+
+	deleteOldProbes: function(probes) {
 		try 
 		{
 			//GET ALL CLIENT PROBE SCRIPT ITEMS FOR THE CURRENT PROBE TYPE
 			var clientProbeItems = [];
 
-			var clientProbeItemsGR = new GlideRecord('x_nuvo_diag_probe_script_item');
-			clientProbeItemsGR.addEncodedQuery('probe.healthcheck_type=' + type);
-			clientProbeItemsGR.query();
+			var clientProbesGR = new GlideRecord('x_nuvo_diag_probe_script_item');
+			clientProbesGR.addEncodedQuery('sys_idIN' + probes);
+			clientProbesGR.query();
 
-			//DELETE ALL CLIENT PROBE SCRIPT ITEMS FOR THE CUREENT PROBE TYPE
-			clientProbeItemsGR.deleteMultiple();
+			//DELETE ALL CLIENT PROBES FOR THE CUREENT PROBE TYPE
+			clientProbesGR.deleteMultiple();
 
         } catch (error) {
             gs.error("Error deleting old Probe Script Items records for HealthCheck Type: " + type + ". Error: " + error.message);
@@ -216,6 +259,12 @@ HealthCheckProbeUtils.prototype = {
 				var httpStatus = response.getStatusCode();
 
 				if (httpStatus == 200) {
+					//GET OLD PROBE SCRIPT ITEMS
+					var probeItemsToDelete = this.getOldProbeItemsToDelete(probeTypes[i].name);
+					
+					//GET OLD PROBES
+					var probesToDelete = this.getOldProbesToDelete(probeTypes[i].name);
+
 					var result = JSON.parse(responseBody).result;
 
 					for (var j = 0; j < result.length; j++) {
@@ -233,12 +282,6 @@ HealthCheckProbeUtils.prototype = {
 
 					//GET ALL RELATED PROBE SCRIPT ITEMS
 					allProbeScriptItems = this.pullProbeScriptItems(inst, probeSysIDs);
-
-					//DELETE OLD PROBE SCRIPT ITEMS
-					this.deleteOldProbeItems(probeTypes[i].name);
-					
-					//DELETE OLD PROBES
-					this.deleteOldProbes(probeTypes[i].name);
 
 					//CREATE ALL NEW PROBES IN THE CLIENT FOR THE CURRENT PROBE TYPE
 					for(var k = 0; k < allProbes.length; k++){
@@ -286,6 +329,11 @@ HealthCheckProbeUtils.prototype = {
 							newProbeItemsGr.insert();
 						}
 						
+						//DELETE OLD PROBE SCRIPT ITEMS
+						this.deleteOldProbeItems(probeItemsToDelete.join(','));
+
+						//DELETE OLD PROBES
+						this.deleteOldProbes(probesToDelete.join(','));
 					}
 					
 				}
@@ -422,14 +470,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>111</sys_mod_count>
+        <sys_mod_count>112</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-10 14:23:53</sys_updated_on>
+        <sys_updated_on>2024-12-10 15:05:32</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>
