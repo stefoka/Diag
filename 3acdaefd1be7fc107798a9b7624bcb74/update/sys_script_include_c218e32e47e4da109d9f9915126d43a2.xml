@@ -129,7 +129,6 @@ HealthCheckProbeUtils.prototype = {
 			var clientProbes = [];
 
 			var clientProbesGR = new GlideRecord('x_nuvo_diag_probes');
-			clientProbesGR.addEncodedQuery('healthcheck_type=' + type);
 			clientProbesGR.query();
 
 			//DELETE ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
@@ -140,14 +139,13 @@ HealthCheckProbeUtils.prototype = {
         }
 	},
 
-	deleteOldProbeItems: function(type) {
+	deleteOldProbeItems: function() {
 		try 
 		{
 			//GET ALL CLIENT PROBE SCRIPT ITEMS FOR THE CURRENT PROBE TYPE
 			var clientProbeItems = [];
 
 			var clientProbeItemsGR = new GlideRecord('x_nuvo_diag_probe_script_item');
-			clientProbeItemsGR.addEncodedQuery('probe.healthcheck_type=' + type);
 			clientProbeItemsGR.query();
 
 			//DELETE ALL CLIENT PROBE SCRIPT ITEMS FOR THE CUREENT PROBE TYPE
@@ -158,27 +156,13 @@ HealthCheckProbeUtils.prototype = {
         }
 	},
 
-
 	pullProbes: function(){
 		try{			
-			var probeTypes = [
-				{
-					label: "Feature Usage",
-					name: "feature_usage"
-				},
-				{
-					label: "Data Integrity",
-					name: "data_integrity"
-				},
-				{
-					label: "Upgrade Conflicts",
-					name: "upgrade_conflicts"
-				},
-				{
-					label: "OOTB Percentage",
-					name: "ootb"
-				},
-			];
+			//DELETE OLD PROBE SCRIPT ITEMS
+			this.deleteOldProbeItems();
+			
+			//DELETE OLD PROBES
+			this.deleteOldProbes();
 
 			var allProbes = [];
 			var probeSysIDs = [];
@@ -206,12 +190,15 @@ HealthCheckProbeUtils.prototype = {
 
 			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
 			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+			var query = encodeURIComponent('active=true^tool=health^product_version=' + cw_version);
 
+			var limit = 10000; // Number of records to fetch in each call
+			var offset = 0;    // Start offset for the query
+			var hasMoreRecords = true; // Flag to track whether more records exist
 			
-			for (var i = 0; i < probeTypes.length; i++) {
-				var query = encodeURIComponent('active=true^tool=health^product_version=' + cw_version + '^healthcheck_type=' + probeTypes[i].name);
-
-				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_probes?sysparm_query=' + query;
+			while (hasMoreRecords) {
+			
+				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_probes?sysparm_query=' + query + '^&sysparm_limit=' + limit + '&sysparm_offset=' + offset;
 
 				var r = new sn_ws.RESTMessageV2();
 				r.setEndpoint(apiEndpoint);
@@ -219,89 +206,89 @@ HealthCheckProbeUtils.prototype = {
 				r.setRequestHeader('Content-Type', 'application/json');
 				r.setBasicAuth(username, password);
 
-				var response = r.execute();
-				var responseBody = response.getBody();
-				var httpStatus = response.getStatusCode();
+				try{
+					var response = r.execute();
+					var responseBody = response.getBody();
+					var httpStatus = response.getStatusCode();
 
-				if (httpStatus == 200) {
-					var result = JSON.parse(responseBody).result;
+					if (httpStatus == 200) {
+						var result = JSON.parse(responseBody).result;
 
-					for (var j = 0; j < result.length; j++) {
-						
-						var record = result[j];
-						probeSysIDs.push(record.sys_id);
-
-						var probeObj = {
-							sys_id: record.sys_id,
-							record: record
-						};
-						
-						allProbes.push(probeObj);
-					}
-
-					//GET ALL RELATED PROBE SCRIPT ITEMS
-					allProbeScriptItems = this.pullProbeScriptItems(inst, probeSysIDs);
-
-					//DELETE OLD PROBE SCRIPT ITEMS
-					this.deleteOldProbeItems(probeTypes[i].name);
-					
-					//DELETE OLD PROBES
-					this.deleteOldProbes(probeTypes[i].name);
-
-					//CREATE ALL NEW PROBES IN THE CLIENT FOR THE CURRENT PROBE TYPE
-					for(var k = 0; k < allProbes.length; k++){
-						var probe = allProbes[k];
-
-						var newProbeGr = new GlideRecord('x_nuvo_diag_probes');
-						newProbeGr.initialize();
-
-						newProbeGr.active = probe.record.active;
-						newProbeGr.probe_type = probe.record.probe_type.value;
-						newProbeGr.healthcheck_type = probe.record.healthcheck_type;
-						newProbeGr.description = probe.record.description;
-						newProbeGr.name = probe.record.name;
-						newProbeGr.order = probe.record.order;
-						newProbeGr.tool = probe.record.tool;
-						newProbeGr.product_version = probe.record.product_version;
-						newProbeGr.sys_scope = "3acdaefd1be7fc107798a9b7624bcb74"; //Diagnostic tool
-
-						var probeID = newProbeGr.insert();
-
-						//GET THE PROBE'S SCRIPT ITEMS
-						var probeItems = allProbeScriptItems.filter(function(item) {
-							return item.probe.value == probe.sys_id;
-						});
-
-						// gs.info("IN111 " + probe.record.name + " Probe Script Items --> " + JSON.stringify(probeItems));
-
-						//CREATE ALL NEW PROBE SCRIPT ITEMS IN THE CLIENT FOR THE CURRENT PROBE TYPE
-						for (var m = 0; m < probeItems.length; m++) {
+						for (var j = 0; j < result.length; j++) {
 							
-							var newProbeItemsGr = new GlideRecord('x_nuvo_diag_probe_script_item');
-							newProbeItemsGr.initialize();
+							var record = result[j];
+							probeSysIDs.push(record.sys_id);
 
-							//Realte the Script Item to the probe
-							newProbeItemsGr.probe = probeID;
-
-							newProbeItemsGr.script = probeItems[i].script;
-							newProbeItemsGr.sys_package = probeItems[i].sys_package.value;
-							newProbeItemsGr.threshold = probeItems[i].threshold;
-							newProbeItemsGr.name = probeItems[i].name;
-							newProbeItemsGr.order = probeItems[i].order;
-							newProbeItemsGr.sys_created_by = probeItems[i].sys_created_by;
-							newProbeItemsGr.sys_scope = "3acdaefd1be7fc107798a9b7624bcb74"; //Diagnostic tool
-
-							newProbeItemsGr.insert();
+							var probeObj = {
+								sys_id: record.sys_id,
+								record: record
+							};
+							
+							allProbes.push(probeObj);
 						}
-						
-					}
-					
-				}
-				else {
-					gs.info("PullProbes API FAIL!");
-				}
-			}
 
+						//GET ALL RELATED PROBE SCRIPT ITEMS
+						allProbeScriptItems = this.pullProbeScriptItems(inst, probeSysIDs);
+
+						//CREATE ALL NEW PROBES IN THE CLIENT FOR THE CURRENT PROBE TYPE
+						for(var k = 0; k < allProbes.length; k++){
+							var probe = allProbes[k];
+
+							var newProbeGr = new GlideRecord('x_nuvo_diag_probes');
+							newProbeGr.initialize();
+
+							newProbeGr.active = probe.record.active;
+							newProbeGr.probe_type = probe.record.probe_type.value;
+							newProbeGr.healthcheck_type = probe.record.healthcheck_type;
+							newProbeGr.description = probe.record.description;
+							newProbeGr.name = probe.record.name;
+							newProbeGr.order = probe.record.order;
+							newProbeGr.tool = probe.record.tool;
+							newProbeGr.product_version = probe.record.product_version;
+							newProbeGr.sys_scope = "3acdaefd1be7fc107798a9b7624bcb74"; //Diagnostic tool
+
+							var probeID = newProbeGr.insert();
+
+							//GET THE PROBE'S SCRIPT ITEMS
+							var probeItems = allProbeScriptItems.filter(function(item) {
+								return item.probe.value == probe.sys_id;
+							});
+
+							//CREATE ALL NEW PROBE SCRIPT ITEMS IN THE CLIENT FOR THE CURRENT PROBE TYPE
+							for (var m = 0; m < probeItems.length; m++) {
+								
+								var newProbeItemsGr = new GlideRecord('x_nuvo_diag_probe_script_item');
+								newProbeItemsGr.initialize();
+
+								//Realte the Script Item to the probe
+								newProbeItemsGr.probe = probeID;
+
+								newProbeItemsGr.script = probeItems[i].script;
+								newProbeItemsGr.sys_package = probeItems[i].sys_package.value;
+								newProbeItemsGr.threshold = probeItems[i].threshold;
+								newProbeItemsGr.name = probeItems[i].name;
+								newProbeItemsGr.order = probeItems[i].order;
+								newProbeItemsGr.sys_created_by = probeItems[i].sys_created_by;
+								newProbeItemsGr.sys_scope = "3acdaefd1be7fc107798a9b7624bcb74"; //Diagnostic tool
+
+								newProbeItemsGr.insert();
+							}
+						}
+
+						// Increase offset for the next batch
+            			offset += limit;
+					}
+					else {
+						gs.error('Failed to retrieve data. HTTP Status: ' + httpStatus);
+            			gs.error('Response Body: ' + responseBody);
+            			hasMoreRecords = false; // Stop the loop on error
+					}
+				} catch(ex){
+					gs.error('An error occurred: ' + ex.message);
+        			hasMoreRecords = false; // Stop the loop on exception
+				}
+	
+			}
 			//GET THE CLIENT HEALTHCHECK CONFIGURATION RECORD IN NUVOLO
 			var client_config = this.getClientConfig(inst);
 
@@ -319,33 +306,50 @@ HealthCheckProbeUtils.prototype = {
 		try{
 			var probeScriptItems = [];
 
-			var query = encodeURIComponent('probe.sys_idIN' + probes);
-			var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_probe_script_item?sysparm_query=' + query;
-
 			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
 			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
 
-			var r = new sn_ws.RESTMessageV2();
-			r.setEndpoint(apiEndpoint);
-			r.setHttpMethod('GET');
-			r.setRequestHeader('Content-Type', 'application/json');
-			r.setBasicAuth(username, password);
+			var limit = 10000; // Number of records to fetch in each call
+			var offset = 0;    // Start offset for the query
+			var hasMoreRecords = true; // Flag to track whether more records exist
 
-			var response = r.execute();
-			var responseBody = response.getBody();
-			var httpStatus = response.getStatusCode();
+			var query = encodeURIComponent('probe.sys_idIN' + probes);
+			var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_probe_script_item?sysparm_query=' + query + '&sysparm_limit=' + limit + '&sysparm_offset=' + offset;
 
-			if (httpStatus == 200) {
-				var result = JSON.parse(responseBody).result;
-				
-				for (var i = 0; i < result.length; i++) {
-					var record = result[i];
-					probeScriptItems.push(record);
+			while (hasMoreRecords) {
+
+				var r = new sn_ws.RESTMessageV2();
+				r.setEndpoint(apiEndpoint);
+				r.setHttpMethod('GET');
+				r.setRequestHeader('Content-Type', 'application/json');
+				r.setBasicAuth(username, password);
+
+				try{
+					var response = r.execute();
+					var responseBody = response.getBody();
+					var httpStatus = response.getStatusCode();
+
+					if (httpStatus == 200) {
+						var result = JSON.parse(responseBody).result;
+						
+						for (var i = 0; i < result.length; i++) {
+							var record = result[i];
+							probeScriptItems.push(record);
+						}
+
+						// Increase offset for the next batch
+						offset += limit;
+						
+					}else {
+						gs.error('Failed to retrieve data. HTTP Status: ' + httpStatus);
+						gs.error('Response Body: ' + responseBody);
+						hasMoreRecords = false; // Stop the loop on error
+					}
+					return probeScriptItems;
+				}catch(ex){
+					gs.error('An error occurred: ' + ex.message);
+					hasMoreRecords = false; // Stop the loop on exception
 				}
-
-				return probeScriptItems;
-			}else {
-				gs.info("pullProbeScriptItems API FAIL!");
 			}
 		}catch (ex) {
             gs.error("pullProbeScriptItems Error: " + ex.message);
@@ -430,14 +434,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>111</sys_mod_count>
+        <sys_mod_count>113</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-10 13:11:47</sys_updated_on>
+        <sys_updated_on>2024-12-10 13:46:16</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>
