@@ -835,10 +835,10 @@ HealthCheckHelper.prototype = {
 			var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
 			var currentInstance = gs.getProperty('instance_name');
 
-			// if(inst == currentInstance) {
-			// 	gs.error("Can't pull hashes from the same instance!");
-			// 	return;
-			// }
+			if(inst == currentInstance) {
+				gs.error("Can't pull hashes from the same instance!");
+				return;
+			}
 
 			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
 			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
@@ -873,19 +873,24 @@ HealthCheckHelper.prototype = {
 					gs.info("IN333 All Hashes --> " + JSON.stringify(allHashes));
 
 					//DELETE OLD HASHES FOR THE CURRENT SCRIPT TYPE
-					// this.deleteOOTBNuvoloHashes(script_types[i].name);
+					this.deleteOOTBNuvoloHashes(script_types[i].name);
 
 					//CREATE ALL NEW HASHES IN THE CLIENT FOR THE CURRENT SCRIPT TYPE
-					// for(var k = 0; k < allHashes.length; k++){
-					// 	var hash = allHashes[k];
+					for(var k = 0; k < allHashes.length; k++){
+						var hash = allHashes[k];
 
-					// 	var newHash = new GlideRecord('x_nuvo_diag_nuvolo_ootb_scripts_hashes');
-					// 	newHash.initialize();
+						var newHash = new GlideRecord('x_nuvo_diag_nuvolo_ootb_scripts_hashes');
+						newHash.initialize();
 
-					// 	var hasID = newHash.insert();
+						newHash.script_type = hash.script_type;
+						newHash.script_id = hash.script_id;
+						newHash.script_name = hash.script_name;
+						newHash.nuvolo_version = hash.nuvolo_version;
+						newHash.hash_value = hash.hash_value;
+						newHash.servicenow_version = hash.servicenow_version;
 
-					// 	gs.info("IN111 " + probe.record.name + " Probe Script Items --> " + JSON.stringify(probeItems));
-					// }
+						var hasID = newHash.insert();
+					}
 					
 				}
 				else {
@@ -911,14 +916,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>179</sys_mod_count>
+        <sys_mod_count>181</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-10 12:25:40</sys_updated_on>
+        <sys_updated_on>2024-12-10 12:55:21</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>
