@@ -142,6 +142,8 @@ HealthCheckProbeUtils.prototype = {
 				// },
 			];
 
+			gs.info("IN200 Inside pullProbes!");
+
 			var allProbes = [];
 			var probeSysIDs = [];
 			var allProbeScriptItems = [];
@@ -170,6 +172,7 @@ HealthCheckProbeUtils.prototype = {
 			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
 			
 			for (var i = 0; i < probeTypes.length; i++) {
+				gs.info("IN200 Probe type: " + probeTypes[i]);
 
 				var query = encodeURIComponent('active=true^tool=health^product_version=' + cw_version + '^healthcheck_type=' + probeTypes[i].name);
 
@@ -187,10 +190,13 @@ HealthCheckProbeUtils.prototype = {
 				var httpStatus = response.getStatusCode();
 
 				if (httpStatus == 200) {
-					gs.info("pullProbes API SUCCESS!");
+					gs.info("IN200 pullProbes API SUCCESS!");
+
 					var result = JSON.parse(responseBody).result;
-					
+					gs.info("IN200 RESULT --> " + responseBody);
+
 					for (var j = 0; j < result.length; j++) {
+						
 						var record = result[j];
 						probeSysIDs.push(record.sys_id);
 
@@ -202,12 +208,12 @@ HealthCheckProbeUtils.prototype = {
 						allProbes.push(probeObj);
 					}
 
-					gs.info("IN003: Probes: " + JSON.stringify(allProbes));
-					gs.info("IN003: Probe SYS_IDs: " + JSON.stringify(probeSysIDs));
+					gs.info("IN200: Probes: " + JSON.stringify(allProbes));
+					gs.info("IN200: Probe SYS_IDs: " + JSON.stringify(probeSysIDs));
 
 					//GET ALL RELATED PROBE SCRIPT ITEMS
 					allProbeScriptItems = this.pullProbeScriptItems(inst, probeSysIDs);
-					gs.info("IN003: Probe Items: " + JSON.stringify(allProbeScriptItems));
+					gs.info("IN200: All Related Probe Items: " + JSON.stringify(allProbeScriptItems));
 
 					//GET ALL CLIENT PROBE SCRIPT ITEMS FOR THE CURRENT PROBE TYPE
 					var clientProbeItems = [];
@@ -231,7 +237,7 @@ HealthCheckProbeUtils.prototype = {
 
 					//CREATE ALL NEW PROBES IN THE CLIENT FOR THE CURRENT PROBE TYPE
 					for(var k = 0; k < allProbes.length; k++){
-						gs.info("IN1000 Inside Probes loop!");
+						gs.info("IN200 Inside Probes loop!");
 
 						var probe = allProbes[k];
 
@@ -275,7 +281,7 @@ HealthCheckProbeUtils.prototype = {
 					
 				}
 				else {
-					gs.info("PullProbes API FAIL!");
+					gs.info("IN000 PullProbes API FAIL!");
 				}
 			}
 
@@ -286,13 +292,15 @@ HealthCheckProbeUtils.prototype = {
 				this.updateClientConfig(inst, client_config);
 			}
 		}catch (ex) {
-            gs.error("pullProbes Error: " + ex.message);
+            gs.error("IN000 pullProbes Error: " + ex.message);
         }	
 	},
 
 	pullProbeScriptItems: function(inst, probes) {
 		
 		try{
+			gs.info("IN300 Inside pullProbeScriptItems!");
+
 			var probeScriptItems = [];
 
 			var query = encodeURIComponent('probe.sys_idIN' + probes);
@@ -313,8 +321,10 @@ HealthCheckProbeUtils.prototype = {
 			var httpStatus = response.getStatusCode();
 
 			if (httpStatus == 200) {
-				gs.info("pullProbeScriptItems API SUCCESS!");
+				gs.info("IN300 pullProbeScriptItems API SUCCESS!");
 				var result = JSON.parse(responseBody).result;
+
+				gs.info("IN300 RESULT --> " + responseBody);
 				
 				for (var i = 0; i < result.length; i++) {
 					var record = result[i];
@@ -323,10 +333,10 @@ HealthCheckProbeUtils.prototype = {
 
 				return probeScriptItems;
 			}else {
-				gs.info("pullProbeScriptItems API FAIL!");
+				gs.info("IN000 pullProbeScriptItems API FAIL!");
 			}
 		}catch (ex) {
-            gs.error("pullProbeScriptItems Error: " + ex.message);
+            gs.error("IN000 pullProbeScriptItems Error: " + ex.message);
         }
 		
 	},
@@ -353,16 +363,16 @@ HealthCheckProbeUtils.prototype = {
 			var httpStatus = response.getStatusCode();
 
 			if (httpStatus == 200) {
-				gs.info("getClientConfig API SUCCESS!");
+				gs.info("IN300 getClientConfig API SUCCESS!");
 				var result = JSON.parse(responseBody).result;
 				var record = result[0];
 
 				return record.sys_id + '';
 			}else {
-				gs.info("getClientConfig API FAIL!");
+				gs.info("IN000 getClientConfig API FAIL!");
 			}
 		}catch (ex) {
-            gs.error("getClientConfig Error: " + ex.message);
+            gs.error("IN000 getClientConfig Error: " + ex.message);
         }
 		
 	},
@@ -408,14 +418,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>100</sys_mod_count>
+        <sys_mod_count>102</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-10 08:45:22</sys_updated_on>
+        <sys_updated_on>2024-12-10 09:08:58</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>
