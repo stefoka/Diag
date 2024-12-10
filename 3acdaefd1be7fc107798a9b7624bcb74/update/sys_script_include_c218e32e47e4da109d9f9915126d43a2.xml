@@ -161,17 +161,23 @@ HealthCheckProbeUtils.prototype = {
 			}
 
 			var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+			gs.info("IN200 INSTANCE: " + inst);
+
 			var currentInstance = gs.getProperty('instance_name');
 
-			if(ins == currentInstance) {
+			if(inst == currentInstance) {
 				gs.error("Can't pull probes from the same instance!");
 				return;
 			}
 
 			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
 			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+
+			gs.info("IN200 USERNAME: " + username);
+			gs.info("IN200 PASSWORD: " + password);
 			
 			for (var i = 0; i < probeTypes.length; i++) {
+				gs.info("IN200 Inside ProbeTypes Array!");
 				gs.info("IN200 Probe type: " + probeTypes[i]);
 
 				var query = encodeURIComponent('active=true^tool=health^product_version=' + cw_version + '^healthcheck_type=' + probeTypes[i].name);
@@ -418,14 +424,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>102</sys_mod_count>
+        <sys_mod_count>103</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-10 09:08:58</sys_updated_on>
+        <sys_updated_on>2024-12-10 09:27:35</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>
