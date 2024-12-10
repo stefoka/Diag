@@ -247,15 +247,26 @@ HealthCheckProbeUtils.prototype = {
 
 						var probe = allProbes[k];
 
+						var newProbe = {
+							active: probe.record.active,
+							probe_type: probe.record.probe_type,
+							healthcheck_type: probe.record.healthcheck_type,
+							description: probe.record.description,
+							name: probe.record.name,
+							order: probe.record.order
+						};
+
+						gs.info("IN000 New Probe Object: " + JSON.stringify(newProbe));
+
 						var newProbeGr = new GlideRecord('x_nuvo_diag_probes');
 						newProbeGr.initialize();
 
 						newProbeGr.active = probe.record.active;
 						newProbeGr.probe_type = probe.record.probe_type.value;
-						newProbeGr.healthcheck_type = probe.recod.healthcheck_type;
+						newProbeGr.healthcheck_type = probe.record.healthcheck_type;
 						newProbeGr.description = probe.record.description;
 						newProbeGr.name = probe.record.name;
-						newProbeGr.order = probe.recod.order;
+						newProbeGr.order = probe.record.order;
 
 						var probeID = newProbeGr.insert();
 
@@ -424,14 +435,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>103</sys_mod_count>
+        <sys_mod_count>104</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-10 09:27:35</sys_updated_on>
+        <sys_updated_on>2024-12-10 09:53:10</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>
