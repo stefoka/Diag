@@ -9,13 +9,13 @@
 }]]></client_script>
         <description/>
         <direct>false</direct>
-        <endpoint>x_nuvo_diag_pull_new_healthcheck_probes.do</endpoint>
+        <endpoint>x_nuvo_diag_pull_nuvolo_ootb_hashes.do</endpoint>
         <html><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
 
 	<g:evaluate var="jvar_probeTypes">
-		var healthCheckProbeUtils = new x_nuvo_diag.HealthCheckProbeUtils();
-		healthCheckProbeUtils.pullProbes();
+		var healthCheckHelper = new x_nuvo_diag.HealthCheckHelper();
+		healthCheckHelper.pullOOTBNuvoloHashes();
 	</g:evaluate>
 
 	<style>
@@ -72,7 +72,7 @@
 			width: 100%;
 			display: flex;
 			flex-direction: row;
-			justify-content: space-between;
+			justify-content: end;
 			align-items: center;
 		}
 
@@ -137,7 +137,7 @@
 		<!-- <h3 class="title">New/Modified Nuvolo Probes</h3> -->
 
 		<div class="loading-container">
-			<p class="loading-text">Pulling Nuvolo Probes running in background...</p>
+			<p class="loading-text">Pulling Nuvolo OOTB Hashes running in background...</p>
 			<svg id="loader">
 				<circle cx="150" cy="60" r="30">
 				</circle>
@@ -150,29 +150,29 @@
 		
 	</div>
 </j:jelly>]]></html>
-        <name>pull_new_healthcheck_probes</name>
+        <name>pull_nuvolo_ootb_hashes</name>
         <processing_script/>
         <sys_class_name>sys_ui_page</sys_class_name>
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
-        <sys_created_on>2024-12-03 14:00:27</sys_created_on>
-        <sys_id>878bb5bc93121e50052ef5cd0bba10af</sys_id>
-        <sys_mod_count>53</sys_mod_count>
-        <sys_name>pull_new_healthcheck_probes</sys_name>
+        <sys_created_on>2024-12-10 11:18:10</sys_created_on>
+        <sys_id>f94a910793965610052ef5cd0bba1049</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>pull_nuvolo_ootb_hashes</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
-        <sys_update_name>sys_ui_page_878bb5bc93121e50052ef5cd0bba10af</sys_update_name>
+        <sys_update_name>sys_ui_page_f94a910793965610052ef5cd0bba1049</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-10 11:10:47</sys_updated_on>
+        <sys_updated_on>2024-12-10 11:58:39</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
-        <id>878bb5bc93121e50052ef5cd0bba10af</id>
+        <id>f94a910793965610052ef5cd0bba1049</id>
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
-        <sys_created_on>2024-12-03 14:00:26</sys_created_on>
-        <sys_id>a1bcf1fc93121e50052ef5cd0bba1018</sys_id>
+        <sys_created_on>2024-12-10 11:18:10</sys_created_on>
+        <sys_id>70ba1d8b93965610052ef5cd0bba1026</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-03 14:00:26</sys_updated_on>
+        <sys_updated_on>2024-12-10 11:18:10</sys_updated_on>
         <table>sys_ui_page</table>
         <use_es_latest>false</use_es_latest>
     </sys_es_latest_script>

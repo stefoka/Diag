@@ -678,20 +678,247 @@ HealthCheckHelper.prototype = {
         // Send the modified record as JSON
     },
 
+	deleteOOTBNuvoloHashes: function(type){
+		try 
+		{
+			//GET ALL CLIENT HASHES FOR THE CURRENT PROBE TYPE
+			var ootbHashes = [];
+
+			var ootbHashesGR = new GlideRecord('x_nuvo_diag_nuvolo_ootb_scripts_hashes');
+			ootbHashesGR.addEncodedQuery('script_type=' + type);
+			ootbHashesGR.query();
+
+			//DELETE ALL OOTB HASHES FOR THE CUREENT PROBE TYPE
+			ootbHashesGR.deleteMultiple();
+
+        } catch (error) {
+            gs.error("Error deleting old hash records for Script Type: " + type + ". Error: " + error.message);
+        }
+	},
+
+	getClientConfig: function(inst) {
+		
+		try{
+			var clientInstance = gs.getProperty('instance_name') + "";
+			
+			var query = encodeURIComponent('active=true^client_instance=' + clientInstance);
+			var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_healthcheck_config?sysparm_query=' + query;
+
+			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
+			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+			
+			var r = new sn_ws.RESTMessageV2();
+			r.setEndpoint(apiEndpoint);
+			r.setHttpMethod('GET');
+			r.setRequestHeader('Content-Type', 'application/json');
+			r.setBasicAuth(username, password);
+
+			var response = r.execute();
+			var responseBody = response.getBody();
+			var httpStatus = response.getStatusCode();
+
+			if (httpStatus == 200) {
+				gs.info("IN333 getClientConfig API SUCCESS!");
+				var result = JSON.parse(responseBody).result;
+				var record = result[0];
+
+				return record.sys_id + '';
+			}else {
+				gs.info("IN333 getClientConfig API FAIL!");
+			}
+		}catch (ex) {
+            gs.error("IN333 getClientConfig Error: " + ex.message);
+        }
+		
+	},
+
+	updateClientConfig: function(inst, sys_id) {
+		
+		try{
+			var updateData = {
+				last_hashes_pull: new GlideDateTime().getDisplayValue() + "",
+			};
+
+			var clientInstance = gs.getProperty('instance_name');
+
+			var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_healthcheck_config/' + sys_id;
+
+			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
+			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+			
+			var r = new sn_ws.RESTMessageV2();
+			r.setEndpoint(apiEndpoint);
+			r.setHttpMethod('PATCH');
+			r.setRequestHeader('Content-Type', 'application/json');
+			r.setBasicAuth(username, password);
+
+			var requestBody = JSON.stringify(updateData);
+            r.setRequestBody(requestBody);
+
+			var response = r.execute();
+			var httpStatus = response.getStatusCode();
+
+			if (httpStatus != 200 && httpStatus != 204) {
+                gs.error('updateClientConfig Error updating record sys_id: ' + sys_id + ', HTTP Status: ' + httpStatus);
+            }
+		}catch (ex) {
+            gs.error("updateClientConfig Error: " + ex.message);
+        }
+		
+	},
+
+	pullOOTBNuvoloHashes: function() {
+		try{		
+			gs.info("IN333 Inside pullOOTBNuvoloHashes!");
+
+			var script_types = [
+				// {
+				// 	label: "Business Rule",
+				// 	name: "sys_script"
+				// },
+				// {
+				// 	label: "Client Script",
+				// 	name: "sys_script_client"
+				// },
+				// {
+				// 	label: "Event",
+				// 	name: "event"
+				// },
+				// {
+				// 	label: "Fix Script",
+				// 	name: "sys_script_fix"
+				// },
+				// {
+				// 	label: "Nuvolo Mobile Property",
+				// 	name: "x_nuvo_mobile_nuvolo_property"
+				// },
+				// {
+				// 	label: "Nuvolo System Property",
+				// 	name: "sys_properties"
+				// },
+				// {
+				// 	label: "Scheduled Job",
+				// 	name: "sysauto"
+				// },
+				{
+					label: "Script Action",
+					name: "sysevent_script_action"
+				},
+				// {
+				// 	label: "Script Include",
+				// 	name: "sys_script_include"
+				// },
+				// {
+				// 	label: "UI Policy",
+				// 	name: "sys_ui_policy"
+				// },
+				// {
+				// 	label: "UI Policy Action",
+				// 	name: "sys_ui_policy_action"
+				// },
+			];	
+
+			var allHashes = [];
+
+			// GET Client's version of Connected Workplace
+			var cw_version = '';
+
+			var cw_versionGR = new GlideRecord('sys_store_app');
+			cw_versionGR.addQuery('scope', 'x_nuvo_eam');
+
+			cw_versionGR.query();
+
+			if(cw_versionGR.next()){
+				cw_version = cw_versionGR.version + '';
+			}
+
+			var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+			var currentInstance = gs.getProperty('instance_name');
+
+			// if(inst == currentInstance) {
+			// 	gs.error("Can't pull hashes from the same instance!");
+			// 	return;
+			// }
+
+			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
+			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+
+			for(var i = 0; i < script_types.length; i++) {
+				gs.info("IN333 Script Type: " + script_types[i].label);
+
+				var query = encodeURIComponent('nuvolo_version=' + cw_version + '^script_type=' + script_types[i].name);
+
+				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_nuvolo_ootb_scripts_hashes?sysparm_query=' + query;
+
+				var r = new sn_ws.RESTMessageV2();
+				r.setEndpoint(apiEndpoint);
+				r.setHttpMethod('GET');
+				r.setRequestHeader('Content-Type', 'application/json');
+				r.setBasicAuth(username, password);
+
+				var response = r.execute();
+				var responseBody = response.getBody();
+				var httpStatus = response.getStatusCode();
+
+				if (httpStatus == 200) {
+					gs.info("IN333 STATUS 200!");
+					var result = JSON.parse(responseBody).result;
+
+					for (var j = 0; j < result.length; j++) {
+						
+						var record = result[j];
+						allHashes.push(record);
+					}
+
+					gs.info("IN333 All Hashes --> " + JSON.stringify(allHashes));
+
+					//DELETE OLD HASHES FOR THE CURRENT SCRIPT TYPE
+					// this.deleteOOTBNuvoloHashes(script_types[i].name);
+
+					//CREATE ALL NEW HASHES IN THE CLIENT FOR THE CURRENT SCRIPT TYPE
+					// for(var k = 0; k < allHashes.length; k++){
+					// 	var hash = allHashes[k];
+
+					// 	var newHash = new GlideRecord('x_nuvo_diag_nuvolo_ootb_scripts_hashes');
+					// 	newHash.initialize();
+
+					// 	var hasID = newHash.insert();
+
+					// 	gs.info("IN111 " + probe.record.name + " Probe Script Items --> " + JSON.stringify(probeItems));
+					// }
+					
+				}
+				else {
+					gs.info("IN333 PullHashes API FAIL!");
+				}
+			}
+
+			//GET THE CLIENT HEALTHCHECK CONFIGURATION RECORD IN NUVOLO
+			var client_config = this.getClientConfig(inst);
+
+			//UPDATE THE CLIENT HEALTHCHECK CONFIG RECORD IN NUVOLO
+			if(client_config) {
+				this.updateClientConfig(inst, client_config);
+			}
+		}catch (ex) {
+            gs.error("pullProbes Error: " + ex.message);
+        }	
+	},
+
     type: 'HealthCheckHelper'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>172</sys_mod_count>
+        <sys_mod_count>179</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-05 08:18:29</sys_updated_on>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-10 12:25:40</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>
