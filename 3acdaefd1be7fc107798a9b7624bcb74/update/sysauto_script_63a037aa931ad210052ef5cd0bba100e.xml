@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 03:33:00</entered_time>
+        <max_drift/>
+        <name>Clear HealthCheck Logs</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="Stefan Popov">15e5b79d93e0d610052ef5cd0bba10d9</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>28</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2024-12-09 08:56:28</run_start>
+        <run_time>1970-01-01 03:33:00</run_time>
+        <run_type>monthly</run_type>
+        <script><![CDATA[var gr = new GlideRecord('x_nuvo_diag_healthcheck_logs');
+gr.addEncodedQuery('sys_created_on<javascript:gs.beginningOfLast90Days()');
+gr.deleteMultiple();]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-09 08:58:53</sys_created_on>
+        <sys_id>63a037aa931ad210052ef5cd0bba100e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Clear HealthCheck Logs</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sysauto_script_63a037aa931ad210052ef5cd0bba100e</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-09 08:58:53</sys_updated_on>
+        <time_zone>floating</time_zone>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>63a037aa931ad210052ef5cd0bba100e</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-09 08:58:53</sys_created_on>
+        <sys_id>f231fb6a931ad210052ef5cd0bba1082</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-09 08:58:53</sys_updated_on>
+        <table>sysauto_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

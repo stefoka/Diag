@@ -6,8 +6,11 @@
         <element label="Script Name" max_length="400" name="script_name" type="string"/>
         <element choice="1" label="Script Type" max_length="40" name="script_type" type="choice">
             <choice>
+                <element inactive_on_update="false" label="ACL Roles" value="sys_security_acl_role"/>
+                <element inactive_on_update="false" label="ACLs" value="sys_security_acl"/>
                 <element inactive_on_update="false" label="Business Rule" value="sys_script"/>
                 <element inactive_on_update="false" label="Client Script" value="sys_script_client"/>
+                <element inactive_on_update="false" label="Dictionary" value="sys_dictionary"/>
                 <element inactive_on_update="false" label="Event" value="event"/>
                 <element inactive_on_update="false" label="Fix Script" value="sys_script_fix"/>
                 <element inactive_on_update="false" label="Nuvolo Mobile Property" value="x_nuvo_mobile_nuvolo_property"/>
