@@ -678,14 +678,13 @@ HealthCheckHelper.prototype = {
         // Send the modified record as JSON
     },
 
-	deleteOOTBNuvoloHashes: function(type){
+	deleteOOTBNuvoloHashes: function(){
 		try 
 		{
 			//GET ALL CLIENT HASHES FOR THE CURRENT PROBE TYPE
 			var ootbHashes = [];
 
 			var ootbHashesGR = new GlideRecord('x_nuvo_diag_nuvolo_ootb_scripts_hashes');
-			ootbHashesGR.addEncodedQuery('script_type=' + type);
 			ootbHashesGR.query();
 
 			//DELETE ALL OOTB HASHES FOR THE CUREENT PROBE TYPE
@@ -768,56 +767,11 @@ HealthCheckHelper.prototype = {
 	},
 
 	pullOOTBNuvoloHashes: function() {
-		try{		
-			gs.info("IN333 Inside pullOOTBNuvoloHashes!");
+		try{
+			//DELETE OLD HASHES
+			this.deleteOOTBNuvoloHashes();
 
-			var script_types = [
-				// {
-				// 	label: "Business Rule",
-				// 	name: "sys_script"
-				// },
-				// {
-				// 	label: "Client Script",
-				// 	name: "sys_script_client"
-				// },
-				// {
-				// 	label: "Event",
-				// 	name: "event"
-				// },
-				// {
-				// 	label: "Fix Script",
-				// 	name: "sys_script_fix"
-				// },
-				// {
-				// 	label: "Nuvolo Mobile Property",
-				// 	name: "x_nuvo_mobile_nuvolo_property"
-				// },
-				// {
-				// 	label: "Nuvolo System Property",
-				// 	name: "sys_properties"
-				// },
-				// {
-				// 	label: "Scheduled Job",
-				// 	name: "sysauto"
-				// },
-				{
-					label: "Script Action",
-					name: "sysevent_script_action"
-				},
-				// {
-				// 	label: "Script Include",
-				// 	name: "sys_script_include"
-				// },
-				// {
-				// 	label: "UI Policy",
-				// 	name: "sys_ui_policy"
-				// },
-				// {
-				// 	label: "UI Policy Action",
-				// 	name: "sys_ui_policy_action"
-				// },
-			];	
-
+			gs.info("IN999 Inside pullOOTBNuvoloHashes!");
 			var allHashes = [];
 
 			// GET Client's version of Connected Workplace
@@ -843,12 +797,16 @@ HealthCheckHelper.prototype = {
 			var username = gs.getProperty('x_nuvo_diag.integration_user_name');
 			var password = gs.getProperty('x_nuvo_diag.integration_user_password');
 
-			for(var i = 0; i < script_types.length; i++) {
-				gs.info("IN333 Script Type: " + script_types[i].label);
+			var limit = 10000; // Number of records to fetch in each call
+			var offset = 0;    // Start offset for the query
+			var hasMoreRecords = true; // Flag to track whether more records exist
 
-				var query = encodeURIComponent('nuvolo_version=' + cw_version + '^script_type=' + script_types[i].name);
+			while(hasMoreRecords){
+				gs.info("IN999 Inside While loop!");
 
-				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_nuvolo_ootb_scripts_hashes?sysparm_query=' + query;
+				var query = encodeURIComponent('nuvolo_version=' + cw_version);
+
+				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_nuvolo_ootb_scripts_hashes?sysparm_query=' + query + "&sysparm_limit=" + limit + '&sysparm_offset=' + offset;
 
 				var r = new sn_ws.RESTMessageV2();
 				r.setEndpoint(apiEndpoint);
@@ -856,46 +814,49 @@ HealthCheckHelper.prototype = {
 				r.setRequestHeader('Content-Type', 'application/json');
 				r.setBasicAuth(username, password);
 
-				var response = r.execute();
-				var responseBody = response.getBody();
-				var httpStatus = response.getStatusCode();
+				try {
+					var response = r.execute();
+					var responseBody = response.getBody();
+					var httpStatus = response.getStatusCode();
 
-				if (httpStatus == 200) {
-					gs.info("IN333 STATUS 200!");
-					var result = JSON.parse(responseBody).result;
-
-					for (var j = 0; j < result.length; j++) {
+					if (httpStatus == 200) {
 						
-						var record = result[j];
-						allHashes.push(record);
+						gs.info("IN999 STATUS 200!");
+						var result = JSON.parse(responseBody).result;
+
+						// If fewer records are returned than the limit, we are at the end of the data
+						if (result.length < limit) {
+							hasMoreRecords = false;
+						}
+
+						for(var i = 0; i < result.length; i++){
+							var hash = result[i];
+
+							var newHash = new GlideRecord('x_nuvo_diag_nuvolo_ootb_scripts_hashes');
+							newHash.initialize();
+
+							newHash.script_type = hash.script_type;
+							newHash.script_id = hash.script_id;
+							newHash.script_name = hash.script_name;
+							newHash.nuvolo_version = hash.nuvolo_version;
+							newHash.hash_value = hash.hash_value;
+							newHash.servicenow_version = hash.servicenow_version;
+
+							var hasID = newHash.insert();
+						}
+
+						// Increase offset for the next batch
+						offset += limit;
 					}
-
-					gs.info("IN333 All Hashes --> " + JSON.stringify(allHashes));
-
-					//DELETE OLD HASHES FOR THE CURRENT SCRIPT TYPE
-					this.deleteOOTBNuvoloHashes(script_types[i].name);
-
-					//CREATE ALL NEW HASHES IN THE CLIENT FOR THE CURRENT SCRIPT TYPE
-					for(var k = 0; k < allHashes.length; k++){
-						var hash = allHashes[k];
-
-						var newHash = new GlideRecord('x_nuvo_diag_nuvolo_ootb_scripts_hashes');
-						newHash.initialize();
-
-						newHash.script_type = hash.script_type;
-						newHash.script_id = hash.script_id;
-						newHash.script_name = hash.script_name;
-						newHash.nuvolo_version = hash.nuvolo_version;
-						newHash.hash_value = hash.hash_value;
-						newHash.servicenow_version = hash.servicenow_version;
-
-						var hasID = newHash.insert();
+					else {
+						gs.error('Failed to retrieve data. HTTP Status: ' + httpStatus);
+						gs.error('Response Body: ' + responseBody);
+						hasMoreRecords = false; // Stop the loop on error
 					}
-					
-				}
-				else {
-					gs.info("IN333 PullHashes API FAIL!");
-				}
+				}catch(ex){
+					gs.error('An error occurred: ' + ex.message);
+					hasMoreRecords = false; // Stop the loop on exception
+				}	
 			}
 
 			//GET THE CLIENT HEALTHCHECK CONFIGURATION RECORD IN NUVOLO
@@ -905,6 +866,7 @@ HealthCheckHelper.prototype = {
 			if(client_config) {
 				this.updateClientConfig(inst, client_config);
 			}
+
 		}catch (ex) {
             gs.error("pullProbes Error: " + ex.message);
         }	
@@ -916,14 +878,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>181</sys_mod_count>
+        <sys_mod_count>182</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-10 12:55:21</sys_updated_on>
+        <sys_updated_on>2024-12-11 13:38:01</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>

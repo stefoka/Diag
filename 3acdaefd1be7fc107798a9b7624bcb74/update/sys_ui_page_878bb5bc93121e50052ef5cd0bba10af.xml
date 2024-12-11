@@ -35,12 +35,14 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			margin-top: 10rem;
+			margin-top: 4rem;
 		}
 
 
 		.loading-text {
-			color: rgba(0,0,0,0.5);
+			font-size: 24px;
+			margin-bottom: 1rem;
+			color: rgba(0,0,0, 1);
 		}
 
 		.hidden {
@@ -71,7 +73,7 @@
 			width: 100%;
 			display: flex;
 			flex-direction: row;
-			justify-content: space-between;
+			justify-content: end;
 			align-items: center;
 		}
 
@@ -137,7 +139,7 @@
 
 		<div class="loading-container">
 			<h5 class="loading-text">Pulling Nuvolo Probes started!</h5>
-			<p>You can close this window, the process of pulling the probes is running in background.</p>
+			<p>You can close this window, the process of pulling the probes is running in the background.</p>
 			<!-- <svg id="loader">
 				<circle cx="150" cy="60" r="30">
 				</circle>
@@ -156,14 +158,14 @@
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-12-03 14:00:27</sys_created_on>
         <sys_id>878bb5bc93121e50052ef5cd0bba10af</sys_id>
-        <sys_mod_count>55</sys_mod_count>
+        <sys_mod_count>60</sys_mod_count>
         <sys_name>pull_new_healthcheck_probes</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_page_878bb5bc93121e50052ef5cd0bba10af</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-11 11:59:40</sys_updated_on>
+        <sys_updated_on>2024-12-11 13:23:50</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>878bb5bc93121e50052ef5cd0bba10af</id>
