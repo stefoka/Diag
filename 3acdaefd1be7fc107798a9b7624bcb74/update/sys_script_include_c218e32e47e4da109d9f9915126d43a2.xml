@@ -212,6 +212,14 @@ HealthCheckProbeUtils.prototype = {
 					label: "Data Integrity",
 					name: "data_integrity"
 				},
+				{
+					label: "OOTB Percentage",
+					name: "ootb"
+				},
+				{
+					label: "Upgrade Conflicts",
+					name: "upgrade_conflicts"
+				}
 			];
 
 			// GET Client's version of Connected Workplace
@@ -243,7 +251,15 @@ HealthCheckProbeUtils.prototype = {
 				var probeSysIDs = [];
 				var allProbeScriptItems = [];
 
-				var query = encodeURIComponent('active=true^tool=health^product_version=' + cw_version + '^healthcheck_type=' + probeTypes[i].name);
+				var probeType = probeTypes[i].name;
+				
+				var query = '';
+				if(probeType === "upgrade_conflicts" || probeType === "ootb") {
+					query = encodeURIComponent('active=true^tool=health^healthcheck_type=' + probeType);
+				}
+				else {
+					query = encodeURIComponent('active=true^tool=health^product_version=' + cw_version + '^healthcheck_type=' + probeType);
+				}
 
 				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_probes?sysparm_query=' + query;
 
@@ -259,10 +275,10 @@ HealthCheckProbeUtils.prototype = {
 
 				if (httpStatus == 200) {
 					//GET OLD PROBE SCRIPT ITEMS
-					var probeItemsToDelete = this.getOldProbeItemsToDelete(probeTypes[i].name);
+					var probeItemsToDelete = this.getOldProbeItemsToDelete(probeType);
 					
 					//GET OLD PROBES
-					var probesToDelete = this.getOldProbesToDelete(probeTypes[i].name);
+					var probesToDelete = this.getOldProbesToDelete(probeType);
 
 					var result = JSON.parse(responseBody).result;
 
@@ -467,14 +483,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>114</sys_mod_count>
+        <sys_mod_count>115</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-11 11:52:54</sys_updated_on>
+        <sys_updated_on>2024-12-12 09:32:37</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>
