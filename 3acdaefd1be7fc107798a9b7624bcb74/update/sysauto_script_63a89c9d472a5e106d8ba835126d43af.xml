@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Create HealthCheck Instance</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="Iliyan Nedelchev">19e57fd5472496109d9f9915126d4367</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2024-12-17 06:16:02</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[try {
+	var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+	var currentInstance = gs.getProperty('instance_name');
+
+	var username = gs.getProperty('x_nuvo_diag.integration_user_name');
+	var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+
+	var query = encodeURIComponent('client_healthcheck_config.client_instance=' + currentInstance + '^status=scheduled^sys_created_onONYesterday@javascript:gs.beginningOfYesterday()@javascript:gs.endOfYesterday()');
+
+	var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_healthcheck_instance?sysparm_query=' + query;
+
+
+	var r = new sn_ws.RESTMessageV2();
+	r.setEndpoint(apiEndpoint);
+	r.setHttpMethod('GET');
+	r.setRequestHeader('Content-Type', 'application/json');
+	r.setBasicAuth(username, password);
+
+	var response = r.execute();
+	var responseBody = response.getBody();
+	var httpStatus = response.getStatusCode();
+
+	if (httpStatus == 200) {
+		var record = JSON.parse(responseBody).result[0];
+
+		var healthCheckInstanceGR = new GlideRecord('x_nuvo_diag_healthcheck_instance');
+		healthCheckInstanceGR.initialize();
+
+		healthCheckInstanceGR.applications = record.applications;
+		healthCheckInstanceGR.status = record.status;
+		healthCheckInstanceGR.start_date = record.start_date;
+		healthCheckInstanceGR.source = record.sys_id;
+
+		healthCheckInstanceGR.insert();
+
+		//TODO: Update the Nuvolo HealthCheck Instance's status with a new choice that shows it was created in the client and is waiting to execute
+
+		try{
+			var updateData = {
+				status: "retrieved"
+			};
+
+			var endpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_healthcheck_instance/' + record.sys_id;
+			
+			var res = new sn_ws.RESTMessageV2();
+			res.setEndpoint(apiEndpoint);
+			res.setHttpMethod('PATCH');
+			res.setRequestHeader('Content-Type', 'application/json');
+			res.setBasicAuth(username, password);
+
+			var requestBody = JSON.stringify(updateData);
+            res.setRequestBody(requestBody);
+
+			var resp = res.execute();
+			var status = resp.getStatusCode();
+
+			if (status != 200 && status != 204) {
+                gs.error('Error updating record sys_id: ' + record.sys_id + ', HTTP Status: ' + status);
+            }
+		}catch (ex) {
+            gs.error("updateClientConfig Error: " + ex.message);
+        }
+
+	}
+}catch(ex){
+	gs.error("Creating HealthCheck Instance Error: " + ex.message);
+}
+
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-17 06:21:00</sys_created_on>
+        <sys_id>63a89c9d472a5e106d8ba835126d43af</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Create HealthCheck Instance</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sysauto_script_63a89c9d472a5e106d8ba835126d43af</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-20 08:11:15</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>63a89c9d472a5e106d8ba835126d43af</id>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-17 06:20:59</sys_created_on>
+        <sys_id>44d99811476a5e106d8ba835126d43d6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-17 06:20:59</sys_updated_on>
+        <table>sysauto_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
