@@ -6,6 +6,7 @@
         <name>Blank Reservation Page</name>
         <order>100</order>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <product_version/>
         <remediation>Remove the older React scripts that were replaced by the CDN, that sometimes aren't removed upon upgrade. (There should be 9 UI scripts with react in the name, disable the 8 that aren't QRCode).</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

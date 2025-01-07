@@ -10,6 +10,7 @@ Field "Layer Data" on Space Layer Details table, record Max Length 8000</descrip
         <name>Checking CAD Record Max Length Values</name>
         <order/>
         <probe_type display_value="CAD Extension">67b285011bac1510ae5b21b5ec4bcbb5</probe_type>
+        <product_version/>
         <remediation>Set the max length to 4,000 or 8,000 respectively.</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

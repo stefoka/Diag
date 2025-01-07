@@ -10,6 +10,7 @@ Need to add functionality in later releases to separate checks for spaces. </des
         <name>Site Hierarchy Check</name>
         <order>100</order>
         <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation>If the error mesage says there is no space record, change space creation business rule to on change, edit all sites that are missing, and then turn back to on insert only. &#13;
 If the error message says there is no parent, add the correct campus to the site/building in question. &#13;
 If the error message says there is an issue with activity, change either the space or site to the other's so they are the same. </remediation>

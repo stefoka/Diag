@@ -8,6 +8,7 @@ CAD Layers Translation vs CAD Layer related list on CAD record details</descript
         <name>CAD layer Naming Mismatch</name>
         <order>100</order>
         <probe_type display_value="CAD Extension">67b285011bac1510ae5b21b5ec4bcbb5</probe_type>
+        <product_version/>
         <remediation>The value in the Name field of the CAD Layers Translation record needs to be the same as the name of the layer on the dxf/dwg file. </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 var layerGR = new GlideRecord('x_nuvo_eam_dxf_layers_translation');

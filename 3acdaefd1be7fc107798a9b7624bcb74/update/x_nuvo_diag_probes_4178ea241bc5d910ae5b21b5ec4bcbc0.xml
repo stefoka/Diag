@@ -19,6 +19,7 @@ The user should not be able to observe the deactivated work order type on the wo
         <name>Clinical WO shows Inactive WO types</name>
         <order>100</order>
         <probe_type display_value="HTM Asset Management">5b9325951b609510ae5b21b5ec4bcb47</probe_type>
+        <product_version/>
         <remediation> Please add override reference qualifier to the Work Order types to include only active true Work order types.</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 var nuvoloVersionQuery = "name=Connected Workplace^active=true^version<19";

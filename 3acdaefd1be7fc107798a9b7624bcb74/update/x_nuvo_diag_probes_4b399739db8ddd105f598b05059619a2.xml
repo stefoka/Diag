@@ -6,6 +6,7 @@
         <name>Updating or changing asset on SM</name>
         <order>100</order>
         <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
+        <product_version/>
         <remediation>Scheduled maintenance does not automatically recalculate which definitions apply to it on change of an asset record.&#13;
 &#13;
 It does a basic "try to find the best definition for me" logic on insert, and then it has some turning on and off maintenance instances based on the device status going in and out of retired/inactive install/active</remediation>

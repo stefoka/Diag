@@ -18,4 +18,15 @@
         <sys_updated_on>2024-12-05 08:05:57</sys_updated_on>
         <threshold>0</threshold>
     </x_nuvo_diag_probe_script_item>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>d2466f884709da109d9f9915126d43f1</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-09 14:24:41</sys_created_on>
+        <sys_id>efcbb83693ded210052ef5cd0bba10da</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-09 14:24:41</sys_updated_on>
+        <table>x_nuvo_diag_probe_script_item</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>

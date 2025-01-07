@@ -10,6 +10,7 @@ Seen in Pre-Pakistan releases.</description>
         <name>Canceling Reservation does not reflect </name>
         <order>100</order>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <product_version/>
         <remediation>Please Apply the Update Set for your current version to Fix this issue.</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 var spaceVersion = '';

@@ -22,6 +22,7 @@ Reproduction Steps&#13;
         <name>Checking for O365 with cancellation</name>
         <order/>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <product_version/>
         <remediation> Update the record, by removing the text from the Content field</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

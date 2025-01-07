@@ -10,6 +10,7 @@ Issue seen in Pre-Qatar Releases</description>
         <name>Wrong Checklist gets attached to a WO</name>
         <order>100</order>
         <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
+        <product_version/>
         <remediation>There is an Update Set provided by the Product team which solves the issue. &#13;
 &#13;
 As per the current Logic :-&#13;

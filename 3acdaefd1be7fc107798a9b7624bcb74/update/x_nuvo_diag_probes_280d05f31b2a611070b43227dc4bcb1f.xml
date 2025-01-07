@@ -6,6 +6,7 @@
         <name>SM WO Generation - Facilities</name>
         <order/>
         <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
+        <product_version>21.1.2</product_version>
         <remediation>Change the scheduled job named "Nuvolo Schedule Recurring Maintenances", and set the runtime to early in the AM. </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 
@@ -34,14 +35,14 @@ if (hoursInt < 6) {
         <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
         <sys_created_on>2023-05-08 15:56:01</sys_created_on>
         <sys_id>280d05f31b2a611070b43227dc4bcb1f</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>SM WO Generation - Facilities</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_280d05f31b2a611070b43227dc4bcb1f</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:21:25</sys_updated_on>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-04 09:40:00</sys_updated_on>
         <tool>diagnostic</tool>
     </x_nuvo_diag_probes>
 </record_update>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
     <x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE">
         <name>Missing Assigned To</name>
+        <order/>
         <probe display_value="Transfer Orders">3aede44a93191e10052ef5cd0bba1093</probe>
         <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_transfer_order', 'assigned_toISEMPTY');
 ]]></script>

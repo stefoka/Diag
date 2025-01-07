@@ -6,6 +6,7 @@
         <name>Duplicate Nuv Properties - Reservations</name>
         <order>100</order>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <product_version/>
         <remediation>Go to Nuvolo Properties list and remove the extra override. </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

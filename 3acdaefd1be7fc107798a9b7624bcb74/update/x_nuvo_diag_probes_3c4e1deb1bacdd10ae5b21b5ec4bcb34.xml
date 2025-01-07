@@ -6,6 +6,7 @@
         <name>Duplicate Nuv Properties - Warehouse</name>
         <order>100</order>
         <probe_type display_value="Warehouse">ad41711d1ba09510ae5b21b5ec4bcbea</probe_type>
+        <product_version/>
         <remediation>Go to Nuvolo Properties list and remove the extra override. </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

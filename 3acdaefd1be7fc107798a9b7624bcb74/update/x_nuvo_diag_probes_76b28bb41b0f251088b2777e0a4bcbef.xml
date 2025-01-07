@@ -6,6 +6,7 @@
         <name>Incorrect Real Estate Properties</name>
         <order/>
         <probe_type display_value="Real Estate">6b21b1151ba09510ae5b21b5ec4bcb4e</probe_type>
+        <product_version/>
         <remediation>From the Real Estate Settings UI Page, revert real_estate_url to default.</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

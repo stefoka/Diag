@@ -6,6 +6,7 @@
         <name>Check for WM scoped schems</name>
         <order/>
         <probe_type display_value="Mobile">e9dc377c1b681510ae5b21b5ec4bcb49</probe_type>
+        <product_version/>
         <remediation>Install the Warehouse Manager application or delete/deactivate any schemas that use the WM scope.</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

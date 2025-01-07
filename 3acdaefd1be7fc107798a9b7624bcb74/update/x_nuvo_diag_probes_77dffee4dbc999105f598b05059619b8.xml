@@ -19,6 +19,7 @@ Reproduction Steps :&#13;
         <name>Reservation - Map does not go to default</name>
         <order>100</order>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <product_version/>
         <remediation>Fix version for this issue is Romania but the resolution is also included in Qatar Patch 3. Reach out to Technical Engineering team mentioning "SFM-10119" in case comments.</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 var queryString = "name=Connected Workplace^active=true^versionSTARTSWITH16^ORversionSTARTSWITH17^ORversionSTARTSWITH18.";

@@ -8,6 +8,7 @@
         <name>Strict Mode Workaround Presence</name>
         <order>100</order>
         <probe_type display_value="ServiceNow">285139dd1ba09510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation>Revert the Strict mode update Sets </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

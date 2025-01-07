@@ -7,6 +7,7 @@
         <name>Client Secret on Mobius API record</name>
         <order>100</order>
         <probe_type display_value="CAD Extension">67b285011bac1510ae5b21b5ec4bcbb5</probe_type>
+        <product_version/>
         <remediation>Update Client Secret to use only standard characters</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

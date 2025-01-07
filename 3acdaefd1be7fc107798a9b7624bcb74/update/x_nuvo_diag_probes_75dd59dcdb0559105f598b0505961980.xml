@@ -9,6 +9,7 @@ They can able to do this through the Reservation History option and then navigat
         <name>User Modify and Delete reservations</name>
         <order>100</order>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <product_version/>
         <remediation>This issue is in Norway and there is no hotfix for it. It is fixed in the Qatar version. We suggest you upgrade your instance to Qatar so that this issue might be resolved.&#13;
 </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();

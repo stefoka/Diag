@@ -6,6 +6,7 @@
         <name>Duplicate Clinical Devices Asset Tag</name>
         <order>100</order>
         <probe_type display_value="HTM Asset Management">5b9325951b609510ae5b21b5ec4bcb47</probe_type>
+        <product_version/>
         <remediation>Need to Add Duplicate Validation Business Rule on the Devices table to prevent duplicate asset tags.&#13;
 &#13;
 OR &#13;

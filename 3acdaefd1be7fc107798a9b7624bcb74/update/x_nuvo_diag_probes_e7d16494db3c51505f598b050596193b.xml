@@ -10,6 +10,7 @@ Check type of the polyline from DXF file. Only LWPOLYLINE is supported.</descrip
         <name>Polyline compatibility check</name>
         <order>100</order>
         <probe_type display_value="CAD Extension">67b285011bac1510ae5b21b5ec4bcbb5</probe_type>
+        <product_version/>
         <remediation/>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

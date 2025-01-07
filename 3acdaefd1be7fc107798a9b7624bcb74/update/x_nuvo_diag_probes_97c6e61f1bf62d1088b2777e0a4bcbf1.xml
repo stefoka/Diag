@@ -11,6 +11,7 @@ Which caused Errors when trying to load into the Sweden Version of the Reservati
         <name>Check for missing Key/Message reference</name>
         <order/>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <product_version/>
         <remediation>Temporary Work Around&#13;
 Update the Space Reservation's Mobile App Config record's Translation field to include a Ref to the "missing" Tranlation Records.&#13;
 Nav to Reservation UI Page, inspect page, view Console, see error messages referencing "keys"&#13;

@@ -6,6 +6,7 @@
         <name>World View Not Loading</name>
         <order/>
         <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation>x_nuvo_eam.td_map_tile_provider&#13;
  Value should be pointing to tile provider's api URL (System Properties)&#13;
 &#13;

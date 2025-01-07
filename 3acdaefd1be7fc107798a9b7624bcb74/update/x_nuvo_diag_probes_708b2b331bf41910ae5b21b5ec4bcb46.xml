@@ -11,6 +11,7 @@ When we create any CPOLITM of part type and purchase any part, System is creatin
         <name>PartsSource -System creating Records </name>
         <order>100</order>
         <probe_type display_value="HTM Asset Management">5b9325951b609510ae5b21b5ec4bcb47</probe_type>
+        <product_version/>
         <remediation>As per Script Include  PartsSourceUtilsClient  set autoInsert to false...this will stop parts from being created, along with their Company and Model records&#13;
 &#13;
 &#13;

@@ -16,6 +16,7 @@ Expected: Over occupancy, conflict window should work as expected and User shoul
         <name>Over-Occupancy Functionality Not Working</name>
         <order>100</order>
         <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation>This issue is seen in Oman versions, Update Set is available which solves this issue, Please apply the Update Set which resolves the issue, &#13;
 Update Set name - SPACE-OMAN-SFM-9500</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();

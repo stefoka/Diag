@@ -6,6 +6,7 @@
         <name>Upgrade History - Res</name>
         <order>100</order>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <product_version/>
         <remediation>Go to the Upgrade History and revert them to base system. </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

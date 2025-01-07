@@ -8,6 +8,7 @@ In this Probe, we are going to check if the installed ServiceNow version is comp
         <name>Platform Compatibility with ServiceNow</name>
         <order>100</order>
         <probe_type display_value="ServiceNow">285139dd1ba09510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation>Need to upgrade to a compatible version.</remediation>
         <script><![CDATA[var versionsMap = {
     "8": {

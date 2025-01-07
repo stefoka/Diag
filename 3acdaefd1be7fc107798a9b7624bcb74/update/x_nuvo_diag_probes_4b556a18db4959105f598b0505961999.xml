@@ -39,6 +39,7 @@ These field values would be saved on the Location records&#13;
         <name>Space Editor - Multi-Update unsuccessful</name>
         <order>100</order>
         <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation>Reach out to Nuvolo Technical Engineering team for the update set on SFM-9942 and install it. </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
     <x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE">
         <name>Active Without Pre Checklist</name>
+        <order/>
         <probe display_value="Facilities Maintenance Definition">f5c19fb293f0d610052ef5cd0bba10ce</probe>
         <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_scheduled_maint_definition', 'active=true^pre_checklistISEMPTY');]]></script>
         <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>

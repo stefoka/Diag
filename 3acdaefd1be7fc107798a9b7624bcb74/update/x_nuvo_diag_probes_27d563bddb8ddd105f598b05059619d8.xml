@@ -12,6 +12,7 @@ Issue Reproduction steps :&#13;
         <name>Find People Place or Thing not working </name>
         <order>100</order>
         <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation>The issue is due to the missing Home Base reference on the user's profile.</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 	

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
     <x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE">
         <name>Floors Missing Space</name>
+        <order/>
         <probe display_value="Location Hierarchy">016c6eee93bc5610052ef5cd0bba1013</probe>
         <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_floor', 'spaceISEMPTY^active=true');]]></script>
         <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>

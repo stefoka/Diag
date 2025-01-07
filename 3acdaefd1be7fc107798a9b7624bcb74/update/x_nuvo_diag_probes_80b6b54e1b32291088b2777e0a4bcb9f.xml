@@ -8,6 +8,7 @@ Since there is no value in that field, the code gets stuck and is not able to pr
         <name>Empty Rounds Schedule Facility</name>
         <order/>
         <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
+        <product_version/>
         <remediation>The solution is to delete the records that are causing the process stick. There is no longer a Work Round associated with them so there is no way for them to process.</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 // for Facility mainentence

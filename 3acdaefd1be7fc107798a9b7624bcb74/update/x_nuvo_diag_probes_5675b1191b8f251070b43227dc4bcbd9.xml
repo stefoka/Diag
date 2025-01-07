@@ -6,6 +6,7 @@
         <name>SM WO Generation - Lab</name>
         <order/>
         <probe_type display_value="GxP Asset Management">6493ad591b609510ae5b21b5ec4bcbe7</probe_type>
+        <product_version/>
         <remediation>Change the scheduled job named "Nuvolo Schedule Recurring Maintenances", and set the runtime to early in the AM. </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

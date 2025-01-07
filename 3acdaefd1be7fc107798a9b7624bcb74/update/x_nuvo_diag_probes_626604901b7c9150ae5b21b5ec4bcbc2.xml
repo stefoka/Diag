@@ -30,6 +30,7 @@ clone_instance</description>
         <name>Space Creation Stuck</name>
         <order>100</order>
         <probe_type display_value="CAD Extension">67b285011bac1510ae5b21b5ec4bcbb5</probe_type>
+        <product_version/>
         <remediation>Go to the sys_properties table and find the above mentioned properties, and reset the password/check if the user has the autoCAD role. </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

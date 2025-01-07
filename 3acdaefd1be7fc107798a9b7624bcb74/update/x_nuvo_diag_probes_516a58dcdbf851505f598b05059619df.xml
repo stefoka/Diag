@@ -46,6 +46,7 @@ if (tableFound) {&#13;
         <name>Domain Path Check</name>
         <order/>
         <probe_type display_value="ServiceNow">285139dd1ba09510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation/>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 var metaGR = new GlideRecord('sys_metadata_link');

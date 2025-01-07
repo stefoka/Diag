@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
     <x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE">
         <name>Total Number of Transfer Order Line Item</name>
+        <order/>
         <probe display_value="Transfer Orders">6d3be412473016109d9f9915126d43eb</probe>
         <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_transfer_order_line_item', '');
 ]]></script>

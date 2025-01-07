@@ -6,6 +6,7 @@
         <name>Duplicate Nuv Properties - Cap Planning</name>
         <order>100</order>
         <probe_type display_value="Capital Planning">17d289091bac1510ae5b21b5ec4bcb27</probe_type>
+        <product_version/>
         <remediation>Go to Nuvolo Properties list and remove the extra override. </remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

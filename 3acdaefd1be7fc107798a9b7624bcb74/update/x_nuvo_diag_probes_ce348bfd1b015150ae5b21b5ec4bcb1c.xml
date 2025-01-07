@@ -28,6 +28,7 @@ D. Save the record.&#13;
         <name>Workspace Occupancy is not updating</name>
         <order>100</order>
         <probe_type display_value="Space">ec33c5091bac1510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation>This issue is seen in Pakistan versions, Update Set is available which solves this issue, Please apply the Update Set which resolves the issue, &#13;
 Update Set name - Pakistan-SFM-9901</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();

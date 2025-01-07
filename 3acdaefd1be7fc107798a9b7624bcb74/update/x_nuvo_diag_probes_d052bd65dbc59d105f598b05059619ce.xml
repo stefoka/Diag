@@ -19,6 +19,7 @@ UI Actions&#13;
         <name>Component verification of installed app</name>
         <order>100</order>
         <probe_type display_value="ServiceNow">285139dd1ba09510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation>Verify with count mentioned on installation doc. If found mismatching(spefically count less than mentioned in doc in that case only) reach out to nuvolo technnical engineering team.</remediation>
         <script><![CDATA[// Mobile Platform (x_nuvo_mobile)
 // Nuvolo Platform Services (x_nuvo_nps)

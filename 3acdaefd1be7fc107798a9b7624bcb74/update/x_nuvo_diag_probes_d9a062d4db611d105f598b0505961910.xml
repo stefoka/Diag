@@ -20,6 +20,7 @@ Pre checklist button not available on the work order created by rounds.</descrip
         <name>Checklist not available</name>
         <order>100</order>
         <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
+        <product_version/>
         <remediation>There is an Update Set provided by the Product team to Fix this issue. &#13;
 &#13;
 Apply Update Set  :  ChecklistRulesFix&#13;

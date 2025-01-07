@@ -8,6 +8,7 @@ The user is not able to save the location for all day though he click the checkb
         <name>User is unable to reserve for whole day</name>
         <order>100</order>
         <probe_type display_value="Reservation">5913c9091bac1510ae5b21b5ec4bcbc4</probe_type>
+        <product_version/>
         <remediation>Please update the property value of "reservation_default_duration" , Make its default value to all_day from any other value to Set the Default Duration to Whole day and it resolves the issue.</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 var nuvPropGR = new GlideRecord('x_nuvo_mobile_nuvolo_property');

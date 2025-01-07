@@ -6,6 +6,7 @@
         <name>Check for Stops on the Parent Stop table</name>
         <order/>
         <probe_type display_value="HTM Asset Management">5b9325951b609510ae5b21b5ec4bcb47</probe_type>
+        <product_version/>
         <remediation/>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 

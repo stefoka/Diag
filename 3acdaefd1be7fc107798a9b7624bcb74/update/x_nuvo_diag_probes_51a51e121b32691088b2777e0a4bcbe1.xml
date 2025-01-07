@@ -6,6 +6,7 @@
         <name>Connected Workplace Up To Date</name>
         <order/>
         <probe_type display_value="ServiceNow">285139dd1ba09510ae5b21b5ec4bcb64</probe_type>
+        <product_version/>
         <remediation>Update to the latest Patch</remediation>
         <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
 var versionsMap = {
