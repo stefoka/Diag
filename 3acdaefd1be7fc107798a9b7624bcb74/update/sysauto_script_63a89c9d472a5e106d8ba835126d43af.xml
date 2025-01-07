@@ -6,7 +6,7 @@
         <conditional>false</conditional>
         <entered_time>1970-01-01 00:00:00</entered_time>
         <max_drift/>
-        <name>Create HealthCheck Instance</name>
+        <name>ShouldRunHealthcheckJob</name>
         <offset/>
         <offset_type>0</offset_type>
         <run_as display_value="Iliyan Nedelchev">19e57fd5472496109d9f9915126d4367</run_as>
@@ -24,10 +24,9 @@
 	var username = gs.getProperty('x_nuvo_diag.integration_user_name');
 	var password = gs.getProperty('x_nuvo_diag.integration_user_password');
 
-	var query = encodeURIComponent('client_healthcheck_config.client_instance=' + currentInstance + '^status=scheduled^sys_created_onONYesterday@javascript:gs.beginningOfYesterday()@javascript:gs.endOfYesterday()');
+	var query = encodeURIComponent('client_healthcheck_config.client_instance=' + currentInstance + '^status=scheduled');
 
 	var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_healthcheck_instance?sysparm_query=' + query;
-
 
 	var r = new sn_ws.RESTMessageV2();
 	r.setEndpoint(apiEndpoint);
@@ -47,12 +46,24 @@
 
 		healthCheckInstanceGR.applications = record.applications;
 		healthCheckInstanceGR.status = record.status;
-		healthCheckInstanceGR.start_date = record.start_date;
 		healthCheckInstanceGR.source = record.sys_id;
 
-		healthCheckInstanceGR.insert();
+		//GET DIFFERENCE BETWEEN CURRENT DATE AND THE ORIGINAL START DATE
+		var original_start_date = new GlideDateTime(record.start_date).getNumericValue();
 
-		//TODO: Update the Nuvolo HealthCheck Instance's status with a new choice that shows it was created in the client and is waiting to execute
+		var gdt = new GlideDateTime();
+		var currDate = gdt.getNumericValue();
+
+		var dateDiff = Math.abs(currDate - original_start_date);
+		var daysDiff = Math.floor(dateDiff / 24 / 60 / 60 / 1000); //Convert to days
+
+		//CHECK IF THE START DATE IS IN THE PAST
+		if (daysDiff > 0){
+			gdt.addDaysLocalTime(daysDiff);
+		}
+			
+		healthCheckInstanceGR.start_date = gdt;
+		healthCheckInstanceGR.insert();
 
 		try{
 			var updateData = {
@@ -62,7 +73,7 @@
 			var endpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_healthcheck_instance/' + record.sys_id;
 			
 			var res = new sn_ws.RESTMessageV2();
-			res.setEndpoint(apiEndpoint);
+			res.setEndpoint(endpoint);
 			res.setHttpMethod('PATCH');
 			res.setRequestHeader('Content-Type', 'application/json');
 			res.setBasicAuth(username, password);
@@ -90,14 +101,14 @@
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-12-17 06:21:00</sys_created_on>
         <sys_id>63a89c9d472a5e106d8ba835126d43af</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>Create HealthCheck Instance</sys_name>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>ShouldRunHealthcheckJob</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sysauto_script_63a89c9d472a5e106d8ba835126d43af</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-20 08:11:15</sys_updated_on>
+        <sys_updated_on>2025-01-07 12:48:22</sys_updated_on>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
