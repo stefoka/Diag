@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_nuvo_diag.grant_temporary_access</event_name>
+        <name>Grant Temporary Access</name>
+        <order>100</order>
+        <script><![CDATA[var roleAssignment = new HealthCheckHelper();
+
+var userCred = [];
+var additionalEmails = [];
+var additionalPasswords = [];
+if (current.assigned_to_email) {
+    userCred.push({
+        email: current.assigned_to_email.trim(),
+        password: current.assigned_to_password.trim()
+    });
+}
+
+if (current.additional_assignee_email && current.additional_assignee_password) {
+    if (current.additional_assignee_email.toString().indexOf(',') > -1) {
+        additionalEmails = current.additional_assignee_email.split(',');
+    } else {
+        additionalEmails.push(current.additional_assignee_email.toString());
+    }
+    if (current.additional_assignee_email.toString().indexOf(',') > -1) {
+        additionalPasswords = current.additional_assignee_password.split(',');
+    } else {
+        additionalPasswords.push(current.additional_assignee_password.toString());
+    }
+
+    for (var i = 0; i < additionalEmails.length; i++) {
+        userCred.push({
+            email: additionalEmails[i].trim(),
+            password: additionalPasswords[i].trim()
+        });
+    }
+
+}
+
+if (userCred.length > 0) {
+    for (var j = 0; j < userCred.length; j++) {
+
+        var user = new GlideRecord('sys_user');
+        user.addQuery('email', userCred[j].email);
+        user.query();
+
+        if (user.next()) {
+
+            user.user_password.setDisplayValue(userCred[j].password);
+            user.password_needs_reset = true;
+            user.active = true;
+            user.locked_out = false;
+
+            user.update();
+
+            roleAssignment.assignRoles(user.sys_id, current.access_type);
+
+        } else {
+
+            var newUser = new GlideRecord('sys_user');
+            newUser.initialize();
+
+            newUser.email = userCred[j].email;
+            newUser.user_name = userCred[j].email;
+            newUser.user_password.setDisplayValue(userCred[j].password);
+            newUser.password_needs_reset = true;
+
+            newUser.insert();
+
+            roleAssignment.assignRoles(newUser.sys_id, current.access_type);
+
+        }
+
+    }
+    current.status = 'granted';
+    current.update()
+} else {
+    current.status = 'error';
+    current.update()
+}]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-13 08:27:36</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b2d8f371470392106d8ba835126d4362</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Grant Temporary Access</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sysevent_script_action_b2d8f371470392106d8ba835126d4362</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-13 08:27:36</sys_updated_on>
+    </sysevent_script_action>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>b2d8f371470392106d8ba835126d4362</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-13 08:27:36</sys_created_on>
+        <sys_id>82b93771470392106d8ba835126d43e5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-13 08:27:36</sys_updated_on>
+        <table>sysevent_script_action</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

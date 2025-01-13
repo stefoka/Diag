@@ -30,79 +30,7 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
-    var roleAssignment = new HealthCheckHelper();
-
-    var userCred = [];
-    var additionalEmails=[];
-    var additionalPasswords=[];
-    if (current.assigned_to_email) {
-        userCred.push({
-            email: current.assigned_to_email.trim(),
-            password: current.assigned_to_password.trim()
-        });
-    }
-
-    if (current.additional_assignee_email && current.additional_assignee_password) {
-        if (current.additional_assignee_email.toString().indexOf(',') > -1) {
-            additionalEmails = current.additional_assignee_email.split(',');
-        } else {
-            additionalEmails.push(current.additional_assignee_email.toString());
-        }
-        if (current.additional_assignee_email.toString().indexOf(',') > -1) {
-            additionalPasswords = current.additional_assignee_password.split(',');
-        } else {
-            additionalPasswords.push(current.additional_assignee_password.toString());
-        }
-
-        for (var i = 0; i < additionalEmails.length; i++) {
-            userCred.push({
-                email: additionalEmails[i].trim(),
-				password: additionalPasswords[i].trim()
-            });
-        }
-
-    }
-
-    if (userCred.length > 0) {
-        for (var j = 0; j < userCred.length; j++) {
-
-            var user = new GlideRecord('sys_user');
-            user.addQuery('email', userCred[j].email);
-            user.query();
-
-            if (user.next()) {
-
-                user.user_password.setDisplayValue(userCred[j].password);
-                user.password_needs_reset = true;
-                user.active = true;
-                user.locked_out = false;
-
-                user.update();
-
-                roleAssignment.assignRoles(user.sys_id, current.access_type);
-
-            } else {
-
-                var newUser = new GlideRecord('sys_user');
-                newUser.initialize();
-
-                newUser.email = userCred[j].email;
-                newUser.user_name = userCred[j].email;
-                newUser.user_password.setDisplayValue(userCred[j].password);
-                newUser.password_needs_reset = true;
-
-                newUser.insert();
-
-                roleAssignment.assignRoles(newUser.sys_id, current.access_type);
-
-            }
-
-        }
-        current.status = 'granted';
-    } else {
-        current.status = 'error';
-    }
-
+    gs.eventQueue('x_nuvo_diag.grant_temporary_access', current, '', '');
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
@@ -110,7 +38,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>496e174593815250052ef5cd0bba10d9</sys_id>
-        <sys_mod_count>33</sys_mod_count>
+        <sys_mod_count>34</sys_mod_count>
         <sys_name>Grant Temporary Access</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -118,7 +46,7 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_496e174593815250052ef5cd0bba10d9</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-04 11:30:17</sys_updated_on>
+        <sys_updated_on>2025-01-13 08:26:13</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>

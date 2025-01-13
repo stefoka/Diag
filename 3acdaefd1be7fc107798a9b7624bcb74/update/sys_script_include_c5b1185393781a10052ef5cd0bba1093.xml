@@ -13,11 +13,11 @@
 NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 
     createTempAccessRecord: function(caseNumber, endOfAccessString, accessType, accessTypeText) {
-		
+
         caseNumber = caseNumber || this.getParameter('case_number');
         endOfAccessString = endOfAccessString || this.getParameter('end_of_access');
         accessType = accessType || this.getParameter('access_type');
-        accessTypeText = accessTypeText || this.getParameter('access_type_text'); 
+        accessTypeText = accessTypeText || this.getParameter('access_type_text');
         var tempAccessObj = {
             agents: [],
             link: '',
@@ -40,7 +40,7 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
         var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
 
         username = gs.getProperty('x_nuvo_diag.integration_user_name'),
-            password = gs.getProperty('x_nuvo_diag.integration_user_password');
+        password = gs.getProperty('x_nuvo_diag.integration_user_password');
 
         var casesAPIEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=case_numberLIKE' + caseNumber;
 
@@ -75,12 +75,18 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
 
                 var agentsAssigned = false;
 
-
+                var agentEmails = [];
                 var result = JSON.parse(casesResponseBody).result;
 
                 if (result.length !== 0) {
+
                     for (var j = 0; j < result.length; j++) {
                         var record = result[j];
+                        if (agentEmails.indexOf(record.email) != -1) {
+                            continue;
+                        }
+                        agentEmails.push(record.email);
+
                         var contactDomain = record.contact_domain;
 
                         if (contactDomain !== requestorDomain) {
@@ -125,7 +131,7 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
                             newRecord.end_of_access = endOfAccessDate.getDisplayValue();
                             newRecord.assigned_to_email = record.email + '';
                             newRecord.assigned_to_password = record.temp_password + '';
-							newRecord.external_key = record.sys_id + '';
+                            newRecord.external_key = record.sys_id + '';
                             newRecord.setValue('access_type', accessType);
                             newRecord.status = 'in_progress';
 
@@ -156,7 +162,7 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
                                         record.expiration_date = endOfAccessDate.getDisplayValue();
                                         record.access_type = accessType + '';
                                         record.instance_url = 'https://' + localInst + '.service-now.com';
-										record.agent = record.agent.value;
+                                        record.agent = record.agent.value;
                                         record.account = record.account_text;
                                         if (record.hasOwnProperty('sys_id')) {
                                             delete record.sys_id;
@@ -275,20 +281,19 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
     },
 
 
-});
-]]></script>
+});]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-27 11:04:24</sys_created_on>
         <sys_id>c5b1185393781a10052ef5cd0bba1093</sys_id>
-        <sys_mod_count>139</sys_mod_count>
+        <sys_mod_count>145</sys_mod_count>
         <sys_name>NuvoloTempAccessAjax</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c5b1185393781a10052ef5cd0bba1093</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-04 13:07:02</sys_updated_on>
+        <sys_updated_on>2025-01-13 09:25:46</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c5b1185393781a10052ef5cd0bba1093</id>
