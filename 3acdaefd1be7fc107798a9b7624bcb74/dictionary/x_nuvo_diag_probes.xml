@@ -12,7 +12,7 @@
         </element>
         <element label="Name" max_length="40" name="name" type="string"/>
         <element label="Order" max_length="40" name="order" type="string"/>
-        <element label="Probe Category" mandatory="true" max_length="32" name="probe_type" reference="x_nuvo_diag_probe_type" type="reference"/>
+        <element label="Probe Category" mandatory="true" max_length="32" name="probe_type" reference="x_nuvo_diag_probe_type" reference_qual="javascript: new x_nuvo_diag.HealthCheckProbeUtils().filterProbeCategories(current.tool);" type="reference" use_reference_qualifier="advanced"/>
         <element label="Product version" max_length="40" name="product_version" type="string"/>
         <element label="Remediation" max_length="4000" name="remediation" type="string"/>
         <element label="Script" max_length="8000" name="script" type="script"/>

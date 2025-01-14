@@ -6,21 +6,21 @@
         <name>upgradeConflicts</name>
         <order>2</order>
         <probe_type display_value="General Overview">ede6dc1b477cd6109d9f9915126d431d</probe_type>
-        <product_version>21.1.2</product_version>
+        <product_version>22.0.36</product_version>
         <remediation/>
         <script/>
         <sys_class_name>x_nuvo_diag_probes</sys_class_name>
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-10-21 12:47:27</sys_created_on>
         <sys_id>3c7fc40f93dd1250052ef5cd0bba103c</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>upgradeConflicts</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probes_3c7fc40f93dd1250052ef5cd0bba103c</sys_update_name>
-        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-12 11:08:06</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-13 14:58:19</sys_updated_on>
         <tool>health</tool>
     </x_nuvo_diag_probes>
 </record_update>
