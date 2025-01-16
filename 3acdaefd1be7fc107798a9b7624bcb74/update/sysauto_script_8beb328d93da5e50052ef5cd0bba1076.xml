@@ -6,7 +6,7 @@
         <conditional>false</conditional>
         <entered_time>1970-01-01 00:00:00</entered_time>
         <max_drift/>
-        <name>Remove Nuvolo Temp Access If Agent is no longer assigned to Active Cases</name>
+        <name>Nuvo Temp Access - Remove Access If Agent is no longer assigned to Active Cases</name>
         <offset/>
         <offset_type>0</offset_type>
         <run_as display_value="Stefan Popov">15e5b79d93e0d610052ef5cd0bba10d9</run_as>
@@ -68,14 +68,14 @@ for (var key in obj) {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-12-04 13:16:38</sys_created_on>
         <sys_id>8beb328d93da5e50052ef5cd0bba1076</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>Remove Nuvolo Temp Access If Agent is no longer assigned to Active Cases</sys_name>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Nuvo Temp Access - Remove Access If Agent is no longer assigned to Active Cases</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sysauto_script_8beb328d93da5e50052ef5cd0bba1076</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-05 10:14:00</sys_updated_on>
+        <sys_updated_on>2025-01-16 12:24:03</sys_updated_on>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
