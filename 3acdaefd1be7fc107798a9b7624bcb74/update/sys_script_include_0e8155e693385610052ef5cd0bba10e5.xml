@@ -717,7 +717,6 @@ HealthCheckHelper.prototype = {
 			var httpStatus = response.getStatusCode();
 
 			if (httpStatus == 200) {
-				gs.info("IN333 getClientConfig API SUCCESS!");
 				var result = JSON.parse(responseBody).result;
 				var record = result[0];
 
@@ -771,7 +770,6 @@ HealthCheckHelper.prototype = {
 			//DELETE OLD HASHES
 			this.deleteOOTBNuvoloHashes();
 
-			gs.info("IN999 Inside pullOOTBNuvoloHashes!");
 			var allHashes = [];
 
 			// GET Client's version of Connected Workplace
@@ -802,7 +800,6 @@ HealthCheckHelper.prototype = {
 			var hasMoreRecords = true; // Flag to track whether more records exist
 
 			while(hasMoreRecords){
-				gs.info("IN999 Inside While loop!");
 
 				var query = encodeURIComponent('nuvolo_version=' + cw_version);
 
@@ -821,7 +818,6 @@ HealthCheckHelper.prototype = {
 
 					if (httpStatus == 200) {
 						
-						gs.info("IN999 STATUS 200!");
 						var result = JSON.parse(responseBody).result;
 
 						// If fewer records are returned than the limit, we are at the end of the data
@@ -841,7 +837,7 @@ HealthCheckHelper.prototype = {
 							newHash.nuvolo_version = hash.nuvolo_version;
 							newHash.hash_value = hash.hash_value;
 							newHash.servicenow_version = hash.servicenow_version;
-
+							newHash.column_name = hash.column_name;
 							var hasID = newHash.insert();
 						}
 
@@ -878,14 +874,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>182</sys_mod_count>
+        <sys_mod_count>183</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
-        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-11 13:38:01</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-30 10:40:17</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>
