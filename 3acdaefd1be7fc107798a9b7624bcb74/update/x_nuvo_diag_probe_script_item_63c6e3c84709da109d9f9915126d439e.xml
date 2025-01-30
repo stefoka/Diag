@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
     <x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE">
         <name>UI Policy Actions</name>
-        <order/>
+        <order>50</order>
         <probe display_value="General OOB Percentage">7026eb884709da109d9f9915126d4371</probe>
-        <script><![CDATA[new HealthCheckProbeUtils().getHashedValue('sys_ui_policy_action', 'mandatory,visible,disabled,field');]]></script>
+        <script><![CDATA[new HealthCheckProbeUtils().getHashedValue('sys_ui_policy_action', 'mandatory,visible,disabled,field,sys_id');]]></script>
         <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
         <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-30 10:31:33</sys_created_on>
         <sys_id>63c6e3c84709da109d9f9915126d439e</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>UI Policy Actions</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>x_nuvo_diag_probe_script_item_63c6e3c84709da109d9f9915126d439e</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-05 08:05:57</sys_updated_on>
+        <sys_updated_on>2025-01-22 12:38:22</sys_updated_on>
         <threshold>0</threshold>
     </x_nuvo_diag_probe_script_item>
 </record_update>

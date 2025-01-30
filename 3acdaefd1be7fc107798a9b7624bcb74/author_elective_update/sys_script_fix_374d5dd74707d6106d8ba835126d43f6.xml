@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="DELETE">
+        <before>false</before>
+        <description>Create Client Configuration records from x_nuvo_matrix_instance table</description>
+        <name>HealthCheck - Create Client Configs</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[var gr = new GlideRecord('x_nuvo_matrix_instance');
+gr.addEncodedQuery('instance_type=production');
+gr.query();
+
+while(gr.next()){
+	var clientConf = new GlideRecord('x_nuvo_health_scan_client_healthcheck_config');
+	clientConf.initialize();
+	clientConf.client = gr.account;
+	clientConf.instance_type = prod;
+	clientConf.insert();
+}]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-17 13:01:05</sys_created_on>
+        <sys_id>374d5dd74707d6106d8ba835126d43f6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>HealthCheck - Create Client Configs</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_script_fix_374d5dd74707d6106d8ba835126d43f6</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-17 13:01:05</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+    <sys_es_latest_script action="DELETE">
+        <id>374d5dd74707d6106d8ba835126d43f6</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-17 13:01:05</sys_created_on>
+        <sys_id>47aed1df4707d6106d8ba835126d4326</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-17 13:01:05</sys_updated_on>
+        <table>sys_script_fix</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>sys_script_fix_374d5dd74707d6106d8ba835126d43f6</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_fix"&gt;&lt;sys_script_fix action="INSERT_OR_UPDATE"&gt;&lt;before&gt;false&lt;/before&gt;&lt;description&gt;Create Client Configuration records from x_nuvo_matrix_instance table&lt;/description&gt;&lt;name&gt;HealthCheck - Create Client Configs&lt;/name&gt;&lt;record_for_rollback&gt;true&lt;/record_for_rollback&gt;&lt;script&gt;&lt;![CDATA[var gr = new GlideRecord('x_nuvo_matrix_instance');
+gr.addEncodedQuery('instance_type=production');
+gr.query();
+
+while(gr.next()){
+	var clientConf = new GlideRecord('x_nuvo_health_scan_client_healthcheck_config');
+	clientConf.initialize();
+	clientConf.client = gr.account;
+	clientConf.instance_type = prod;
+	clientConf.insert();
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_fix&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-01-17 13:01:05&lt;/sys_created_on&gt;&lt;sys_id&gt;374d5dd74707d6106d8ba835126d43f6&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;HealthCheck - Create Client Configs&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_fix_374d5dd74707d6106d8ba835126d43f6&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-01-17 13:01:05&lt;/sys_updated_on&gt;&lt;unloadable&gt;false&lt;/unloadable&gt;&lt;/sys_script_fix&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;374d5dd74707d6106d8ba835126d43f6&lt;/id&gt;&lt;sys_created_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-01-17 13:01:05&lt;/sys_created_on&gt;&lt;sys_id&gt;47aed1df4707d6106d8ba835126d4326&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-01-17 13:01:05&lt;/sys_updated_on&gt;&lt;table&gt;sys_script_fix&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1669816277</payload_hash>
+        <record_name>HealthCheck - Create Client Configs</record_name>
+        <reverted_from/>
+        <source>a7c643ec475596106d8ba835126d437c</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-17 13:01:05</sys_created_on>
+        <sys_id>cfaed1df4707d6106d8ba835126d4353</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>194745a59700000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-17 13:01:05</sys_updated_on>
+        <type>Fix Script</type>
+        <update_guid>43aed1df1807d610b8196e1dc8806253</update_guid>
+        <update_guid_history>43aed1df1807d610b8196e1dc8806253:-1669816277</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-17 13:02:11</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_fix">sys_script_fix</sys_db_object>
+        <sys_id>c79b3423c9174d00b8b8b875ed01d900</sys_id>
+        <sys_metadata>374d5dd74707d6106d8ba835126d43f6</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>HealthCheck - Create Client Configs</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_script_fix_374d5dd74707d6106d8ba835126d43f6</sys_update_name>
+        <sys_update_version display_value="sys_script_fix_374d5dd74707d6106d8ba835126d43f6">cfaed1df4707d6106d8ba835126d4353</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-17 13:02:11</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

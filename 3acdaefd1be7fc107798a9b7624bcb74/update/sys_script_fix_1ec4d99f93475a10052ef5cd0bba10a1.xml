@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description/>
+        <name>Copy probes</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[var probes = 'x_nuvo_diag_probes';
+var scriptItems = 'x_nuvo_diag_probe_script_item';
+var clinicalProbeType = '0208cd5f93075a10052ef5cd0bba104b';
+var targetWord = 'facilities';
+var replacementWord = 'clinical'; 
+
+function capitalizeFirstLetter(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
+
+var probe = new GlideRecord(probes);
+probe.addEncodedQuery('tool=health^probe_type=218325951b609510ae5b21b5ec4bcb45');
+probe.query();
+
+while (probe.next()) {
+    var newProbe = new GlideRecord(probes);
+    newProbe.initialize();
+
+    var probeFields = probe.getElements();
+    for (var i = 0; i < probeFields.length; i++) {
+        var fieldName = probeFields[i].getName();
+        if (!fieldName.startsWith('sys_')) {
+            var fieldValue = probe.getValue(fieldName);
+
+            // Replace "Facilities" with "Clinical" only in the 'name' field
+            if (fieldName === 'name' && typeof fieldValue === 'string' && fieldValue.toLowerCase().includes(targetWord)) {
+                fieldValue = fieldValue.replace(new RegExp(targetWord, 'gi'), capitalizeFirstLetter(replacementWord));
+            }
+
+            newProbe.setValue(fieldName, fieldValue);
+        }
+    }
+
+    newProbe.setValue('probe_type', clinicalProbeType);
+    var newProbeSysId = newProbe.insert();
+
+    var scriptItem = new GlideRecord(scriptItems);
+    scriptItem.addQuery('probe', probe.getValue('sys_id'));
+    scriptItem.query();
+
+    while (scriptItem.next()) {
+        var newScriptItem = new GlideRecord(scriptItems);
+        newScriptItem.initialize();
+
+        var scriptFields = scriptItem.getElements();
+        for (var j = 0; j < scriptFields.length; j++) {
+            var scriptFieldName = scriptFields[j].getName();
+            if (!scriptFieldName.startsWith('sys_') && scriptFieldName !== 'probe') {
+                var scriptFieldValue = scriptItem.getValue(scriptFieldName);
+                
+                if (typeof scriptFieldValue === 'string' && scriptFieldValue.includes(targetWord)) {
+                    scriptFieldValue = scriptFieldValue.replace(new RegExp(targetWord, 'gi'), replacementWord);
+                }
+                
+                newScriptItem.setValue(scriptFieldName, scriptFieldValue);
+            }
+        }
+
+        newScriptItem.setValue('probe', newProbeSysId);
+        newScriptItem.insert();
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-17 12:21:21</sys_created_on>
+        <sys_id>1ec4d99f93475a10052ef5cd0bba10a1</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Copy probes</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_script_fix_1ec4d99f93475a10052ef5cd0bba10a1</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-17 13:05:16</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>1ec4d99f93475a10052ef5cd0bba10a1</id>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-17 12:21:21</sys_created_on>
+        <sys_id>0195999f93475a10052ef5cd0bba1069</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-17 12:21:21</sys_updated_on>
+        <table>sys_script_fix</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

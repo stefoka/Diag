@@ -15,7 +15,7 @@
         <run_dayofweek>1</run_dayofweek>
         <run_period/>
         <run_start>2024-12-17 06:16:02</run_start>
-        <run_time>1970-01-01 08:00:00</run_time>
+        <run_time>1970-01-01 01:22:22</run_time>
         <run_type>daily</run_type>
         <script><![CDATA[try {
 	var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
@@ -101,14 +101,14 @@
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-12-17 06:21:00</sys_created_on>
         <sys_id>63a89c9d472a5e106d8ba835126d43af</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>ShouldRunHealthcheckJob</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sysauto_script_63a89c9d472a5e106d8ba835126d43af</sys_update_name>
-        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-01-07 12:48:22</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-22 08:39:22</sys_updated_on>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>

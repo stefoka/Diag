@@ -28,22 +28,46 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
-    var scriptId = current.script_id;
+    
+	var scriptId = current.script_id;
+    
+	if (current.script_type != 'sys_dictionary') {
+        if (scriptId) {
+            var scriptHashRec = new GlideRecord("x_nuvo_diag_nuvolo_ootb_scripts_hashes");
+            scriptHashRec.addQuery("script_id", scriptId);
+            scriptHashRec.query();
 
-    if (scriptId) {
+			//Record is OOTB
+            if (scriptHashRec.next()) {
+
+				//Record is OOTB & modified by the Client
+                if (scriptHashRec.hash_value != current.hash_value) {
+                    current.script_state = 'modified';
+                }
+            }
+			// Record is NOT OOTB  
+			else {
+                current.script_state = 'new';
+            }
+        }
+    } else {
         var scriptHashRec = new GlideRecord("x_nuvo_diag_nuvolo_ootb_scripts_hashes");
-        scriptHashRec.addQuery("script_id", scriptId);
+        scriptHashRec.addEncodedQuery('table_name=' + current.table_name + '^column_name=' + current.column_name);
+
         scriptHashRec.query();
 
-        if (scriptHashRec.next()) {
+		//Record is OOTB
+		if (scriptHashRec.next()) {
 
-            if (scriptHashRec.hash_value != current.hash_value) {
-                current.script_state = 'modified';
-            }
-        } else {
-            current.script_state = 'new';
-        }
-       
+			//Record is OOTB & modified by the Client
+			if (scriptHashRec.hash_value != current.hash_value) {
+				current.script_state = 'modified';
+			}
+		}
+		// Record is NOT OOTB 
+		else {
+			current.script_state = 'new';
+		}
     }
 
 })(current, previous);]]></script>
@@ -53,15 +77,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e40486c793059210052ef5cd0bba1041</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Change Script State status</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_e40486c793059210052ef5cd0bba1041</sys_update_name>
-        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-10-09 11:31:51</sys_updated_on>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-23 06:30:35</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>

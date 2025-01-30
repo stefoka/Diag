@@ -11,8 +11,6 @@
         var accessTypeDropdown = document.getElementById('access_type');
         accessTypeDropdown.innerHTML = '';
 
-
-
         // Check if instance type is production
         if (instanceType === 'production') {
             var option = document.createElement('option');
@@ -42,7 +40,7 @@
 document.addEventListener("DOMContentLoaded", loadAccessTypes);
 
 function submitForm() {
-
+    var shouldSubmit = true;
     var button = document.getElementById('submit-btn');
     button.disabled = true;
     var isLoading = true;
@@ -63,73 +61,85 @@ function submitForm() {
     if (caseNumber == '' || endOfAccess == 'None' || accessType == 'None') {
         document.getElementById('result_message').innerHTML = '';
         document.getElementById('error_result_message').innerHTML = 'Please make sure all fields are populated before submitting the form';
-        return false;
+        shouldSubmit = false;
+		button.disabled = false;
     }
+    if (shouldSubmit == true) {
+        var ga = new GlideAjax('NuvoloTempAccessAjax');
+        ga.addParam('sysparm_name', 'createTempAccessRecord');
+        ga.addParam('case_number', caseNumber);
+        ga.addParam('end_of_access', endOfAccess);
+        ga.addParam('access_type', accessType);
+        ga.addParam('access_type_text', accessTypeText);
 
-    var ga = new GlideAjax('NuvoloTempAccessAjax');
-    ga.addParam('sysparm_name', 'createTempAccessRecord');
-    ga.addParam('case_number', caseNumber);
-    ga.addParam('end_of_access', endOfAccess);
-    ga.addParam('access_type', accessType);
-    ga.addParam('access_type_text', accessTypeText);
+        ga.getXMLAnswer(function(response) {
 
-    ga.getXMLAnswer(function(response) {
+            if (response) {
+                var obj = JSON.parse(response);
 
-        if (response) {
-            var obj = JSON.parse(response);
+                var resultMessage = document.getElementById('result_message');
+                var errorMessage = document.getElementById('error_result_message');
+                var relatedList = document.getElementById('related-list-table');
+                var relatedListContainer = document.getElementById('related-list-container');
 
-            var resultMessage = document.getElementById('result_message');
-            var errorMessage = document.getElementById('error_result_message');
-            var relatedList = document.getElementById('related-list-table');
-            var relatedListContainer = document.getElementById('related-list-container');
+                errorMessage.innerHTML = '';
+                resultMessage.innerHTML = '';
+                document.getElementById('temp_access_form').reset();
 
-            errorMessage.innerHTML = '';
-            resultMessage.innerHTML = '';
-            document.getElementById('temp_access_form').reset();
+                //Remove previous records in the related list if any
+                var oldTrs = document.querySelectorAll('.data-row');
 
-            //Remove previous records in the related list if any
-            var oldTrs = document.querySelectorAll('.data-row');
-
-            for (var i = 0; i < oldTrs.length; i++) {
-                oldTrs[i].classList.add('hidden');
-            }
-
-            if (obj.agents.length !== 0) {
-                loader.classList.remove('hidden');
-                for (var j = 0; j < obj.agents.length; j++) {
-
-                    var tr = document.createElement("tr");
-                    tr.classList.add('data-row');
-
-                    var agent = obj.agents[j];
-                    for (column in agent) {
-                        var th = document.createElement("th");
-
-                        if (column === "agent") {
-                            var link = document.createElement("a");
-                            link.href = agent[column].link;
-                            link.target = "_blank";
-                            link.innerText = agent[column].name;
-                            th.appendChild(link);
-                        } else {
-                            th.innerHTML = agent[column];
-                        }
-
-                        tr.appendChild(th);
-                    }
-
-                    relatedList.appendChild(tr);
+                for (var i = 0; i < oldTrs.length; i++) {
+                    oldTrs[i].classList.add('hidden');
                 }
 
-                setTimeout(function() {
+                if (obj.agents.length !== 0) {
+                    loader.classList.remove('hidden');
+                    for (var j = 0; j < obj.agents.length; j++) {
+
+                        var tr = document.createElement("tr");
+                        tr.classList.add('data-row');
+
+                        var agent = obj.agents[j];
+                        for (column in agent) {
+                            var th = document.createElement("th");
+
+                            if (column === "agent") {
+                                var link = document.createElement("a");
+                                link.href = agent[column].link;
+                                link.target = "_blank";
+                                link.innerText = agent[column].name;
+                                th.appendChild(link);
+                            } else {
+                                th.innerHTML = agent[column];
+                            }
+
+                            tr.appendChild(th);
+                        }
+
+                        relatedList.appendChild(tr);
+                    }
+
+                    setTimeout(function() {
+                        isLoading = false;
+                        loader.classList.add('hidden');
+                        button.disabled = false;
+                        relatedListContainer.classList.remove('hidden');
+                        resultMessage.innerHTML = obj.message;
+                    }, 2000);
+                } else {
+                    errorMessage.innerHTML = obj.message;
                     isLoading = false;
                     loader.classList.add('hidden');
                     button.disabled = false;
-                    relatedListContainer.classList.remove('hidden');
-                    resultMessage.innerHTML = obj.message;
-                }, 2000);
+
+                    if (!resultMessage.classList.contains('hidden')) {
+                        relatedListContainer.classList.add('hidden');
+                    }
+                }
             } else {
-                errorMessage.innerHTML = obj.message;
+                errorMessage.innerHTML = 'An error occurred. Please try again.';
+
                 isLoading = false;
                 loader.classList.add('hidden');
                 button.disabled = false;
@@ -138,19 +148,9 @@ function submitForm() {
                     relatedListContainer.classList.add('hidden');
                 }
             }
-        } else {
-            errorMessage.innerHTML = 'An error occurred. Please try again.';
 
-            isLoading = false;
-            loader.classList.add('hidden');
-            button.disabled = false;
-
-            if (!resultMessage.classList.contains('hidden')) {
-                relatedListContainer.classList.add('hidden');
-            }
-        }
-
-    });
+        });
+    }
 }]]></client_script>
         <description/>
         <direct>false</direct>
@@ -394,14 +394,14 @@ function submitForm() {
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-27 11:10:21</sys_created_on>
         <sys_id>9bf0541393781a10052ef5cd0bba10a8</sys_id>
-        <sys_mod_count>209</sys_mod_count>
+        <sys_mod_count>211</sys_mod_count>
         <sys_name>nuvolo_temp_access_form</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_page_9bf0541393781a10052ef5cd0bba10a8</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-13 12:32:33</sys_updated_on>
+        <sys_updated_on>2025-01-17 12:23:36</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>9bf0541393781a10052ef5cd0bba10a8</id>

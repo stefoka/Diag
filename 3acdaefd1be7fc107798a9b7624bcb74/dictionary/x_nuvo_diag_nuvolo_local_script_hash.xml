@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="5f3a7fbf47e012509d9f9915126d43e4" extends="x_nuvo_diag_nuvolo_hashes" label="Nuvolo Local Script Hash" max_length="40" name="x_nuvo_diag_nuvolo_local_script_hash" type="collection">
+        <element label="Column Name" max_length="100" name="column_name" type="string"/>
         <element label="Last Updated" max_length="40" name="last_updated" type="glide_date_time"/>
         <element choice="3" default="oob" label="Script State" max_length="40" name="script_state" read_only="true" type="choice">
             <choice>

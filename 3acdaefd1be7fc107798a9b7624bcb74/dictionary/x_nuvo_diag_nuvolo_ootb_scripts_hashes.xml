@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="e8428e1a47e09a109d9f9915126d43fb" extends="x_nuvo_diag_nuvolo_hashes" label="Nuvolo OOTB Scripts Hashes" max_length="40" name="x_nuvo_diag_nuvolo_ootb_scripts_hashes" type="collection">
+        <element label="Column Name" max_length="100" name="column_name" type="string"/>
         <element label="ServiceNow Version" max_length="150" name="servicenow_version" type="string"/>
     </element>
 </database>
