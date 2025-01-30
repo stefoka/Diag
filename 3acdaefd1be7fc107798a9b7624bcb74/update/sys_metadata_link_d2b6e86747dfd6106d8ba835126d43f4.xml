@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>update</directory>
+        <documentkey>ad41711d1ba09510ae5b21b5ec4bcbea</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_type">
+    <x_nuvo_diag_probe_type action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <healthcheck>false</healthcheck>
+        <name>Warehouse</name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-06 17:52:59</sys_created_on>
+        <sys_id>ad41711d1ba09510ae5b21b5ec4bcbea</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>Samadhan.Gaikwad@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2022-07-27 08:00:35</sys_updated_on>
+    </x_nuvo_diag_probe_type>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-30 13:50:49</sys_created_on>
+        <sys_id>d2b6e86747dfd6106d8ba835126d43f4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Warehouse</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_metadata_link_d2b6e86747dfd6106d8ba835126d43f4</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-30 13:50:49</sys_updated_on>
+        <tablename>x_nuvo_diag_probe_type</tablename>
+    </sys_metadata_link>
+</record_update>
