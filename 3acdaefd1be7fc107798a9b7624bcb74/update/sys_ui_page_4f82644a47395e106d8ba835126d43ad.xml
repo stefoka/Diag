@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
     <sys_ui_page action="INSERT_OR_UPDATE">
         <category>general</category>
-        <client_script><![CDATA[function submitForm() {
+        <client_script><![CDATA[function loadCases() {
+	var ga = new GlideAjax('NuvoloTempAccessAjax');
+	ga.addParam('sysparm_name', 'getCases');
+
+ 	ga.getXMLAnswer(function(response) {
+		var casesObj = JSON.parse(response);
+
+		var casesDropdown = document.getElementById('cases');
+        casesDropdown.innerHTML = '';
+
+		for(var i = 0; i < casesObj.cases.length; i++) {
+			var option = document.createElement('option');
+			option.value = casesObj.cases[i];
+			option.text = casesObj.cases[i];
+			casesDropdown.add(option);
+		}
+		
+	});
+}
+
+document.addEventListener("DOMContentLoaded", loadCases);
+
+function submitForm() {
     document.getElementById("message").innerText = "";
 
     var days = parseInt(document.getElementById("extendOptions").value, 10);
@@ -109,6 +131,12 @@ function cancelForm() {
 </style>
 
 <div class="form-container">
+
+	<label for="access_type">Case:</label>
+	<select id="access_type" name="access_type" required="required">
+		
+	</select>
+
     <label for="extendOptions">Select extension duration:</label>
     <select id="extendOptions">
         <option value="">None</option>
@@ -133,14 +161,14 @@ function cancelForm() {
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-11-12 08:32:04</sys_created_on>
         <sys_id>4f82644a47395e106d8ba835126d43ad</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>20</sys_mod_count>
         <sys_name>extend_access_dialog</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_page_4f82644a47395e106d8ba835126d43ad</sys_update_name>
-        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-11-18 09:54:42</sys_updated_on>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-02-20 13:51:21</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>4f82644a47395e106d8ba835126d43ad</id>

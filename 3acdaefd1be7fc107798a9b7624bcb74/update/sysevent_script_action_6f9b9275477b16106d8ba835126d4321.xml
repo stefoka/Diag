@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_nuvo_diag.revoke_access_no_active_case</event_name>
+        <name>Revoke Temp Access - No Active Case</name>
+        <order>100</order>
+        <script><![CDATA[var checkTempAccess = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+checkTempAccess.addEncodedQuery('status=granted');
+checkTempAccess.query();
+
+var tempEmailsStr = '';
+var cases = '';
+
+while (checkTempAccess.next()) {
+    tempEmailsStr += checkTempAccess.assigned_to_email + ',';
+}
+
+var api = new HealthCheckHelper();
+var obj = JSON.parse(api.getExpiredClientEnvironmentAccessByEmails(tempEmailsStr));
+var removeCases = []
+
+for (var key in obj) {
+    var keepAccess = false;
+    var tempAccessToExpire = new GlideRecord('x_nuvo_diag_nuvolo_temporary_access');
+    tempAccessToExpire.addEncodedQuery('assigned_to_email=' + key.toString() + '^status=granted');
+    tempAccessToExpire.query();
+
+    if (tempAccessToExpire.next()) {
+        var caseArr = tempAccessToExpire.case_number.split(',');
+        for (var i = 0; i < caseArr.length; i++) {
+            if (obj[key].toString().indexOf(caseArr[i]) > -1) {
+                keepAccess = true;
+            }
+
+        }
+        if (keepAccess == false || keepAccess == 'false') {
+            //Expire the Nuvolo Temporary Access record of the Agent
+            tempAccessToExpire.end_of_access = new GlideDate();
+            tempAccessToExpire.status = 'expired';
+            tempAccessToExpire.update();
+
+            var agent = new GlideRecord('sys_user');
+            agent.addQuery('email', tempAccessToExpire.assigned_to_email);
+            agent.query();
+
+            //Deactivate the related User record of the Agent
+            if (agent.next()) {
+                agent.active = false;
+                agent.update();
+            }
+        }
+    }
+}]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-02-19 08:26:14</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>6f9b9275477b16106d8ba835126d4321</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Revoke Temp Access - No Active Case</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sysevent_script_action_6f9b9275477b16106d8ba835126d4321</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-02-19 08:26:14</sys_updated_on>
+    </sysevent_script_action>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>6f9b9275477b16106d8ba835126d4321</id>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-02-19 08:26:14</sys_created_on>
+        <sys_id>ba3cd275477b16106d8ba835126d438c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-02-19 08:26:14</sys_updated_on>
+        <table>sysevent_script_action</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

@@ -211,6 +211,68 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
         return instanceType;
     },
 
+
+	getCases: function() {
+		gs.info("IN001 Inside getCases!");
+
+		var casesObj = {
+            cases: [],
+            message: ''
+        };
+
+		var localInst = gs.getProperty('instance_name');
+        var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+
+        username = gs.getProperty('x_nuvo_diag.integration_user_name'),
+        password = gs.getProperty('x_nuvo_diag.integration_user_password');
+
+        var casesAPIEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access?sysparm_query=instance_urlLIKE' + localInst;
+
+        var casesR = new sn_ws.RESTMessageV2();
+        casesR.setEndpoint(casesAPIEndpoint);
+        casesR.setHttpMethod('GET');
+        casesR.setRequestHeader('Content-Type', 'application/json');
+        casesR.setBasicAuth(username, password);
+
+        var casesResponse = casesR.execute();
+        var casesResponseBody = casesResponse.getBody();
+        var casesHttpStatus = casesResponse.getStatusCode();
+
+        if (casesHttpStatus == 200) {
+			gs.info("IN001 Inside getCases -> Status OK");
+
+			var casesResult = JSON.parse(casesResponseBody).result;
+            
+			if (casesResult.length === 0) {
+				gs.info("IN001 Inside getCases -> No Cases Found!");
+
+                // ERROR -  No Cases found
+                casesObj.message = "There are no Cases for your company found in Nuvolo!";
+                return JSON.stringify(casesObj);
+            } else {
+				gs.info("IN001 Inside getCases -> Cases: ");
+
+				var cases = casesResult.case_number.split(',');
+
+				gs.info("IN001 Inside getCases -> Cases: " + JSON.stringify(cases));
+
+				for (var i = 0; i < cases.length; i ++){
+					if(casesObj.cases.indexOf(cases[i]) === -1) {
+						casesObj.cases.push(cases[i]);
+					}
+				}
+			}
+		}
+		else {
+			//ERROR - Case Table API Fail
+			gs.info("IN001 Inside getCases -> API Failed!");
+
+            casesObj.message = 'Failed while trying to find the Cases in the system!';
+		}
+
+		return JSON.stringify(casesObj);
+	},
+
     getEmailsFromSysIds: function() {
         var sysIds = this.getParameter('sysparm_sysIds').split(',');
         var emailArr = [];
@@ -280,20 +342,28 @@ NuvoloTempAccessAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
         }
     },
 
+	syncTempAccess: function() {
+
+		//Call events that will trigger Script Actions
+		gs.eventQueue('x_nuvo_diag.revoke_access_no_active_case');
+		gs.eventQueue('x_nuvo_diag.grant_temp_access');
+		
+	},
+
 
 });]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-27 11:04:24</sys_created_on>
         <sys_id>c5b1185393781a10052ef5cd0bba1093</sys_id>
-        <sys_mod_count>148</sys_mod_count>
+        <sys_mod_count>153</sys_mod_count>
         <sys_name>NuvoloTempAccessAjax</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c5b1185393781a10052ef5cd0bba1093</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-01-14 14:04:45</sys_updated_on>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-02-20 13:53:45</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c5b1185393781a10052ef5cd0bba1093</id>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="d4fe001f93381a10052ef5cd0bba104a" label="Nuvolo Temporary Access" max_length="40" name="x_nuvo_diag_nuvolo_temporary_access" type="collection">
+    <element audit="true" db_object_id="d4fe001f93381a10052ef5cd0bba104a" label="Nuvolo Temporary Access" max_length="40" name="x_nuvo_diag_nuvolo_temporary_access" type="collection">
         <element choice="1" label="Access Type" max_length="40" name="access_type" read_only="true" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Admin" value="admin"/>
