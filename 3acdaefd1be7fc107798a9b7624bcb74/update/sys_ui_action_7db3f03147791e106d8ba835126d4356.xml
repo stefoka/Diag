@@ -7,7 +7,7 @@
 
 }]]></client_script_v2>
         <comments/>
-        <condition>current.canWrite() &amp;&amp; current.status == "granted" &amp;&amp; (gs.hasRole("admin") || gs.hasRole("x_nuvo_diag.nuvolo_temporary_access_user"))</condition>
+        <condition>(gs.hasRole("admin") || gs.hasRole("x_nuvo_diag.nuvolo_temporary_access_user"))</condition>
         <form_action>false</form_action>
         <form_button>false</form_button>
         <form_button_v2>false</form_button_v2>
@@ -19,8 +19,8 @@
         <hint/>
         <isolate_script>true</isolate_script>
         <list_action>true</list_action>
-        <list_banner_button>false</list_banner_button>
-        <list_button>true</list_button>
+        <list_banner_button>true</list_banner_button>
+        <list_button>false</list_button>
         <list_choice>false</list_choice>
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
@@ -47,7 +47,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>7db3f03147791e106d8ba835126d4356</sys_id>
-        <sys_mod_count>37</sys_mod_count>
+        <sys_mod_count>38</sys_mod_count>
         <sys_name>Extend Access</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -55,7 +55,7 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_action_7db3f03147791e106d8ba835126d4356</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-02-21 13:52:01</sys_updated_on>
+        <sys_updated_on>2025-02-21 14:57:14</sys_updated_on>
         <table>x_nuvo_diag_nuvolo_temporary_access</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>
