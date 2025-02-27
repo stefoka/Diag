@@ -14,6 +14,13 @@
 
     while (checkCases.next()) {
         var tempAccessCasesArr = checkCases.case_number.split(',');
+		
+		var user_domain = '';
+		var getUser = new GlideRecord('sys_user');
+		if(getUser.get(checkCases.sys_created_by)) {
+			user_domain = getUser.email.split('@')[1];
+		}
+
         for (var i = 0; i < tempAccessCasesArr.length; i++) {
             if (casesArr.indexOf(tempAccessCasesArr[i]) < 0) {
 				var endOfAccess = checkCases.end_of_access.getDisplayValue();
@@ -28,7 +35,7 @@
 				var accessType = checkCases.access_type;
 				var accessTypeText = checkCases.access_type.getDisplayValue();
                 casesArr.push(tempAccessCasesArr[i]);
-				new x_nuvo_diag.NuvoloTempAccessAjax().createTempAccessRecord(tempAccessCasesArr[i],differenceDays,accessType,accessTypeText);
+				new x_nuvo_diag.NuvoloTempAccessAjax().createTempAccessRecord(tempAccessCasesArr[i],differenceDays,accessType,accessTypeText, user_domain);
             }
         }
     }
@@ -40,7 +47,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>982ddab5477b16106d8ba835126d4340</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Grant Temp Access</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -48,7 +55,7 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sysevent_script_action_982ddab5477b16106d8ba835126d4340</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-02-19 08:31:54</sys_updated_on>
+        <sys_updated_on>2025-02-26 13:21:54</sys_updated_on>
     </sysevent_script_action>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>982ddab5477b16106d8ba835126d4340</id>

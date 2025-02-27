@@ -383,7 +383,7 @@ HealthCheckHelper.prototype = {
         if (accessType == 'all_nuvolo_roles') {
 
             var newRoles = new GlideRecord('sys_user_role');
-            newRoles.addEncodedQuery('nameLIKEadmin^nameLIKEx_nuvo');
+            newRoles.addEncodedQuery('nameSTARTSWITHx_nuvo^name!=x_nuvo_diag.nuvolo_temporary_access_user^ORname=NULL^name!=x_nuvo_diag.nuvolo_oob_script_hashes_user^ORname=NULL');
             newRoles.query();
 
             while (newRoles.next()) {
@@ -781,7 +781,7 @@ HealthCheckHelper.prototype = {
 			cw_versionGR.query();
 
 			if(cw_versionGR.next()){
-				cw_version = cw_versionGR.version + '';
+				cw_version = cw_versionGR.version.split('.')[0] + '';
 			}
 
 			var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
@@ -801,7 +801,7 @@ HealthCheckHelper.prototype = {
 
 			while(hasMoreRecords){
 
-				var query = encodeURIComponent('nuvolo_version=' + cw_version);
+				var query = encodeURIComponent('nuvolo_versionSTARTSWITH' + cw_version);
 
 				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_nuvolo_ootb_scripts_hashes?sysparm_query=' + query + "&sysparm_limit=" + limit + '&sysparm_offset=' + offset;
 
@@ -874,14 +874,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>183</sys_mod_count>
+        <sys_mod_count>188</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-01-30 10:40:17</sys_updated_on>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-02-25 14:28:52</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>
