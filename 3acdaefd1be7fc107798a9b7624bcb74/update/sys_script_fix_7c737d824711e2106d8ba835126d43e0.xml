@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description>Fix Script used to copy probes and script items by replacing their version with a newer one</description>
+        <name>Copy Probes and Script Items</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[var version = '22.0.36'; // version of the probes which will be copied
+var category = 'ec33c5091bac1510ae5b21b5ec4bcb64'; //sys id of the category you want to copy
+var newVersion = '2.0.37'//the new version which the new probes will have
+var probeTable = 'x_nuvo_diag_probes'
+var scriptItemTable = 'x_nuvo_diag_probe_script_item';
+
+
+var probe = new GlideRecord(probeTable);
+probe.addEncodedQuery('tool=health^probe_type='+category+'^product_version='+version);
+probe.query();
+
+while (probe.next()) {
+    var newProbe = new GlideRecord(probeTable);
+    newProbe.initialize();
+
+    var probeFields = probe.getElements();
+    for (var i = 0; i < probeFields.length; i++) {
+        var fieldName = probeFields[i].getName();
+        if (!fieldName.startsWith('sys_')) {
+            var fieldValue = probe.getValue(fieldName);
+
+            newProbe.setValue(fieldName, fieldValue);
+        }
+    }
+	newProbe.setValue('product_version',newVersion)
+    var newProbeSysId = newProbe.insert();
+
+    var scriptItem = new GlideRecord(scriptItemTable);
+    scriptItem.addQuery('probe', probe.getValue('sys_id'));
+    scriptItem.query();
+
+    while (scriptItem.next()) {
+        var newScriptItem = new GlideRecord(scriptItemTable);
+        newScriptItem.initialize();
+
+        var scriptFields = scriptItem.getElements();
+        for (var j = 0; j < scriptFields.length; j++) {
+            var scriptFieldName = scriptFields[j].getName();
+            if (!scriptFieldName.startsWith('sys_') && scriptFieldName !== 'probe') {
+                var scriptFieldValue = scriptItem.getValue(scriptFieldName);
+                newScriptItem.setValue(scriptFieldName, scriptFieldValue);
+            }
+        }
+
+        newScriptItem.setValue('probe', newProbeSysId);
+        newScriptItem.insert();
+    }
+}]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-05-05 13:41:00</sys_created_on>
+        <sys_id>7c737d824711e2106d8ba835126d43e0</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Copy Probes and Script Items</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_script_fix_7c737d824711e2106d8ba835126d43e0</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-05 13:41:20</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>7c737d824711e2106d8ba835126d43e0</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-05-05 13:40:59</sys_created_on>
+        <sys_id>20837d824711e2106d8ba835126d43e4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-05 13:40:59</sys_updated_on>
+        <table>sys_script_fix</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

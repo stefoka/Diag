@@ -8,7 +8,7 @@
             </choice>
         </element>
         <element label="Assigned To Email" max_length="150" name="assigned_to_email" read_only="true" type="string"/>
-        <element label="Assigned To Password" max_length="150" name="assigned_to_password" read_only="true" type="string"/>
+        <element label="Assigned To Password" max_length="255" name="assigned_to_password" read_only="true" type="password2"/>
         <element label="Case Number" max_length="150" name="case_number" read_only="true" type="string"/>
         <element label="End Of Access" max_length="40" name="end_of_access" read_only="true" type="glide_date"/>
         <element label="External Key" max_length="100" name="external_key" read_only="true" type="string"/>

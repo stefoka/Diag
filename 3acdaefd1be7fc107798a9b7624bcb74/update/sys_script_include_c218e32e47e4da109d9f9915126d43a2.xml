@@ -222,7 +222,11 @@ HealthCheckProbeUtils.prototype = {
                 {
                     label: "Upgrade Conflicts",
                     name: "upgrade_conflicts"
-                }
+                },
+				{
+					label: "all diag probes",
+					name: "all_diag_probes"
+				}
             ];
 
             // GET Client's version of Connected Workplace
@@ -259,9 +263,11 @@ HealthCheckProbeUtils.prototype = {
                 var query = '';
                 if (probeType === "upgrade_conflicts" || probeType === "ootb") {
                     query = encodeURIComponent('active=true^tool=health^healthcheck_type=' + probeType);
-                } else {
+                } else if (probeType === "data_integrity" || probeType === "feature_usage") {
                     query = encodeURIComponent('active=true^tool=health^product_versionSTARTSWITH' + cw_version + '^healthcheck_type=' + probeType);
-                }
+                }else {
+					query = encodeURIComponent('tool=diagnostic'); // Gets all other DIAG Probes
+				}
 
                 var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_probes?sysparm_query=' + query;
 
@@ -353,7 +359,7 @@ HealthCheckProbeUtils.prototype = {
                     this.deleteOldProbes(JSON.parse(probesToDelete).join(','));
 
                 } else {
-                    gs.info("PullProbes API FAIL!");
+                    gs.info("PullProbes API FAIL! - x_nuvo_diag.HealthCheckProbeUtils");
                 }
             }
 
@@ -400,7 +406,7 @@ HealthCheckProbeUtils.prototype = {
 
                 return probeScriptItems;
             } else {
-                gs.info("pullProbeScriptItems API FAIL!");
+                gs.info("pullProbeScriptItems API FAIL! -  x_nuvo_diag.HealthCheckProbeUtils  ");
             }
         } catch (ex) {
             gs.error("pullProbeScriptItems Error: " + ex.message);
@@ -435,7 +441,7 @@ HealthCheckProbeUtils.prototype = {
 
                 return record.sys_id + '';
             } else {
-                gs.info("getClientConfig API FAIL!");
+                gs.info("getClientConfig API FAIL! -  x_nuvo_diag.HealthCheckProbeUtils");
             }
         } catch (ex) {
             gs.error("getClientConfig Error: " + ex.message);
@@ -504,14 +510,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>120</sys_mod_count>
+        <sys_mod_count>124</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
-        <sys_policy>read</sys_policy>
+        <sys_policy>protected</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-02-04 14:19:07</sys_updated_on>
+        <sys_updated_by>jason.siegrist@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-09 12:02:19</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>

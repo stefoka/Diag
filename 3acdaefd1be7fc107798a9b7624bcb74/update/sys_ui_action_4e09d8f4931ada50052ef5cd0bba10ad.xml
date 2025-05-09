@@ -6,7 +6,7 @@
         <client_script_v2><![CDATA[function onClick(g_form) {
 
 }]]></client_script_v2>
-        <comments/>
+        <comments>Allow for the download of new probes from Nuvolo Support</comments>
         <condition>gs.hasRole('x_nuvo_diag.healthcheck_admin') || gs.hasRole('admin')</condition>
         <form_action>false</form_action>
         <form_button>false</form_button>
@@ -55,15 +55,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>4e09d8f4931ada50052ef5cd0bba10ad</sys_id>
-        <sys_mod_count>13</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>Pull Probes</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_action_4e09d8f4931ada50052ef5cd0bba10ad</sys_update_name>
-        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-12-04 07:17:07</sys_updated_on>
+        <sys_updated_by>jason.siegrist@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-05 12:25:46</sys_updated_on>
         <table>x_nuvo_diag_probes</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
