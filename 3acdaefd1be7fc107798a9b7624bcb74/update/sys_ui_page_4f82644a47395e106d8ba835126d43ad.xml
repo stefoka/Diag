@@ -27,8 +27,7 @@ function submitForm() {
     document.getElementById("message").innerText = "";
 
     var days = parseInt(document.getElementById("extendOptions").value, 10);
-	var caseNumber = document.getElementById('case');
-
+	var caseNumber = document.getElementById('cases').value;
     if (isNaN(days)) {
         document.getElementById("message").style.color = "red";
         document.getElementById("message").innerText = "Please select a valid extension duration.";
@@ -167,14 +166,14 @@ function cancelForm() {
         <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-11-12 08:32:04</sys_created_on>
         <sys_id>4f82644a47395e106d8ba835126d43ad</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>31</sys_mod_count>
         <sys_name>extend_access_dialog</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_page_4f82644a47395e106d8ba835126d43ad</sys_update_name>
-        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-02-21 15:23:02</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-12 10:01:24</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>4f82644a47395e106d8ba835126d43ad</id>
