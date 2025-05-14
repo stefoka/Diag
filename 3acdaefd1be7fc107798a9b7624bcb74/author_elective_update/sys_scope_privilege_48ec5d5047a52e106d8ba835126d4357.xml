@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="DELETE">
+        <operation>write</operation>
+        <source_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-05-12 11:48:53</sys_created_on>
+        <sys_id>48ec5d5047a52e106d8ba835126d4357</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_health_scan_client_healthcheck_config</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_scope_privilege_48ec5d5047a52e106d8ba835126d4357</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-12 11:48:53</sys_updated_on>
+        <target_name>x_nuvo_health_scan_client_healthcheck_config</target_name>
+        <target_scope display_value="Health Scan Processor">3f4a67a593241a10052ef5cd0bba10f0</target_scope>
+        <target_type>sys_db_object</target_type>
+    </sys_scope_privilege>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>sys_scope_privilege_48ec5d5047a52e106d8ba835126d4357</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege"><sys_scope_privilege action="INSERT_OR_UPDATE"><operation>write</operation><source_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</source_scope><status>allowed</status><sys_class_name>sys_scope_privilege</sys_class_name><sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by><sys_created_on>2025-05-12 11:48:53</sys_created_on><sys_id>48ec5d5047a52e106d8ba835126d4357</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_nuvo_health_scan_client_healthcheck_config</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>sys_scope_privilege_48ec5d5047a52e106d8ba835126d4357</sys_update_name><sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by><sys_updated_on>2025-05-12 11:48:53</sys_updated_on><target_name>x_nuvo_health_scan_client_healthcheck_config</target_name><target_scope display_value="Health Scan Processor">3f4a67a593241a10052ef5cd0bba10f0</target_scope><target_type>sys_db_object</target_type></sys_scope_privilege></record_update>]]></payload>
+        <payload_hash>-1517334275</payload_hash>
+        <record_name>x_nuvo_health_scan_client_healthcheck_config</record_name>
+        <reverted_from/>
+        <source>9eb56a1e87f0e6104cc4eb183cbb35a9</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-05-12 11:48:53</sys_created_on>
+        <sys_id>eafc599047a52e106d8ba835126d43a0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>196c45392d90000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-12 11:48:53</sys_updated_on>
+        <type>Cross scope privilege</type>
+        <update_guid>eafc59906ea52e1092e08e4cc0c7a49f</update_guid>
+        <update_guid_history>eafc59906ea52e1092e08e4cc0c7a49f:-1517334275</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-05-12 11:51:17</sys_created_on>
+        <sys_db_object display_value="" name="sys_scope_privilege">sys_scope_privilege</sys_db_object>
+        <sys_id>281a641291ae4834ad60733368e4bd90</sys_id>
+        <sys_metadata>48ec5d5047a52e106d8ba835126d4357</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_health_scan_client_healthcheck_config</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_scope_privilege_48ec5d5047a52e106d8ba835126d4357</sys_update_name>
+        <sys_update_version display_value="sys_scope_privilege_48ec5d5047a52e106d8ba835126d4357">eafc599047a52e106d8ba835126d43a0</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-12 11:51:17</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

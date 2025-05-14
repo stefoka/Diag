@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_grid_canvas_pane">
+    <sys_grid_canvas_pane action="INSERT_OR_UPDATE">
+        <grid_canvas display_value="New Tab 1">2fb353f04721ee106d8ba835126d4395</grid_canvas>
+        <height>10</height>
+        <portal_widget display_value="Created 2025-05-14 02:44:45">67b353f04721ee106d8ba835126d43a9</portal_widget>
+        <posx>0</posx>
+        <posy>30</posy>
+        <sys_class_name>sys_grid_canvas_pane</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+        <sys_id>bbb353f04721ee106d8ba835126d43b7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>2fb353f04721ee106d8ba835126d4395</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_grid_canvas_pane_bbb353f04721ee106d8ba835126d43b7</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+        <width>12</width>
+    </sys_grid_canvas_pane>
+</record_update>

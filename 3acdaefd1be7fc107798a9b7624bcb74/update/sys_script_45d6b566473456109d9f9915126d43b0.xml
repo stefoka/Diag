@@ -27,22 +27,32 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
     try {
         if (!gs.getProperty('x_nuvo_health_scan.parent_instance')) {
             var instance = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
+
             var probe_category = current.getValue('probe_category');
             var healthcheck_instance = current.healthcheck_instance.source.toString();
             var healthcheck_type = current.getValue('healthcheck_type');
             var result = current.getValue('result');
             var error_message = current.getValue('error_message');
             var feature_usage = current.getValue('feature_usage');
+
             var helper = new x_nuvo_diag.HealthCheckHelper();
             var credentials = JSON.parse(helper.getIntegrationUserCredentials());
             var user = credentials.username;
             var password = credentials.password;
 
-            /////////CREATE HEALTHCHECK LOG
+            // Split result into chunks (max 500000 characters per chunk)
+            var maxLength = 500000;
+            var chunks = [];
+            for (var i = 0; i < result.length; i += maxLength) {
+                chunks.push(result.substring(i, i + maxLength));
+            }
+        
+
+            ///////// CREATE HEALTHCHECK LOG with first chunk
             var request = new sn_ws.RESTMessageV2();
             request.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_diag_healthcheck_logs');
             request.setHttpMethod('POST');
@@ -53,25 +63,61 @@
             var requestBody = {
                 "probe_category": probe_category,
                 "healthcheck_type": healthcheck_type,
-                "result": result,
+                "result": chunks[0] || "",
                 "error_message": error_message,
                 "feature_usage": feature_usage
             };
 
-            var requestBodyStr = JSON.stringify(requestBody);
-
-            request.setRequestBody(requestBodyStr);
-
+            request.setRequestBody(JSON.stringify(requestBody));
             var response = request.execute();
             var statusCode = response.getStatusCode();
-            if (statusCode >= 200 && statusCode < 300) {
-                var sysId = JSON.parse(response.getBody()).result.sys_id.toString();
-            } else {
+
+            if (statusCode < 200 || statusCode >= 300) {
+                gs.error("[HealthCheck] Failed to create healthcheck log: " + response.getBody());
                 return;
             }
 
-            //CREATE Instanece->Log relationship
+            var sysId = JSON.parse(response.getBody()).result.sys_id.toString();
 
+
+            ///////// APPEND remaining chunks using PATCH
+            for (var j = 1; j < chunks.length; j++) {
+                var patch = new sn_ws.RESTMessageV2();
+                patch.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_diag_healthcheck_logs/' + sysId);
+                patch.setHttpMethod('PATCH');
+                patch.setBasicAuth(user, password);
+                patch.setRequestHeader("Accept", "application/json");
+                patch.setRequestHeader('Content-Type', 'application/json');
+
+                var chunkData = chunks[j].toString();
+                var patchBody = {
+                    "append_to_result": chunkData
+                };
+
+             
+				patch.setRequestBody(JSON.stringify(patchBody));
+				var patchResponse = patch.execute();
+				var patchStatus = patchResponse.getStatusCode();
+				var patchBodyStr = patchResponse.getBody();
+
+			
+
+				try {
+					var patchBodyJson = JSON.parse(patchBodyStr);
+					var appendValue = patchBodyJson.result.append_to_result;
+					
+				} catch (err) {
+					gs.error("[HealthCheck] Failed to parse PATCH response: " + patchBodyStr);
+				}
+
+
+                if (patchStatus < 200 || patchStatus >= 300) {
+                    gs.error("[HealthCheck] Failed to append result chunk " + j + ": " + patchResponse.getBody());
+                    return;
+                }
+            }
+
+            ///////// CREATE M2M Instance->Log relationship
             var m2mRequest = new sn_ws.RESTMessageV2();
             m2mRequest.setEndpoint('https://' + instance + '.service-now.com/api/now/table/x_nuvo_health_scan_m2m_x_nuvo_diag_x_nuvo_healt');
             m2mRequest.setHttpMethod('POST');
@@ -81,38 +127,35 @@
 
             var requestBodyM2M = {
                 "x_nuvo_health_scan_healthcheck_instance": healthcheck_instance,
-                "x_nuvo_diag_healthcheck_logs": sysId,
+                "x_nuvo_diag_healthcheck_logs": sysId
             };
 
-            var requestBodyStrM2m = JSON.stringify(requestBodyM2M);
-
-            m2mRequest.setRequestBody(requestBodyStrM2m);
+            m2mRequest.setRequestBody(JSON.stringify(requestBodyM2M));
             response = m2mRequest.execute();
             statusCode = response.getStatusCode();
 
 
-			//IF THIS IS THE FINAL HEALTHCHECK LOG - COMPLETE THE HEALTHCHECK INSTANCE
-			if(current.healthcheck_type == 'ootb') {
-				var healthInstance = new GlideRecord('x_nuvo_diag_healthcheck_instance');
-
-				if(healthInstance.get(current.healthcheck_instance)) {
-					healthInstance.status = 'completed';
-					healthInstance.update();
-				}
-			}
-
+            ///////// COMPLETE HEALTHCHECK INSTANCE IF TYPE IS OOTB
+            if (current.healthcheck_type == 'ootb') {
+                var healthInstance = new GlideRecord('x_nuvo_diag_healthcheck_instance');
+                if (healthInstance.get(current.healthcheck_instance)) {
+                    healthInstance.status = 'completed';
+                    healthInstance.update();
+                }
+            }
         }
     } catch (err) {
-        gs.info("Nuvolo HealthCheck <BR: Send Logs to Nuvolo Instance>  ERROR : " + err)
+        gs.error("[HealthCheck] ERROR : " + err);
     }
-})(current, previous);]]></script>
+})(current, previous);
+]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 10:32:24</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>45d6b566473456109d9f9915126d43b0</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>Send Logs to Nuvolo Instance</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -120,7 +163,7 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_45d6b566473456109d9f9915126d43b0</sys_update_name>
         <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-02-14 10:50:45</sys_updated_on>
+        <sys_updated_on>2025-05-14 11:08:42</sys_updated_on>
         <template/>
         <when>async_always</when>
     </sys_script>

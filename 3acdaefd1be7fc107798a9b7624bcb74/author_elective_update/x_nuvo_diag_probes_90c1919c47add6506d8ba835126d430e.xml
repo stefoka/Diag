@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description/>
+        <healthcheck_type>feature_usage</healthcheck_type>
+        <name>Facilities Parts</name>
+        <order>10</order>
+        <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
+        <product_version>22.0.36</product_version>
+        <remediation/>
+        <script/>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-25 14:48:42</sys_created_on>
+        <sys_id>90c1919c47add6506d8ba835126d430e</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Facilities Parts</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_90c1919c47add6506d8ba835126d430e</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-02-14 11:03:13</sys_updated_on>
+        <tool>health</tool>
+    </x_nuvo_diag_probes>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_90c1919c47add6506d8ba835126d430e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <healthcheck_type>feature_usage</healthcheck_type>
+        <name>Facilities Parts</name>
+        <order>10</order>
+        <probe_type display_value="Facilities Maintenance">218325951b609510ae5b21b5ec4bcb45</probe_type>
+        <product_version>22.0.36</product_version>
+        <remediation/>
+        <script/>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-25 14:48:42</sys_created_on>
+        <sys_id>90c1919c47add6506d8ba835126d430e</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Facilities Parts</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_90c1919c47add6506d8ba835126d430e</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-02-14 11:03:13</sys_updated_on>
+        <tool>health</tool>
+    </x_nuvo_diag_probes>
+</record_update>]]></payload>
+        <payload_hash>-256050847</payload_hash>
+        <record_name>Facilities Parts</record_name>
+        <reverted_from/>
+        <source>8cf3925587f8e2104cc4eb183cbb355c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:42</sys_created_on>
+        <sys_id>6f54d6d587f8e2104cc4eb183cbb3566</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19615311cb00000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:42</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>2b54d6d5a9f8e2101be4f4dab472fe66</update_guid>
+        <update_guid_history>2b54d6d5a9f8e2101be4f4dab472fe66:0,653019d49b3f5610f18d1877aca071a8:-1814121095,5833d90ef3479210f7bad8a00220d138:-1278518550,1b1e750b3d9a5610234e0cf48c9e9a96:726576493,58c1919c76add650ecd342ed9dc7900f:1063198704</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Facilities Parts">d9d5f73847a1ee106d8ba835126d4310</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-05-14 12:13:41</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>a9f0cb14c38c4238893fc56df3856d90</sys_id>
+        <sys_metadata>90c1919c47add6506d8ba835126d430e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Facilities Parts</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_90c1919c47add6506d8ba835126d430e</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_90c1919c47add6506d8ba835126d430e">6f54d6d587f8e2104cc4eb183cbb3566</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-14 12:13:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

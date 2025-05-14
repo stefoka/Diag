@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Active Without Working Checklist</name>
+        <order/>
+        <probe display_value="Clinical Maintenance Definition">0d645ad587f8e2104cc4eb183cbb3515</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_clinical_scheduled_maint_definition', 'active=true^working_checklistISEMPTY');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:48</sys_created_on>
+        <sys_id>01645ad587f8e2104cc4eb183cbb3516</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Active Without Working Checklist</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_01645ad587f8e2104cc4eb183cbb3516</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:48</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_01645ad587f8e2104cc4eb183cbb3516</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;&lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;&lt;name&gt;Active Without Working Checklist&lt;/name&gt;&lt;order/&gt;&lt;probe display_value="Clinical Maintenance Definition"&gt;0d645ad587f8e2104cc4eb183cbb3515&lt;/probe&gt;&lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_clinical_scheduled_maint_definition', 'active=true^working_checklistISEMPTY');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-04-08 11:37:48&lt;/sys_created_on&gt;&lt;sys_id&gt;01645ad587f8e2104cc4eb183cbb3516&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Active Without Working Checklist&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_01645ad587f8e2104cc4eb183cbb3516&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-04-08 11:37:48&lt;/sys_updated_on&gt;&lt;threshold&gt;0&lt;/threshold&gt;&lt;/x_nuvo_diag_probe_script_item&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1682815723</payload_hash>
+        <record_name>Active Without Working Checklist</record_name>
+        <reverted_from/>
+        <source>c475161193112210052ef5cd0bba108f</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by/>
+        <sys_created_on>2025-05-03 08:13:46</sys_created_on>
+        <sys_id>3506fb3847a1ee106d8ba835126d4311</sys_id>
+        <sys_mod_count/>
+        <sys_recorded_at>196953562900000000</sys_recorded_at>
+        <sys_updated_by/>
+        <sys_updated_on/>
+        <type>Probe Script Item</type>
+        <update_guid>f106fb38a4a1ee103a135cc53d41f911</update_guid>
+        <update_guid_history>f106fb38a4a1ee103a135cc53d41f911:1682815723</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Active Without Working Checklist">f906fb3847a1ee106d8ba835126d4311</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-05-14 12:14:32</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>5d52bf1407c244209dd292d43a39b610</sys_id>
+        <sys_metadata>01645ad587f8e2104cc4eb183cbb3516</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Active Without Working Checklist</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_01645ad587f8e2104cc4eb183cbb3516</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_01645ad587f8e2104cc4eb183cbb3516">3506fb3847a1ee106d8ba835126d4311</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-14 12:14:32</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

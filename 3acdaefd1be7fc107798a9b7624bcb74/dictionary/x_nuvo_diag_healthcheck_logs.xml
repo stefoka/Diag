@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="fe949dc647a05a109d9f9915126d43be" label="HealthCheck Logs" max_length="40" name="x_nuvo_diag_healthcheck_logs" type="collection">
+        <element label="Append to Result" max_length="500000" name="append_to_result" type="string"/>
         <element label="Client" max_length="32" name="client" read_only="true" reference="x_nuvo_health_scan_client_healthcheck_config" type="reference"/>
         <element label="Dashboard" max_length="32" name="dashboard" read_only="true" reference="x_nuvo_health_scan_dashboard" type="reference"/>
         <element label="Differences Between HealthChecks" max_length="5000000" name="differences_between_healthchecks" read_only="true" type="string"/>

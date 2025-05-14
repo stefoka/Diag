@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update node_type="sys_portal_page" unload_date="2025-05-14 12:40:26">
+    <sys_portal_page action="INSERT_OR_UPDATE">
+        <layout display_value="layout_2_across">f6defafa0a0a0b12000d5016bd12ff06</layout>
+        <order/>
+        <read_roles>snc_internal</read_roles>
+        <roles/>
+        <selectable>false</selectable>
+        <sys_class_name>sys_portal_page</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-05-14 09:44:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>efb353f04721ee106d8ba835126d4394</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>New Tab 1</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_portal_page_efb353f04721ee106d8ba835126d4394</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+        <title>New Tab 1</title>
+        <user/>
+        <view>new_tab_1_3</view>
+        <related_items_node>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone0</dropzone>
+                <offset>2</offset>
+                <page display_value="New Tab 1">efb353f04721ee106d8ba835126d4394</page>
+                <summary/>
+                <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                <sys_id>63b353f04721ee106d8ba835126d43ab</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>sys_id</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">63b353f04721ee106d8ba835126d43ab</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>27b353f04721ee106d8ba835126d43ab</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>4e2eb5e81b904010eede21be6e4bcbd1</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>can_subscribe</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">63b353f04721ee106d8ba835126d43ab</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>2bb353f04721ee106d8ba835126d43ac</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>true</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>report_type</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">63b353f04721ee106d8ba835126d43ab</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>2fb353f04721ee106d8ba835126d43ab</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>bar</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>help_text_window</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">63b353f04721ee106d8ba835126d43ab</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>67b353f04721ee106d8ba835126d43ac</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>report_widget_description</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>current_page</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">63b353f04721ee106d8ba835126d43ab</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>6bb353f04721ee106d8ba835126d43ab</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>771b94e11b940410eede21be6e4bcbe6</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">63b353f04721ee106d8ba835126d43ab</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>a3b353f04721ee106d8ba835126d43ac</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>Facilities Work Order - My PM Compliance This Month</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">63b353f04721ee106d8ba835126d43ab</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>efb353f04721ee106d8ba835126d43ab</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>com.glide.ui.portal.RenderReport</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone0</dropzone>
+                <offset>1</offset>
+                <page display_value="New Tab 1">efb353f04721ee106d8ba835126d4394</page>
+                <summary/>
+                <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                <sys_id>67b353f04721ee106d8ba835126d43a9</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">67b353f04721ee106d8ba835126d43a9</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>23b353f04721ee106d8ba835126d43aa</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>com.glide.ui.portal.RenderReport</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>current_page</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">67b353f04721ee106d8ba835126d43a9</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>2bb353f04721ee106d8ba835126d43a9</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>771b94e11b940410eede21be6e4bcbe6</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>report_type</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">67b353f04721ee106d8ba835126d43a9</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>2fb353f04721ee106d8ba835126d43aa</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>list</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>can_subscribe</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">67b353f04721ee106d8ba835126d43a9</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>6bb353f04721ee106d8ba835126d43aa</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>true</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>help_text_window</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">67b353f04721ee106d8ba835126d43a9</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>a7b353f04721ee106d8ba835126d43aa</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>report_widget_description</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">67b353f04721ee106d8ba835126d43a9</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>e3b353f04721ee106d8ba835126d43aa</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>Facilities WO - Unassigned Work</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>sys_id</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">67b353f04721ee106d8ba835126d43a9</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>ebb353f04721ee106d8ba835126d43a9</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>73c014211b37f340b80e86ae6e4bcb9b</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone0</dropzone>
+                <offset>0</offset>
+                <page display_value="New Tab 1">efb353f04721ee106d8ba835126d4394</page>
+                <summary/>
+                <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                <sys_id>6bb353f04721ee106d8ba835126d43a7</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6bb353f04721ee106d8ba835126d43a7</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>23b353f04721ee106d8ba835126d43a9</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>My Active Work Orders</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>help_text_window</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6bb353f04721ee106d8ba835126d43a7</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>27b353f04721ee106d8ba835126d43a8</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>report_widget_description</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>current_page</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6bb353f04721ee106d8ba835126d43a7</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>2fb353f04721ee106d8ba835126d43a7</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>771b94e11b940410eede21be6e4bcbe6</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6bb353f04721ee106d8ba835126d43a7</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>6fb353f04721ee106d8ba835126d43a8</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>com.glide.ui.portal.RenderReport</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>report_type</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6bb353f04721ee106d8ba835126d43a7</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>abb353f04721ee106d8ba835126d43a8</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>list</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>can_subscribe</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6bb353f04721ee106d8ba835126d43a7</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>e7b353f04721ee106d8ba835126d43a8</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>true</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>sys_id</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6bb353f04721ee106d8ba835126d43a7</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>efb353f04721ee106d8ba835126d43a7</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>67c014211b37f340b80e86ae6e4bcb69</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone2</dropzone>
+                <offset>0</offset>
+                <page display_value="New Tab 1">efb353f04721ee106d8ba835126d4394</page>
+                <summary/>
+                <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                <sys_id>6fb353f04721ee106d8ba835126d43ac</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>sys_id</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6fb353f04721ee106d8ba835126d43ac</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>23b353f04721ee106d8ba835126d43ad</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>81ae55ac1b104010eede21be6e4bcb6c</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>help_text_window</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6fb353f04721ee106d8ba835126d43ac</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>27b353f04721ee106d8ba835126d43ae</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>report_widget_description</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>current_page</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6fb353f04721ee106d8ba835126d43ac</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>2bb353f04721ee106d8ba835126d43ad</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>771b94e11b940410eede21be6e4bcbe6</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>report_type</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6fb353f04721ee106d8ba835126d43ac</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>63b353f04721ee106d8ba835126d43ae</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>single_score</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>is_using_database_view</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6fb353f04721ee106d8ba835126d43ac</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>67b353f04721ee106d8ba835126d43ad</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>false</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>can_real_time</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6fb353f04721ee106d8ba835126d43ac</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>abb353f04721ee106d8ba835126d43ae</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>true</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6fb353f04721ee106d8ba835126d43ac</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>afb353f04721ee106d8ba835126d43ad</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>com.glide.ui.portal.RenderReport</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6fb353f04721ee106d8ba835126d43ac</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>e7b353f04721ee106d8ba835126d43ae</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>Labor Hours This Week</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>can_subscribe</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">6fb353f04721ee106d8ba835126d43ac</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>ebb353f04721ee106d8ba835126d43ad</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>true</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone1</dropzone>
+                <offset>0</offset>
+                <page display_value="New Tab 1">efb353f04721ee106d8ba835126d4394</page>
+                <summary/>
+                <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                <sys_id>a7b353f04721ee106d8ba835126d43a5</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>help_text_window</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">a7b353f04721ee106d8ba835126d43a5</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>23b353f04721ee106d8ba835126d43a7</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>report_widget_description</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>can_real_time</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">a7b353f04721ee106d8ba835126d43a5</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>27b353f04721ee106d8ba835126d43a6</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>true</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>current_page</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">a7b353f04721ee106d8ba835126d43a5</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>63b353f04721ee106d8ba835126d43a6</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>771b94e11b940410eede21be6e4bcbe6</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>sys_id</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">a7b353f04721ee106d8ba835126d43a5</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>6bb353f04721ee106d8ba835126d43a5</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>a66e51ac1b104010eede21be6e4bcb89</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>report_type</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">a7b353f04721ee106d8ba835126d43a5</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>6fb353f04721ee106d8ba835126d43a6</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>single_score</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">a7b353f04721ee106d8ba835126d43a5</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>abb353f04721ee106d8ba835126d43a6</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>com.glide.ui.portal.RenderReport</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>is_using_database_view</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">a7b353f04721ee106d8ba835126d43a5</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>afb353f04721ee106d8ba835126d43a5</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>false</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">a7b353f04721ee106d8ba835126d43a5</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>e3b353f04721ee106d8ba835126d43a7</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>Labor Hours Today</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>can_subscribe</name>
+                        <portal_section display_value="Created 2025-05-14 02:44:45">a7b353f04721ee106d8ba835126d43a5</portal_section>
+                        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+                        <sys_created_on>2025-05-14 09:44:45</sys_created_on>
+                        <sys_id>e7b353f04721ee106d8ba835126d43a6</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+                        <sys_updated_on>2025-05-14 09:44:45</sys_updated_on>
+                        <value>true</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+        </related_items_node>
+    </sys_portal_page>
+</record_update>
