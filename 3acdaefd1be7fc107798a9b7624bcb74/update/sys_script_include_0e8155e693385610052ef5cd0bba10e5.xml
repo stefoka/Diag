@@ -525,7 +525,13 @@ HealthCheckHelper.prototype = {
     revokeNuvoloAccess: function(emails) {
         var localInst = gs.getProperty('instance_name');
         var currentdate = new GlideDate();
-        var usrDomain = gs.getUser().getEmail().split('@')[1];
+		var usrDomain = "";
+		try{
+        	usrDomain = gs.getUser().getEmail().split('@')[1];
+		}
+		catch(err){
+			usrDomain = false;
+		}
         var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
         var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_client_environment_access';
         var cred = JSON.parse(this.getIntegrationUserCredentials());
@@ -547,7 +553,9 @@ HealthCheckHelper.prototype = {
                 r.setRequestHeader('Content-Type', 'application/json');
                 r.setBasicAuth(username, password);
                 r.setQueryParameter('email', email);
-                r.setQueryParameter('contact_domain', usrDomain);
+				if(usrDomain){
+					r.setQueryParameter('contact_domain', usrDomain);
+				}
                 r.setQueryParameter('instance_url', 'https://' + localInst + '.service-now.com');
 
                 var response = r.execute();
@@ -874,14 +882,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>189</sys_mod_count>
+        <sys_mod_count>190</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>protected</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
-        <sys_updated_by>jason.siegrist@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-05-09 12:05:40</sys_updated_on>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-21 12:47:31</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>
