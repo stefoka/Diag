@@ -24,17 +24,17 @@
         <scoped_administration>false</scoped_administration>
         <short_description>Diagnostic Tool</short_description>
         <source>x_nuvo_diag</source>
-        <store_correlation_id>REPOAPP0002144501</store_correlation_id>
-        <store_url/>
+        <store_correlation_id>REPOAPP0002144510</store_correlation_id>
+        <store_url>https://tpp.servicenow.com/sn_appstore_s</store_url>
         <subscription_entitlement/>
         <sys_class_name>sys_app</sys_class_name>
         <sys_code/>
         <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
         <sys_created_on>2021-11-01 22:20:21</sys_created_on>
         <sys_id>3acdaefd1be7fc107798a9b7624bcb74</sys_id>
-        <sys_mod_count>85</sys_mod_count>
+        <sys_mod_count>86</sys_mod_count>
         <sys_updated_by>svetlana.stoycheva@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-06-04 12:23:49</sys_updated_on>
+        <sys_updated_on>2025-06-04 12:27:07</sys_updated_on>
         <template/>
         <trackable>true</trackable>
         <uninstall_blocked>false</uninstall_blocked>
