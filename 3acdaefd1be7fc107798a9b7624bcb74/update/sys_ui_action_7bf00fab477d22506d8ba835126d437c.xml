@@ -7,7 +7,7 @@
 
 }]]></client_script_v2>
         <comments/>
-        <condition>current.canCreate()&amp;&amp; current.canWrite() &amp;&amp; (gs.hasRole("admin") || gs.hasRole("x_nuvo_diag.healthcheck_admin"))</condition>
+        <condition>gs.getProperty('instance_name') === gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name') &amp;&amp; current.canCreate() &amp;&amp; current.canWrite() &amp;&amp; (gs.hasRole("admin") || gs.hasRole("x_nuvo_diag.healthcheck_admin"))</condition>
         <form_action>false</form_action>
         <form_button>false</form_button>
         <form_button_v2>false</form_button_v2>
@@ -58,7 +58,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>7bf00fab477d22506d8ba835126d437c</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Copy Probes</sys_name>
         <sys_overrides/>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
@@ -66,7 +66,7 @@
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_ui_action_7bf00fab477d22506d8ba835126d437c</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-06-04 08:26:44</sys_updated_on>
+        <sys_updated_on>2025-06-04 12:14:38</sys_updated_on>
         <table>x_nuvo_diag_probes</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
