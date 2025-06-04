@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[function submitForm() {
+	var selectedVersion = document.getElementById("productVersions").value + "";
+
+	if(selectedVersion === ''){
+		alert("Please provide a Product Version!");
+		return;
+	}
+	
+	var modal = GlideDialogWindow.get();
+	var probes = modal.getPreference('sysparm_selectedProbes');
+
+    var probeUtils = new GlideAjax('x_nuvo_diag.HealthCheckClientUtils');
+	probeUtils.addParam('sysparm_name', 'copyProbes');
+	probeUtils.addParam('sysparm_version', selectedVersion);
+    probeUtils.addParam('sysparm_probes', probes);
+	
+    probeUtils.getXMLAnswer(function(response) {
+
+		if(response === "success") {
+			alert( "Probes copied successfully!");	
+		}
+		else if(response == "failed") {
+			alert("Error occurred!");
+		}
+
+		var dialogWindow = GlideDialogWindow.get();
+		if (dialogWindow) {
+			dialogWindow.destroy();
+		}
+    });
+}
+
+function cancelForm() {
+    var dialogWindow = GlideDialogWindow.get();
+    if (dialogWindow) {
+        dialogWindow.destroy();
+    }
+}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_nuvo_diag_copy_probes_dialog.do</endpoint>
+        <html><![CDATA[<style>
+    .form-container {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        width: 100%; /* Full width */
+        box-sizing: border-box;
+    }
+
+    .form-container label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .form-container #productVersions {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .form-container button {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .form-container button#submitButton {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .form-container button#submitButton:hover {
+        background-color: #0056b3;
+    }
+
+    .form-container button#cancelButton {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .form-container button#cancelButton:hover {
+        background-color: #c82333;
+    }
+</style>
+
+<div class="form-container">
+
+    <label for="productVersions">Select Product version for the new Probes:</label>
+    <input type="text" id="productVersions"></input>
+
+    <div class="button-container">
+        <button id="cancelButton" onclick="cancelForm()">Cancel</button>
+        <button id="submitButton" onclick="submitForm()">Submit</button>
+    </div>
+</div>]]></html>
+        <name>copy_probes_dialog</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-06-04 08:04:11</sys_created_on>
+        <sys_id>c9338f2f477d22506d8ba835126d4349</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>copy_probes_dialog</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ui_page_c9338f2f477d22506d8ba835126d4349</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-06-04 10:15:37</sys_updated_on>
+    </sys_ui_page>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>c9338f2f477d22506d8ba835126d4349</id>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-06-04 08:04:10</sys_created_on>
+        <sys_id>17160b6f477d22506d8ba835126d4316</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-06-04 08:04:10</sys_updated_on>
+        <table>sys_ui_page</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

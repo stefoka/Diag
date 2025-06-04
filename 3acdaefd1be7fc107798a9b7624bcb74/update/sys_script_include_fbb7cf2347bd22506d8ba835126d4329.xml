@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_nuvo_diag.HealthCheckClientUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>HealthCheckClientUtils</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var HealthCheckClientUtils = Class.create();
+HealthCheckClientUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+	copyProbes: function() {
+		var response = '';
+
+		try {
+			var version = this.getParameter('sysparm_version') + "";
+			var probes = this.getParameter('sysparm_probes');
+
+			var probesGR = new GlideRecord('x_nuvo_diag_probes');
+			probesGR.addEncodedQuery("sys_idIN" + probes);
+			probesGR.query();
+
+			while(probesGR.next()){
+				var probeMainVersion = probesGR.product_version.split('.')[0];
+				
+				//CHECK IF THE CURRENT PROBE'S VERSION IS NOT THE SAME AS THE SELECTED ONE
+				if(probeMainVersion !== version.split('.')[0]) {
+					var newProbeGR = new GlideRecord('x_nuvo_diag_probes');
+					newProbeGR.initialize();
+
+					newProbeGR.name = probesGR.name;
+					newProbeGR.description = probesGR.description;
+					newProbeGR.probe_type = probesGR.probe_type;
+					newProbeGR.healthcheck_type = probesGR.healthcheck_type;
+					newProbeGR.active = probesGR.active;
+					newProbeGR.tool = probesGR.tool;
+					newProbeGR.order = probesGR.order;
+					newProbeGR.product_version = version;
+					
+					var newProbeID = newProbeGR.insert();
+
+					// CREATE THE NEW PROBE SCRIPT ITEMS AND LINK THEM TO THE NEW PROBE
+					var probeScriptItemGR = new GlideRecord('x_nuvo_diag_probe_script_item');
+					probeScriptItemGR.addQuery('probe', probesGR.getUniqueValue());
+					probeScriptItemGR.query();
+
+					while(probeScriptItemGR.next()) {
+						var newProbeScriptItemGR = new GlideRecord('x_nuvo_diag_probe_script_item');
+						newProbeScriptItemGR.initialize();
+
+						newProbeScriptItemGR.name = probeScriptItemGR.name;
+						newProbeScriptItemGR.script = probeScriptItemGR.script;
+						newProbeScriptItemGR.probe = newProbeID; //LINK TO THE NEW PROBE
+						newProbeScriptItemGR.insert();
+					}
+				}
+
+				response = "success";
+			}
+			
+		}
+		catch(e){
+			response = "failed";
+		}
+
+		return response;
+	},
+
+    type: 'HealthCheckClientUtils'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-06-04 08:13:56</sys_created_on>
+        <sys_id>fbb7cf2347bd22506d8ba835126d4329</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>HealthCheckClientUtils</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_script_include_fbb7cf2347bd22506d8ba835126d4329</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-06-04 10:16:21</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>fbb7cf2347bd22506d8ba835126d4329</id>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-06-04 08:13:56</sys_created_on>
+        <sys_id>9e584f2347bd22506d8ba835126d430c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-06-04 08:13:56</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
