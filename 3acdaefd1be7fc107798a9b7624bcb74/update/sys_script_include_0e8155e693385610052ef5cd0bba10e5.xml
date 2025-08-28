@@ -5,7 +5,7 @@
         <api_name>x_nuvo_diag.HealthCheckHelper</api_name>
         <caller_access/>
         <client_callable>false</client_callable>
-        <description/>
+        <description>x_nuvo_health_scan_oob_script_hashes</description>
         <mobile_callable>false</mobile_callable>
         <name>HealthCheckHelper</name>
         <sandbox_callable>false</sandbox_callable>
@@ -27,7 +27,7 @@ HealthCheckHelper.prototype = {
         var lastHealthCheck;
 
         function getLastHealthCheck(category, type) {
-            var gr = new GlideRecord('x_nuvo_diag_healthcheck_logs');
+            var gr = new GlideRecord('x_nuvo_health_scan_healthcheck_logs');
             gr.addEncodedQuery('probe_category=' + category + '^healthcheck_type=' + type);
             gr.orderByDesc('sys_created_on');
             gr.setLimit(1);
@@ -65,7 +65,7 @@ HealthCheckHelper.prototype = {
                     var obj = {};
                     var featUsageObj = {};
 
-                    var probe = new GlideRecord('x_nuvo_diag_probes');
+                    var probe = new GlideRecord('x_nuvo_health_scan_probes');
                     probe.addQuery('probe_type', app);
                     probe.addQuery('tool', 'health');
                     probe.addQuery('healthcheck_type', types[i]);
@@ -116,7 +116,7 @@ HealthCheckHelper.prototype = {
 
                     }
 
-                    var healthLog = new GlideRecord('x_nuvo_diag_healthcheck_logs');
+                    var healthLog = new GlideRecord('x_nuvo_health_scan_healthcheck_logs');
                     healthLog.initialize();
                     healthLog.healthcheck_type = types[i];
                     // healthLog.feature_usage = JSON.stringify(featUsageObj);
@@ -142,7 +142,7 @@ HealthCheckHelper.prototype = {
         try {
             var upgradeObj = {}
 
-            var probe = new GlideRecord('x_nuvo_diag_probes');
+            var probe = new GlideRecord('x_nuvo_health_scan_probes');
             probe.addEncodedQuery('tool=health^probe_type=ede6dc1b477cd6109d9f9915126d431d');
             probe.query();
 
@@ -161,7 +161,7 @@ HealthCheckHelper.prototype = {
                     }
                 }
             }
-            var healthLog = new GlideRecord('x_nuvo_diag_healthcheck_logs');
+            var healthLog = new GlideRecord('x_nuvo_health_scan_healthcheck_logs');
             healthLog.initialize();
             healthLog.healthcheck_type = 'upgrade_conflicts';
             healthLog.probe_category = 'ede6dc1b477cd6109d9f9915126d431d';
@@ -206,7 +206,7 @@ HealthCheckHelper.prototype = {
             }
 
 
-            var healthLog = new GlideRecord('x_nuvo_diag_healthcheck_logs');
+            var healthLog = new GlideRecord('x_nuvo_health_scan_healthcheck_logs');
             healthLog.initialize();
             healthLog.healthcheck_type = 'ootb';
             healthLog.probe_category = 'ede6dc1b477cd6109d9f9915126d431d';
@@ -216,7 +216,7 @@ HealthCheckHelper.prototype = {
 
         } catch (error) {
 
-            var errorLog = new GlideRecord('x_nuvo_diag_healthcheck_logs');
+            var errorLog = new GlideRecord('x_nuvo_health_scan_healthcheck_logs');
             errorLog.initialize();
             errorLog.healthcheck_type = 'ootb';
             errorLog.probe_category = 'General Overview';
@@ -692,7 +692,7 @@ HealthCheckHelper.prototype = {
 			//GET ALL CLIENT HASHES FOR THE CURRENT PROBE TYPE
 			var ootbHashes = [];
 
-			var ootbHashesGR = new GlideRecord('x_nuvo_diag_nuvolo_ootb_scripts_hashes');
+			var ootbHashesGR = new GlideRecord('x_nuvo_health_scan_oob_script_hashes');
 			ootbHashesGR.query();
 
 			//DELETE ALL OOTB HASHES FOR THE CUREENT PROBE TYPE
@@ -811,7 +811,7 @@ HealthCheckHelper.prototype = {
 
 				var query = encodeURIComponent('nuvolo_versionSTARTSWITH' + cw_version);
 
-				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_nuvolo_ootb_scripts_hashes?sysparm_query=' + query + "&sysparm_limit=" + limit + '&sysparm_offset=' + offset;
+				var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_oob_script_hashes?sysparm_query=' + query + "&sysparm_limit=" + limit + '&sysparm_offset=' + offset;
 
 				var r = new sn_ws.RESTMessageV2();
 				r.setEndpoint(apiEndpoint);
@@ -836,7 +836,7 @@ HealthCheckHelper.prototype = {
 						for(var i = 0; i < result.length; i++){
 							var hash = result[i];
 
-							var newHash = new GlideRecord('x_nuvo_diag_nuvolo_ootb_scripts_hashes');
+							var newHash = new GlideRecord('x_nuvo_health_scan_oob_script_hashes');
 							newHash.initialize();
 
 							newHash.script_type = hash.script_type;
@@ -882,14 +882,14 @@ HealthCheckHelper.prototype = {
         <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-25 07:48:21</sys_created_on>
         <sys_id>0e8155e693385610052ef5cd0bba10e5</sys_id>
-        <sys_mod_count>190</sys_mod_count>
+        <sys_mod_count>193</sys_mod_count>
         <sys_name>HealthCheckHelper</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>protected</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_0e8155e693385610052ef5cd0bba10e5</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-05-21 12:47:31</sys_updated_on>
+        <sys_updated_by>rumen.tsolov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-08 12:47:35</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>0e8155e693385610052ef5cd0bba10e5</id>

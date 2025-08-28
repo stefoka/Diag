@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_view">
+    <sys_ui_view action="INSERT_OR_UPDATE">
+        <group/>
+        <hidden>false</hidden>
+        <name>exp_db265af2387c76a904cc4eb183cbb3599</name>
+        <roles/>
+        <sys_class_name>sys_ui_view</sys_class_name>
+        <sys_created_by>rumen.tsolov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-08-05 13:39:25</sys_created_on>
+        <sys_id>f665af2387c76a904cc4eb183cbb359a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Exp_db265af2387c76a904cc4eb183cbb3599</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>sys_ui_view_f665af2387c76a904cc4eb183cbb359a</sys_update_name>
+        <sys_updated_by>rumen.tsolov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-05 13:39:25</sys_updated_on>
+        <title>Exp_db265af2387c76a904cc4eb183cbb3599</title>
+        <user/>
+    </sys_ui_view>
+</record_update>

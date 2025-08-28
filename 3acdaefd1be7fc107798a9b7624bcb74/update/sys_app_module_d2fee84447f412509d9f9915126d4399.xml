@@ -5,8 +5,7 @@
         <assessment/>
         <content_page/>
         <device_type/>
-        <filter table="x_nuvo_diag_probe_type">healthcheck=true^EQ<item endquery="false" field="healthcheck" goto="false" newquery="false" operator="=" or="false" value="true"/>
-            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        <filter table="x_nuvo_diag_probe_type">healthcheck=true^EQ<item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </filter>
         <hint/>
         <homepage/>

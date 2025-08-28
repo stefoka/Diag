@@ -20,6 +20,11 @@ HealthCheckProbeUtils.prototype = {
             var url = "https://" + clientInstance + ".service-now.com/" + tableName + "_list.do?sysparm_query=" + encodedQuery;
             var count = 0;
 
+			//Exclude Import Set tables
+			if(tableName === "sys_db_object"){
+				query += "^super_class!=a59b0886db0220106f7d1cbd139619d9";
+			}
+
             var gr = new GlideRecord(tableName);
             gr.addEncodedQuery(encodedQuery);
             gr.query();
@@ -33,15 +38,15 @@ HealthCheckProbeUtils.prototype = {
         }
     },
 
-    getHashedValue: function(key, value) {
+    getHashedValue: function(key, value, exclusions) {
         try {
             var name = '';
             var table = '';
             var nuvoloVersion = '';
-            var resultObj = {};
             var digest = new GlideDigest();
             var serviceNowVersion = gs.getProperty('glide.buildname') || gs.getProperty('glide.war');
 
+      
             var grScope = new GlideRecord('sys_scope');
             grScope.addEncodedQuery('scope=x_nuvo_eam');
             grScope.query();
@@ -49,45 +54,60 @@ HealthCheckProbeUtils.prototype = {
                 nuvoloVersion = grScope.version.toString();
             }
 
-            var arr = [];
             var values = value.split(',');
             var gr = new GlideRecord(key);
+     
             if (key == 'sys_dictionary') {
                 gr.addEncodedQuery('sys_scope.scopeSTARTSWITHx_nuvo^internal_type!=collection');
             } else {
                 gr.addEncodedQuery('sys_scope.scopeSTARTSWITHx_nuvo');
             }
+
+       
+            if (exclusions && exclusions.length > 0) {
+                for (var i = 0; i < exclusions.length; i++) {
+                    gr.addEncodedQuery(exclusions[i]);
+                }
+            }
+
             gr.query();
 
             while (gr.next()) {
                 var columnName = '';
                 if (key == 'sys_dictionary') {
-                    columnName = gr.element;
+					
+					//Check if the Table is an Import Set Table
+					var tableGR = new GlideRecord('sys_db_object');
+					tableGR.addEncodedQuery('name=' + gr.getValue('name') + 'super_class=a59b0886db0220106f7d1cbd139619d9');
+					tableGR.query();
+
+					if(!tableGR.hasNext()){
+						columnName = gr.element;
+					}
+                    
                 }
 
                 var fieldValues = '';
-                for (var i = 0; i < values.length; i++) {
-                    fieldValues += gr[values[i]];
-
+                for (var j = 0; j < values.length; j++) {
+                    fieldValues += gr[values[j]];
                 }
 
                 var dash = digest.getSHA256Hex(fieldValues);
+
                 name = '';
                 table = '';
-                if (gr.name != undefined && gr.name != null && gr.name != '') {
+                if (gr.name) {
                     name = gr.name.toString();
-                } else if (gr.short_description != undefined && gr.short_description != null && gr.short_description != '') {
+                } else if (gr.short_description) {
                     name = gr.short_description.toString();
                 }
 
-                if (gr.collection != undefined && gr.collection != null && gr.collection != '') {
+                if (gr.collection) {
                     table = gr.collection.getDisplayValue().toString();
-                } else if (gr.table != undefined && gr.table != null && gr.table != '') {
+                } else if (gr.table) {
                     table = gr.table.getDisplayValue().toString();
                 }
 
-                var sys_id = gr.sys_id.toString();
-                var sys_updated_on = gr.sys_updated_on.getDisplayValue();
                 var localHashGr = new GlideRecord('x_nuvo_diag_nuvolo_local_script_hash');
                 localHashGr.initialize();
                 localHashGr.servicenow_version = serviceNowVersion;
@@ -96,11 +116,10 @@ HealthCheckProbeUtils.prototype = {
                 localHashGr.script_name = name.toString();
                 localHashGr.table_name = table;
                 localHashGr.hash_value = dash;
-				localHashGr.column_name = columnName;
-                localHashGr.script_id = sys_id,
-                    localHashGr.last_updated = gr.sys_updated_on;
+                localHashGr.column_name = columnName;
+                localHashGr.script_id = gr.sys_id.toString();
+                localHashGr.last_updated = gr.sys_updated_on;
                 localHashGr.insert();
-
             }
         } catch (err) {
             var localHashGrErr = new GlideRecord('x_nuvo_diag_nuvolo_local_script_hash');
@@ -114,7 +133,6 @@ HealthCheckProbeUtils.prototype = {
             localHashGrErr.script_id = "GENERAL ERROR";
             localHashGrErr.insert();
         }
-
     },
 
     getUpgradeHistoryData: function(encQuery) {
@@ -171,13 +189,12 @@ HealthCheckProbeUtils.prototype = {
             //GET ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
             var clientProbes = [];
             var clientProbesGR = new GlideRecord('x_nuvo_diag_probes');
-			
-			if(type === 'all_diag_probes') {
-				clientProbesGR.addEncodedQuery('tool=diagnostic');
-			}
-			else {
-            	clientProbesGR.addEncodedQuery('healthcheck_type=' + type);
-			}
+
+            if (type === 'all_diag_probes') {
+                clientProbesGR.addEncodedQuery('tool=diagnostic');
+            } else {
+                clientProbesGR.addEncodedQuery('healthcheck_type=' + type);
+            }
             clientProbesGR.query();
 
             while (clientProbesGR.next()) {
@@ -210,8 +227,109 @@ HealthCheckProbeUtils.prototype = {
         }
     },
 
+    getOldProbeCategoriesToDelete: function(type) {
+        try {
+            //GET ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
+            var clientProbeCategories = [];
+            var clientProbeCategoriesGR = new GlideRecord('x_nuvo_diag_probe_type');
+            clientProbeCategoriesGR.query();
+
+            while (clientProbeCategoriesGR.next()) {
+                clientProbeCategories.push(clientProbeCategoriesGR.getUniqueValue());
+            }
+
+            //RETURN ALL CLIENT PROBES FOR THE CURRENT PROBE TYPE
+            return JSON.stringify(clientProbeCategories);
+
+        } catch (error) {
+            gs.error("Error getting old Probe Categories records. Error: " + error.message);
+        }
+    },
+
+    deleteOldProbeCategories: function(categories) {
+        try {
+
+            var clientProbeCategoriesGR = new GlideRecord('x_nuvo_diag_probe_type');
+            clientProbeCategoriesGR.addEncodedQuery('sys_idIN' + categories);
+            clientProbeCategoriesGR.query();
+
+            //DELETE ALL CLIENT PROBE CATEGORIES
+            clientProbeCategoriesGR.deleteMultiple();
+
+        } catch (error) {
+            gs.error("Error deleting old Probe Categories records. Error: " + error.message);
+        }
+    },
+
+    pullProbeCategories: function() {
+
+        try {
+            var allProbeCategories = [];
+
+            var username = gs.getProperty('x_nuvo_diag.integration_user_name');
+            var password = gs.getProperty('x_nuvo_diag.integration_user_password');
+
+            var query = encodeURIComponent('active=true');
+
+            var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_probe_type?sysparm_query=' + query;
+
+            var r = new sn_ws.RESTMessageV2();
+            r.setEndpoint(apiEndpoint);
+            r.setHttpMethod('GET');
+            r.setRequestHeader('Content-Type', 'application/json');
+            r.setBasicAuth(username, password);
+
+            var response = r.execute();
+            var responseBody = response.getBody();
+            var httpStatus = response.getStatusCode();
+
+            if (httpStatus == 200) {
+                //Get the current Client Probe Categories
+                var probeCategoriesToDelete = this.getOldProbeCategoriesToDelete();
+
+                var result = JSON.parse(responseBody).result;
+
+                for (var j = 0; j < result.length; j++) {
+
+                    var record = result[j];
+
+                    var probeCategoryObj = {
+                        sys_id: record.sys_id,
+                        record: record
+                    };
+
+                    allProbeCategories.push(probeCategoryObj);
+                }
+
+                //Create the Probe Categories that were fetched from Nuvolo
+                for (var i = 0; i < allProbeCategories.length; i++) {
+                    var category = allProbeCategories[i];
+
+                    var newProbeCatGr = new GlideRecord('x_nuvo_diag_probe_type');
+                    newProbeCatGr.initialize();
+
+                    newProbeCatGr.setValue('name', category.record.name + "");
+                    newProbeCatGr.setValue('description', category.record.description + "");
+                    newProbeCatGr.setValue('active', category.record.active);
+
+                    newProbeCatGr.insert();
+                }
+
+                //Finally, delete the old Client Probe Categories
+                this.deleteOldProbeCategories(JSON.parse(probeCategoriesToDelete).join(','));
+            }
+
+        } catch (ex) {
+            gs.error("pullProbeCategories Error: " + ex.message);
+        }
+
+    },
+
     pullProbes: function() {
         try {
+
+            pullProbeCategories();
+
             var probeTypes = [{
                     label: "Feature Usage",
                     name: "feature_usage"
@@ -228,10 +346,10 @@ HealthCheckProbeUtils.prototype = {
                     label: "Upgrade Conflicts",
                     name: "upgrade_conflicts"
                 },
-				{
-					label: "all diag probes",
-					name: "all_diag_probes"
-				}
+                {
+                    label: "all diag probes",
+                    name: "all_diag_probes"
+                }
             ];
 
             // GET Client's version of Connected Workplace
@@ -257,7 +375,6 @@ HealthCheckProbeUtils.prototype = {
             var username = gs.getProperty('x_nuvo_diag.integration_user_name');
             var password = gs.getProperty('x_nuvo_diag.integration_user_password');
 
-
             for (var i = 0; i < probeTypes.length; i++) {
                 var allProbes = [];
                 var probeSysIDs = [];
@@ -267,14 +384,16 @@ HealthCheckProbeUtils.prototype = {
 
                 var query = '';
                 if (probeType === "upgrade_conflicts" || probeType === "ootb") {
-                    query = encodeURIComponent('active=true^tool=health^healthcheck_type=' + probeType);
+                    query = encodeURIComponent('active=true^healthcheck_type=' + probeType);
                 } else if (probeType === "data_integrity" || probeType === "feature_usage") {
-                    query = encodeURIComponent('active=true^tool=health^product_versionSTARTSWITH' + cw_version + '^healthcheck_type=' + probeType);
-                }else {
-					query = encodeURIComponent('tool=diagnostic'); // Gets all other DIAG Probes
-				}
+                    query = encodeURIComponent('active=true^product_versionSTARTSWITH' + cw_version + '^healthcheck_type=' + probeType);
+                }
+                // else {
+                // 	query = encodeURIComponent('tool=diagnostic'); // Gets all other DIAG Probes
+                // }
 
-                var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_probes?sysparm_query=' + query;
+
+                var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_probes?sysparm_query=' + query;
 
                 var r = new sn_ws.RESTMessageV2();
                 r.setEndpoint(apiEndpoint);
@@ -324,7 +443,7 @@ HealthCheckProbeUtils.prototype = {
                         newProbeGr.description = probe.record.description;
                         newProbeGr.name = probe.record.name;
                         newProbeGr.order = probe.record.order;
-                        newProbeGr.tool = probe.record.tool;
+                        newProbeGr.tool = 'health';
                         newProbeGr.product_version = probe.record.product_version;
                         newProbeGr.sys_scope = "3acdaefd1be7fc107798a9b7624bcb74"; //Diagnostic tool
 
@@ -489,15 +608,9 @@ HealthCheckProbeUtils.prototype = {
 
     },
 
-    filterProbeCategories: function(tool) {
-        var probeCategoriesGR = new GlideRecord('x_nuvo_diag_probe_type');
+    filterProbeCategories: function() {
+        var probeCategoriesGR = new GlideRecord('x_nuvo_health_scan_probe_type');
         probeCategoriesGR.addActiveQuery();
-
-        if (tool == 'health') {
-            probeCategoriesGR.addQuery('healthcheck', true);
-        } else {
-            probeCategoriesGR.addQuery('healthcheck', false);
-        }
 
         probeCategoriesGR.query();
 
@@ -515,14 +628,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>125</sys_mod_count>
+        <sys_mod_count>134</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>protected</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-05-09 12:42:08</sys_updated_on>
+        <sys_updated_on>2025-08-27 07:10:37</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>

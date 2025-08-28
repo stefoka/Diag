@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_health_scan_probes">
+    <x_nuvo_health_scan_probes action="DELETE">
+        <active>true</active>
+        <description/>
+        <healthcheck_type/>
+        <name>Test 3</name>
+        <order/>
+        <probe_category/>
+        <product_version/>
+        <script/>
+        <sys_class_name>x_nuvo_health_scan_probes</sys_class_name>
+        <sys_created_by>rumen.tsolov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-08-08 08:21:07</sys_created_on>
+        <sys_id>f5493164475fa6106d8ba835126d43ac</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Test 3</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_health_scan_probes_f5493164475fa6106d8ba835126d43ac</sys_update_name>
+        <sys_updated_by>rumen.tsolov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-08 08:21:07</sys_updated_on>
+    </x_nuvo_health_scan_probes>
+    <sys_es_latest_script action="DELETE">
+        <id>f5493164475fa6106d8ba835126d43ac</id>
+        <sys_created_by>rumen.tsolov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-08-08 08:21:07</sys_created_on>
+        <sys_id>15593164475fa6106d8ba835126d43af</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>rumen.tsolov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-08 08:21:07</sys_updated_on>
+        <table>x_nuvo_health_scan_probes</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_health_scan_probes_f5493164475fa6106d8ba835126d43ac</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_health_scan_probes"><x_nuvo_health_scan_probes action="INSERT_OR_UPDATE"><active>true</active><description/><healthcheck_type/><name>Test 3</name><order/><probe_category/><product_version/><script/><sys_class_name>x_nuvo_health_scan_probes</sys_class_name><sys_created_by>rumen.tsolov@nuvolo.com</sys_created_by><sys_created_on>2025-08-08 08:21:07</sys_created_on><sys_id>f5493164475fa6106d8ba835126d43ac</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Test 3</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>x_nuvo_health_scan_probes_f5493164475fa6106d8ba835126d43ac</sys_update_name><sys_updated_by>rumen.tsolov@nuvolo.com</sys_updated_by><sys_updated_on>2025-08-08 08:21:07</sys_updated_on></x_nuvo_health_scan_probes><sys_es_latest_script action="INSERT_OR_UPDATE"><id>f5493164475fa6106d8ba835126d43ac</id><sys_created_by>rumen.tsolov@nuvolo.com</sys_created_by><sys_created_on>2025-08-08 08:21:07</sys_created_on><sys_id>15593164475fa6106d8ba835126d43af</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>rumen.tsolov@nuvolo.com</sys_updated_by><sys_updated_on>2025-08-08 08:21:07</sys_updated_on><table>x_nuvo_health_scan_probes</table><use_es_latest>true</use_es_latest></sys_es_latest_script></record_update>]]></payload>
+        <payload_hash>82904310</payload_hash>
+        <record_name>Test 3</record_name>
+        <reverted_from/>
+        <source>a7af6216936b2650052ef5cd0bba10d8</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-08-26 09:47:38</sys_created_on>
+        <sys_id>04c97e1293ab2650052ef5cd0bba1029</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>198e5c6a9b30000001</sys_recorded_at>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-26 09:47:38</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>ccc97e12c2ab2650d8f2d1afbe8fee28</update_guid>
+        <update_guid_history>ccc97e12c2ab2650d8f2d1afbe8fee28:0,5959bd243b5fa61025b5702c1363ba50:-1045329669</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Test 3">33e9be1293ab2650052ef5cd0bba1001</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>rumen.tsolov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-08-26 09:48:26</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_health_scan_probes">x_nuvo_health_scan_probes</sys_db_object>
+        <sys_id>33910cb0ffd94a2d8f6c56f42be45019</sys_id>
+        <sys_metadata>f5493164475fa6106d8ba835126d43ac</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Test 3</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_health_scan_probes_f5493164475fa6106d8ba835126d43ac</sys_update_name>
+        <sys_update_version display_value="x_nuvo_health_scan_probes_f5493164475fa6106d8ba835126d43ac">04c97e1293ab2650052ef5cd0bba1029</sys_update_version>
+        <sys_updated_by>rumen.tsolov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-26 09:48:26</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

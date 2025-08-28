@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="DELETE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-20 09:01:37</sys_created_on>
+        <sys_id>d17bf5e093069610052ef5cd0bba103e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_healthcheck_logs.snc_internal</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_security_acl display_value="x_nuvo_diag_healthcheck_logs">d785fb7e47f896109d9f9915126d43e5</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_d17bf5e093069610052ef5cd0bba103e</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-20 09:01:37</sys_updated_on>
+        <sys_user_role display_value="snc_internal" name="snc_internal">7fcaa702933002009c8579b4f47ffbde</sys_user_role>
+    </sys_security_acl_role>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>sys_security_acl_role_d17bf5e093069610052ef5cd0bba103e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-20 09:01:37</sys_created_on>
+        <sys_id>d17bf5e093069610052ef5cd0bba103e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_healthcheck_logs.snc_internal</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_security_acl display_value="x_nuvo_diag_healthcheck_logs">d785fb7e47f896109d9f9915126d43e5</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_d17bf5e093069610052ef5cd0bba103e</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-20 09:01:37</sys_updated_on>
+        <sys_user_role display_value="snc_internal" name="snc_internal">7fcaa702933002009c8579b4f47ffbde</sys_user_role>
+    </sys_security_acl_role>
+</record_update>]]></payload>
+        <payload_hash>-851437176</payload_hash>
+        <record_name>x_nuvo_diag_healthcheck_logs.snc_internal</record_name>
+        <reverted_from/>
+        <source>8cf3925587f8e2104cc4eb183cbb355c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:17</sys_created_on>
+        <sys_id>91445e9587f8e2104cc4eb183cbb350a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1961530ba310000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:17</sys_updated_on>
+        <type>Access Roles</type>
+        <update_guid>5d445e958ff8e2106708aefdd25f8e09</update_guid>
+        <update_guid_history>5d445e958ff8e2106708aefdd25f8e09:0,a1abb564ff06961086daba92535101c3:-1104966198</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_nuvo_diag_healthcheck_logs.snc_internal">fb0cb366472b2a506d8ba835126d43ff</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-08-27 09:15:49</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>4f2ca9f99e1648f3a3f227a0c9ad77d9</sys_id>
+        <sys_metadata>d17bf5e093069610052ef5cd0bba103e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_healthcheck_logs.snc_internal</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent display_value="x_nuvo_diag_healthcheck_logs">d785fb7e47f896109d9f9915126d43e5</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_d17bf5e093069610052ef5cd0bba103e</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_d17bf5e093069610052ef5cd0bba103e">91445e9587f8e2104cc4eb183cbb350a</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-27 09:15:49</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

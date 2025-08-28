@@ -16,7 +16,7 @@ DiagnosticUtil.prototype = {
 
         var probeTypeGR = this.getProbeType(probeType);
         var probes = new GlideRecord('x_nuvo_diag_probes');
-        var encodedQuery = 'tool=diagnostic^active=true^probe_type=' + probeTypeGR;
+        var encodedQuery = 'active=true^probe_type=' + probeTypeGR;
         probes.addEncodedQuery(encodedQuery);
         probes.orderBy('order');
         probes.query();
@@ -242,13 +242,24 @@ DiagnosticUtil.prototype = {
         <sys_created_by>Anthony.Santos@nuvolo.com</sys_created_by>
         <sys_created_on>2021-11-02 17:53:26</sys_created_on>
         <sys_id>8e34be0e1be730507798a9b7624bcb4c</sys_id>
-        <sys_mod_count>131</sys_mod_count>
+        <sys_mod_count>132</sys_mod_count>
         <sys_name>DiagnosticUtil</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>protected</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_8e34be0e1be730507798a9b7624bcb4c</sys_update_name>
-        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2024-09-17 11:32:33</sys_updated_on>
+        <sys_updated_by>rumen.tsolov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-08 12:30:46</sys_updated_on>
     </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>8e34be0e1be730507798a9b7624bcb4c</id>
+        <sys_created_by>rumen.tsolov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-08-08 12:30:46</sys_created_on>
+        <sys_id>1e723e284713e6106d8ba835126d433c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>rumen.tsolov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-08 12:30:46</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
 </record_update>

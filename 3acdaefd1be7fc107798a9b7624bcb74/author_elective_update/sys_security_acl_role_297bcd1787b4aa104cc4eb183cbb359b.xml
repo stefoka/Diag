@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="DELETE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-14 11:27:02</sys_created_on>
+        <sys_id>297bcd1787b4aa104cc4eb183cbb359b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_nuvolo_oob_script_hashes.snc_internal</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_security_acl display_value="x_nuvo_diag_nuvolo_oob_script_hashes">e97bcd1787b4aa104cc4eb183cbb359a</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_297bcd1787b4aa104cc4eb183cbb359b</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-14 11:27:02</sys_updated_on>
+        <sys_user_role display_value="snc_internal" name="snc_internal">7fcaa702933002009c8579b4f47ffbde</sys_user_role>
+    </sys_security_acl_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>sys_security_acl_role_297bcd1787b4aa104cc4eb183cbb359b</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by><sys_created_on>2025-04-14 11:27:02</sys_created_on><sys_id>297bcd1787b4aa104cc4eb183cbb359b</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_nuvo_diag_nuvolo_oob_script_hashes.snc_internal</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_security_acl display_value="x_nuvo_diag_nuvolo_oob_script_hashes">e97bcd1787b4aa104cc4eb183cbb359a</sys_security_acl><sys_update_name>sys_security_acl_role_297bcd1787b4aa104cc4eb183cbb359b</sys_update_name><sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by><sys_updated_on>2025-04-14 11:27:02</sys_updated_on><sys_user_role display_value="snc_internal" name="snc_internal">7fcaa702933002009c8579b4f47ffbde</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+        <payload_hash>68700571</payload_hash>
+        <record_name>x_nuvo_diag_nuvolo_oob_script_hashes.snc_internal</record_name>
+        <reverted_from/>
+        <source>15979ade87b0e6104cc4eb183cbb35c3</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>jason.siegrist@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-05-02 13:10:40</sys_created_on>
+        <sys_id>1fcfca49875dae104cc4eb183cbb35dc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>196911edbd40000001</sys_recorded_at>
+        <sys_updated_by>jason.siegrist@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-05-02 13:10:40</sys_updated_on>
+        <type>Access Roles</type>
+        <update_guid>53cfca49b45dae109e68df5f3d6f63dc</update_guid>
+        <update_guid_history>53cfca49b45dae109e68df5f3d6f63dc:68700571</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_nuvo_diag_nuvolo_oob_script_hashes.snc_internal">8d096e204713e6106d8ba835126d430f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-08-08 11:49:27</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>13c3c56ab88d482f8f746819e7a6e4f1</sys_id>
+        <sys_metadata>297bcd1787b4aa104cc4eb183cbb359b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nuvo_diag_nuvolo_oob_script_hashes.snc_internal</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent display_value="x_nuvo_diag_nuvolo_oob_script_hashes">e97bcd1787b4aa104cc4eb183cbb359a</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_297bcd1787b4aa104cc4eb183cbb359b</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_297bcd1787b4aa104cc4eb183cbb359b">1fcfca49875dae104cc4eb183cbb35dc</sys_update_version>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-08 11:49:27</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
