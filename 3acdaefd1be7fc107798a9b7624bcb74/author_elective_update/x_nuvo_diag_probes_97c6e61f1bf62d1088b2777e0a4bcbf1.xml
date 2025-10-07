@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>There was a Customization to the Nuvolo Mobile App Config record (x_nuvo_mobile_app_config) for the Space Reservation UI Page.&#13;
+nav_to.do?uri=%2Fx_nuvo_mobile_app_config.do%3Fsys_id%3D5adbd5a5db1014104fe9567b4b9619e8&#13;
+&#13;
+That record was missing the Reference to the New Keys/Messages included as part of the upgrade to the Sweden Release.&#13;
+So, that record didn't include a Reference to the new Translation Keys/Messages (sys_ui_message) records.&#13;
+Which caused Errors when trying to load into the Sweden Version of the Reservations UI Page.</description>
+        <healthcheck_type/>
+        <name>Check for missing Key/Message reference</name>
+        <order/>
+        <probe_type/>
+        <product_version/>
+        <remediation>Temporary Work Around&#13;
+Update the Space Reservation's Mobile App Config record's Translation field to include a Ref to the "missing" Tranlation Records.&#13;
+Nav to Reservation UI Page, inspect page, view Console, see error messages referencing "keys"&#13;
+For each Key, nav to Mobile App Config record, update Tranlations field to include said key. &#13;
+&#13;
+Permanant fix&#13;
+Recommend reverting the Space Reservation's Mobile App Config record back to OOTB, when upgrading the higher instances.</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('x_nuvo_mobile_app_config');
+gr.addEncodedQuery('GOTOname=Space Reservation'); 
+gr.query();
+
+var xFound = false;
+var yFound = false;
+var zFound = false;
+
+var specificKeys = [' SFM_RESERVATION_SCHEDULE_VIEW_TOOLTIP', ' SFM_RESERVATION_MAP_VIEW_TOOLTIP', ' SFM_RESERVATION_CARD_VIEW_TOOLTIP'];
+
+if(gr.next())
+{
+	//grabs the translations field
+	var tF = gr.getDisplayValue('translations');
+	//splits it into a list of keys
+	var keys = tF.split(',');
+
+	for(var i = 0; i < keys.length; i++)
+	{
+		var key = keys[i].toString();
+		switch(key)
+		{
+			case specificKeys[0]:
+				xFound = true;
+				break;
+			case specificKeys[1]:
+				yFound = true;
+				break;
+			case specificKeys[2]:
+				zFound = true;
+				break;
+
+			default:
+			break;
+		}
+	}
+}
+
+if(xFound == false)
+	util.handleOutput('Space Reservation in the App Config is missing the "SFM_RESERVATION_SCHEDULE_VIEW_TOOLTIP" key. Make sure to add it to the list.','Warning','Reservation');
+
+if(yFound == false)
+	util.handleOutput('Space Reservation in the App Config is missing the "SFM_RESERVATION_MAP_VIEW_TOOLTIP" key. Make sure to add it to the list.','Warning','Reservation');
+
+if(zFound == false)
+	util.handleOutput('Space Reservation in the App Config is missing the "SFM_RESERVATION_CARD_VIEW_TOOLTIP" key. Make sure to add it to the list.','Warning','Reservation');]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>pierson.arnold@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-19 19:31:09</sys_created_on>
+        <sys_id>97c6e61f1bf62d1088b2777e0a4bcbf1</sys_id>
+        <sys_mod_count>61</sys_mod_count>
+        <sys_name>Check for missing Key/Message reference</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_97c6e61f1bf62d1088b2777e0a4bcbf1</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_97c6e61f1bf62d1088b2777e0a4bcbf1</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;There was a Customization to the Nuvolo Mobile App Config record (x_nuvo_mobile_app_config) for the Space Reservation UI Page.&amp;#13;
+nav_to.do?uri=%2Fx_nuvo_mobile_app_config.do%3Fsys_id%3D5adbd5a5db1014104fe9567b4b9619e8&amp;#13;
+&amp;#13;
+That record was missing the Reference to the New Keys/Messages included as part of the upgrade to the Sweden Release.&amp;#13;
+So, that record didn't include a Reference to the new Translation Keys/Messages (sys_ui_message) records.&amp;#13;
+Which caused Errors when trying to load into the Sweden Version of the Reservations UI Page.&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Check for missing Key/Message reference&lt;/name&gt;&lt;order/&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Temporary Work Around&amp;#13;
+Update the Space Reservation's Mobile App Config record's Translation field to include a Ref to the "missing" Tranlation Records.&amp;#13;
+Nav to Reservation UI Page, inspect page, view Console, see error messages referencing "keys"&amp;#13;
+For each Key, nav to Mobile App Config record, update Tranlations field to include said key. &amp;#13;
+&amp;#13;
+Permanant fix&amp;#13;
+Recommend reverting the Space Reservation's Mobile App Config record back to OOTB, when upgrading the higher instances.&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('x_nuvo_mobile_app_config');
+gr.addEncodedQuery('GOTOname=Space Reservation'); 
+gr.query();
+
+var xFound = false;
+var yFound = false;
+var zFound = false;
+
+var specificKeys = [' SFM_RESERVATION_SCHEDULE_VIEW_TOOLTIP', ' SFM_RESERVATION_MAP_VIEW_TOOLTIP', ' SFM_RESERVATION_CARD_VIEW_TOOLTIP'];
+
+if(gr.next())
+{
+	//grabs the translations field
+	var tF = gr.getDisplayValue('translations');
+	//splits it into a list of keys
+	var keys = tF.split(',');
+
+	for(var i = 0; i &lt; keys.length; i++)
+	{
+		var key = keys[i].toString();
+		switch(key)
+		{
+			case specificKeys[0]:
+				xFound = true;
+				break;
+			case specificKeys[1]:
+				yFound = true;
+				break;
+			case specificKeys[2]:
+				zFound = true;
+				break;
+
+			default:
+			break;
+		}
+	}
+}
+
+if(xFound == false)
+	util.handleOutput('Space Reservation in the App Config is missing the "SFM_RESERVATION_SCHEDULE_VIEW_TOOLTIP" key. Make sure to add it to the list.','Warning','Reservation');
+
+if(yFound == false)
+	util.handleOutput('Space Reservation in the App Config is missing the "SFM_RESERVATION_MAP_VIEW_TOOLTIP" key. Make sure to add it to the list.','Warning','Reservation');
+
+if(zFound == false)
+	util.handleOutput('Space Reservation in the App Config is missing the "SFM_RESERVATION_CARD_VIEW_TOOLTIP" key. Make sure to add it to the list.','Warning','Reservation');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;pierson.arnold@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-05-19 19:31:09&lt;/sys_created_on&gt;&lt;sys_id&gt;97c6e61f1bf62d1088b2777e0a4bcbf1&lt;/sys_id&gt;&lt;sys_mod_count&gt;61&lt;/sys_mod_count&gt;&lt;sys_name&gt;Check for missing Key/Message reference&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_97c6e61f1bf62d1088b2777e0a4bcbf1&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:26&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1762016710</payload_hash>
+        <record_name>Check for missing Key/Message reference</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>cacdbe9c477722106d8ba835126d432e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c9ca0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>06cdbe9c587722100a3cccc992cce32e</update_guid>
+        <update_guid_history>06cdbe9c587722100a3cccc992cce32e:0,6354d6d5fef8e21046b5dd993fb7926d:0,31e5348c32f412503fb72a4651226ecd:887426027,7de5348cf0f41250e6f11196cfab8acb:-2025220950</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Check for missing Key/Message reference">45a3cb1447b722106d8ba835126d437b</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:41</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>3dae1a3daa744950874f0a30b1293100</sys_id>
+        <sys_metadata>97c6e61f1bf62d1088b2777e0a4bcbf1</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Check for missing Key/Message reference</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_97c6e61f1bf62d1088b2777e0a4bcbf1</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_97c6e61f1bf62d1088b2777e0a4bcbf1">cacdbe9c477722106d8ba835126d432e</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

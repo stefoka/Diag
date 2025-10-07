@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Areas to check for information&#13;
+&#13;
+Interactive polyline is not properly translated or drawn on nuvolo floor mapper.&#13;
+&#13;
+Check type of the polyline from DXF file. Only LWPOLYLINE is supported.</description>
+        <healthcheck_type/>
+        <name>Polyline compatibility check</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation/>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('x_nuvo_eam_dxf_entities_staging');
+
+var gr2 = new GlideRecord('x_nuvo_eam_dxf_record_details');
+gr2.addEncodedQuery('sys_created_on>=javascript:gs.beginningOfLast60Days()');
+gr2.setLimit(5);
+gr2.query();
+
+var x = 0;
+while (gr2.next()){
+	var num = gr2.number + '';
+	gr.addEncodedQuery('dxf_record_reference.numberSTARTSWITH' + num + '^graphical_objectSTARTSWITHLWPOLYLINE');
+	gr.query();
+	if (!gr.next()){
+	x = 1;
+}
+}
+
+if (x==1){
+	util.handleOutput('The recent drawings uploaded from AutoCAD contain polyline types that are not compatible with Nuvolo Floor Mappers. Please ensure that all polyline types are "LWPOLYLINE" only when importing into Servicenow/Nuvolo.', 'Warning', 'Cad Extension');
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 19:48:24</sys_created_on>
+        <sys_id>e7d16494db3c51505f598b050596193b</sys_id>
+        <sys_mod_count>34</sys_mod_count>
+        <sys_name>Polyline compatibility check</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_e7d16494db3c51505f598b050596193b</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:34</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_e7d16494db3c51505f598b050596193b</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Areas to check for information&amp;#13;
+&amp;#13;
+Interactive polyline is not properly translated or drawn on nuvolo floor mapper.&amp;#13;
+&amp;#13;
+Check type of the polyline from DXF file. Only LWPOLYLINE is supported.&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Polyline compatibility check&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation/&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('x_nuvo_eam_dxf_entities_staging');
+
+var gr2 = new GlideRecord('x_nuvo_eam_dxf_record_details');
+gr2.addEncodedQuery('sys_created_on&gt;=javascript:gs.beginningOfLast60Days()');
+gr2.setLimit(5);
+gr2.query();
+
+var x = 0;
+while (gr2.next()){
+	var num = gr2.number + '';
+	gr.addEncodedQuery('dxf_record_reference.numberSTARTSWITH' + num + '^graphical_objectSTARTSWITHLWPOLYLINE');
+	gr.query();
+	if (!gr.next()){
+	x = 1;
+}
+}
+
+if (x==1){
+	util.handleOutput('The recent drawings uploaded from AutoCAD contain polyline types that are not compatible with Nuvolo Floor Mappers. Please ensure that all polyline types are "LWPOLYLINE" only when importing into Servicenow/Nuvolo.', 'Warning', 'Cad Extension');
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;jake.ye@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-15 19:48:24&lt;/sys_created_on&gt;&lt;sys_id&gt;e7d16494db3c51505f598b050596193b&lt;/sys_id&gt;&lt;sys_mod_count&gt;34&lt;/sys_mod_count&gt;&lt;sys_name&gt;Polyline compatibility check&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_e7d16494db3c51505f598b050596193b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:34&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1102012959</payload_hash>
+        <record_name>Polyline compatibility check</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>d6cdbe9c477722106d8ba835126d4362</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6cb280000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>12cdbe9c50772210bcace027d98c0b62</update_guid>
+        <update_guid_history>12cdbe9c50772210bcace027d98c0b62:0,3354d6d535f8e210afe6cf9170a7f8fd:0,3be5b48cf0f412503815a3451ff25b89:-592832649,77e5b48c8ff41250e2c29369a5f07988:-1815136202</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Polyline compatibility check">45a3cb1447b722106d8ba835126d43d5</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:42</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>0bb1eb4bd2de4e4680cc1fa06a4c0bc4</sys_id>
+        <sys_metadata>e7d16494db3c51505f598b050596193b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Polyline compatibility check</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_e7d16494db3c51505f598b050596193b</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_e7d16494db3c51505f598b050596193b">d6cdbe9c477722106d8ba835126d4362</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>PartsSource  Integration - System creating Records for parts and Models&#13;
+&#13;
+Every time when a part is ordered, multiple manufacturers, as well as models, are getting created by the system. Also, the values under the model field are parts that are active=false on the Clinical Models table.&#13;
+&#13;
+When we create any CPOLITM of part type and purchase any part, System is creating a new record in parts &amp; models table with the same number as Model name(in model) and OEM part name(in parts).&#13;
+</description>
+        <healthcheck_type/>
+        <name>PartsSource -System creating Records </name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>As per Script Include  PartsSourceUtilsClient  set autoInsert to false...this will stop parts from being created, along with their Company and Model records&#13;
+&#13;
+&#13;
+This will prevent the integration from creating any part/model/manufacturer records.  If the integration today is creating multipes that they consider duplicates, it's very likely that these are actually not duplicates, but instead are different records with slightly different part numbers/names</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+util.handleOutput('If using PartSource Integration, please navigate to script include named "PartsSourceUtilsClient" and uncomment the code. Set autoInsert to false (By default it is true). It will stop parts from being created, along with their Company and Model records.','information', 'HTM Asset Management');]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Prasanna.Phadtare@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-27 08:04:17</sys_created_on>
+        <sys_id>708b2b331bf41910ae5b21b5ec4bcb46</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>PartsSource -System creating Records </sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_708b2b331bf41910ae5b21b5ec4bcb46</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_708b2b331bf41910ae5b21b5ec4bcb46</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;PartsSource  Integration - System creating Records for parts and Models&amp;#13;
+&amp;#13;
+Every time when a part is ordered, multiple manufacturers, as well as models, are getting created by the system. Also, the values under the model field are parts that are active=false on the Clinical Models table.&amp;#13;
+&amp;#13;
+When we create any CPOLITM of part type and purchase any part, System is creating a new record in parts &amp;amp; models table with the same number as Model name(in model) and OEM part name(in parts).&amp;#13;
+&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;PartsSource -System creating Records &lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;As per Script Include  PartsSourceUtilsClient  set autoInsert to false...this will stop parts from being created, along with their Company and Model records&amp;#13;
+&amp;#13;
+&amp;#13;
+This will prevent the integration from creating any part/model/manufacturer records.  If the integration today is creating multipes that they consider duplicates, it's very likely that these are actually not duplicates, but instead are different records with slightly different part numbers/names&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+util.handleOutput('If using PartSource Integration, please navigate to script include named "PartsSourceUtilsClient" and uncomment the code. Set autoInsert to false (By default it is true). It will stop parts from being created, along with their Company and Model records.','information', 'HTM Asset Management');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Prasanna.Phadtare@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-27 08:04:17&lt;/sys_created_on&gt;&lt;sys_id&gt;708b2b331bf41910ae5b21b5ec4bcb46&lt;/sys_id&gt;&lt;sys_mod_count&gt;8&lt;/sys_mod_count&gt;&lt;sys_name&gt;PartsSource -System creating Records &lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_708b2b331bf41910ae5b21b5ec4bcb46&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:27&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-430930762</payload_hash>
+        <record_name>PartsSource -System creating Records </record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>8ecdbe9c477722106d8ba835126d4307</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c8bc0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>c6cdbe9cbd772210c8ef53378c5b8407</update_guid>
+        <update_guid_history>c6cdbe9cbd772210c8ef53378c5b8407:0,d354d6d564f8e2108a58c2dfd002771d:0,0ee5748c01f41250f83d09300c65666d:-39843444,4ae5748c00f4125033f2003cc508b16c:332264523</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="PartsSource -System creating Records ">bca3cb1447b722106d8ba835126d4314</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:41</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>c38bb4c478d4409098b2cc33c940b931</sys_id>
+        <sys_metadata>708b2b331bf41910ae5b21b5ec4bcb46</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>PartsSource -System creating Records </sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_708b2b331bf41910ae5b21b5ec4bcb46</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_708b2b331bf41910ae5b21b5ec4bcb46">8ecdbe9c477722106d8ba835126d4307</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

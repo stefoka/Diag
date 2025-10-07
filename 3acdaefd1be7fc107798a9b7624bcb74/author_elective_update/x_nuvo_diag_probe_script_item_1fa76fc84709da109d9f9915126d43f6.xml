@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Scheduled Jobs</name>
+        <order>20</order>
+        <probe display_value="General OOB Percentage">7026eb884709da109d9f9915126d4371</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getHashedValue('sysauto', 'run_type,name,script,run_period,active,conditional,condition');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-30 10:34:39</sys_created_on>
+        <sys_id>1fa76fc84709da109d9f9915126d43f6</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Scheduled Jobs</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_1fa76fc84709da109d9f9915126d43f6</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-02-19 09:33:37</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_es_latest_script action="DELETE">
+        <id>1fa76fc84709da109d9f9915126d43f6</id>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-29 15:05:58</sys_created_on>
+        <sys_id>6d5e2bcf93df5610052ef5cd0bba1093</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-29 15:05:58</sys_updated_on>
+        <table>x_nuvo_diag_probe_script_item</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_1fa76fc84709da109d9f9915126d43f6</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;
+    &lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;
+        &lt;name&gt;Scheduled Jobs&lt;/name&gt;
+        &lt;order&gt;20&lt;/order&gt;
+        &lt;probe display_value="General OOB Percentage"&gt;7026eb884709da109d9f9915126d4371&lt;/probe&gt;
+        &lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getHashedValue('sysauto', 'run_type,name,script,run_period,active,conditional,condition');]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;abraham.kannampuzha@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-09-30 10:34:39&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;1fa76fc84709da109d9f9915126d43f6&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;6&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Scheduled Jobs&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_1fa76fc84709da109d9f9915126d43f6&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2025-02-19 09:33:37&lt;/sys_updated_on&gt;
+        &lt;threshold&gt;0&lt;/threshold&gt;
+    &lt;/x_nuvo_diag_probe_script_item&gt;
+    &lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;
+        &lt;id&gt;1fa76fc84709da109d9f9915126d43f6&lt;/id&gt;
+        &lt;sys_created_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2025-01-29 15:05:58&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;6d5e2bcf93df5610052ef5cd0bba1093&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2025-01-29 15:05:58&lt;/sys_updated_on&gt;
+        &lt;table&gt;x_nuvo_diag_probe_script_item&lt;/table&gt;
+        &lt;use_es_latest&gt;false&lt;/use_es_latest&gt;
+    &lt;/sys_es_latest_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>288204979</payload_hash>
+        <record_name>Scheduled Jobs</record_name>
+        <reverted_from/>
+        <source>8cf3925587f8e2104cc4eb183cbb355c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:27</sys_created_on>
+        <sys_id>7b4412d587f8e2104cc4eb183cbb3547</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1961530e47a0000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:27</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>374412d518f8e2106d8e5fd58f4d4447</update_guid>
+        <update_guid_history>374412d518f8e2106d8e5fd58f4d4447:0,f1abe27551bb16107efed3da19408222:217343409,51fa62b1e5bb1610ab15b87d1a4fdb85:1248041005,88156ebd567b1610bb4386f85d0f9654:217343409,695eeb036d139610fd2a889d7f904032:1030278809,c9694ff42f9bd2103116cac823ee454c:-19176739,ee398bf4e89bd210c4296e84200a493f:-180584774,a8ceba517e52de5010812d4171fee0dc:-290333390,3483c81f380ad2507aa5c4a76407297c:369321993,dfd7630cb709da10cfe8eb5fa500a902:-1273952031</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Scheduled Jobs">9f93c71447b722106d8ba835126d43d1</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:35</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>9e73fc54d9ac4aa0907837c16e610400</sys_id>
+        <sys_metadata>1fa76fc84709da109d9f9915126d43f6</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Scheduled Jobs</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_1fa76fc84709da109d9f9915126d43f6</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_1fa76fc84709da109d9f9915126d43f6">7b4412d587f8e2104cc4eb183cbb3547</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:35</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

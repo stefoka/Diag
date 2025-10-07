@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description/>
+        <healthcheck_type>feature_usage</healthcheck_type>
+        <name>Location Hierarchy </name>
+        <order>10</order>
+        <probe_type/>
+        <product_version>22.0.36</product_version>
+        <remediation/>
+        <script/>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-10 11:58:18</sys_created_on>
+        <sys_id>e887681f873f26104cc4eb183cbb3589</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Location Hierarchy </sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_e887681f873f26104cc4eb183cbb3589</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-10 11:58:18</sys_updated_on>
+        <tool>health</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_e887681f873f26104cc4eb183cbb3589</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes"><x_nuvo_diag_probes action="INSERT_OR_UPDATE"><active>true</active><description/><healthcheck_type>feature_usage</healthcheck_type><name>Location Hierarchy </name><order>10</order><probe_type/><product_version>22.0.36</product_version><remediation/><script/><sys_class_name>x_nuvo_diag_probes</sys_class_name><sys_created_by>system</sys_created_by><sys_created_on>2025-09-10 11:58:18</sys_created_on><sys_id>e887681f873f26104cc4eb183cbb3589</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Location Hierarchy </sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>x_nuvo_diag_probes_e887681f873f26104cc4eb183cbb3589</sys_update_name><sys_updated_by>system</sys_updated_by><sys_updated_on>2025-09-10 11:58:18</sys_updated_on><tool>health</tool></x_nuvo_diag_probes></record_update>]]></payload>
+        <payload_hash>1019158009</payload_hash>
+        <record_name>Location Hierarchy </record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-10 11:58:18</sys_created_on>
+        <sys_id>2887681f873f26104cc4eb183cbb358b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>199337dadc20000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-10 11:58:18</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>e887681f633f26104e5e12111732ab8a</update_guid>
+        <update_guid_history>e887681f633f26104e5e12111732ab8a:1019158009</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Location Hierarchy ">09186c5f873f26104cc4eb183cbb351e</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-10 12:00:48</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>055a8491484d4924b6fa580ece5c94e4</sys_id>
+        <sys_metadata>e887681f873f26104cc4eb183cbb3589</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Location Hierarchy </sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_e887681f873f26104cc4eb183cbb3589</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_e887681f873f26104cc4eb183cbb3589">2887681f873f26104cc4eb183cbb358b</sys_update_version>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-10 12:00:48</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

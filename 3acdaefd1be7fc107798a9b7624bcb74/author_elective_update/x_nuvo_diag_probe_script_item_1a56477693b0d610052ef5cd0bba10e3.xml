@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Risk Score is empty</name>
+        <order/>
+        <probe display_value="Facilities Devices">cb4d549247fcd2109d9f9915126d4300</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_devices', 'risk_scoreISEMPTY');
+
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-26 10:55:48</sys_created_on>
+        <sys_id>1a56477693b0d610052ef5cd0bba10e3</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Risk Score is empty</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_1a56477693b0d610052ef5cd0bba10e3</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-05 08:06:16</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_es_latest_script action="DELETE">
+        <id>1a56477693b0d610052ef5cd0bba10e3</id>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-18 11:01:09</sys_created_on>
+        <sys_id>838a504293d51e10052ef5cd0bba1061</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-18 11:01:09</sys_updated_on>
+        <table>x_nuvo_diag_probe_script_item</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_1a56477693b0d610052ef5cd0bba10e3</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;
+    &lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;
+        &lt;name&gt;Risk Score is empty&lt;/name&gt;
+        &lt;order/&gt;
+        &lt;probe display_value="Facilities Devices"&gt;cb4d549247fcd2109d9f9915126d4300&lt;/probe&gt;
+        &lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_devices', 'risk_scoreISEMPTY');
+
+
+]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-09-26 10:55:48&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;1a56477693b0d610052ef5cd0bba10e3&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Risk Score is empty&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_1a56477693b0d610052ef5cd0bba10e3&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-12-05 08:06:16&lt;/sys_updated_on&gt;
+        &lt;threshold&gt;0&lt;/threshold&gt;
+    &lt;/x_nuvo_diag_probe_script_item&gt;
+    &lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;
+        &lt;id&gt;1a56477693b0d610052ef5cd0bba10e3&lt;/id&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-10-18 11:01:09&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;838a504293d51e10052ef5cd0bba1061&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-10-18 11:01:09&lt;/sys_updated_on&gt;
+        &lt;table&gt;x_nuvo_diag_probe_script_item&lt;/table&gt;
+        &lt;use_es_latest&gt;false&lt;/use_es_latest&gt;
+    &lt;/sys_es_latest_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-797782212</payload_hash>
+        <record_name>Risk Score is empty</record_name>
+        <reverted_from/>
+        <source>8cf3925587f8e2104cc4eb183cbb355c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:27</sys_created_on>
+        <sys_id>374412d587f8e2104cc4eb183cbb3539</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1961530e38c0000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:27</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>ff4412d586f8e2108b95a5b2fbd8b738</update_guid>
+        <update_guid_history>ff4412d586f8e2108b95a5b2fbd8b738:0,95de7e513e52de50745ad327984b1d90:-549574728,878ad4425cd51e1055e7e7790b02fdfa:-754510480,2d760f7639b0d610ca3835f5fde9169c:-386891915,9a564776b3b0d610d986f973f55e01e4:412065991</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Risk Score is empty">69dd36dc477722106d8ba835126d43fa</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:20</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>0a6f4ba9a48d4dd480a71efd06ba4db1</sys_id>
+        <sys_metadata>1a56477693b0d610052ef5cd0bba10e3</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Risk Score is empty</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_1a56477693b0d610052ef5cd0bba10e3</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_1a56477693b0d610052ef5cd0bba10e3">374412d587f8e2104cc4eb183cbb3539</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:20</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

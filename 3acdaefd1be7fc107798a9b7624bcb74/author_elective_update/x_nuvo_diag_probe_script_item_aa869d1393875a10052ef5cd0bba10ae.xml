@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Total records in m2m parts table</name>
+        <order/>
+        <probe display_value="Stockroom Parts">2e869d1393875a10052ef5cd0bba10ad</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_m2m_stockrooms_parts', '');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-01-17 12:25:33</sys_created_on>
+        <sys_id>aa869d1393875a10052ef5cd0bba10ae</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Total records in m2m parts table</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_aa869d1393875a10052ef5cd0bba10ae</sys_update_name>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-01-17 12:25:33</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_aa869d1393875a10052ef5cd0bba10ae</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;
+    &lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;
+        &lt;name&gt;Total records in m2m parts table&lt;/name&gt;
+        &lt;order/&gt;
+        &lt;probe display_value="Stockroom Parts"&gt;2e869d1393875a10052ef5cd0bba10ad&lt;/probe&gt;
+        &lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_m2m_stockrooms_parts', '');]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2025-01-17 12:25:33&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;aa869d1393875a10052ef5cd0bba10ae&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Total records in m2m parts table&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_aa869d1393875a10052ef5cd0bba10ae&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2025-01-17 12:25:33&lt;/sys_updated_on&gt;
+        &lt;threshold&gt;0&lt;/threshold&gt;
+    &lt;/x_nuvo_diag_probe_script_item&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-1248389029</payload_hash>
+        <record_name>Total records in m2m parts table</record_name>
+        <reverted_from/>
+        <source>8cf3925587f8e2104cc4eb183cbb355c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:34</sys_created_on>
+        <sys_id>ad54d2d587f8e2104cc4eb183cbb35bf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1961530ffea0000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:34</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>a954d2d5d0f8e2104ca37415f87b97bf</update_guid>
+        <update_guid_history>a954d2d5d0f8e2104ca37415f87b97bf:0,2d54d2d5eaf8e210c5cfb862726df3be:-46261999</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Total records in m2m parts table">1fcd32dc477722106d8ba835126d4388</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:11</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>10ef6d2842344fb186262026575f1ed1</sys_id>
+        <sys_metadata>aa869d1393875a10052ef5cd0bba10ae</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Total records in m2m parts table</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_aa869d1393875a10052ef5cd0bba10ae</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_aa869d1393875a10052ef5cd0bba10ae">ad54d2d587f8e2104cc4eb183cbb35bf</sys_update_version>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:11</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

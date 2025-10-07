@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>In AutoCAD Graphic Sync Preview never finishes loading</description>
+        <healthcheck_type/>
+        <name>AutoCAD Graphic Sync Preview issue</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>Provide update set named "CAD-Ext-Patch-Fix -v1"</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var queryString = "name=Connected Workplace^active=true^versionSTARTSWITH18.^ORversionSTARTSWITH19.";
+var checkVersion = new GlideRecord("sys_scope");
+checkVersion.addEncodedQuery(queryString);
+checkVersion.query();
+
+//Checking if update set is installed
+var updateSet = new GlideRecord('sys_update_set');
+updateSet.addQuery('name', 'CAD-Ext-Patch-Fix -v1');
+updateSet.query();
+if (updateSet.getRowCount() > 0 || checkVersion.getRowCount() < 1) {
+	//skip
+} else {
+
+    util.handleOutput('If your AutoCAD Graphic Sync Preview never finishes loading than reach out to Nuvolo Technical Engineering team for the update set "CAD-Ext-Patch-Fix -v1" and install it. ', 'warning', 'Cad Extension');
+
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Harshal.Sonawane@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-22 12:59:20</sys_created_on>
+        <sys_id>2d4ce69c1bed1d10ae5b21b5ec4bcb54</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>AutoCAD Graphic Sync Preview issue</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_2d4ce69c1bed1d10ae5b21b5ec4bcb54</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_2d4ce69c1bed1d10ae5b21b5ec4bcb54</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;In AutoCAD Graphic Sync Preview never finishes loading&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;AutoCAD Graphic Sync Preview issue&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Provide update set named "CAD-Ext-Patch-Fix -v1"&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var queryString = "name=Connected Workplace^active=true^versionSTARTSWITH18.^ORversionSTARTSWITH19.";
+var checkVersion = new GlideRecord("sys_scope");
+checkVersion.addEncodedQuery(queryString);
+checkVersion.query();
+
+//Checking if update set is installed
+var updateSet = new GlideRecord('sys_update_set');
+updateSet.addQuery('name', 'CAD-Ext-Patch-Fix -v1');
+updateSet.query();
+if (updateSet.getRowCount() &gt; 0 || checkVersion.getRowCount() &lt; 1) {
+	//skip
+} else {
+
+    util.handleOutput('If your AutoCAD Graphic Sync Preview never finishes loading than reach out to Nuvolo Technical Engineering team for the update set "CAD-Ext-Patch-Fix -v1" and install it. ', 'warning', 'Cad Extension');
+
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Harshal.Sonawane@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-08-22 12:59:20&lt;/sys_created_on&gt;&lt;sys_id&gt;2d4ce69c1bed1d10ae5b21b5ec4bcb54&lt;/sys_id&gt;&lt;sys_mod_count&gt;22&lt;/sys_mod_count&gt;&lt;sys_name&gt;AutoCAD Graphic Sync Preview issue&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_2d4ce69c1bed1d10ae5b21b5ec4bcb54&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:27&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1976458818</payload_hash>
+        <record_name>AutoCAD Graphic Sync Preview issue</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:05</sys_created_on>
+        <sys_id>3dcd7e9c477722106d8ba835126d43ba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c6d40000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:05</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>75cd7e9c86772210499c558b7386d8ba</update_guid>
+        <update_guid_history>75cd7e9c86772210499c558b7386d8ba:0,7a5496d5d5f8e210cbcd79c63a26f48e:0,82e5748c01f41250bd7f8640aa263215:757145196,cee5748c92f4125027950f85a9391913:-824915669</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="AutoCAD Graphic Sync Preview issue">9ca38b1447b722106d8ba835126d43b0</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:39</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>292985435b9446f0a6d65c23c144d290</sys_id>
+        <sys_metadata>2d4ce69c1bed1d10ae5b21b5ec4bcb54</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AutoCAD Graphic Sync Preview issue</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_2d4ce69c1bed1d10ae5b21b5ec4bcb54</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_2d4ce69c1bed1d10ae5b21b5ec4bcb54">3dcd7e9c477722106d8ba835126d43ba</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:39</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

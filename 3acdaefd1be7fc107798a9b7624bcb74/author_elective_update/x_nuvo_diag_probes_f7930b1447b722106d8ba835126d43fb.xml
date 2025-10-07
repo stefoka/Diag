@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description/>
+        <healthcheck_type>feature_usage</healthcheck_type>
+        <name>Facilities Parts</name>
+        <order>10</order>
+        <probe_type display_value="">3512de9f3b2bae50c920898aa4e45afb</probe_type>
+        <product_version>22.0.36</product_version>
+        <remediation/>
+        <script/>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:36</sys_created_on>
+        <sys_id>f7930b1447b722106d8ba835126d43fb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Facilities Parts</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_f7930b1447b722106d8ba835126d43fb</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:36</sys_updated_on>
+        <tool>health</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_f7930b1447b722106d8ba835126d43fb</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes"><x_nuvo_diag_probes action="INSERT_OR_UPDATE"><active>true</active><description/><healthcheck_type>feature_usage</healthcheck_type><name>Facilities Parts</name><order>10</order><probe_type display_value="">3512de9f3b2bae50c920898aa4e45afb</probe_type><product_version>22.0.36</product_version><remediation/><script/><sys_class_name>x_nuvo_diag_probes</sys_class_name><sys_created_by>system</sys_created_by><sys_created_on>2025-09-01 15:38:36</sys_created_on><sys_id>f7930b1447b722106d8ba835126d43fb</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Facilities Parts</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>x_nuvo_diag_probes_f7930b1447b722106d8ba835126d43fb</sys_update_name><sys_updated_by>system</sys_updated_by><sys_updated_on>2025-09-01 15:38:36</sys_updated_on><tool>health</tool></x_nuvo_diag_probes></record_update>]]></payload>
+        <payload_hash>138668750</payload_hash>
+        <record_name>Facilities Parts</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:36</sys_created_on>
+        <sys_id>77930b1447b722106d8ba835126d43fd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905ee23c80000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:36</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>3b930b14d9b722109745258d96bcbcfc</update_guid>
+        <update_guid_history>3b930b14d9b722109745258d96bcbcfc:138668750</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Facilities Parts">b945c79447b722106d8ba835126d43ca</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:45:51</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>37e0ccc486ec4a2c8ef1a344ac7afa10</sys_id>
+        <sys_metadata>f7930b1447b722106d8ba835126d43fb</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Facilities Parts</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_f7930b1447b722106d8ba835126d43fb</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_f7930b1447b722106d8ba835126d43fb">77930b1447b722106d8ba835126d43fd</sys_update_version>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:45:51</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Without Conditions</name>
+        <order/>
+        <probe display_value="Facilities Work Rounds">01921bf293f0d610052ef5cd0bba1072</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_work_rounds', 'active=true^conditionISEMPTY');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-26 11:51:38</sys_created_on>
+        <sys_id>08235b3693f0d610052ef5cd0bba104f</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Without Conditions</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_08235b3693f0d610052ef5cd0bba104f</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-05 08:06:15</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_08235b3693f0d610052ef5cd0bba104f</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;
+    &lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;
+        &lt;name&gt;Without Conditions&lt;/name&gt;
+        &lt;order/&gt;
+        &lt;probe display_value="Facilities Work Rounds"&gt;01921bf293f0d610052ef5cd0bba1072&lt;/probe&gt;
+        &lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_work_rounds', 'active=true^conditionISEMPTY');]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-09-26 11:51:38&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;08235b3693f0d610052ef5cd0bba104f&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Without Conditions&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_08235b3693f0d610052ef5cd0bba104f&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-12-05 08:06:15&lt;/sys_updated_on&gt;
+        &lt;threshold&gt;0&lt;/threshold&gt;
+    &lt;/x_nuvo_diag_probe_script_item&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>1791504069</payload_hash>
+        <record_name>Without Conditions</record_name>
+        <reverted_from/>
+        <source>8cf3925587f8e2104cc4eb183cbb355c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:27</sys_created_on>
+        <sys_id>7f44de9587f8e2104cc4eb183cbb35f7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1961530e1a30000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:27</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>3b44de95bef8e2107a1fe7d18b958ef7</update_guid>
+        <update_guid_history>3b44de95bef8e2107a1fe7d18b958ef7:0,70de3e511e52de504abe1e94990932fd:-845268471,18335f36fff0d610542e72d9289049bf:73819747,04235f3676f0d6103c2be9dcb01c3f7e:1016259474</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Without Conditions">a0ddb2dc477722106d8ba835126d4390</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:16</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>c48e9e886a774dcfb5d079b0ec8b2f11</sys_id>
+        <sys_metadata>08235b3693f0d610052ef5cd0bba104f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Without Conditions</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_08235b3693f0d610052ef5cd0bba104f</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_08235b3693f0d610052ef5cd0bba104f">7f44de9587f8e2104cc4eb183cbb35f7</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

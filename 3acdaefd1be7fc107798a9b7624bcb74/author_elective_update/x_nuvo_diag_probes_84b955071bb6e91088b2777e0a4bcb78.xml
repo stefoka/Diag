@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Probe to check if they're using O365 and if they have the hardcoded cancellation reason.&#13;
+&#13;
+Description&#13;
+When a reservation is made for a location within the Outlook Integration Table, and then cancelled at some point in the future, the cancellation email that participants receive in Outlook contains a cancellation reason that wasn't input by the user. Every time, there is a message stating "Cancelling for this week due to all hands. ".&#13;
+&#13;
+When cancelling a reservation on Nuvolo side, there is no option for inputting a cancellation reason, but this message pops up all the same. It's likely hard coded somewhere, but can't find where.&#13;
+&#13;
+This issue has been seen in multiple customers, and has been reproduced on Ven03086, Romania OOB.&#13;
+&#13;
+Reproduction Steps&#13;
+1. Turn email notifications on for an instance if they're not currently on.&#13;
+&#13;
+2. Create a reservation on an Outlook Integration location. &#13;
+&#13;
+3.  Wait 2 minutes, and then cancel the reservation through Nuvolo. &#13;
+&#13;
+ 4. When you receive the outlook email saying the reservation is cancelled, note the cancellation reason given in the body of the email.</description>
+        <healthcheck_type/>
+        <name>Checking for O365 with cancellation</name>
+        <order/>
+        <probe_type/>
+        <product_version/>
+        <remediation> Update the record, by removing the text from the Content field</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var value = ' ';
+
+var gr2 = new GlideRecord('sys_rest_message_fn');
+var gr = new GlideRecord('x_nuvo_mobile_nuvolo_property');
+gr.addQuery('name','O365_Nuvolo_Integration');
+gr.query();
+
+if(gr.next() && gr.getValue('value') == 'true')
+{
+	gr2.addEncodedQuery('rest_message=126188b0dbeb28104fe9567b4b961978^function_name=sendCancelEvent');
+	gr2.query();
+	if(gr2.next())
+	{
+		value = gr2.getValue('content').toString();
+		value = value.replace(/\r?\n/g, '');
+		
+		if(value == '{  "Comment": "Cancelling for this week due to all hands."}')
+			util.handleOutput('The O365 cancellation is hardcoded to give the same "Cancelling for this week due to all hands" message. Consider updating the record by removing this text from the content field.','warning','Reservation');
+	}
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>pierson.arnold@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-18 19:11:40</sys_created_on>
+        <sys_id>84b955071bb6e91088b2777e0a4bcb78</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>Checking for O365 with cancellation</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_84b955071bb6e91088b2777e0a4bcb78</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_84b955071bb6e91088b2777e0a4bcb78</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Probe to check if they're using O365 and if they have the hardcoded cancellation reason.&amp;#13;
+&amp;#13;
+Description&amp;#13;
+When a reservation is made for a location within the Outlook Integration Table, and then cancelled at some point in the future, the cancellation email that participants receive in Outlook contains a cancellation reason that wasn't input by the user. Every time, there is a message stating "Cancelling for this week due to all hands. ".&amp;#13;
+&amp;#13;
+When cancelling a reservation on Nuvolo side, there is no option for inputting a cancellation reason, but this message pops up all the same. It's likely hard coded somewhere, but can't find where.&amp;#13;
+&amp;#13;
+This issue has been seen in multiple customers, and has been reproduced on Ven03086, Romania OOB.&amp;#13;
+&amp;#13;
+Reproduction Steps&amp;#13;
+1. Turn email notifications on for an instance if they're not currently on.&amp;#13;
+&amp;#13;
+2. Create a reservation on an Outlook Integration location. &amp;#13;
+&amp;#13;
+3.  Wait 2 minutes, and then cancel the reservation through Nuvolo. &amp;#13;
+&amp;#13;
+ 4. When you receive the outlook email saying the reservation is cancelled, note the cancellation reason given in the body of the email.&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Checking for O365 with cancellation&lt;/name&gt;&lt;order/&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt; Update the record, by removing the text from the Content field&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var value = ' ';
+
+var gr2 = new GlideRecord('sys_rest_message_fn');
+var gr = new GlideRecord('x_nuvo_mobile_nuvolo_property');
+gr.addQuery('name','O365_Nuvolo_Integration');
+gr.query();
+
+if(gr.next() &amp;&amp; gr.getValue('value') == 'true')
+{
+	gr2.addEncodedQuery('rest_message=126188b0dbeb28104fe9567b4b961978^function_name=sendCancelEvent');
+	gr2.query();
+	if(gr2.next())
+	{
+		value = gr2.getValue('content').toString();
+		value = value.replace(/\r?\n/g, '');
+		
+		if(value == '{  "Comment": "Cancelling for this week due to all hands."}')
+			util.handleOutput('The O365 cancellation is hardcoded to give the same "Cancelling for this week due to all hands" message. Consider updating the record by removing this text from the content field.','warning','Reservation');
+	}
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;pierson.arnold@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-05-18 19:11:40&lt;/sys_created_on&gt;&lt;sys_id&gt;84b955071bb6e91088b2777e0a4bcb78&lt;/sys_id&gt;&lt;sys_mod_count&gt;15&lt;/sys_mod_count&gt;&lt;sys_name&gt;Checking for O365 with cancellation&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_84b955071bb6e91088b2777e0a4bcb78&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:26&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-21250462</payload_hash>
+        <record_name>Checking for O365 with cancellation</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>8acdbe9c477722106d8ba835126d4324</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c9840000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>c2cdbe9cfd772210e43fb4b9d4606124</update_guid>
+        <update_guid_history>c2cdbe9cfd772210e43fb4b9d4606124:0,5b54d6d519f8e21020f8221ce0c1a05b:0,f1e5348cd9f41250c0d6ea4b5b9e83c1:283543955,31e5348ce9f41250c24109e1285729c0:252404306</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Checking for O365 with cancellation">74a3cb1447b722106d8ba835126d435d</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:41</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>297899b45f3245e4924313c6cf836041</sys_id>
+        <sys_metadata>84b955071bb6e91088b2777e0a4bcb78</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Checking for O365 with cancellation</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_84b955071bb6e91088b2777e0a4bcb78</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_84b955071bb6e91088b2777e0a4bcb78">8acdbe9c477722106d8ba835126d4324</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

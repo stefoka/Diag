@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Total number of Verification Data</name>
+        <order/>
+        <probe display_value="Checklists">2c0ba012473016109d9f9915126d43a7</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_verification_data', '');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-26 11:21:32</sys_created_on>
+        <sys_id>7c0c8ff2477896109d9f9915126d437e</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Total number of Verification Data</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_7c0c8ff2477896109d9f9915126d437e</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-05 08:06:16</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_7c0c8ff2477896109d9f9915126d437e</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;
+    &lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;
+        &lt;name&gt;Total number of Verification Data&lt;/name&gt;
+        &lt;order/&gt;
+        &lt;probe display_value="Checklists"&gt;2c0ba012473016109d9f9915126d43a7&lt;/probe&gt;
+        &lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_verification_data', '');]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;abraham.kannampuzha@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-09-26 11:21:32&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;7c0c8ff2477896109d9f9915126d437e&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Total number of Verification Data&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_7c0c8ff2477896109d9f9915126d437e&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-12-05 08:06:16&lt;/sys_updated_on&gt;
+        &lt;threshold&gt;0&lt;/threshold&gt;
+    &lt;/x_nuvo_diag_probe_script_item&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-1960965503</payload_hash>
+        <record_name>Total number of Verification Data</record_name>
+        <reverted_from/>
+        <source>8cf3925587f8e2104cc4eb183cbb355c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:32</sys_created_on>
+        <sys_id>0d5492d587f8e2104cc4eb183cbb352f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1961530f6980000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:32</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>c55492d5bff8e21099db20a6b19a922f</update_guid>
+        <update_guid_history>c55492d5bff8e21099db20a6b19a922f:0,01de7e51ff52de50dfd931b476180271:-953827749,1cb13814df2dd65043c72c24cd20a18b:-1116505859,c33c83367b789610971ab17cf2fd162f:1365695861</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Total number of Verification Data">4fcd32dc477722106d8ba835126d4316</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:10</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>c5558c8ed8b441b0b282b98f3575a840</sys_id>
+        <sys_metadata>7c0c8ff2477896109d9f9915126d437e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Total number of Verification Data</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_7c0c8ff2477896109d9f9915126d437e</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_7c0c8ff2477896109d9f9915126d437e">0d5492d587f8e2104cc4eb183cbb352f</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:10</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

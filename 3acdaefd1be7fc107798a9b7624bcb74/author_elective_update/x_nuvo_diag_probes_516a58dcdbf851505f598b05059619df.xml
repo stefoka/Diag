@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>This probe checks for domain path corruption&#13;
+&#13;
+OOTB there are records where domain path is empty that will cause issues&#13;
+&#13;
+(get a list of records we ship in sys_metadata_link)&#13;
+&#13;
+https://ven01061.service-now.com/sys_metadata_link_list.do?sysparm_query=sys_scope.scopeSTARTSWITHx_nuvo_%5Edirectory%3Dunload%5EORdirectory%3Dupdate&amp;sysparm_view=&#13;
+&#13;
+Service now script to check for invalid domain path records (pending from tejas)&#13;
+&#13;
+/* &#13;
+    Validate data on the specified table and fix inconsistencies&#13;
+*/&#13;
+&#13;
+// TODO: replace INSERT_TABLENAME_HERE with name of the table on which script will be run&#13;
+var tableName = 'INSERT_TABLENAME_HERE';&#13;
+&#13;
+// Verify tableName is an existing Domain Separated table&#13;
+var gr = new GlideRecord('sys_dictionary');&#13;
+gr.addQuery('element', 'sys_domain');&#13;
+gr.query();&#13;
+var tableFound = false;&#13;
+while(gr.next()) {&#13;
+   if (tableName.equals(gr.name) == true) {&#13;
+      tableFound = true;&#13;
+      break; &#13;
+   }&#13;
+}&#13;
+&#13;
+// Run validation&#13;
+if (tableFound) {&#13;
+   var pathValidator = new GlideDomainPathValidator();&#13;
+   pathValidator.setUpdateProgress(false);&#13;
+   if (pathValidator.validateDomainPathData(tableName, true) == true) {&#13;
+      gs.log('Data validation successful, and inconsistencies fixed, on table: ' + tableName);&#13;
+   } else {&#13;
+      gs.log('Data validation unsuccessful and/or could not fix inconsistencies on table: ' + tableName);&#13;
+   }&#13;
+} else {&#13;
+   gs.log('ERROR running script; tableName "' + tableName + '" does not describe a domain separated table');&#13;
+}</description>
+        <healthcheck_type/>
+        <name>Domain Path Check</name>
+        <order/>
+        <probe_type/>
+        <product_version/>
+        <remediation/>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var metaGR = new GlideRecord('sys_metadata_link');
+metaGR.query()
+var tableName = 'INSERT_TABLENAME_HERE';
+
+// Verify tableName is an existing Domain Separated table
+var gr = new GlideRecord('sys_dictionary');
+gr.addQuery('element', 'sys_domain');
+gr.query();
+var tableFound = false;
+while(gr.next()) {
+   if (tableName.equals(gr.name) == true) {
+      tableFound = true;
+      break; 
+   }
+}
+
+// Run validation
+if (tableFound) {
+   var pathValidator = new GlideDomainPathValidator();
+   pathValidator.setUpdateProgress(false);
+   if (pathValidator.validateDomainPathData(tableName, true) == true) {
+      //gs.log('Data validation successful, and inconsistencies fixed, on table: ' + tableName);
+   } else {
+      util.handleOutput('Data Validation Unsuccessful, could not fix inconsistencies on table ' + tableName, 'Warning','ServiceNow');
+   }
+} else {
+   gs.log('ERROR running script; tableName "' + tableName + '" does not describe a domain separated table');
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 19:23:40</sys_created_on>
+        <sys_id>516a58dcdbf851505f598b05059619df</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Domain Path Check</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_516a58dcdbf851505f598b05059619df</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_516a58dcdbf851505f598b05059619df</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;This probe checks for domain path corruption&amp;#13;
+&amp;#13;
+OOTB there are records where domain path is empty that will cause issues&amp;#13;
+&amp;#13;
+(get a list of records we ship in sys_metadata_link)&amp;#13;
+&amp;#13;
+https://ven01061.service-now.com/sys_metadata_link_list.do?sysparm_query=sys_scope.scopeSTARTSWITHx_nuvo_%5Edirectory%3Dunload%5EORdirectory%3Dupdate&amp;amp;sysparm_view=&amp;#13;
+&amp;#13;
+Service now script to check for invalid domain path records (pending from tejas)&amp;#13;
+&amp;#13;
+/* &amp;#13;
+    Validate data on the specified table and fix inconsistencies&amp;#13;
+*/&amp;#13;
+&amp;#13;
+// TODO: replace INSERT_TABLENAME_HERE with name of the table on which script will be run&amp;#13;
+var tableName = 'INSERT_TABLENAME_HERE';&amp;#13;
+&amp;#13;
+// Verify tableName is an existing Domain Separated table&amp;#13;
+var gr = new GlideRecord('sys_dictionary');&amp;#13;
+gr.addQuery('element', 'sys_domain');&amp;#13;
+gr.query();&amp;#13;
+var tableFound = false;&amp;#13;
+while(gr.next()) {&amp;#13;
+   if (tableName.equals(gr.name) == true) {&amp;#13;
+      tableFound = true;&amp;#13;
+      break; &amp;#13;
+   }&amp;#13;
+}&amp;#13;
+&amp;#13;
+// Run validation&amp;#13;
+if (tableFound) {&amp;#13;
+   var pathValidator = new GlideDomainPathValidator();&amp;#13;
+   pathValidator.setUpdateProgress(false);&amp;#13;
+   if (pathValidator.validateDomainPathData(tableName, true) == true) {&amp;#13;
+      gs.log('Data validation successful, and inconsistencies fixed, on table: ' + tableName);&amp;#13;
+   } else {&amp;#13;
+      gs.log('Data validation unsuccessful and/or could not fix inconsistencies on table: ' + tableName);&amp;#13;
+   }&amp;#13;
+} else {&amp;#13;
+   gs.log('ERROR running script; tableName "' + tableName + '" does not describe a domain separated table');&amp;#13;
+}&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Domain Path Check&lt;/name&gt;&lt;order/&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation/&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var metaGR = new GlideRecord('sys_metadata_link');
+metaGR.query()
+var tableName = 'INSERT_TABLENAME_HERE';
+
+// Verify tableName is an existing Domain Separated table
+var gr = new GlideRecord('sys_dictionary');
+gr.addQuery('element', 'sys_domain');
+gr.query();
+var tableFound = false;
+while(gr.next()) {
+   if (tableName.equals(gr.name) == true) {
+      tableFound = true;
+      break; 
+   }
+}
+
+// Run validation
+if (tableFound) {
+   var pathValidator = new GlideDomainPathValidator();
+   pathValidator.setUpdateProgress(false);
+   if (pathValidator.validateDomainPathData(tableName, true) == true) {
+      //gs.log('Data validation successful, and inconsistencies fixed, on table: ' + tableName);
+   } else {
+      util.handleOutput('Data Validation Unsuccessful, could not fix inconsistencies on table ' + tableName, 'Warning','ServiceNow');
+   }
+} else {
+   gs.log('ERROR running script; tableName "' + tableName + '" does not describe a domain separated table');
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;jake.ye@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-15 19:23:40&lt;/sys_created_on&gt;&lt;sys_id&gt;516a58dcdbf851505f598b05059619df&lt;/sys_id&gt;&lt;sys_mod_count&gt;7&lt;/sys_mod_count&gt;&lt;sys_name&gt;Domain Path Check&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_516a58dcdbf851505f598b05059619df&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:26&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1606814514</payload_hash>
+        <record_name>Domain Path Check</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:05</sys_created_on>
+        <sys_id>cecd7e9c477722106d8ba835126d43d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c7be0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:05</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>0acd7e9c9177221091a2b2fc6965afd8</update_guid>
+        <update_guid_history>0acd7e9c9177221091a2b2fc6965afd8:0,8b5496d599f8e210791d241d5f7461d3:0,39e5348c8af41250741df0210895a39d:-86361233,bde5348cdef41250e815168df07d318f:536235054</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Domain Path Check">aca38b1447b722106d8ba835126d43e2</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:40</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>237b5157801f496c92c9220186bac079</sys_id>
+        <sys_metadata>516a58dcdbf851505f598b05059619df</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Domain Path Check</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_516a58dcdbf851505f598b05059619df</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_516a58dcdbf851505f598b05059619df">cecd7e9c477722106d8ba835126d43d8</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

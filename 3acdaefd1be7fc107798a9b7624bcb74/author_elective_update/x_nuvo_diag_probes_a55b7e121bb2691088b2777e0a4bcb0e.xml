@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Checks for stops not assigned to the correct clinical stops table</description>
+        <healthcheck_type/>
+        <name>Check for Stops on the Parent Stop table</name>
+        <order/>
+        <probe_type/>
+        <product_version/>
+        <remediation/>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('x_nuvo_eam_stops');
+gr.addQuery('table','x_nuvo_eam_clinical_devices');
+gr.addQuery('sys_class_name','x_nuvo_eam_stops');
+gr.query();
+
+if(gr.next())
+	util.handleOutput('One or more stops in the x_nuvo_eam_stops table are not linked correctly to the clinical stops table. Please change the sys_class_name to coincide with the appropriate Clinical Devices table.','warning','HTM Asset Management');]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>pierson.arnold@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-16 18:26:31</sys_created_on>
+        <sys_id>a55b7e121bb2691088b2777e0a4bcb0e</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Check for Stops on the Parent Stop table</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_a55b7e121bb2691088b2777e0a4bcb0e</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_a55b7e121bb2691088b2777e0a4bcb0e</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Checks for stops not assigned to the correct clinical stops table&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Check for Stops on the Parent Stop table&lt;/name&gt;&lt;order/&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation/&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('x_nuvo_eam_stops');
+gr.addQuery('table','x_nuvo_eam_clinical_devices');
+gr.addQuery('sys_class_name','x_nuvo_eam_stops');
+gr.query();
+
+if(gr.next())
+	util.handleOutput('One or more stops in the x_nuvo_eam_stops table are not linked correctly to the clinical stops table. Please change the sys_class_name to coincide with the appropriate Clinical Devices table.','warning','HTM Asset Management');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;pierson.arnold@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-05-16 18:26:31&lt;/sys_created_on&gt;&lt;sys_id&gt;a55b7e121bb2691088b2777e0a4bcb0e&lt;/sys_id&gt;&lt;sys_mod_count&gt;13&lt;/sys_mod_count&gt;&lt;sys_name&gt;Check for Stops on the Parent Stop table&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_a55b7e121bb2691088b2777e0a4bcb0e&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:26&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1128923469</payload_hash>
+        <record_name>Check for Stops on the Parent Stop table</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>c2cdbe9c477722106d8ba835126d433a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6ca180000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>0ecdbe9c3d77221093b1a9cf23312e39</update_guid>
+        <update_guid_history>0ecdbe9c3d77221093b1a9cf23312e39:0,6754d6d5e6f8e210b97b8e315ce95c8b:0,75e5348cf3f41250869bde30d50473e1:1902544533,b1e5348c8ef412508d8735fc67b9f8e0:148480852</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Check for Stops on the Parent Stop table">45a3cb1447b722106d8ba835126d438f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:42</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>3f49e5a109dd470291c1fefad3560aa4</sys_id>
+        <sys_metadata>a55b7e121bb2691088b2777e0a4bcb0e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Check for Stops on the Parent Stop table</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_a55b7e121bb2691088b2777e0a4bcb0e</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_a55b7e121bb2691088b2777e0a4bcb0e">c2cdbe9c477722106d8ba835126d433a</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

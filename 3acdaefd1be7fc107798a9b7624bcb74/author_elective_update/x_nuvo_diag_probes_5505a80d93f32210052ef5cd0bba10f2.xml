@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description/>
+        <healthcheck_type>data_integrity</healthcheck_type>
+        <name>Clinical Parts</name>
+        <order>10</order>
+        <probe_type/>
+        <product_version>22.0.36</product_version>
+        <remediation/>
+        <script/>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-03 12:01:06</sys_created_on>
+        <sys_id>5505a80d93f32210052ef5cd0bba10f2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Clinical Parts</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_5505a80d93f32210052ef5cd0bba10f2</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 12:01:06</sys_updated_on>
+        <tool>health</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_5505a80d93f32210052ef5cd0bba10f2</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes"><x_nuvo_diag_probes action="INSERT_OR_UPDATE"><active>true</active><description/><healthcheck_type>data_integrity</healthcheck_type><name>Clinical Parts</name><order>10</order><probe_type/><product_version>22.0.36</product_version><remediation/><script/><sys_class_name>x_nuvo_diag_probes</sys_class_name><sys_created_by>system</sys_created_by><sys_created_on>2025-09-03 12:01:06</sys_created_on><sys_id>5505a80d93f32210052ef5cd0bba10f2</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Clinical Parts</sys_name><sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package><sys_policy/><sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope><sys_update_name>x_nuvo_diag_probes_5505a80d93f32210052ef5cd0bba10f2</sys_update_name><sys_updated_by>system</sys_updated_by><sys_updated_on>2025-09-03 12:01:06</sys_updated_on><tool>health</tool></x_nuvo_diag_probes></record_update>]]></payload>
+        <payload_hash>565632099</payload_hash>
+        <record_name>Clinical Parts</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-03 12:01:06</sys_created_on>
+        <sys_id>9105a80d93f32210052ef5cd0bba10f4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1990f73ba7c0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 12:01:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>5505a80dbff3221051142758ca94f5f3</update_guid>
+        <update_guid_history>5505a80dbff3221051142758ca94f5f3:565632099</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Clinical Parts">c3d02857873f26104cc4eb183cbb3535</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-10 11:29:16</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>1fbf8144f4c24b2c86e4705559c48b90</sys_id>
+        <sys_metadata>5505a80d93f32210052ef5cd0bba10f2</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Clinical Parts</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_5505a80d93f32210052ef5cd0bba10f2</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_5505a80d93f32210052ef5cd0bba10f2">9105a80d93f32210052ef5cd0bba10f4</sys_update_version>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-10 11:29:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

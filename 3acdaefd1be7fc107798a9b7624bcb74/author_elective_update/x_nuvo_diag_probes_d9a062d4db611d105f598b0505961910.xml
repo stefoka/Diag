@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Checklist is not available on work orders created by rounds, scheduled maintenance.&#13;
+&#13;
+Steps to Execute:&#13;
+&#13;
+Create a round with a pre-checklist and no working checklist.&#13;
+&#13;
+Create the stops and execute the rounds.&#13;
+&#13;
+Navigate to the newly created work order.&#13;
+&#13;
+Expected Result:&#13;
+User should see the pre checklist button.&#13;
+&#13;
+Actual Result:&#13;
+Pre checklist button not available on the work order created by rounds.</description>
+        <healthcheck_type/>
+        <name>Checklist not available</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>There is an Update Set provided by the Product team to Fix this issue. &#13;
+&#13;
+Apply Update Set  :  ChecklistRulesFix&#13;
+</remediation>
+        <script><![CDATA[//Bug : MM-8253
+
+var util = new x_nuvo_diag.DiagnosticUtil();
+
+var updSet = new GlideRecord('sys_update_set');
+updSet.addEncodedQuery('nameLIKEChecklistRulesFix');
+updSet.query();
+
+if (updSet.next()) {
+    util.handleOutput('Work orders created by a work rounds stop will NOT have a checklist applied to it unless the checklist is directly set on the stop record itself. However, if a stop had those checklist fields left empty, and then a stand-alone checklist rule was created for Work Order Type = Rounding, once the stop generates the WO, it would NOT have the checklist applied to it, even though it matched the condition set on the stand-alone rule.', 'information', 'Facilities Maintenance');
+
+} else {
+    util.handleOutput('If there should be a checklist based on the work order rules but theres not, please apply Update Set "ChecklistRulesFix" to fix the issue. (MM-8253)', 'Warning', 'Facilities Maintenance');
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Apurva.Saxena@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-22 11:50:13</sys_created_on>
+        <sys_id>d9a062d4db611d105f598b0505961910</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Checklist not available</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_d9a062d4db611d105f598b0505961910</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_d9a062d4db611d105f598b0505961910</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Checklist is not available on work orders created by rounds, scheduled maintenance.&amp;#13;
+&amp;#13;
+Steps to Execute:&amp;#13;
+&amp;#13;
+Create a round with a pre-checklist and no working checklist.&amp;#13;
+&amp;#13;
+Create the stops and execute the rounds.&amp;#13;
+&amp;#13;
+Navigate to the newly created work order.&amp;#13;
+&amp;#13;
+Expected Result:&amp;#13;
+User should see the pre checklist button.&amp;#13;
+&amp;#13;
+Actual Result:&amp;#13;
+Pre checklist button not available on the work order created by rounds.&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Checklist not available&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;There is an Update Set provided by the Product team to Fix this issue. &amp;#13;
+&amp;#13;
+Apply Update Set  :  ChecklistRulesFix&amp;#13;
+&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[//Bug : MM-8253
+
+var util = new x_nuvo_diag.DiagnosticUtil();
+
+var updSet = new GlideRecord('sys_update_set');
+updSet.addEncodedQuery('nameLIKEChecklistRulesFix');
+updSet.query();
+
+if (updSet.next()) {
+    util.handleOutput('Work orders created by a work rounds stop will NOT have a checklist applied to it unless the checklist is directly set on the stop record itself. However, if a stop had those checklist fields left empty, and then a stand-alone checklist rule was created for Work Order Type = Rounding, once the stop generates the WO, it would NOT have the checklist applied to it, even though it matched the condition set on the stand-alone rule.', 'information', 'Facilities Maintenance');
+
+} else {
+    util.handleOutput('If there should be a checklist based on the work order rules but theres not, please apply Update Set "ChecklistRulesFix" to fix the issue. (MM-8253)', 'Warning', 'Facilities Maintenance');
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Apurva.Saxena@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-08-22 11:50:13&lt;/sys_created_on&gt;&lt;sys_id&gt;d9a062d4db611d105f598b0505961910&lt;/sys_id&gt;&lt;sys_mod_count&gt;5&lt;/sys_mod_count&gt;&lt;sys_name&gt;Checklist not available&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_d9a062d4db611d105f598b0505961910&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:28&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-807101074</payload_hash>
+        <record_name>Checklist not available</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>0acdbe9c477722106d8ba835126d4355</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6cacf0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>42cdbe9ca47722108d103f3bf243bc55</update_guid>
+        <update_guid_history>42cdbe9ca47722108d103f3bf243bc55:0,3f54d6d50af8e210abf788f98deeacc3:0,92e5748c6df41250fa83ab00b665d1d2:380784853,dee5748c32f41250538447bfcef307d0:-1182667372</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Checklist not available">45a3cb1447b722106d8ba835126d43b2</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:42</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>08950dac2c6c4b3ba3061f66acb9b269</sys_id>
+        <sys_metadata>d9a062d4db611d105f598b0505961910</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Checklist not available</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_d9a062d4db611d105f598b0505961910</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_d9a062d4db611d105f598b0505961910">0acdbe9c477722106d8ba835126d4355</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

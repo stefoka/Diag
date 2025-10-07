@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Report View ACL on Task Table limits Reports to only users with Admin or Itil role.&#13;
+&#13;
+Need to check if the ACL in question (Report View on the Task Table) allows for more than just admins or ITIL roles. If that's it, then send an warning message asking them to open a case to get the bug fix.</description>
+        <healthcheck_type/>
+        <name>Report View ACL limited to only admins.</name>
+        <order/>
+        <probe_type/>
+        <product_version>21.1.2</product_version>
+        <remediation>List the name of the update set attached. &#13;
+&#13;
+</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('sys_security_acl_role');
+
+var role = null;
+var count = 0;
+
+//Query for the Report View ACL roles
+gr.addQuery('sys_security_acl','ea7bd5dc43131110563cd5bbdab8f2d9');
+gr.query();
+
+while(gr.next()){
+		count++;
+}
+if(count <= 2)
+{
+	util.handleOutput('Only the admin and ITIL role are included in the Report View ACL. Apply the "HTM-CW-Thailand-MM-9090-CRG" update set to fix.','warning','HTM Asset Management');
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>pierson.arnold@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-12 21:20:03</sys_created_on>
+        <sys_id>4e8d3ec51bbe251088b2777e0a4bcbfc</sys_id>
+        <sys_mod_count>32</sys_mod_count>
+        <sys_name>Report View ACL limited to only admins.</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_4e8d3ec51bbe251088b2777e0a4bcbfc</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-04 09:40:00</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_4e8d3ec51bbe251088b2777e0a4bcbfc</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Report View ACL on Task Table limits Reports to only users with Admin or Itil role.&amp;#13;
+&amp;#13;
+Need to check if the ACL in question (Report View on the Task Table) allows for more than just admins or ITIL roles. If that's it, then send an warning message asking them to open a case to get the bug fix.&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Report View ACL limited to only admins.&lt;/name&gt;&lt;order/&gt;&lt;probe_type/&gt;&lt;product_version&gt;21.1.2&lt;/product_version&gt;&lt;remediation&gt;List the name of the update set attached. &amp;#13;
+&amp;#13;
+&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('sys_security_acl_role');
+
+var role = null;
+var count = 0;
+
+//Query for the Report View ACL roles
+gr.addQuery('sys_security_acl','ea7bd5dc43131110563cd5bbdab8f2d9');
+gr.query();
+
+while(gr.next()){
+		count++;
+}
+if(count &lt;= 2)
+{
+	util.handleOutput('Only the admin and ITIL role are included in the Report View ACL. Apply the "HTM-CW-Thailand-MM-9090-CRG" update set to fix.','warning','HTM Asset Management');
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;pierson.arnold@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-05-12 21:20:03&lt;/sys_created_on&gt;&lt;sys_id&gt;4e8d3ec51bbe251088b2777e0a4bcbfc&lt;/sys_id&gt;&lt;sys_mod_count&gt;32&lt;/sys_mod_count&gt;&lt;sys_name&gt;Report View ACL limited to only admins.&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_4e8d3ec51bbe251088b2777e0a4bcbfc&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-12-04 09:40:00&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1176495955</payload_hash>
+        <record_name>Report View ACL limited to only admins.</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:05</sys_created_on>
+        <sys_id>8acd7e9c477722106d8ba835126d43d4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c7a00000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:05</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>c2cd7e9ca2772210cc94d741e8b012d4</update_guid>
+        <update_guid_history>c2cd7e9ca2772210cc94d741e8b012d4:0,075496d50ef8e21088634c340ca28fcf:0,acba828589de9e107339284f5d2f1788:-520707158,71e5348ce9f4125055433f3447a0728d:941519041,bde5348c72f4125055e278fa21b1b18b:-366779008</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Report View ACL limited to only admins.">aca38b1447b722106d8ba835126d43dd</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:40</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>198bb69f456a42da8403964e453a0409</sys_id>
+        <sys_metadata>4e8d3ec51bbe251088b2777e0a4bcbfc</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Report View ACL limited to only admins.</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_4e8d3ec51bbe251088b2777e0a4bcbfc</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_4e8d3ec51bbe251088b2777e0a4bcbfc">8acd7e9c477722106d8ba835126d43d4</sys_update_version>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

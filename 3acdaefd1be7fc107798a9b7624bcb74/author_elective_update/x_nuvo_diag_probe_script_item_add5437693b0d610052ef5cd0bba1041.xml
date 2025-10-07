@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Performance tab is either 0 or empty</name>
+        <order/>
+        <probe display_value="Facilities Devices">cb4d549247fcd2109d9f9915126d4300</probe>
+        <script><![CDATA[var zeroDuration = gs.getDurationDate('0 0:0:0');
+
+var encodedQuery = 'total_unplanned_downtime=' + zeroDuration + '^ORtotal_unplanned_downtimeISEMPTY' +
+    '^total_planned_downtime=' + zeroDuration + '^ORtotal_planned_downtimeISEMPTY' +
+    '^total_downtime=0^ORtotal_downtimeISEMPTY' +
+    '^total_uptime_duration=' + zeroDuration + '^ORtotal_uptime_durationISEMPTY' +
+    '^total_uptime=0^ORtotal_uptimeISEMPTY' +
+    '^fault_count=0^ORfault_countISEMPTY' +
+    '^mtbf=' + zeroDuration + '^ORmtbfISEMPTY' +
+    '^total_unplanned_business_downtime=' + zeroDuration + '^ORtotal_unplanned_business_downtimeISEMPTY' +
+    '^total_planned_business_downtime=' + zeroDuration + '^ORtotal_planned_business_downtimeISEMPTY' +
+    '^total_business_downtime=0^ORtotal_business_downtimeISEMPTY' +
+    '^total_business_uptime_duration=' + zeroDuration + '^ORtotal_business_uptime_durationISEMPTY' +
+    '^total_business_uptime=0^ORtotal_business_uptimeISEMPTY' +
+    '^business_fault_count=0^ORbusiness_fault_countISEMPTY';
+
+
+ new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_devices', encodedQuery);
+
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-26 10:53:35</sys_created_on>
+        <sys_id>add5437693b0d610052ef5cd0bba1041</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Performance tab is either 0 or empty</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_add5437693b0d610052ef5cd0bba1041</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-05 08:06:16</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_es_latest_script action="DELETE">
+        <id>add5437693b0d610052ef5cd0bba1041</id>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-18 11:00:54</sys_created_on>
+        <sys_id>5f7a584293d51e10052ef5cd0bba108a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-18 11:00:54</sys_updated_on>
+        <table>x_nuvo_diag_probe_script_item</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_add5437693b0d610052ef5cd0bba1041</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;
+    &lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;
+        &lt;name&gt;Performance tab is either 0 or empty&lt;/name&gt;
+        &lt;order/&gt;
+        &lt;probe display_value="Facilities Devices"&gt;cb4d549247fcd2109d9f9915126d4300&lt;/probe&gt;
+        &lt;script&gt;&lt;![CDATA[var zeroDuration = gs.getDurationDate('0 0:0:0');
+
+var encodedQuery = 'total_unplanned_downtime=' + zeroDuration + '^ORtotal_unplanned_downtimeISEMPTY' +
+    '^total_planned_downtime=' + zeroDuration + '^ORtotal_planned_downtimeISEMPTY' +
+    '^total_downtime=0^ORtotal_downtimeISEMPTY' +
+    '^total_uptime_duration=' + zeroDuration + '^ORtotal_uptime_durationISEMPTY' +
+    '^total_uptime=0^ORtotal_uptimeISEMPTY' +
+    '^fault_count=0^ORfault_countISEMPTY' +
+    '^mtbf=' + zeroDuration + '^ORmtbfISEMPTY' +
+    '^total_unplanned_business_downtime=' + zeroDuration + '^ORtotal_unplanned_business_downtimeISEMPTY' +
+    '^total_planned_business_downtime=' + zeroDuration + '^ORtotal_planned_business_downtimeISEMPTY' +
+    '^total_business_downtime=0^ORtotal_business_downtimeISEMPTY' +
+    '^total_business_uptime_duration=' + zeroDuration + '^ORtotal_business_uptime_durationISEMPTY' +
+    '^total_business_uptime=0^ORtotal_business_uptimeISEMPTY' +
+    '^business_fault_count=0^ORbusiness_fault_countISEMPTY';
+
+
+ new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_devices', encodedQuery);
+
+
+]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-09-26 10:53:35&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;add5437693b0d610052ef5cd0bba1041&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Performance tab is either 0 or empty&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_add5437693b0d610052ef5cd0bba1041&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-12-05 08:06:16&lt;/sys_updated_on&gt;
+        &lt;threshold&gt;0&lt;/threshold&gt;
+    &lt;/x_nuvo_diag_probe_script_item&gt;
+    &lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;
+        &lt;id&gt;add5437693b0d610052ef5cd0bba1041&lt;/id&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-10-18 11:00:54&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;5f7a584293d51e10052ef5cd0bba108a&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-10-18 11:00:54&lt;/sys_updated_on&gt;
+        &lt;table&gt;x_nuvo_diag_probe_script_item&lt;/table&gt;
+        &lt;use_es_latest&gt;false&lt;/use_es_latest&gt;
+    &lt;/sys_es_latest_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-318435017</payload_hash>
+        <record_name>Performance tab is either 0 or empty</record_name>
+        <reverted_from/>
+        <source>8cf3925587f8e2104cc4eb183cbb355c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:35</sys_created_on>
+        <sys_id>a154d2d587f8e2104cc4eb183cbb35d1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1961531005d0000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:35</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>6d54d2d5adf8e210ea548498ae29bfd0</update_guid>
+        <update_guid_history>6d54d2d5adf8e210ea548498ae29bfd0:0,95de7e51b652de5073a10c86822458ac:-486539069,d77a944207d51e1072ad463c3609ce8a:3309563,553643764fb0d61060e717f5a96d95a9:-592510460,21d5437674b0d61047ced1c864004843:-1438974222</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Performance tab is either 0 or empty">b9dd76dc477722106d8ba835126d4339</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:21</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>191eabbbeb3a4c5d8850cb6beab8c319</sys_id>
+        <sys_metadata>add5437693b0d610052ef5cd0bba1041</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Performance tab is either 0 or empty</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_add5437693b0d610052ef5cd0bba1041</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_add5437693b0d610052ef5cd0bba1041">a154d2d587f8e2104cc4eb183cbb35d1</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:21</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

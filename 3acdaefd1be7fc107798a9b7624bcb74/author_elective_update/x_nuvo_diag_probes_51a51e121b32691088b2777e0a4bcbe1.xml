@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Ensure that Connected Workplace is up to date according to the version installed to the instance.</description>
+        <healthcheck_type/>
+        <name>Connected Workplace Up To Date</name>
+        <order/>
+        <probe_type/>
+        <product_version/>
+        <remediation>Update to the latest Patch</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var versionsMap = {
+	/* To keep map up to date add new versions as they are developed 
+	When a new patch is released for an existing version look at the version code
+	it should be formated as {a,b,c} in the upToDateVersion name the format is {b,c}
+	fill in new information as needed.*/
+    "17": {
+        version: "Pakistan",
+        upToDateVersion: [1,0],
+    },
+    "18": {
+        version: "Qatar",
+        upToDateVersion: [2,1],
+    },
+    "19": {
+        version: "Romania",
+        upToDateVersion: [2,0],
+    },
+	"20": {
+        version: "Sweden",
+        upToDateVersion: [0,20],
+    },
+};
+
+var gr = new GlideRecord("sys_scope");
+
+gr.addQuery('name','Connected Workplace');
+gr.addActiveQuery();
+gr.query();
+
+if (gr.next()) {
+	var output;
+	//Array cw_version holds version code
+	var cw_version = gr.version.split('.');
+	// obj set to verison the instance is on
+	var obj = versionsMap[cw_version[0].toString()];
+	//if version is up to date or on a more advanced patch the code will pass through with no errors
+	if (obj.upToDateVersion[0] > cw_version[1]) {
+		output = 'Please update to the most recent patch for Connected Workplace version: ' + obj.version + '.';
+		util.handleOutput(output , 'info','ServiceNow');
+	} else if (obj.upToDateVersion[0] == cw_version[1]) {
+		if (obj.upToDateVersion[1] > cw_version[2]) {
+			output = 'Please update to the most recent patch for Connected Workplace version: ' + obj.version + '.';
+			util.handleOutput(output , 'info','ServiceNow');
+		}
+	} else {
+		// Up to date
+	}
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>michael.peck@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-16 16:01:46</sys_created_on>
+        <sys_id>51a51e121b32691088b2777e0a4bcbe1</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>Connected Workplace Up To Date</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_51a51e121b32691088b2777e0a4bcbe1</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_51a51e121b32691088b2777e0a4bcbe1</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Ensure that Connected Workplace is up to date according to the version installed to the instance.&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Connected Workplace Up To Date&lt;/name&gt;&lt;order/&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Update to the latest Patch&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var versionsMap = {
+	/* To keep map up to date add new versions as they are developed 
+	When a new patch is released for an existing version look at the version code
+	it should be formated as {a,b,c} in the upToDateVersion name the format is {b,c}
+	fill in new information as needed.*/
+    "17": {
+        version: "Pakistan",
+        upToDateVersion: [1,0],
+    },
+    "18": {
+        version: "Qatar",
+        upToDateVersion: [2,1],
+    },
+    "19": {
+        version: "Romania",
+        upToDateVersion: [2,0],
+    },
+	"20": {
+        version: "Sweden",
+        upToDateVersion: [0,20],
+    },
+};
+
+var gr = new GlideRecord("sys_scope");
+
+gr.addQuery('name','Connected Workplace');
+gr.addActiveQuery();
+gr.query();
+
+if (gr.next()) {
+	var output;
+	//Array cw_version holds version code
+	var cw_version = gr.version.split('.');
+	// obj set to verison the instance is on
+	var obj = versionsMap[cw_version[0].toString()];
+	//if version is up to date or on a more advanced patch the code will pass through with no errors
+	if (obj.upToDateVersion[0] &gt; cw_version[1]) {
+		output = 'Please update to the most recent patch for Connected Workplace version: ' + obj.version + '.';
+		util.handleOutput(output , 'info','ServiceNow');
+	} else if (obj.upToDateVersion[0] == cw_version[1]) {
+		if (obj.upToDateVersion[1] &gt; cw_version[2]) {
+			output = 'Please update to the most recent patch for Connected Workplace version: ' + obj.version + '.';
+			util.handleOutput(output , 'info','ServiceNow');
+		}
+	} else {
+		// Up to date
+	}
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;michael.peck@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-05-16 16:01:46&lt;/sys_created_on&gt;&lt;sys_id&gt;51a51e121b32691088b2777e0a4bcbe1&lt;/sys_id&gt;&lt;sys_mod_count&gt;10&lt;/sys_mod_count&gt;&lt;sys_name&gt;Connected Workplace Up To Date&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_51a51e121b32691088b2777e0a4bcbe1&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:26&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>399274689</payload_hash>
+        <record_name>Connected Workplace Up To Date</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:05</sys_created_on>
+        <sys_id>86cd7e9c477722106d8ba835126d43da</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c7c90000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:05</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>cecd7e9c91772210e4366a1f2c321ad9</update_guid>
+        <update_guid_history>cecd7e9c91772210e4366a1f2c321ad9:0,4f5496d5b2f8e21020435fa957bb64d5:0,f5e5348c29f412500e0459117e173da1:-1918178776,35e5348c93f4125056dc69282e2bdfa0:-293237529</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Connected Workplace Up To Date">aca38b1447b722106d8ba835126d43e7</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:40</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>07a606acf6c746a89fb67a9295e35410</sys_id>
+        <sys_metadata>51a51e121b32691088b2777e0a4bcbe1</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Connected Workplace Up To Date</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_51a51e121b32691088b2777e0a4bcbe1</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_51a51e121b32691088b2777e0a4bcbe1">86cd7e9c477722106d8ba835126d43da</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

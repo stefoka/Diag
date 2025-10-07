@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Check to see if the client was given the strict mode workaround by Nuvolo and now it should be reverted.&#13;
+&#13;
+(there were specific update sets given to clients, check for names</description>
+        <healthcheck_type/>
+        <name>Strict Mode Workaround Presence</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>Revert the Strict mode update Sets </remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var updSets = new GlideRecord('sys_update_set');
+updSets.addQuery('nameLIKEstrict');
+//To Add Query for all other update Sets which were provided as WorkAround
+updSets.query();
+
+if (updSets.getRowCount() >= 1) {
+    util.handleOutput('There is a chance that you are using update sets for fixing strict mode issues from Nuvolo that are no longer required. Following is the possible list of names of update sets. Please go through it and share the same with Nuvolo Technical Engineering team.', 'Warning', true);
+    while (updSets.next()) {
+        util.handleOutput('Update Set Name :- ' + updSets.name, 'Warning', 'ServiceNow');
+	}
+}
+else{
+	//util.handleOutput('No Strict mode Update Sets present on your instance.', 'Information', 'ServiceNow');
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 19:41:33</sys_created_on>
+        <sys_id>943068d0db3c51505f598b05059619d2</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Strict Mode Workaround Presence</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_943068d0db3c51505f598b05059619d2</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_943068d0db3c51505f598b05059619d2</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Check to see if the client was given the strict mode workaround by Nuvolo and now it should be reverted.&amp;#13;
+&amp;#13;
+(there were specific update sets given to clients, check for names&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Strict Mode Workaround Presence&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Revert the Strict mode update Sets &lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var updSets = new GlideRecord('sys_update_set');
+updSets.addQuery('nameLIKEstrict');
+//To Add Query for all other update Sets which were provided as WorkAround
+updSets.query();
+
+if (updSets.getRowCount() &gt;= 1) {
+    util.handleOutput('There is a chance that you are using update sets for fixing strict mode issues from Nuvolo that are no longer required. Following is the possible list of names of update sets. Please go through it and share the same with Nuvolo Technical Engineering team.', 'Warning', true);
+    while (updSets.next()) {
+        util.handleOutput('Update Set Name :- ' + updSets.name, 'Warning', 'ServiceNow');
+	}
+}
+else{
+	//util.handleOutput('No Strict mode Update Sets present on your instance.', 'Information', 'ServiceNow');
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;jake.ye@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-15 19:41:33&lt;/sys_created_on&gt;&lt;sys_id&gt;943068d0db3c51505f598b05059619d2&lt;/sys_id&gt;&lt;sys_mod_count&gt;7&lt;/sys_mod_count&gt;&lt;sys_name&gt;Strict Mode Workaround Presence&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_943068d0db3c51505f598b05059619d2&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:28&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1226863335</payload_hash>
+        <record_name>Strict Mode Workaround Presence</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>4ecdbe9c477722106d8ba835126d432b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c9b60000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>86cdbe9c66772210d426933db364e82b</update_guid>
+        <update_guid_history>86cdbe9c66772210d426933db364e82b:0,eb54d6d52cf8e21074cb2e9d6ea8d968:0,52e5748c0df41250a54ba4a0a64049aa:490188636,9ee5748c74f412501185e408252c33a8:-91538917</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Strict Mode Workaround Presence">74a3cb1447b722106d8ba835126d4371</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:41</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>1b1f0f185fef473885a2dd55420fc440</sys_id>
+        <sys_metadata>943068d0db3c51505f598b05059619d2</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Strict Mode Workaround Presence</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_943068d0db3c51505f598b05059619d2</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_943068d0db3c51505f598b05059619d2">4ecdbe9c477722106d8ba835126d432b</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

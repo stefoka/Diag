@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>In Move Request, when click on "Pick from Floor Plan" and selected space it does not add to the Move Request. &#13;
+&#13;
+Check console log on browser for error message:&#13;
+Uncaught ErrorType : Cannot read properties of undefined (reading 'value')&#13;
+&#13;
+Steps to reproduce :&#13;
+&#13;
+-Create Move Request&#13;
+-Select User&#13;
+-Select To Building&#13;
+-Select To Floor&#13;
+-Click Pick from Floor Plan&#13;
+-Floor Plan will open&#13;
+-Click on space, it does not add to the Move Request&#13;
+&#13;
+</description>
+        <healthcheck_type/>
+        <name>Move Request Pick from Floor Plan</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>Update space_picker_init UI Script, update line number 96&#13;
+&#13;
+From =&gt; var zoneAssignable = spaceRecord.space_record.zone_name.value;&#13;
+&#13;
+To =&gt;&#13;
+&#13;
+var zoneAssignable = 0;&#13;
+ if (spaceRecord.space_record.zone_name) {&#13;
+          zoneAssignable = spaceRecord.space_record.zone_name.value;&#13;
+&#13;
+  }&#13;
+&#13;
+ &#13;
+OR&#13;
+&#13;
+Apply update set "Zones_Pakistan UPDATED 4_20_22"</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+util.handleOutput('When click on "Pick from Floor Plan" in Move Request form, If user is not able to select/click on space and it does not add to move request form than check if there is any error on browser console like "Uncaught ErrorType : Cannot read properties of undefined (reading value)". If yes, reach out to Nuvolo Technical Engineering team for update set involving zone usage, and install it OR update script as per Remediation mentioned in probe', 'Warning','Space');]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Harshal.Sonawane@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-26 10:37:48</sys_created_on>
+        <sys_id>ef9b4f23dbf895105f598b0505961976</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Move Request Pick from Floor Plan</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_ef9b4f23dbf895105f598b0505961976</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:34</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_ef9b4f23dbf895105f598b0505961976</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;In Move Request, when click on "Pick from Floor Plan" and selected space it does not add to the Move Request. &amp;#13;
+&amp;#13;
+Check console log on browser for error message:&amp;#13;
+Uncaught ErrorType : Cannot read properties of undefined (reading 'value')&amp;#13;
+&amp;#13;
+Steps to reproduce :&amp;#13;
+&amp;#13;
+-Create Move Request&amp;#13;
+-Select User&amp;#13;
+-Select To Building&amp;#13;
+-Select To Floor&amp;#13;
+-Click Pick from Floor Plan&amp;#13;
+-Floor Plan will open&amp;#13;
+-Click on space, it does not add to the Move Request&amp;#13;
+&amp;#13;
+&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Move Request Pick from Floor Plan&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Update space_picker_init UI Script, update line number 96&amp;#13;
+&amp;#13;
+From =&amp;gt; var zoneAssignable = spaceRecord.space_record.zone_name.value;&amp;#13;
+&amp;#13;
+To =&amp;gt;&amp;#13;
+&amp;#13;
+var zoneAssignable = 0;&amp;#13;
+ if (spaceRecord.space_record.zone_name) {&amp;#13;
+          zoneAssignable = spaceRecord.space_record.zone_name.value;&amp;#13;
+&amp;#13;
+  }&amp;#13;
+&amp;#13;
+ &amp;#13;
+OR&amp;#13;
+&amp;#13;
+Apply update set "Zones_Pakistan UPDATED 4_20_22"&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+util.handleOutput('When click on "Pick from Floor Plan" in Move Request form, If user is not able to select/click on space and it does not add to move request form than check if there is any error on browser console like "Uncaught ErrorType : Cannot read properties of undefined (reading value)". If yes, reach out to Nuvolo Technical Engineering team for update set involving zone usage, and install it OR update script as per Remediation mentioned in probe', 'Warning','Space');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Harshal.Sonawane@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-26 10:37:48&lt;/sys_created_on&gt;&lt;sys_id&gt;ef9b4f23dbf895105f598b0505961976&lt;/sys_id&gt;&lt;sys_mod_count&gt;8&lt;/sys_mod_count&gt;&lt;sys_name&gt;Move Request Pick from Floor Plan&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_ef9b4f23dbf895105f598b0505961976&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:34&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>625725726</payload_hash>
+        <record_name>Move Request Pick from Floor Plan</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>9acdbe9c477722106d8ba835126d4374</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6cb540000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>d2cdbe9c1e772210e7f1438093f5ae74</update_guid>
+        <update_guid_history>d2cdbe9c1e772210e7f1438093f5ae74:0,3f541ad585f8e210c3417bca6bcf5805:0,f7e5b48ce5f41250111743412840c18d:-49343414,37e5b48cb3f4125076302421c5f5238c:309738249</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Move Request Pick from Floor Plan">45a3cb1447b722106d8ba835126d43da</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:42</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>2ac8539b0a8848a88ef1ae2bed7b7b89</sys_id>
+        <sys_metadata>ef9b4f23dbf895105f598b0505961976</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Move Request Pick from Floor Plan</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_ef9b4f23dbf895105f598b0505961976</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_ef9b4f23dbf895105f598b0505961976">9acdbe9c477722106d8ba835126d4374</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

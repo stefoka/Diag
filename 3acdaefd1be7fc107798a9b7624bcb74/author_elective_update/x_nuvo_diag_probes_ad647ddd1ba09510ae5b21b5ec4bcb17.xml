@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>false</active>
+        <description>Check to see if there are users who don't have NUA records, or vice verca. </description>
+        <healthcheck_type/>
+        <name>NUA and User Match</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>Run the Fix scripts involving NUA's (Generate NUA table records, Norway - Clear / Generate Missing NUA, Nuvolo - User record- nvalid NUA ref fix). </remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideAggregate('sys_user');
+gr.addEncodedQuery('name!=NULL');
+//gr.addAggregate('count');
+gr.query();
+var users = gr.getRowCount();
+
+var gr2 = new GlideAggregate('x_nuvo_eam_user');
+gr2.addEncodedQuery('user.name!=NULL');
+//gr2.addAggregate('count');
+gr2.query();
+var NUA = gr2.getRowCount();
+
+if (users == NUA) {
+	var end;
+} else {
+	util.handleOutput('There are users within the sys_user table that do not have a Nuvolo User Attribute associated with them (x_nuvo_eam_user). Make sure every user has an NUA record by ', 'Warning','Space');
+}
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-06 20:17:22</sys_created_on>
+        <sys_id>ad647ddd1ba09510ae5b21b5ec4bcb17</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>NUA and User Match</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_ad647ddd1ba09510ae5b21b5ec4bcb17</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_ad647ddd1ba09510ae5b21b5ec4bcb17</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;false&lt;/active&gt;&lt;description&gt;Check to see if there are users who don't have NUA records, or vice verca. &lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;NUA and User Match&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Run the Fix scripts involving NUA's (Generate NUA table records, Norway - Clear / Generate Missing NUA, Nuvolo - User record- nvalid NUA ref fix). &lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideAggregate('sys_user');
+gr.addEncodedQuery('name!=NULL');
+//gr.addAggregate('count');
+gr.query();
+var users = gr.getRowCount();
+
+var gr2 = new GlideAggregate('x_nuvo_eam_user');
+gr2.addEncodedQuery('user.name!=NULL');
+//gr2.addAggregate('count');
+gr2.query();
+var NUA = gr2.getRowCount();
+
+if (users == NUA) {
+	var end;
+} else {
+	util.handleOutput('There are users within the sys_user table that do not have a Nuvolo User Attribute associated with them (x_nuvo_eam_user). Make sure every user has an NUA record by ', 'Warning','Space');
+}
+
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Michael.Piazza@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-06 20:17:22&lt;/sys_created_on&gt;&lt;sys_id&gt;ad647ddd1ba09510ae5b21b5ec4bcb17&lt;/sys_id&gt;&lt;sys_mod_count&gt;11&lt;/sys_mod_count&gt;&lt;sys_name&gt;NUA and User Match&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_ad647ddd1ba09510ae5b21b5ec4bcb17&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:28&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1688288104</payload_hash>
+        <record_name>NUA and User Match</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>06cdbe9c477722106d8ba835126d4344</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6ca5c0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>4ecdbe9ccf772210e827e2050a4e8643</update_guid>
+        <update_guid_history>4ecdbe9ccf772210e827e2050a4e8643:0,6f54d6d585f8e2107db14569a74db89c:0,dee5748c34f4125034e4c5a5b536b6b5:1431016684,1ee5748c27f41250cc039ee30244e2b4:62668715</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="NUA and User Match">45a3cb1447b722106d8ba835126d4394</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:42</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>2453774f53d645e2888a1d4e5da23884</sys_id>
+        <sys_metadata>ad647ddd1ba09510ae5b21b5ec4bcb17</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>NUA and User Match</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_ad647ddd1ba09510ae5b21b5ec4bcb17</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_ad647ddd1ba09510ae5b21b5ec4bcb17">06cdbe9c477722106d8ba835126d4344</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

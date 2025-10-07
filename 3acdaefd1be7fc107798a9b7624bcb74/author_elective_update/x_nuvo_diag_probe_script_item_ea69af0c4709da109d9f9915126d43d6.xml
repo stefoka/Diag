@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>System Properties</name>
+        <order>120</order>
+        <probe display_value="General OOB Percentage">7026eb884709da109d9f9915126d4371</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getHashedValue('sys_properties', 'type,value,name,private');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>abraham.kannampuzha@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-30 10:42:08</sys_created_on>
+        <sys_id>ea69af0c4709da109d9f9915126d43d6</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>System Properties</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_ea69af0c4709da109d9f9915126d43d6</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-02-19 09:34:45</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_es_latest_script action="DELETE">
+        <id>ea69af0c4709da109d9f9915126d43d6</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-11-28 13:17:56</sys_created_on>
+        <sys_id>d203c81f930ad250052ef5cd0bba1073</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-11-28 13:17:56</sys_updated_on>
+        <table>x_nuvo_diag_probe_script_item</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_ea69af0c4709da109d9f9915126d43d6</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;
+    &lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;
+        &lt;name&gt;System Properties&lt;/name&gt;
+        &lt;order&gt;120&lt;/order&gt;
+        &lt;probe display_value="General OOB Percentage"&gt;7026eb884709da109d9f9915126d4371&lt;/probe&gt;
+        &lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getHashedValue('sys_properties', 'type,value,name,private');]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;abraham.kannampuzha@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-09-30 10:42:08&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;ea69af0c4709da109d9f9915126d43d6&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;5&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;System Properties&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_ea69af0c4709da109d9f9915126d43d6&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2025-02-19 09:34:45&lt;/sys_updated_on&gt;
+        &lt;threshold&gt;0&lt;/threshold&gt;
+    &lt;/x_nuvo_diag_probe_script_item&gt;
+    &lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;
+        &lt;id&gt;ea69af0c4709da109d9f9915126d43d6&lt;/id&gt;
+        &lt;sys_created_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-11-28 13:17:56&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;d203c81f930ad250052ef5cd0bba1073&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-11-28 13:17:56&lt;/sys_updated_on&gt;
+        &lt;table&gt;x_nuvo_diag_probe_script_item&lt;/table&gt;
+        &lt;use_es_latest&gt;false&lt;/use_es_latest&gt;
+    &lt;/sys_es_latest_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>1101839179</payload_hash>
+        <record_name>System Properties</record_name>
+        <reverted_from/>
+        <source>8cf3925587f8e2104cc4eb183cbb355c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:37</sys_created_on>
+        <sys_id>965456d587f8e2104cc4eb183cbb3540</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19615310a740000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:37</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>525456d5ecf8e210e9271629e0ce3540</update_guid>
+        <update_guid_history>525456d5ecf8e210e9271629e0ce3540:0,5eebe27505bb16102f939a5c0d835b43:-467088501,95fa6e3573bb16105c680996e166f953:29743854,45a5e6fd087b16101947e2983bcf16f5:-467088501,9f790ff4389bd21071ad6463d0b1ebc0:-341635225,ee398bf4ae9bd21059b60af9dd18ef4f:1410583999,e0ceba514252de506bab6945559d95ec:396406994,9e03c81f4e0ad250b58291ae8911c18d:453906601,3499ab4c9b09da10ee57772574c11686:-1249962138</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="System Properties">5393c71447b722106d8ba835126d43ff</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:35</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>32fa1471fdf94da89f94140130018b90</sys_id>
+        <sys_metadata>ea69af0c4709da109d9f9915126d43d6</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>System Properties</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_ea69af0c4709da109d9f9915126d43d6</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_ea69af0c4709da109d9f9915126d43d6">965456d587f8e2104cc4eb183cbb3540</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:35</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

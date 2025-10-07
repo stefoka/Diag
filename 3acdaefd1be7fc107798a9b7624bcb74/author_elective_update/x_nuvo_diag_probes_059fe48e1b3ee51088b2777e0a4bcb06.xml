@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>When the records on the Rounds Execution Queue table are being processed, the code is looking at the record that is referenced in the "Rounds Schedule" field and expecting there to be a value in that records "Work Rounds" field.&#13;
+There were records that were missing that value. The most likely cause is that someone deleted the Work Rounds record instead of setting them to inactive.&#13;
+Since there is no value in that field, the code gets stuck and is not able to proceed to the next record.</description>
+        <healthcheck_type/>
+        <name>Empty Rounds Schedule Clinical</name>
+        <order/>
+        <probe_type/>
+        <product_version>21.1.2</product_version>
+        <remediation>The solution is to delete the records that are causing the process stick. There is no longer a Work Round associated with them so there is no way for them to process.</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+// for clinical mainentence
+var gr = new GlideRecord('x_nuvo_eam_clinical_rounds_execution_queue');
+//populates glide record if any record's rounds definition field is empty
+gr.addNullQuery('rounds_definition');
+
+if (gr.next) {
+	//if a record exists fire error
+	util.handleOutput('The Clinical Rounds Execution Queue table has records where the Rounds Schedule field are empty, this causes the shedule maintence to get stuck.Please delete the records which have an empty Rounds Schedule field or add the appropriate reference record.' , 'error','HTM Asset Management');
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>michael.peck@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-15 13:39:19</sys_created_on>
+        <sys_id>059fe48e1b3ee51088b2777e0a4bcb06</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Empty Rounds Schedule Clinical</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_059fe48e1b3ee51088b2777e0a4bcb06</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-03 13:33:24</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_es_latest_script action="DELETE">
+        <id>059fe48e1b3ee51088b2777e0a4bcb06</id>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-03 13:33:23</sys_created_on>
+        <sys_id>e986793893121e50052ef5cd0bba10ea</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-03 13:33:23</sys_updated_on>
+        <table>x_nuvo_diag_probes</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_059fe48e1b3ee51088b2777e0a4bcb06</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;When the records on the Rounds Execution Queue table are being processed, the code is looking at the record that is referenced in the "Rounds Schedule" field and expecting there to be a value in that records "Work Rounds" field.&amp;#13;
+There were records that were missing that value. The most likely cause is that someone deleted the Work Rounds record instead of setting them to inactive.&amp;#13;
+Since there is no value in that field, the code gets stuck and is not able to proceed to the next record.&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Empty Rounds Schedule Clinical&lt;/name&gt;&lt;order/&gt;&lt;probe_type/&gt;&lt;product_version&gt;21.1.2&lt;/product_version&gt;&lt;remediation&gt;The solution is to delete the records that are causing the process stick. There is no longer a Work Round associated with them so there is no way for them to process.&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+// for clinical mainentence
+var gr = new GlideRecord('x_nuvo_eam_clinical_rounds_execution_queue');
+//populates glide record if any record's rounds definition field is empty
+gr.addNullQuery('rounds_definition');
+
+if (gr.next) {
+	//if a record exists fire error
+	util.handleOutput('The Clinical Rounds Execution Queue table has records where the Rounds Schedule field are empty, this causes the shedule maintence to get stuck.Please delete the records which have an empty Rounds Schedule field or add the appropriate reference record.' , 'error','HTM Asset Management');
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;michael.peck@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-05-15 13:39:19&lt;/sys_created_on&gt;&lt;sys_id&gt;059fe48e1b3ee51088b2777e0a4bcb06&lt;/sys_id&gt;&lt;sys_mod_count&gt;13&lt;/sys_mod_count&gt;&lt;sys_name&gt;Empty Rounds Schedule Clinical&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_059fe48e1b3ee51088b2777e0a4bcb06&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-12-03 13:33:24&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;059fe48e1b3ee51088b2777e0a4bcb06&lt;/id&gt;&lt;sys_created_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2024-12-03 13:33:23&lt;/sys_created_on&gt;&lt;sys_id&gt;e986793893121e50052ef5cd0bba10ea&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-12-03 13:33:23&lt;/sys_updated_on&gt;&lt;table&gt;x_nuvo_diag_probes&lt;/table&gt;&lt;use_es_latest&gt;false&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1327712043</payload_hash>
+        <record_name>Empty Rounds Schedule Clinical</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:05</sys_created_on>
+        <sys_id>3dcd7e9c477722106d8ba835126d43a3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c6270000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:05</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>75cd7e9ce27722104b43d07f3c16baa3</update_guid>
+        <update_guid_history>75cd7e9ce27722104b43d07f3c16baa3:0,3a5496d533f8e210f8bb5502ff009245:0,a98679388a121e50d4f9575980345f6c:-414279298,a5e5f08cb9f41250c3fa5465c5f5693e:-1468624965,e1e5f08c70f41250b5f525a64dda8d3d:-42157958</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Empty Rounds Schedule Clinical">9ca38b1447b722106d8ba835126d4383</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:39</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>86f3ce0af21a48eaa1a67fd0ac5accb9</sys_id>
+        <sys_metadata>059fe48e1b3ee51088b2777e0a4bcb06</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Empty Rounds Schedule Clinical</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_059fe48e1b3ee51088b2777e0a4bcb06</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_059fe48e1b3ee51088b2777e0a4bcb06">3dcd7e9c477722106d8ba835126d43a3</sys_update_version>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:39</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

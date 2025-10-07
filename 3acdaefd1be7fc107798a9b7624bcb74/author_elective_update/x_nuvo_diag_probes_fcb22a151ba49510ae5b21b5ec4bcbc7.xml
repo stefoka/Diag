@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Issue involving maps not loading correctly if there are no zones. </description>
+        <healthcheck_type/>
+        <name>Missing Zones</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>Update set from Nuvolo SFM-9239</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+util.handleOutput('If maps are not loading in any application, and the instance does not use zones, then check with Nuvolo for the Zones_fix update set on SFM-9239', 'Warning','Space');]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-06 21:48:44</sys_created_on>
+        <sys_id>fcb22a151ba49510ae5b21b5ec4bcbc7</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Missing Zones</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_fcb22a151ba49510ae5b21b5ec4bcbc7</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:34</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_fcb22a151ba49510ae5b21b5ec4bcbc7</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Issue involving maps not loading correctly if there are no zones. &lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Missing Zones&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Update set from Nuvolo SFM-9239&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+util.handleOutput('If maps are not loading in any application, and the instance does not use zones, then check with Nuvolo for the Zones_fix update set on SFM-9239', 'Warning','Space');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Michael.Piazza@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-06 21:48:44&lt;/sys_created_on&gt;&lt;sys_id&gt;fcb22a151ba49510ae5b21b5ec4bcbc7&lt;/sys_id&gt;&lt;sys_mod_count&gt;4&lt;/sys_mod_count&gt;&lt;sys_name&gt;Missing Zones&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_fcb22a151ba49510ae5b21b5ec4bcbc7&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:34&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1597479292</payload_hash>
+        <record_name>Missing Zones</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>5ecdbe9c477722106d8ba835126d437b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6cb8a0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>96cdbe9c0d772210b297bab6ec204d7b</update_guid>
+        <update_guid_history>96cdbe9c0d772210b297bab6ec204d7b:0,ff541ad53af8e210517002a7c057dc10:0,b3e57c4cf2f41250fbbc6d7f1f4ae178:309942440,ffe57c4cecf41250dede51fe890f3476:1996553063</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Missing Zones">45a3cb1447b722106d8ba835126d43e4</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:42</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>158a7f95f4eb4700855aef6cbcf11000</sys_id>
+        <sys_metadata>fcb22a151ba49510ae5b21b5ec4bcbc7</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Missing Zones</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_fcb22a151ba49510ae5b21b5ec4bcbc7</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_fcb22a151ba49510ae5b21b5ec4bcbc7">5ecdbe9c477722106d8ba835126d437b</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

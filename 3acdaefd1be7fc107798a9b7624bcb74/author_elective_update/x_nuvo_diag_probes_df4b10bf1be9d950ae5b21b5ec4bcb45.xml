@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Probe for checking for Hierarchy breakages or mistakes that lead to maps not loading in reservations or space related applications. Should go through from the location level and make sure the string of hierarchy goes all the way to the highest level for each. &#13;
+&#13;
+Checks for floors having an associated space, checks that the space and floor are either both active or both inactive, and checks if the floor has a parent record.&#13;
+&#13;
+Need to add functionality in later releases to separate checks for spaces. </description>
+        <healthcheck_type/>
+        <name>Floor Hierarchy Check</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>If the error mesage says there is no space record, change space creation business rule to on change, edit all floors that are missing, and then turn back to on insert only. &#13;
+If the error message says there is no parent, add the correct floor site/building to the floor in question. &#13;
+If the error message says there is an issue with activity, change either the space or floor to the other's so they are the same. </remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var topLevel = util.findTopLevel();
+
+var locGR = new GlideRecord('x_nuvo_eam_floor');
+locGR.query();
+
+while (locGR.next()) {
+
+
+    if (locGR.space != null && locGR.space != '') { //this if statement is checking if the floor has a valid space record.
+        var locSpace = locGR.space;
+        var spaceGR = new GlideRecord('x_nuvo_eam_space');
+        spaceGR.get(locSpace);
+        //next section checks to see if the space and floors are both active or both inactive
+        if (locGR.active == true) {
+            if (spaceGR.active === false) {
+                util.handleOutput('The floor named:' + locGR.name + ' is active, but its corresponding space is inactive. Please change one so the records are in sync, and check the business rules related to space sync.', 'Warning', 'Space');
+            }
+        } else {
+            if (spaceGR.active == true) {
+                util.handleOutput('The floor named:' + locGR.name + ' is inactive, but its corresponding space is active. Please change one so the records are in sync, and check the business rules related to space sync.', 'Warning', 'Space');
+            }
+
+        } //end of active section
+
+        if (topLevel < 3) {
+            if (locGR.building == null || locGR.building == '') {
+                util.handleOutput('The Floor named:' + locGR.name + ' does not have a parent record, i.e. a site/building.', 'Warning', 'Space');
+            }
+        }
+    } else {
+        util.handleOutput('The floor named:' + locGR.name + ' does not have a corresponding space record.', 'Error', 'Space');
+    }
+
+
+
+
+
+} //while loop end
+	
+var spaceGR2 = new GlideRecord('x_nuvo_eam_space');
+spaceGR2.addEncodedQuery('location_level=floor');
+spaceGR2.query();
+var total = spaceGR2.getRowCount();
+
+var spaceGR3 = new GlideRecord('x_nuvo_eam_space');
+spaceGR3.addEncodedQuery('location_level=floor^document_idANYTHING');
+spaceGR3.query();
+var totalCorrect = spaceGR3.getRowCount();
+
+if ((total - totalCorrect) != 0){
+	util.handleOutput('There are space floor records without a document ID, therefore without a linked floor record.', 'Error', 'Space');
+}
+
+
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-09-01 23:04:54</sys_created_on>
+        <sys_id>df4b10bf1be9d950ae5b21b5ec4bcb45</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Floor Hierarchy Check</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_df4b10bf1be9d950ae5b21b5ec4bcb45</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_df4b10bf1be9d950ae5b21b5ec4bcb45</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Probe for checking for Hierarchy breakages or mistakes that lead to maps not loading in reservations or space related applications. Should go through from the location level and make sure the string of hierarchy goes all the way to the highest level for each. &amp;#13;
+&amp;#13;
+Checks for floors having an associated space, checks that the space and floor are either both active or both inactive, and checks if the floor has a parent record.&amp;#13;
+&amp;#13;
+Need to add functionality in later releases to separate checks for spaces. &lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Floor Hierarchy Check&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;If the error mesage says there is no space record, change space creation business rule to on change, edit all floors that are missing, and then turn back to on insert only. &amp;#13;
+If the error message says there is no parent, add the correct floor site/building to the floor in question. &amp;#13;
+If the error message says there is an issue with activity, change either the space or floor to the other's so they are the same. &lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var topLevel = util.findTopLevel();
+
+var locGR = new GlideRecord('x_nuvo_eam_floor');
+locGR.query();
+
+while (locGR.next()) {
+
+
+    if (locGR.space != null &amp;&amp; locGR.space != '') { //this if statement is checking if the floor has a valid space record.
+        var locSpace = locGR.space;
+        var spaceGR = new GlideRecord('x_nuvo_eam_space');
+        spaceGR.get(locSpace);
+        //next section checks to see if the space and floors are both active or both inactive
+        if (locGR.active == true) {
+            if (spaceGR.active === false) {
+                util.handleOutput('The floor named:' + locGR.name + ' is active, but its corresponding space is inactive. Please change one so the records are in sync, and check the business rules related to space sync.', 'Warning', 'Space');
+            }
+        } else {
+            if (spaceGR.active == true) {
+                util.handleOutput('The floor named:' + locGR.name + ' is inactive, but its corresponding space is active. Please change one so the records are in sync, and check the business rules related to space sync.', 'Warning', 'Space');
+            }
+
+        } //end of active section
+
+        if (topLevel &lt; 3) {
+            if (locGR.building == null || locGR.building == '') {
+                util.handleOutput('The Floor named:' + locGR.name + ' does not have a parent record, i.e. a site/building.', 'Warning', 'Space');
+            }
+        }
+    } else {
+        util.handleOutput('The floor named:' + locGR.name + ' does not have a corresponding space record.', 'Error', 'Space');
+    }
+
+
+
+
+
+} //while loop end
+	
+var spaceGR2 = new GlideRecord('x_nuvo_eam_space');
+spaceGR2.addEncodedQuery('location_level=floor');
+spaceGR2.query();
+var total = spaceGR2.getRowCount();
+
+var spaceGR3 = new GlideRecord('x_nuvo_eam_space');
+spaceGR3.addEncodedQuery('location_level=floor^document_idANYTHING');
+spaceGR3.query();
+var totalCorrect = spaceGR3.getRowCount();
+
+if ((total - totalCorrect) != 0){
+	util.handleOutput('There are space floor records without a document ID, therefore without a linked floor record.', 'Error', 'Space');
+}
+
+
+
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Michael.Piazza@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-09-01 23:04:54&lt;/sys_created_on&gt;&lt;sys_id&gt;df4b10bf1be9d950ae5b21b5ec4bcb45&lt;/sys_id&gt;&lt;sys_mod_count&gt;7&lt;/sys_mod_count&gt;&lt;sys_name&gt;Floor Hierarchy Check&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_df4b10bf1be9d950ae5b21b5ec4bcb45&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:28&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1582117260</payload_hash>
+        <record_name>Floor Hierarchy Check</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>cecdbe9c477722106d8ba835126d4356</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6cad90000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>0acdbe9c6e7722102e39e1db391c1b56</update_guid>
+        <update_guid_history>0acdbe9c6e7722102e39e1db391c1b56:0,ff54d6d526f8e21074a6974762f061c5:0,52e5748c6ef412503934f7dd157612d6:-1557247304,9ee5748c08f41250aac6fee13cdef0d4:1635519863</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Floor Hierarchy Check">45a3cb1447b722106d8ba835126d43b7</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:42</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>816d9143ca434285952194a790f24999</sys_id>
+        <sys_metadata>df4b10bf1be9d950ae5b21b5ec4bcb45</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Floor Hierarchy Check</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_df4b10bf1be9d950ae5b21b5ec4bcb45</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_df4b10bf1be9d950ae5b21b5ec4bcb45">cecdbe9c477722106d8ba835126d4356</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

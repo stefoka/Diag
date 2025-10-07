@@ -22,7 +22,7 @@ HealthCheckProbeUtils.prototype = {
 
 			//Exclude Import Set tables
 			if(tableName === "sys_db_object"){
-				query += "^super_class!=a59b0886db0220106f7d1cbd139619d9";
+				encodedQuery += "^super_class.label!=Import Set Row";
 			}
 
             var gr = new GlideRecord(tableName);
@@ -78,7 +78,7 @@ HealthCheckProbeUtils.prototype = {
 					
 					//Check if the Table is an Import Set Table
 					var tableGR = new GlideRecord('sys_db_object');
-					tableGR.addEncodedQuery('name=' + gr.getValue('name') + 'super_class=a59b0886db0220106f7d1cbd139619d9');
+					tableGR.addEncodedQuery('name=' + gr.getValue('name') + 'super_class.labelSTARTSWITHImport Set Row');
 					tableGR.query();
 
 					if(!tableGR.hasNext()){
@@ -265,7 +265,7 @@ HealthCheckProbeUtils.prototype = {
 
         try {
             var allProbeCategories = [];
-
+			var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
             var username = gs.getProperty('x_nuvo_diag.integration_user_name');
             var password = gs.getProperty('x_nuvo_diag.integration_user_password');
 
@@ -310,6 +310,7 @@ HealthCheckProbeUtils.prototype = {
 
                     newProbeCatGr.setValue('name', category.record.name + "");
                     newProbeCatGr.setValue('description', category.record.description + "");
+					newProbeCatGr.setValue('nuvolo_id', category.sys_id + "");
                     newProbeCatGr.setValue('active', category.record.active);
 
                     newProbeCatGr.insert();
@@ -327,8 +328,7 @@ HealthCheckProbeUtils.prototype = {
 
     pullProbes: function() {
         try {
-
-            pullProbeCategories();
+            this.pullProbeCategories();
 
             var probeTypes = [{
                     label: "Feature Usage",
@@ -346,10 +346,10 @@ HealthCheckProbeUtils.prototype = {
                     label: "Upgrade Conflicts",
                     name: "upgrade_conflicts"
                 },
-                {
-                    label: "all diag probes",
-                    name: "all_diag_probes"
-                }
+                // {
+                //     label: "all diag probes",
+                //     name: "all_diag_probes"
+                // }
             ];
 
             // GET Client's version of Connected Workplace
@@ -360,8 +360,10 @@ HealthCheckProbeUtils.prototype = {
 
             cw_versionGR.query();
 
+
             if (cw_versionGR.next()) {
-                cw_version = cw_versionGR.version.toString().split('.')[0] + '';
+				var cw_version_parts = cw_versionGR.version.toString().split('.');
+                cw_version = cw_version_parts[0] + '.' + cw_version_parts[1];
             }
 
             var inst = gs.getProperty('x_nuvo_diag.nuvolo_healthcheck_instance_name');
@@ -386,12 +388,12 @@ HealthCheckProbeUtils.prototype = {
                 if (probeType === "upgrade_conflicts" || probeType === "ootb") {
                     query = encodeURIComponent('active=true^healthcheck_type=' + probeType);
                 } else if (probeType === "data_integrity" || probeType === "feature_usage") {
-                    query = encodeURIComponent('active=true^product_versionSTARTSWITH' + cw_version + '^healthcheck_type=' + probeType);
+					query = encodeURIComponent('active=true^product_versionSTARTSWITH' + cw_version + '^healthcheck_type=' + probeType);
                 }
+
                 // else {
                 // 	query = encodeURIComponent('tool=diagnostic'); // Gets all other DIAG Probes
                 // }
-
 
                 var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_probes?sysparm_query=' + query;
 
@@ -408,8 +410,8 @@ HealthCheckProbeUtils.prototype = {
                 if (httpStatus == 200) {
                     //GET OLD PROBE SCRIPT ITEMS
                     var probeItemsToDelete = this.getOldProbeItemsToDelete(probeType);
-
-                    //GET OLD PROBES
+                    
+					//GET OLD PROBES
                     var probesToDelete = this.getOldProbesToDelete(probeType);
 
                     var result = JSON.parse(responseBody).result;
@@ -433,12 +435,17 @@ HealthCheckProbeUtils.prototype = {
                     //CREATE ALL NEW PROBES IN THE CLIENT FOR THE CURRENT PROBE TYPE
                     for (var k = 0; k < allProbes.length; k++) {
                         var probe = allProbes[k];
-
+						
                         var newProbeGr = new GlideRecord('x_nuvo_diag_probes');
                         newProbeGr.initialize();
 
                         newProbeGr.active = probe.record.active;
-                        newProbeGr.probe_type = probe.record.probe_type.value;
+						
+						var probeCatGR = new GlideRecord('x_nuvo_diag_probe_type');
+						if(probeCatGR.get('nuvolo_id', probe.record.probe_category.value + "")){
+							newProbeGr.probe_type = probeCatGR.getUniqueValue();
+						}
+
                         newProbeGr.healthcheck_type = probe.record.healthcheck_type;
                         newProbeGr.description = probe.record.description;
                         newProbeGr.name = probe.record.name;
@@ -505,7 +512,7 @@ HealthCheckProbeUtils.prototype = {
             var probeScriptItems = [];
 
             var query = encodeURIComponent('probe.sys_idIN' + probes);
-            var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_diag_probe_script_item?sysparm_query=' + query;
+            var apiEndpoint = 'https://' + inst + '.service-now.com/api/now/table/x_nuvo_health_scan_probe_script_item?sysparm_query=' + query;
 
             var username = gs.getProperty('x_nuvo_diag.integration_user_name');
             var password = gs.getProperty('x_nuvo_diag.integration_user_password');
@@ -628,14 +635,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>134</sys_mod_count>
+        <sys_mod_count>161</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>protected</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-08-27 07:10:37</sys_updated_on>
+        <sys_updated_on>2025-09-18 11:55:22</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>

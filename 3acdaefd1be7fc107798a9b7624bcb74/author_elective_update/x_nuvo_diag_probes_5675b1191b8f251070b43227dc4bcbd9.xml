@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>For the Scheduled Job "Nuvolo Schedule Recurring Maintenances", the OOB time to run is sometime around 11pm. In order for the job to work, it has to run early in the morning, because the script checks for work orders to be generated "Today".</description>
+        <healthcheck_type/>
+        <name>SM WO Generation - Lab</name>
+        <order/>
+        <probe_type/>
+        <product_version/>
+        <remediation>Change the scheduled job named "Nuvolo Schedule Recurring Maintenances", and set the runtime to early in the AM. </remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('sysauto_script');
+gr.addQuery('name','Nuvolo Schedule Recurring Maintenances');
+gr.addActiveQuery();
+gr.query();
+
+if (gr.next()){ //check the time, and see if it's in the range we want
+//1970-01-02 07:00:00
+	var sJTime = gr.getDisplayValue('run_time');
+	var hours = sJTime.split(':')[0]; //we have a number in string form
+	var hoursInt = parseInt(hours); //int versions of hours
+
+if (hoursInt < 6) {
+	//do nothing
+} else {
+	util.handleOutput('In the scheduled Job "Nuvolo Schedule Recurring Maintenances", the time it is set to run locally is not in the am of the required day. Please change the run_time to be between 1 and 3 am.' , 'Warning','GxP Asset Management');
+}
+
+} else {
+	util.handleOutput('The scheduled job named "Nuvolo Schedule Recurring Maintenances", is either missing or inactive. Please activate it or request it from Nuvolo Support if scheduled maintenance fucntionality is to be used.' , 'Warning','GxP Asset Management');
+}
+]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-25 20:59:24</sys_created_on>
+        <sys_id>5675b1191b8f251070b43227dc4bcbd9</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>SM WO Generation - Lab</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_5675b1191b8f251070b43227dc4bcbd9</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:26</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_5675b1191b8f251070b43227dc4bcbd9</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;For the Scheduled Job "Nuvolo Schedule Recurring Maintenances", the OOB time to run is sometime around 11pm. In order for the job to work, it has to run early in the morning, because the script checks for work orders to be generated "Today".&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;SM WO Generation - Lab&lt;/name&gt;&lt;order/&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Change the scheduled job named "Nuvolo Schedule Recurring Maintenances", and set the runtime to early in the AM. &lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('sysauto_script');
+gr.addQuery('name','Nuvolo Schedule Recurring Maintenances');
+gr.addActiveQuery();
+gr.query();
+
+if (gr.next()){ //check the time, and see if it's in the range we want
+//1970-01-02 07:00:00
+	var sJTime = gr.getDisplayValue('run_time');
+	var hours = sJTime.split(':')[0]; //we have a number in string form
+	var hoursInt = parseInt(hours); //int versions of hours
+
+if (hoursInt &lt; 6) {
+	//do nothing
+} else {
+	util.handleOutput('In the scheduled Job "Nuvolo Schedule Recurring Maintenances", the time it is set to run locally is not in the am of the required day. Please change the run_time to be between 1 and 3 am.' , 'Warning','GxP Asset Management');
+}
+
+} else {
+	util.handleOutput('The scheduled job named "Nuvolo Schedule Recurring Maintenances", is either missing or inactive. Please activate it or request it from Nuvolo Support if scheduled maintenance fucntionality is to be used.' , 'Warning','GxP Asset Management');
+}
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Michael.Piazza@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-05-25 20:59:24&lt;/sys_created_on&gt;&lt;sys_id&gt;5675b1191b8f251070b43227dc4bcbd9&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;SM WO Generation - Lab&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_5675b1191b8f251070b43227dc4bcbd9&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:26&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1251572711</payload_hash>
+        <record_name>SM WO Generation - Lab</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>02cd7e9c477722106d8ba835126d43ee</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c8080000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>4acd7e9c6c772210d26d8760aa9803ed</update_guid>
+        <update_guid_history>4acd7e9c6c772210d26d8760aa9803ed:0,4f5496d566f8e210dff3ad98cd07eee0:0,b5e5348cc9f41250d8ae02f13b32c1a9:-2070338681,f1e5348c9cf412507a9d8feca9a599a8:1895326790</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="SM WO Generation - Lab">aca38b1447b722106d8ba835126d43f6</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:40</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>abb8b6091ef845c8a140f4a44ac18640</sys_id>
+        <sys_metadata>5675b1191b8f251070b43227dc4bcbd9</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SM WO Generation - Lab</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_5675b1191b8f251070b43227dc4bcbd9</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_5675b1191b8f251070b43227dc4bcbd9">02cd7e9c477722106d8ba835126d43ee</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Useful Life != Model Useful Life</name>
+        <order/>
+        <probe display_value="Facilities Devices">cb4d549247fcd2109d9f9915126d4300</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_devices', 'model_name.useful_lifeNSAMEASmodel_name.useful_life');
+
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-09-26 10:59:39</sys_created_on>
+        <sys_id>e63747b693b0d610052ef5cd0bba103f</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Useful Life != Model Useful Life</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_e63747b693b0d610052ef5cd0bba103f</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-05 08:06:16</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_es_latest_script action="DELETE">
+        <id>e63747b693b0d610052ef5cd0bba103f</id>
+        <sys_created_by>Kaloyan.Yanakov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-10-18 11:02:04</sys_created_on>
+        <sys_id>54ca108293d51e10052ef5cd0bba1052</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Kaloyan.Yanakov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-10-18 11:02:04</sys_updated_on>
+        <table>x_nuvo_diag_probe_script_item</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_e63747b693b0d610052ef5cd0bba103f</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;
+    &lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;
+        &lt;name&gt;Useful Life != Model Useful Life&lt;/name&gt;
+        &lt;order/&gt;
+        &lt;probe display_value="Facilities Devices"&gt;cb4d549247fcd2109d9f9915126d4300&lt;/probe&gt;
+        &lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_devices', 'model_name.useful_lifeNSAMEASmodel_name.useful_life');
+
+
+]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-09-26 10:59:39&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;e63747b693b0d610052ef5cd0bba103f&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Useful Life != Model Useful Life&lt;/sys_name&gt;
+        &lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_e63747b693b0d610052ef5cd0bba103f&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-12-05 08:06:16&lt;/sys_updated_on&gt;
+        &lt;threshold&gt;0&lt;/threshold&gt;
+    &lt;/x_nuvo_diag_probe_script_item&gt;
+    &lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;
+        &lt;id&gt;e63747b693b0d610052ef5cd0bba103f&lt;/id&gt;
+        &lt;sys_created_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2024-10-18 11:02:04&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;54ca108293d51e10052ef5cd0bba1052&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;Kaloyan.Yanakov@nuvolo.com&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2024-10-18 11:02:04&lt;/sys_updated_on&gt;
+        &lt;table&gt;x_nuvo_diag_probe_script_item&lt;/table&gt;
+        &lt;use_es_latest&gt;false&lt;/use_es_latest&gt;
+    &lt;/sys_es_latest_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-2021769799</payload_hash>
+        <record_name>Useful Life != Model Useful Life</record_name>
+        <reverted_from/>
+        <source>8cf3925587f8e2104cc4eb183cbb355c</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-04-08 11:37:37</sys_created_on>
+        <sys_id>0a5416d587f8e2104cc4eb183cbb35fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1961531089c0000001</sys_recorded_at>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-04-08 11:37:37</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>c25416d568f8e210df41cbd843578ffc</update_guid>
+        <update_guid_history>c25416d568f8e210df41cbd843578ffc:0,89de7e51e252de50e85624d1fcb9347d:823272227,58cadc42ccd51e104ace3b794843b344:1050720637,93574fb6c5b0d610654180b3ebcc2344:42854148,6a3747b6c5b0d610a8a24825e62d0b40:-1947277699</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Useful Life != Model Useful Life">fddd76dc477722106d8ba835126d4352</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:21</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>1dd6fa7df55d47c49636292261be5a10</sys_id>
+        <sys_metadata>e63747b693b0d610052ef5cd0bba103f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Useful Life != Model Useful Life</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_e63747b693b0d610052ef5cd0bba103f</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_e63747b693b0d610052ef5cd0bba103f">0a5416d587f8e2104cc4eb183cbb35fc</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:21</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

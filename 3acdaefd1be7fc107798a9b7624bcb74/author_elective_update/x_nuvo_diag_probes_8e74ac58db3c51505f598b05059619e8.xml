@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Unit is not converted while transferring DXF file. It is properly defined in DXF file, but incorrect calculations are done on Nuvolo end. OR Incorrect unit is shown on CAD Record Details form.&#13;
+&#13;
+Check Unit of Conversion table. Make sure To and From units are properly defined with correct formulae.&#13;
+&#13;
+Navigate to x_nuvo_eam_unit_of_measure.LIST to get list of all units.&#13;
+&#13;
+CAD record details area unit --&gt; what it will be translated to (TO)&#13;
+CAD Record detail header staging related list will tell you what the unit is from the file (FROM) ==&gt; requires CAD code to unit convertion.&#13;
+&#13;
+This probe is to ensure we have a unit of measure record in x_nuvo_eam_unit_of_measure that has this FROM TO combination.&#13;
+&#13;
+Default drawing units for AutoCAD DesignCenter blocks:&#13;
+0 = Unitless; 1 = Inches; 2 = Feet; 3 = Miles; 4 = Millimeters;&#13;
+5 = Centimeters; 6 = Meters; 7 = Kilometers; 8 = Microinches;&#13;
+9 = Mils; 10 = Yards; 11 = Angstroms; 12 = Nanometers;&#13;
+13 = Microns; 14 = Decimeters; 15 = Decameters;&#13;
+16 = Hectometers; 17 = Gigameters; 18 = Astronomical&#13;
+units;&#13;
+19 = Light years; 20 = Parsec</description>
+        <healthcheck_type/>
+        <name>Ensure DXF Unit Conversion Exist</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation/>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var unitArray = ["0",'unitless',"1","inch","2","feet","3","mile","4","milli",5,"centi",6,"meter",7,"kilo",8,"micro",9,"mils",10,"yard",11,"angstrom",12,"nano",13,"micron",14,"deci",15,"deca",16,"hecto",17,"giga",18,"astro",19,"light",20,"parsec"];
+
+
+var crdGR = new GlideRecord('x_nuvo_eam_dxf_record_details');
+crdGR.addEncodedQuery('sys_created_on>=javascript:gs.beginningOfLast30Days()^status=space_create_processed');
+crdGR.query();
+
+while (crdGR.next()){
+	var toUnit = crdGR.area_unit;
+	var dxfGR = new GlideRecord('x_nuvo_eam_dxf_header_staging');
+	dxfGR.addQuery('dxf_record_reference',crdGR.sys_id);
+	dxfGR.addQuery('graphical_object','$INSUNITS');
+	dxfGR.query();
+	dxfGR.next();
+	var fromUnit = dxfGR.variable_value;
+	if (unitArray.indexOf(fromUnit) != -1){
+		var i = unitArray.findIndex(fromUnit);
+		i +=1;
+		fromUnit = unitArray[i];
+	} else {
+		util.handleOutput('There is no Unit Conversion Definition for the expected conversion for cad record detail:' + crdGR.sys_id + '. Please add a Unit Conversion for the expected units.', 'Warning', 'Cad Extension');
+	}
+	var convGR = new GlideRecord('x_nuvo_eam_unit_conversion_definitions');
+	convGR.addEncodedQuery('from.unit_type=861229440f8bd200b7fe85ace1050e75^from.nameLIKE' + fromUnit + '^to.nameLIKE' + toUnit);
+	convGR.addActiveQuery();
+	convGR.query();
+	if (!convGR.next()){
+		util.handleOutput('There is no Unit Conversion Definition for the expected conversion for cad record detail:' + crdGR.sys_id + '. Please add a Unit Conversion for the expected units.', 'Warning', 'Cad Extension');
+	}
+	
+}
+// if (convGR.getRowCount() < 130) {
+// util.handleOutput('Ensure that the x_nuvo_eam_unit_conversion_definitions table is full, with all 130 records for converting dxf units properly installed.', 'Warning', 'Cad Extension');
+// }
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 20:01:26</sys_created_on>
+        <sys_id>8e74ac58db3c51505f598b05059619e8</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>Ensure DXF Unit Conversion Exist</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_8e74ac58db3c51505f598b05059619e8</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_8e74ac58db3c51505f598b05059619e8</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Unit is not converted while transferring DXF file. It is properly defined in DXF file, but incorrect calculations are done on Nuvolo end. OR Incorrect unit is shown on CAD Record Details form.&amp;#13;
+&amp;#13;
+Check Unit of Conversion table. Make sure To and From units are properly defined with correct formulae.&amp;#13;
+&amp;#13;
+Navigate to x_nuvo_eam_unit_of_measure.LIST to get list of all units.&amp;#13;
+&amp;#13;
+CAD record details area unit --&amp;gt; what it will be translated to (TO)&amp;#13;
+CAD Record detail header staging related list will tell you what the unit is from the file (FROM) ==&amp;gt; requires CAD code to unit convertion.&amp;#13;
+&amp;#13;
+This probe is to ensure we have a unit of measure record in x_nuvo_eam_unit_of_measure that has this FROM TO combination.&amp;#13;
+&amp;#13;
+Default drawing units for AutoCAD DesignCenter blocks:&amp;#13;
+0 = Unitless; 1 = Inches; 2 = Feet; 3 = Miles; 4 = Millimeters;&amp;#13;
+5 = Centimeters; 6 = Meters; 7 = Kilometers; 8 = Microinches;&amp;#13;
+9 = Mils; 10 = Yards; 11 = Angstroms; 12 = Nanometers;&amp;#13;
+13 = Microns; 14 = Decimeters; 15 = Decameters;&amp;#13;
+16 = Hectometers; 17 = Gigameters; 18 = Astronomical&amp;#13;
+units;&amp;#13;
+19 = Light years; 20 = Parsec&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Ensure DXF Unit Conversion Exist&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation/&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var unitArray = ["0",'unitless',"1","inch","2","feet","3","mile","4","milli",5,"centi",6,"meter",7,"kilo",8,"micro",9,"mils",10,"yard",11,"angstrom",12,"nano",13,"micron",14,"deci",15,"deca",16,"hecto",17,"giga",18,"astro",19,"light",20,"parsec"];
+
+
+var crdGR = new GlideRecord('x_nuvo_eam_dxf_record_details');
+crdGR.addEncodedQuery('sys_created_on&gt;=javascript:gs.beginningOfLast30Days()^status=space_create_processed');
+crdGR.query();
+
+while (crdGR.next()){
+	var toUnit = crdGR.area_unit;
+	var dxfGR = new GlideRecord('x_nuvo_eam_dxf_header_staging');
+	dxfGR.addQuery('dxf_record_reference',crdGR.sys_id);
+	dxfGR.addQuery('graphical_object','$INSUNITS');
+	dxfGR.query();
+	dxfGR.next();
+	var fromUnit = dxfGR.variable_value;
+	if (unitArray.indexOf(fromUnit) != -1){
+		var i = unitArray.findIndex(fromUnit);
+		i +=1;
+		fromUnit = unitArray[i];
+	} else {
+		util.handleOutput('There is no Unit Conversion Definition for the expected conversion for cad record detail:' + crdGR.sys_id + '. Please add a Unit Conversion for the expected units.', 'Warning', 'Cad Extension');
+	}
+	var convGR = new GlideRecord('x_nuvo_eam_unit_conversion_definitions');
+	convGR.addEncodedQuery('from.unit_type=861229440f8bd200b7fe85ace1050e75^from.nameLIKE' + fromUnit + '^to.nameLIKE' + toUnit);
+	convGR.addActiveQuery();
+	convGR.query();
+	if (!convGR.next()){
+		util.handleOutput('There is no Unit Conversion Definition for the expected conversion for cad record detail:' + crdGR.sys_id + '. Please add a Unit Conversion for the expected units.', 'Warning', 'Cad Extension');
+	}
+	
+}
+// if (convGR.getRowCount() &lt; 130) {
+// util.handleOutput('Ensure that the x_nuvo_eam_unit_conversion_definitions table is full, with all 130 records for converting dxf units properly installed.', 'Warning', 'Cad Extension');
+// }
+
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;jake.ye@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-15 20:01:26&lt;/sys_created_on&gt;&lt;sys_id&gt;8e74ac58db3c51505f598b05059619e8&lt;/sys_id&gt;&lt;sys_mod_count&gt;16&lt;/sys_mod_count&gt;&lt;sys_name&gt;Ensure DXF Unit Conversion Exist&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_8e74ac58db3c51505f598b05059619e8&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:28&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1941662920</payload_hash>
+        <record_name>Ensure DXF Unit Conversion Exist</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>cecdbe9c477722106d8ba835126d4328</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c9a20000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>0acdbe9cbe7722101542170733026528</update_guid>
+        <update_guid_history>0acdbe9cbe7722101542170733026528:0,9354d6d50ef8e2107d3ca771230a0c62:0,d2e5748cedf4125081ae7111956e3ca2:-1716587150,12e5748c30f412507eec57f5233ac1a1:-1626510287</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Ensure DXF Unit Conversion Exist">74a3cb1447b722106d8ba835126d4367</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:41</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>137ff0e513e044a0833936c6a382a400</sys_id>
+        <sys_metadata>8e74ac58db3c51505f598b05059619e8</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Ensure DXF Unit Conversion Exist</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_8e74ac58db3c51505f598b05059619e8</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_8e74ac58db3c51505f598b05059619e8">cecdbe9c477722106d8ba835126d4328</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

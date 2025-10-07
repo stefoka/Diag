@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>When you have completed the install of Nuvolo application, verify the following number of components in the instance vs what mentioned in Installation docs of installed scope application :&#13;
+&#13;
+Tables&#13;
+Business Rules&#13;
+Client Scripts&#13;
+Script Includes&#13;
+UI Scripts&#13;
+UI Pages&#13;
+UI Macros&#13;
+Fix Scripts&#13;
+UI Policies&#13;
+Script Actions&#13;
+UI Actions&#13;
+</description>
+        <healthcheck_type/>
+        <name>Component verification of installed app</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>Verify with count mentioned on installation doc. If found mismatching(spefically count less than mentioned in doc in that case only) reach out to nuvolo technnical engineering team.</remediation>
+        <script><![CDATA[// Mobile Platform (x_nuvo_mobile)
+// Nuvolo Platform Services (x_nuvo_nps)
+// Connected Workplace (x_nuvo_eam)
+// Space (x_nuvo_sfm)
+var util = new x_nuvo_diag.DiagnosticUtil();
+var scopeApp = [
+
+    {
+        "scope": "x_nuvo_sfm",
+        "scope_name": "Space"
+    },
+    {
+        "scope": "x_nuvo_eam",
+        "scope_name": "Connected workplace"
+    },
+    {
+        "scope": "x_nuvo_mobile",
+        "scope_name": "Mobile Platform"
+    },
+    {
+        "scope": "x_nuvo_nps",
+        "scope_name": "Nuvolo Platform Services"
+    }
+
+];
+
+var components = [{
+        "c_class": "Table",
+        "class_name": "sys_db_object"
+    },
+    {
+        "c_class": "Business Rule",
+        "class_name": "sys_script"
+    },
+    {
+        "c_class": "Client Script",
+        "class_name": "sys_script_client"
+    },
+    {
+        "c_class": "Script Include",
+        "class_name": "sys_script_include"
+    },
+    {
+        "c_class": "UI Script",
+        "class_name": "sys_ui_script"
+    },
+    {
+        "c_class": "UI Page",
+        "class_name": "sys_ui_page"
+    },
+    //{ "class" : "UI Macro", "class_name" : "sys_script"},
+    {
+        "c_class": "Fix Script",
+        "class_name": "sys_script_fix"
+    },
+    {
+        "c_class": "UI Policy",
+        "class_name": "sys_ui_policy"
+    },
+    {
+        "c_class": "Script Action",
+        "class_name": "sysevent_script_action"
+    },
+    {
+        "c_class": "UI Action",
+        "class_name": "sys_ui_action"
+    },
+
+];
+
+//gs.info("component==:" + components[0].class);
+
+var noOfApps = Object.keys(scopeApp).length;
+var noOfComponents = Object.keys(components).length;
+
+var index = 0;
+
+while (index < noOfApps) {
+
+    var checkApp = new GlideRecord("sys_app");
+    checkApp.addQuery("scope", scopeApp[index].scope);
+    checkApp.addQuery("active", true);
+    checkApp.query();
+
+    if (checkApp.getRowCount()) {
+        var scope_name = scopeApp[index].scope;
+        //gs.info("Application scope : " + scopeApp[index].scope_name);
+
+        var cindex = 0;
+        while (cindex < noOfComponents) {
+
+            var checkComponent = new GlideRecord("sys_metadata");
+            checkComponent.addEncodedQuery("sys_class_name=" + components[cindex].class_name + "^sys_scope.scope=" + scope_name);
+            checkComponent.query();
+
+            util.handleOutput(components[cindex].c_class + " : " + checkComponent.getRowCount(), 'Information', 'ServiceNow');
+            cindex++;
+
+        }
+
+    }
+
+    index++;
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Harshal.Sonawane@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-08-01 09:10:42</sys_created_on>
+        <sys_id>d052bd65dbc59d105f598b05059619ce</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>Component verification of installed app</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_d052bd65dbc59d105f598b05059619ce</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_d052bd65dbc59d105f598b05059619ce</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;When you have completed the install of Nuvolo application, verify the following number of components in the instance vs what mentioned in Installation docs of installed scope application :&amp;#13;
+&amp;#13;
+Tables&amp;#13;
+Business Rules&amp;#13;
+Client Scripts&amp;#13;
+Script Includes&amp;#13;
+UI Scripts&amp;#13;
+UI Pages&amp;#13;
+UI Macros&amp;#13;
+Fix Scripts&amp;#13;
+UI Policies&amp;#13;
+Script Actions&amp;#13;
+UI Actions&amp;#13;
+&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Component verification of installed app&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Verify with count mentioned on installation doc. If found mismatching(spefically count less than mentioned in doc in that case only) reach out to nuvolo technnical engineering team.&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[// Mobile Platform (x_nuvo_mobile)
+// Nuvolo Platform Services (x_nuvo_nps)
+// Connected Workplace (x_nuvo_eam)
+// Space (x_nuvo_sfm)
+var util = new x_nuvo_diag.DiagnosticUtil();
+var scopeApp = [
+
+    {
+        "scope": "x_nuvo_sfm",
+        "scope_name": "Space"
+    },
+    {
+        "scope": "x_nuvo_eam",
+        "scope_name": "Connected workplace"
+    },
+    {
+        "scope": "x_nuvo_mobile",
+        "scope_name": "Mobile Platform"
+    },
+    {
+        "scope": "x_nuvo_nps",
+        "scope_name": "Nuvolo Platform Services"
+    }
+
+];
+
+var components = [{
+        "c_class": "Table",
+        "class_name": "sys_db_object"
+    },
+    {
+        "c_class": "Business Rule",
+        "class_name": "sys_script"
+    },
+    {
+        "c_class": "Client Script",
+        "class_name": "sys_script_client"
+    },
+    {
+        "c_class": "Script Include",
+        "class_name": "sys_script_include"
+    },
+    {
+        "c_class": "UI Script",
+        "class_name": "sys_ui_script"
+    },
+    {
+        "c_class": "UI Page",
+        "class_name": "sys_ui_page"
+    },
+    //{ "class" : "UI Macro", "class_name" : "sys_script"},
+    {
+        "c_class": "Fix Script",
+        "class_name": "sys_script_fix"
+    },
+    {
+        "c_class": "UI Policy",
+        "class_name": "sys_ui_policy"
+    },
+    {
+        "c_class": "Script Action",
+        "class_name": "sysevent_script_action"
+    },
+    {
+        "c_class": "UI Action",
+        "class_name": "sys_ui_action"
+    },
+
+];
+
+//gs.info("component==:" + components[0].class);
+
+var noOfApps = Object.keys(scopeApp).length;
+var noOfComponents = Object.keys(components).length;
+
+var index = 0;
+
+while (index &lt; noOfApps) {
+
+    var checkApp = new GlideRecord("sys_app");
+    checkApp.addQuery("scope", scopeApp[index].scope);
+    checkApp.addQuery("active", true);
+    checkApp.query();
+
+    if (checkApp.getRowCount()) {
+        var scope_name = scopeApp[index].scope;
+        //gs.info("Application scope : " + scopeApp[index].scope_name);
+
+        var cindex = 0;
+        while (cindex &lt; noOfComponents) {
+
+            var checkComponent = new GlideRecord("sys_metadata");
+            checkComponent.addEncodedQuery("sys_class_name=" + components[cindex].class_name + "^sys_scope.scope=" + scope_name);
+            checkComponent.query();
+
+            util.handleOutput(components[cindex].c_class + " : " + checkComponent.getRowCount(), 'Information', 'ServiceNow');
+            cindex++;
+
+        }
+
+    }
+
+    index++;
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Harshal.Sonawane@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-08-01 09:10:42&lt;/sys_created_on&gt;&lt;sys_id&gt;d052bd65dbc59d105f598b05059619ce&lt;/sys_id&gt;&lt;sys_mod_count&gt;24&lt;/sys_mod_count&gt;&lt;sys_name&gt;Component verification of installed app&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_d052bd65dbc59d105f598b05059619ce&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:28&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-773247701</payload_hash>
+        <record_name>Component verification of installed app</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>8acdbe9c477722106d8ba835126d4352</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6cabc0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>c2cdbe9c64772210429339d7fe7f2d52</update_guid>
+        <update_guid_history>c2cdbe9c64772210429339d7fe7f2d52:0,b754d6d5ddf8e210d6239305f5b00ebf:0,d2e5748c88f41250a84c33f277e631ce:1263293726,12e5748ceef4125021dd7e938e1c0ecd:1943512029</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Component verification of installed app">45a3cb1447b722106d8ba835126d43ad</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:42</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>30cf9c3078b54e908af5f8b57641d240</sys_id>
+        <sys_metadata>d052bd65dbc59d105f598b05059619ce</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Component verification of installed app</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_d052bd65dbc59d105f598b05059619ce</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_d052bd65dbc59d105f598b05059619ce">8acdbe9c477722106d8ba835126d4352</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>ACLs</name>
+        <order>10</order>
+        <probe display_value="General OOB Percentage">7026eb884709da109d9f9915126d4371</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getHashedValue(
+    'sys_security_acl',
+    'name,active,condition,script',
+    ['operation!=e66cf897b7300210240b06dd1e11a9fd']
+);
+]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-09 14:24:42</sys_created_on>
+        <sys_id>e7cbb8b293ded210052ef5cd0bba10af</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>ACLs</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_e7cbb8b293ded210052ef5cd0bba10af</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-27 06:52:36</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_es_latest_script action="DELETE">
+        <id>e7cbb8b293ded210052ef5cd0bba10af</id>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2024-12-09 14:25:19</sys_created_on>
+        <sys_id>64fb387693ded210052ef5cd0bba109b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-09 14:25:19</sys_updated_on>
+        <table>x_nuvo_diag_probe_script_item</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_e7cbb8b293ded210052ef5cd0bba10af</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;&lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;&lt;name&gt;ACLs&lt;/name&gt;&lt;order&gt;10&lt;/order&gt;&lt;probe display_value="General OOB Percentage"&gt;7026eb884709da109d9f9915126d4371&lt;/probe&gt;&lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getHashedValue(
+    'sys_security_acl',
+    'name,active,condition,script',
+    ['operation!=e66cf897b7300210240b06dd1e11a9fd']
+);
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2024-12-09 14:24:42&lt;/sys_created_on&gt;&lt;sys_id&gt;e7cbb8b293ded210052ef5cd0bba10af&lt;/sys_id&gt;&lt;sys_mod_count&gt;7&lt;/sys_mod_count&gt;&lt;sys_name&gt;ACLs&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_e7cbb8b293ded210052ef5cd0bba10af&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-08-27 06:52:36&lt;/sys_updated_on&gt;&lt;threshold&gt;0&lt;/threshold&gt;&lt;/x_nuvo_diag_probe_script_item&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;e7cbb8b293ded210052ef5cd0bba10af&lt;/id&gt;&lt;sys_created_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2024-12-09 14:25:19&lt;/sys_created_on&gt;&lt;sys_id&gt;64fb387693ded210052ef5cd0bba109b&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-12-09 14:25:19&lt;/sys_updated_on&gt;&lt;table&gt;x_nuvo_diag_probe_script_item&lt;/table&gt;&lt;use_es_latest&gt;false&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-7832584</payload_hash>
+        <record_name>ACLs</record_name>
+        <reverted_from/>
+        <source>a96126e093d7ea90052ef5cd0bba107e</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-08-27 06:52:36</sys_created_on>
+        <sys_id>b54b5ba687e3a2104cc4eb183cbb35d1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>198ea4cc4540000001</sys_recorded_at>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-08-27 06:52:36</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>f94b5ba664e3a2105615c5f7ee13e2d0</update_guid>
+        <update_guid_history>f94b5ba664e3a2105615c5f7ee13e2d0:-7832584,16f937967be7e6505a32bd64edb9deae:842674953,525456d507f8e2102ea736cd7925702a:0,0cbb6a7521bb16104819eefc80929b51:-650902936,569be275e9bb1610ddf1b2011bc61db6:1497573800,ddfa62b1c8bb1610e434c71af4becc82:156660235,04f4eabdc97b16106cf372b826190745:-650902936,213e2bcf8ddf5610913622aa36e10183:-1556036613,ff590ff41f9bd210293b0a641def64f3:1904294730,ee398bf41d9bd2103617d7216e97c33d:1090917377,abcb7476cfded210417e565bc2bba74d:1665784681</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="ACLs">9393c71447b722106d8ba835126d43fa</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:35</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>1fba6d2eca4a46a59005b3a8737f7329</sys_id>
+        <sys_metadata>e7cbb8b293ded210052ef5cd0bba10af</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ACLs</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_e7cbb8b293ded210052ef5cd0bba10af</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_e7cbb8b293ded210052ef5cd0bba10af">b54b5ba687e3a2104cc4eb183cbb35d1</sys_update_version>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:35</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

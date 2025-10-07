@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Business Rules</name>
+        <order>110</order>
+        <probe display_value="General OOB Percentage">3a63ec4d47f7a2106d8ba835126d43b4</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getHashedValue('sys_script', 'script,active,name,when,order,action_insert,action_update,action_delete,action_query,filter_condition,role_conditions,condition');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-03 11:54:07</sys_created_on>
+        <sys_id>7e63ec4d47f7a2106d8ba835126d43bc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Business Rules</sys_name>
+        <sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan">3f4a67a593241a10052ef5cd0bba10f0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_7e63ec4d47f7a2106d8ba835126d43bc</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 11:54:07</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_7e63ec4d47f7a2106d8ba835126d43bc</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;&lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;&lt;name&gt;Business Rules&lt;/name&gt;&lt;order&gt;110&lt;/order&gt;&lt;probe display_value="General OOB Percentage"&gt;3a63ec4d47f7a2106d8ba835126d43b4&lt;/probe&gt;&lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getHashedValue('sys_script', 'script,active,name,when,order,action_insert,action_update,action_delete,action_query,filter_condition,role_conditions,condition');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;&lt;sys_created_by&gt;system&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-09-03 11:54:07&lt;/sys_created_on&gt;&lt;sys_id&gt;7e63ec4d47f7a2106d8ba835126d43bc&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Business Rules&lt;/sys_name&gt;&lt;sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan"&gt;3f4a67a593241a10052ef5cd0bba10f0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_7e63ec4d47f7a2106d8ba835126d43bc&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;system&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-09-03 11:54:07&lt;/sys_updated_on&gt;&lt;threshold&gt;0&lt;/threshold&gt;&lt;/x_nuvo_diag_probe_script_item&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-273799628</payload_hash>
+        <record_name>Business Rules</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-03 11:54:07</sys_created_on>
+        <sys_id>3a63ec4d47f7a2106d8ba835126d43be</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1990f6d551c0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 11:54:07</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>fa63ec4d5af7a210572a7ef63e5d13bd</update_guid>
+        <update_guid_history>fa63ec4d5af7a210572a7ef63e5d13bd:-273799628</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Business Rules">f2d3240993f32210052ef5cd0bba10ee</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-03 11:56:02</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>664c256152374498a013450968b8d859</sys_id>
+        <sys_metadata>7e63ec4d47f7a2106d8ba835126d43bc</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Business Rules</sys_name>
+        <sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan">3f4a67a593241a10052ef5cd0bba10f0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_7e63ec4d47f7a2106d8ba835126d43bc</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_7e63ec4d47f7a2106d8ba835126d43bc">3a63ec4d47f7a2106d8ba835126d43be</sys_update_version>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 11:56:02</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

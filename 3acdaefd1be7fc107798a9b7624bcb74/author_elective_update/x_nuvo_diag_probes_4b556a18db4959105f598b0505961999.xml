@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>When using Space Editor to update the Space Type on multiple Locations, the field values from Space Type record are not being saved on the Location records.&#13;
+&#13;
+It doesn't appear that the values are actually saving for anything other than Space Type. If the record is already open, you can see the field values change, but there are no blue circles next to any of the other fields to indicate a change was made and if I refresh the record none of the new values are there.&#13;
+&#13;
+Issue found in Nuvolo : Qatar, Romania&#13;
+&#13;
+Reproduction Steps :&#13;
+&#13;
+-Open Floor in Space Editor&#13;
+-Hold ctrl key and clicked multiple locations from the map, then click the Update ("Update multiple space attributes") button&#13;
+-chose a value for the "Space Type" field and click "Update"&#13;
+&#13;
+If I already have the any location records open before updating, I can confirm that the Space Type field was updated and that the following fields also updated to match the field values from the Space Type record:&#13;
+&#13;
+Seat Status&#13;
+Usage&#13;
+Employee Assignable&#13;
+Storage&#13;
+Rentable Area Rollup&#13;
+Usable Area Rollup&#13;
+Assignable Area Rollup&#13;
+Primary Use&#13;
+Reservable&#13;
+Handicap Accessible&#13;
+Proration Type&#13;
+Capacity&#13;
+Code Capacity&#13;
+Workspace Capacity Indicator&#13;
+Flex Capacity Indicator&#13;
+Share Ratio&#13;
+&#13;
+Expected Result:&#13;
+These field values would be saved on the Location records&#13;
+</description>
+        <healthcheck_type/>
+        <name>Space Editor - Multi-Update unsuccessful</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>Reach out to Nuvolo Technical Engineering team for the update set on SFM-9942 and install it. </remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+//Checking if connected workplace version is on Qatar or Romania
+var queryString = "name=Connected Workplace^active=true^versionSTARTSWITH18.";
+//var queryString = "name=Connected Workplace^ORname=Space^active=true^versionSTARTSWITH18.^ORversionSTARTSWITH19.^ORversionSTARTSWITH9.^ORversionSTARTSWITH8.";
+
+var checkVersion = new GlideRecord("sys_scope");
+checkVersion.addEncodedQuery(queryString);
+checkVersion.query();
+
+if(checkVersion.next()) {
+
+    //Checking if update set is installed
+   var updSets = new GlideRecord('sys_update_set');
+	updSets.addQuery('nameLIKESFM-9942');
+	//To Add Query for all other update Sets which were provided as WorkAround
+	updSets.query();
+    
+    if(updSets.getRowCount() > 1){
+        //they have update set SFM-9942 installed
+    } else {
+
+        util.handleOutput('When using Space Editor to update the Space Type on multiple Locations, the field values from Space Type record are not being saved on the Location records. If yes, reach out to Nuvolo Technical Engineering team for the update set "SFM-9942" and install it. ', 'warning', 'Space');
+
+    }
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Harshal.Sonawane@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-28 15:47:08</sys_created_on>
+        <sys_id>4b556a18db4959105f598b0505961999</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Space Editor - Multi-Update unsuccessful</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_4b556a18db4959105f598b0505961999</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_4b556a18db4959105f598b0505961999</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;When using Space Editor to update the Space Type on multiple Locations, the field values from Space Type record are not being saved on the Location records.&amp;#13;
+&amp;#13;
+It doesn't appear that the values are actually saving for anything other than Space Type. If the record is already open, you can see the field values change, but there are no blue circles next to any of the other fields to indicate a change was made and if I refresh the record none of the new values are there.&amp;#13;
+&amp;#13;
+Issue found in Nuvolo : Qatar, Romania&amp;#13;
+&amp;#13;
+Reproduction Steps :&amp;#13;
+&amp;#13;
+-Open Floor in Space Editor&amp;#13;
+-Hold ctrl key and clicked multiple locations from the map, then click the Update ("Update multiple space attributes") button&amp;#13;
+-chose a value for the "Space Type" field and click "Update"&amp;#13;
+&amp;#13;
+If I already have the any location records open before updating, I can confirm that the Space Type field was updated and that the following fields also updated to match the field values from the Space Type record:&amp;#13;
+&amp;#13;
+Seat Status&amp;#13;
+Usage&amp;#13;
+Employee Assignable&amp;#13;
+Storage&amp;#13;
+Rentable Area Rollup&amp;#13;
+Usable Area Rollup&amp;#13;
+Assignable Area Rollup&amp;#13;
+Primary Use&amp;#13;
+Reservable&amp;#13;
+Handicap Accessible&amp;#13;
+Proration Type&amp;#13;
+Capacity&amp;#13;
+Code Capacity&amp;#13;
+Workspace Capacity Indicator&amp;#13;
+Flex Capacity Indicator&amp;#13;
+Share Ratio&amp;#13;
+&amp;#13;
+Expected Result:&amp;#13;
+These field values would be saved on the Location records&amp;#13;
+&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Space Editor - Multi-Update unsuccessful&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Reach out to Nuvolo Technical Engineering team for the update set on SFM-9942 and install it. &lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+//Checking if connected workplace version is on Qatar or Romania
+var queryString = "name=Connected Workplace^active=true^versionSTARTSWITH18.";
+//var queryString = "name=Connected Workplace^ORname=Space^active=true^versionSTARTSWITH18.^ORversionSTARTSWITH19.^ORversionSTARTSWITH9.^ORversionSTARTSWITH8.";
+
+var checkVersion = new GlideRecord("sys_scope");
+checkVersion.addEncodedQuery(queryString);
+checkVersion.query();
+
+if(checkVersion.next()) {
+
+    //Checking if update set is installed
+   var updSets = new GlideRecord('sys_update_set');
+	updSets.addQuery('nameLIKESFM-9942');
+	//To Add Query for all other update Sets which were provided as WorkAround
+	updSets.query();
+    
+    if(updSets.getRowCount() &gt; 1){
+        //they have update set SFM-9942 installed
+    } else {
+
+        util.handleOutput('When using Space Editor to update the Space Type on multiple Locations, the field values from Space Type record are not being saved on the Location records. If yes, reach out to Nuvolo Technical Engineering team for the update set "SFM-9942" and install it. ', 'warning', 'Space');
+
+    }
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Harshal.Sonawane@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-28 15:47:08&lt;/sys_created_on&gt;&lt;sys_id&gt;4b556a18db4959105f598b0505961999&lt;/sys_id&gt;&lt;sys_mod_count&gt;13&lt;/sys_mod_count&gt;&lt;sys_name&gt;Space Editor - Multi-Update unsuccessful&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_4b556a18db4959105f598b0505961999&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:27&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-2038842695</payload_hash>
+        <record_name>Space Editor - Multi-Update unsuccessful</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:05</sys_created_on>
+        <sys_id>c2cd7e9c477722106d8ba835126d43d3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c7950000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:05</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>0ecd7e9cf3772210da4bfd57e13737d2</update_guid>
+        <update_guid_history>0ecd7e9cf3772210da4bfd57e13737d2:0,435496d54ff8e210d5acf33dcde4adcd:0,8ee5748cbdf412501ea7698565ee202c:-1242923763,cae5748c27f412502bdeac487a3db72b:-1639347764</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Space Editor - Multi-Update unsuccessful">aca38b1447b722106d8ba835126d43d8</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:40</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>245bd319ad28493485ceaec30a263aa4</sys_id>
+        <sys_metadata>4b556a18db4959105f598b0505961999</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Space Editor - Multi-Update unsuccessful</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_4b556a18db4959105f598b0505961999</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_4b556a18db4959105f598b0505961999">c2cd7e9c477722106d8ba835126d43d3</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

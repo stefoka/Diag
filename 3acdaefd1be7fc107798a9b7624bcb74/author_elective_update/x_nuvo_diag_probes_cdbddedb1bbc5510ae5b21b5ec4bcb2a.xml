@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Incorrect checklists are getting attached to the Work Orders.&#13;
+&#13;
+If there is no checklist mentioned on the Scheduled Maintenance/Work round planned maintenance as well as for the asset or asset category,even then the Checklist is getting associated to the Work orders for the asset.&#13;
+&#13;
+Issue seen in Pre-Qatar Releases</description>
+        <healthcheck_type/>
+        <name>Wrong Checklist gets attached to a WO</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>There is an Update Set provided by the Product team which solves the issue. &#13;
+&#13;
+As per the current Logic :-&#13;
+&#13;
+If any checklist  is attached to the Scheduled Maintenance/Work Round/Planned Maintenance the respective system generated rules should get apply and that checklist should be attached to the Work order,  else if there is any manual rules for the asset, asset type, etc. that are matching for those work orders then manual one should get apply.&#13;
+&#13;
+If there is no matching rules then no checklist will get applied on Work Order.&#13;
+&#13;
+&#13;
+Apply Update Set  :-  MM-QatarPatch2-MM-8253-Checklist Rule Association</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var queryString = "name=Connected Workplace^active=true^versionSTARTSWITH18.";
+
+var checkVersion = new GlideRecord("sys_scope");
+checkVersion.addEncodedQuery(queryString);
+checkVersion.query();
+
+var updSet = new GlideRecord('sys_update_set');
+updSet.addEncodedQuery('nameLIKEMM-QatarPatch2-MM-8253-Checklist Rule Association');
+updSet.query();
+if (checkVersion.next()) {
+    if (updSet.next()) {
+        util.handleOutput('The Pre-checklist/Working Checklist getting attached to the Work Order should be either from scheduled maintenance/work rounds for that asset or else from the manual checklist rules for that asset or Asset type and the Respective Work Order type.If there is no matching rules then no checklist should get applied on the Work Order.', 'information', 'Facilities Maintenance');
+
+    } else {
+        util.handleOutput(' Please apply Update Set "MM-QatarPatch2-MM-8253-Checklist Rule Association " which solves the issue for wrong checklist attaching to the Work orders', 'Warning', 'Facilities Maintenance');
+    }
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Prasanna.Phadtare@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-25 12:34:42</sys_created_on>
+        <sys_id>cdbddedb1bbc5510ae5b21b5ec4bcb2a</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>Wrong Checklist gets attached to a WO</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_cdbddedb1bbc5510ae5b21b5ec4bcb2a</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_cdbddedb1bbc5510ae5b21b5ec4bcb2a</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Incorrect checklists are getting attached to the Work Orders.&amp;#13;
+&amp;#13;
+If there is no checklist mentioned on the Scheduled Maintenance/Work round planned maintenance as well as for the asset or asset category,even then the Checklist is getting associated to the Work orders for the asset.&amp;#13;
+&amp;#13;
+Issue seen in Pre-Qatar Releases&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Wrong Checklist gets attached to a WO&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;There is an Update Set provided by the Product team which solves the issue. &amp;#13;
+&amp;#13;
+As per the current Logic :-&amp;#13;
+&amp;#13;
+If any checklist  is attached to the Scheduled Maintenance/Work Round/Planned Maintenance the respective system generated rules should get apply and that checklist should be attached to the Work order,  else if there is any manual rules for the asset, asset type, etc. that are matching for those work orders then manual one should get apply.&amp;#13;
+&amp;#13;
+If there is no matching rules then no checklist will get applied on Work Order.&amp;#13;
+&amp;#13;
+&amp;#13;
+Apply Update Set  :-  MM-QatarPatch2-MM-8253-Checklist Rule Association&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var queryString = "name=Connected Workplace^active=true^versionSTARTSWITH18.";
+
+var checkVersion = new GlideRecord("sys_scope");
+checkVersion.addEncodedQuery(queryString);
+checkVersion.query();
+
+var updSet = new GlideRecord('sys_update_set');
+updSet.addEncodedQuery('nameLIKEMM-QatarPatch2-MM-8253-Checklist Rule Association');
+updSet.query();
+if (checkVersion.next()) {
+    if (updSet.next()) {
+        util.handleOutput('The Pre-checklist/Working Checklist getting attached to the Work Order should be either from scheduled maintenance/work rounds for that asset or else from the manual checklist rules for that asset or Asset type and the Respective Work Order type.If there is no matching rules then no checklist should get applied on the Work Order.', 'information', 'Facilities Maintenance');
+
+    } else {
+        util.handleOutput(' Please apply Update Set "MM-QatarPatch2-MM-8253-Checklist Rule Association " which solves the issue for wrong checklist attaching to the Work orders', 'Warning', 'Facilities Maintenance');
+    }
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Prasanna.Phadtare@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-25 12:34:42&lt;/sys_created_on&gt;&lt;sys_id&gt;cdbddedb1bbc5510ae5b21b5ec4bcb2a&lt;/sys_id&gt;&lt;sys_mod_count&gt;18&lt;/sys_mod_count&gt;&lt;sys_name&gt;Wrong Checklist gets attached to a WO&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_cdbddedb1bbc5510ae5b21b5ec4bcb2a&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:28&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>303195368</payload_hash>
+        <record_name>Wrong Checklist gets attached to a WO</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>46cdbe9c477722106d8ba835126d434e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6ca9f0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>8ecdbe9cab7722106a1e8b9eac861a4d</update_guid>
+        <update_guid_history>8ecdbe9cab7722106a1e8b9eac861a4d:0,a754d6d508f8e210f168528b3113baac:0,9ee5748c5ff41250dbc3fd26362938b9:306408177,dae5748c05f4125051cfb06b3d1299b8:1247985584</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Wrong Checklist gets attached to a WO">45a3cb1447b722106d8ba835126d439e</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:42</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>34f7ebf3a60844388c0c0ae9678cdb24</sys_id>
+        <sys_metadata>cdbddedb1bbc5510ae5b21b5ec4bcb2a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Wrong Checklist gets attached to a WO</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_cdbddedb1bbc5510ae5b21b5ec4bcb2a</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_cdbddedb1bbc5510ae5b21b5ec4bcb2a">46cdbe9c477722106d8ba835126d434e</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

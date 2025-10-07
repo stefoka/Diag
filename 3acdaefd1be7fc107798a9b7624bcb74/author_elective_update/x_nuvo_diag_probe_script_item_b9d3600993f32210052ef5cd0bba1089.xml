@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>End of Life is empty</name>
+        <order/>
+        <probe display_value="Facilities Devices">7dd3600993f32210052ef5cd0bba106b</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_devices', 'end_of_lifeISEMPTY');
+
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-03 11:55:57</sys_created_on>
+        <sys_id>b9d3600993f32210052ef5cd0bba1089</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>End of Life is empty</sys_name>
+        <sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan">3f4a67a593241a10052ef5cd0bba10f0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_b9d3600993f32210052ef5cd0bba1089</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 11:55:57</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_b9d3600993f32210052ef5cd0bba1089</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;&lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;&lt;name&gt;End of Life is empty&lt;/name&gt;&lt;order/&gt;&lt;probe display_value="Facilities Devices"&gt;7dd3600993f32210052ef5cd0bba106b&lt;/probe&gt;&lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_facilities_devices', 'end_of_lifeISEMPTY');
+
+
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;&lt;sys_created_by&gt;system&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-09-03 11:55:57&lt;/sys_created_on&gt;&lt;sys_id&gt;b9d3600993f32210052ef5cd0bba1089&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;End of Life is empty&lt;/sys_name&gt;&lt;sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan"&gt;3f4a67a593241a10052ef5cd0bba10f0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_b9d3600993f32210052ef5cd0bba1089&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;system&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-09-03 11:55:57&lt;/sys_updated_on&gt;&lt;threshold&gt;0&lt;/threshold&gt;&lt;/x_nuvo_diag_probe_script_item&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-836684690</payload_hash>
+        <record_name>End of Life is empty</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-03 11:55:57</sys_created_on>
+        <sys_id>f5d3600993f32210052ef5cd0bba108b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1990f6f03410000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 11:55:57</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>b9d3600952f3221046f3bd754be4248a</update_guid>
+        <update_guid_history>b9d3600952f3221046f3bd754be4248a:-836684690</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="End of Life is empty">bd64a8818733ea104cc4eb183cbb35c3</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-03 11:58:24</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>a75615db2bd24690a33b764b5edac100</sys_id>
+        <sys_metadata>b9d3600993f32210052ef5cd0bba1089</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>End of Life is empty</sys_name>
+        <sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan">3f4a67a593241a10052ef5cd0bba10f0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_b9d3600993f32210052ef5cd0bba1089</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_b9d3600993f32210052ef5cd0bba1089">f5d3600993f32210052ef5cd0bba108b</sys_update_version>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 11:58:24</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

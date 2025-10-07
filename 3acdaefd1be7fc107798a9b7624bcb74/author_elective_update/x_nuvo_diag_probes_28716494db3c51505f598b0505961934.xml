@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>false</active>
+        <description>This probe reminds users to make sure that the CAD Layers Translation name defined on the server matches up with the CAD layer names coming from each of the dxf/dwg files.&#13;
+&#13;
+CAD Layers Translation vs CAD Layer related list on CAD record details</description>
+        <healthcheck_type/>
+        <name>CAD layer Naming Mismatch</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>The value in the Name field of the CAD Layers Translation record needs to be the same as the name of the layer on the dxf/dwg file. </remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var layerGR = new GlideRecord('x_nuvo_eam_dxf_layers_translation');
+layerGR.addEncodedQuery('space_profile_layer_type=0^ORspace_profile_layer_type=4'); //checks for polyline and space code layers
+layerGR.addActiveQuery();
+layerGR.query();
+if (layerGR.getRowCount() < 1){
+util.handleOutput('Check to make sure that your CAD Layers Translations records are active and have names that are an EXACT match to the layers on your CAD drawing.', 'Warning', 'Cad Extension');
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 19:47:02</sys_created_on>
+        <sys_id>28716494db3c51505f598b0505961934</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>CAD layer Naming Mismatch</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_28716494db3c51505f598b0505961934</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_28716494db3c51505f598b0505961934</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;false&lt;/active&gt;&lt;description&gt;This probe reminds users to make sure that the CAD Layers Translation name defined on the server matches up with the CAD layer names coming from each of the dxf/dwg files.&amp;#13;
+&amp;#13;
+CAD Layers Translation vs CAD Layer related list on CAD record details&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;CAD layer Naming Mismatch&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;The value in the Name field of the CAD Layers Translation record needs to be the same as the name of the layer on the dxf/dwg file. &lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+var layerGR = new GlideRecord('x_nuvo_eam_dxf_layers_translation');
+layerGR.addEncodedQuery('space_profile_layer_type=0^ORspace_profile_layer_type=4'); //checks for polyline and space code layers
+layerGR.addActiveQuery();
+layerGR.query();
+if (layerGR.getRowCount() &lt; 1){
+util.handleOutput('Check to make sure that your CAD Layers Translations records are active and have names that are an EXACT match to the layers on your CAD drawing.', 'Warning', 'Cad Extension');
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;jake.ye@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-15 19:47:02&lt;/sys_created_on&gt;&lt;sys_id&gt;28716494db3c51505f598b0505961934&lt;/sys_id&gt;&lt;sys_mod_count&gt;19&lt;/sys_mod_count&gt;&lt;sys_name&gt;CAD layer Naming Mismatch&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_28716494db3c51505f598b0505961934&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:27&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1401036052</payload_hash>
+        <record_name>CAD layer Naming Mismatch</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:05</sys_created_on>
+        <sys_id>bdcd7e9c477722106d8ba835126d43b7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c6bc0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:05</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>f5cd7e9cb87722109fa279185e9a16b7</update_guid>
+        <update_guid_history>f5cd7e9cb87722109fa279185e9a16b7:0,fe5496d5c9f8e210b66450a7f08faa89:0,c2e5748cbff412500516ef1eba56ed11:-1801080426,02e5748c00f4125035b37b74a0b6e510:1101590613</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="CAD layer Naming Mismatch">9ca38b1447b722106d8ba835126d43ab</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:39</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>943c9f5f3d2e4958a188c16707349a90</sys_id>
+        <sys_metadata>28716494db3c51505f598b0505961934</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CAD layer Naming Mismatch</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_28716494db3c51505f598b0505961934</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_28716494db3c51505f598b0505961934">bdcd7e9c477722106d8ba835126d43b7</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:39</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

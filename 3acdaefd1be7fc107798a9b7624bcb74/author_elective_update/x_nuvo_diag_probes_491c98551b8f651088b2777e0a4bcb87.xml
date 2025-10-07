@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Application Registry Table wasn't extended from App File table</description>
+        <healthcheck_type/>
+        <name>App Reg records not scoped.</name>
+        <order/>
+        <probe_type/>
+        <product_version>21.1.2</product_version>
+        <remediation>Application Reg records not referencing the Scope/Application. &gt; Reloaded the OOTB Records and changed Client Secret. </remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('sys_db_object');
+gr.addQuery('name', 'oauth_entity');
+
+gr.query();
+if (gr.next()){
+	if(gr.super_class == '') {
+		util.handelOutput('oauth_entity is not extended from the sys_metadata. Submit an isue to Service not to fix this. The reload the Nuvolo file to the Applicaiotn Registry.','Error','Mobile');
+	} 
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>michael.peck@nuvolo.com</sys_created_by>
+        <sys_created_on>2023-05-25 14:29:35</sys_created_on>
+        <sys_id>491c98551b8f651088b2777e0a4bcb87</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>App Reg records not scoped.</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_491c98551b8f651088b2777e0a4bcb87</sys_update_name>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-12-04 09:40:00</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_491c98551b8f651088b2777e0a4bcb87</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Application Registry Table wasn't extended from App File table&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;App Reg records not scoped.&lt;/name&gt;&lt;order/&gt;&lt;probe_type/&gt;&lt;product_version&gt;21.1.2&lt;/product_version&gt;&lt;remediation&gt;Application Reg records not referencing the Scope/Application. &amp;gt; Reloaded the OOTB Records and changed Client Secret. &lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('sys_db_object');
+gr.addQuery('name', 'oauth_entity');
+
+gr.query();
+if (gr.next()){
+	if(gr.super_class == '') {
+		util.handelOutput('oauth_entity is not extended from the sys_metadata. Submit an isue to Service not to fix this. The reload the Nuvolo file to the Applicaiotn Registry.','Error','Mobile');
+	} 
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;michael.peck@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-05-25 14:29:35&lt;/sys_created_on&gt;&lt;sys_id&gt;491c98551b8f651088b2777e0a4bcb87&lt;/sys_id&gt;&lt;sys_mod_count&gt;7&lt;/sys_mod_count&gt;&lt;sys_name&gt;App Reg records not scoped.&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_491c98551b8f651088b2777e0a4bcb87&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;iliyan.nedelchev@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-12-04 09:40:00&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-407820993</payload_hash>
+        <record_name>App Reg records not scoped.</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:05</sys_created_on>
+        <sys_id>c6cd7e9c477722106d8ba835126d43cd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c7650000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:05</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>02cd7e9c24772210f62e7e293af6b1cd</update_guid>
+        <update_guid_history>02cd7e9c24772210f62e7e293af6b1cd:0,035496d5a5f8e2106305e6c7008c5ec4:0,e8ba828517de9e100fc184ac65c8a769:-453567567,e1e5348c45f41250a2971008c5f11585:-2087884084,21e5348c8ff412502f51322cc7bb0584:-1322920565</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="App Reg records not scoped.">aca38b1447b722106d8ba835126d43c4</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:40</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>65e2970d4187426c80aaed9d6d132890</sys_id>
+        <sys_metadata>491c98551b8f651088b2777e0a4bcb87</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>App Reg records not scoped.</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_491c98551b8f651088b2777e0a4bcb87</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_491c98551b8f651088b2777e0a4bcb87">c6cd7e9c477722106d8ba835126d43cd</sys_update_version>
+        <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

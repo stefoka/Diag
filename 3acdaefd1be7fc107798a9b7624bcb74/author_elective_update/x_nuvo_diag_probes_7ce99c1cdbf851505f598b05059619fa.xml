@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>This probe fetches the following information&#13;
+&#13;
+1.) service now version&#13;
+2.) nuvolo products installed and nuvolo version&#13;
+3.) Domain separated?</description>
+        <healthcheck_type/>
+        <name>General Info</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation/>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+//Fetching ServiceNow version
+var gr1 = new GlideRecord('sys_properties');
+gr1.addEncodedQuery('name=mid.version');
+gr1.query();
+if (gr1.next()) {
+   var serviceNowVersion = gr1.value.substr(0,gr1.value.indexOf('-'));
+}
+
+//Fetching Nuvolo products installed and its version
+var nuvoloProduct=[];
+var gr2 = new GlideRecord('sys_scope');
+gr2.addEncodedQuery('scopeLIKEx_nuvo^active=True');
+gr2.query();
+while (gr2.next()) {
+     nuvoloProduct.push(gr2.name + ' : '+gr2.version+'\n');
+}
+
+//Fetching whether the instance id domain separated or not
+var gr3 = new GlideRecord('sys_db_object');
+gr3.addEncodedQuery('nameLIKEx_nuvo_dse');
+gr3.query();
+var domainSeparated3 ="";
+if(gr3.getRowCount() >= 1)
+{
+ domainSeparated3 = 'The instance has Domain Separation Integration';
+}
+else
+{
+domainSeparated3 = 'The instance is not Domain Separated';
+}
+
+util.handleOutput('The ServiceNow version : '+serviceNowVersion+' \n\n Nuvolo products installed and their versions : '+nuvoloProduct.toString()+ ' \n\n'+domainSeparated3,'warning', 'ServiceNow');]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>jake.ye@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 19:14:33</sys_created_on>
+        <sys_id>7ce99c1cdbf851505f598b05059619fa</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>General Info</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_7ce99c1cdbf851505f598b05059619fa</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:28</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_7ce99c1cdbf851505f598b05059619fa</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;This probe fetches the following information&amp;#13;
+&amp;#13;
+1.) service now version&amp;#13;
+2.) nuvolo products installed and nuvolo version&amp;#13;
+3.) Domain separated?&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;General Info&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation/&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+//Fetching ServiceNow version
+var gr1 = new GlideRecord('sys_properties');
+gr1.addEncodedQuery('name=mid.version');
+gr1.query();
+if (gr1.next()) {
+   var serviceNowVersion = gr1.value.substr(0,gr1.value.indexOf('-'));
+}
+
+//Fetching Nuvolo products installed and its version
+var nuvoloProduct=[];
+var gr2 = new GlideRecord('sys_scope');
+gr2.addEncodedQuery('scopeLIKEx_nuvo^active=True');
+gr2.query();
+while (gr2.next()) {
+     nuvoloProduct.push(gr2.name + ' : '+gr2.version+'\n');
+}
+
+//Fetching whether the instance id domain separated or not
+var gr3 = new GlideRecord('sys_db_object');
+gr3.addEncodedQuery('nameLIKEx_nuvo_dse');
+gr3.query();
+var domainSeparated3 ="";
+if(gr3.getRowCount() &gt;= 1)
+{
+ domainSeparated3 = 'The instance has Domain Separation Integration';
+}
+else
+{
+domainSeparated3 = 'The instance is not Domain Separated';
+}
+
+util.handleOutput('The ServiceNow version : '+serviceNowVersion+' \n\n Nuvolo products installed and their versions : '+nuvoloProduct.toString()+ ' \n\n'+domainSeparated3,'warning', 'ServiceNow');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;jake.ye@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-15 19:14:33&lt;/sys_created_on&gt;&lt;sys_id&gt;7ce99c1cdbf851505f598b05059619fa&lt;/sys_id&gt;&lt;sys_mod_count&gt;19&lt;/sys_mod_count&gt;&lt;sys_name&gt;General Info&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_7ce99c1cdbf851505f598b05059619fa&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:28&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>969040117</payload_hash>
+        <record_name>General Info</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>8ecdbe9c477722106d8ba835126d431e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c95c0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>c6cdbe9ced772210855db3874ebb9e1e</update_guid>
+        <update_guid_history>c6cdbe9ced772210855db3874ebb9e1e:0,db54d6d5bff8e21027c317588a2a1539:0,56e5748c22f41250db4ccee3402ccf9a:1058683774,92e5748c14f41250be094edec1b5a199:234768957</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="General Info">74a3cb1447b722106d8ba835126d4349</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:41</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>0071111d1af640808f89dcd5a080c400</sys_id>
+        <sys_metadata>7ce99c1cdbf851505f598b05059619fa</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>General Info</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_7ce99c1cdbf851505f598b05059619fa</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_7ce99c1cdbf851505f598b05059619fa">8ecdbe9c477722106d8ba835126d431e</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

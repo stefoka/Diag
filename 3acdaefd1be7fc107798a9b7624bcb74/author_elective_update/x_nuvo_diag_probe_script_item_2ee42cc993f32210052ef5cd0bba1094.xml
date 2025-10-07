@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Total number of Attachments</name>
+        <order>4</order>
+        <probe display_value="Floor Plans">eae42cc993f32210052ef5cd0bba1083</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('sys_attachment', 'table_nameLIKEx_nuvo_eam_space_layer_details^content_typeLIKEsvg');
+]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-03 12:00:39</sys_created_on>
+        <sys_id>2ee42cc993f32210052ef5cd0bba1094</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Total number of Attachments</sys_name>
+        <sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan">3f4a67a593241a10052ef5cd0bba10f0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_2ee42cc993f32210052ef5cd0bba1094</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 12:00:39</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_2ee42cc993f32210052ef5cd0bba1094</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;&lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;&lt;name&gt;Total number of Attachments&lt;/name&gt;&lt;order&gt;4&lt;/order&gt;&lt;probe display_value="Floor Plans"&gt;eae42cc993f32210052ef5cd0bba1083&lt;/probe&gt;&lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getRecordsCount('sys_attachment', 'table_nameLIKEx_nuvo_eam_space_layer_details^content_typeLIKEsvg');
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;&lt;sys_created_by&gt;system&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-09-03 12:00:39&lt;/sys_created_on&gt;&lt;sys_id&gt;2ee42cc993f32210052ef5cd0bba1094&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Total number of Attachments&lt;/sys_name&gt;&lt;sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan"&gt;3f4a67a593241a10052ef5cd0bba10f0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_2ee42cc993f32210052ef5cd0bba1094&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;system&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-09-03 12:00:39&lt;/sys_updated_on&gt;&lt;threshold&gt;0&lt;/threshold&gt;&lt;/x_nuvo_diag_probe_script_item&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-265073058</payload_hash>
+        <record_name>Total number of Attachments</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-03 12:00:39</sys_created_on>
+        <sys_id>6ae42cc993f32210052ef5cd0bba1096</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1990f7351f50000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-03 12:00:39</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>2ee42cc930f322102293ae7fe7b73995</update_guid>
+        <update_guid_history>2ee42cc930f322102293ae7fe7b73995:-265073058</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Total number of Attachments">e2f02497873f26104cc4eb183cbb355c</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-10 11:29:46</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>482c8b0bb8ed4b3192d56490cd33eab1</sys_id>
+        <sys_metadata>2ee42cc993f32210052ef5cd0bba1094</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Total number of Attachments</sys_name>
+        <sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan">3f4a67a593241a10052ef5cd0bba10f0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_2ee42cc993f32210052ef5cd0bba1094</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_2ee42cc993f32210052ef5cd0bba1094">6ae42cc993f32210052ef5cd0bba1096</sys_update_version>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-10 11:29:46</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

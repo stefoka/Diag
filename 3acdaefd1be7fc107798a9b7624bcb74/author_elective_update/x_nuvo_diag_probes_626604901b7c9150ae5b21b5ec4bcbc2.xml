@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>Issue involving the creation of spaces after a drawing is uploaded to SN via the plug-in. After a customer upgrades or clones over an instance, the x_nuvo_eam.autoCAD_username and password system properties need to be re-entered. The password can be anything but it needs to be changed after clone because the encryption used on it doesn't copy the original password over, it encrypts the encrypted password. &#13;
+&#13;
+doing a direct value check for sys_user.user_password and property value wlll not work.  it needs to be checked based on last updated timestamp of user and property.&#13;
+&#13;
+&#13;
+Second Description: &#13;
+&#13;
+Description: CAD Record Details process is stuck at Space Creation - Processing status. Unable to proceed further.&#13;
+&#13;
+-&gt; geoCache Attachment not created&#13;
+-&gt; geoCache records are not created with active entries&#13;
+&#13;
+Check for CAD Record Datails with space creation - processing status for X amount of time (30 minutes) and check for the absence of attachment and geoCache records.&#13;
+&#13;
+The possible issues are due to the following:&#13;
+&#13;
+1.) Autocad user and password system property should be present and defined.  (check to ensure user exist, have the right roles (rest_api, x_nuvo_eam_space_admin), password matches by checking updated timestamp, user is active and not locked out)&#13;
+2.) check to make sure the endpoint is reachable with the user (rewrite it to be diagnostic do not run the actual logic)&#13;
+&#13;
+ &#13;
+&#13;
+Remediation: Click Build GeoCache UI Action related link from floor record on x_nuvo_eam_space table&#13;
+&#13;
+&#13;
+clone_instance</description>
+        <healthcheck_type/>
+        <name>Space Creation Stuck</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>Go to the sys_properties table and find the above mentioned properties, and reset the password/check if the user has the autoCAD role. </remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('clone_instance');
+gr.addEncodedQuery('completed>=javascript:gs.beginningOfLast30Days()');
+gr.query();
+
+var gr2 = new GlideRecord('x_nuvo_eam_dxf_record_details');
+gr2.addEncodedQuery('statusINspace_create_in_progress^sys_created_on>=javascript:gs.beginningOfLast7Days()');
+gr2.query();
+
+var gr3 = new GlideRecord('sys_properties');
+gr3.get('8d505c440f487600eb7e09bce1050eeb');
+var user = gr3.value;
+
+var gr4 = new GlideRecord('sys_user_has_role');
+gr4.addEncodedQuery('user=' + user + '^role=3dfd67229f22110041a496fcc67fcf6c^ORrole=d0d45ba0470002004695d7527c9a71c6');
+gr4.query();
+
+if (gr4.getRowCount() < 2) {
+ util.handleOutput('The User record ' + user + ' is currently the link to Autocad uploads. This user requires the roles rest_api_explorer and rest_service in order to properly upload drawings to SN. Please add these roles to the listed user.', 'Warning', 'Cad Extension');
+}
+
+if (gr.getRowCount() > 0 && gr2.getRowCount() > 0){
+ util.handleOutput('If you have cloned or upgrades this instance recently, the sys_property "x_nuvo_eam.autoCAD_password" needs to be updated. It does not matter what it is changed to, but it has to eb updated post clone or upgrade. Failure to do this will cause issues with upload of autoCAD drawings.', 'Warning', 'Cad Extension');
+}
+
+var gr5 = new GlideRecord('sysevent');
+gr5.addEncodedQuery('name=x_nuvo_eam.fm_build_cache^processed>=javascript:gs.beginningOfThisWeek()');
+gr5.query();
+
+if (!gr5.next() && gr2.getRowCount() > 0){
+ util.handleOutput('The event x_nuvo_eam.fm_build_cache is stuck in the event processing table. Please check the event for errors.', 'Warning', 'Cad Extension');
+}
+
+
+
+
+]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Michael.Piazza@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-15 17:52:35</sys_created_on>
+        <sys_id>626604901b7c9150ae5b21b5ec4bcbc2</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Space Creation Stuck</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_626604901b7c9150ae5b21b5ec4bcbc2</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_626604901b7c9150ae5b21b5ec4bcbc2</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;Issue involving the creation of spaces after a drawing is uploaded to SN via the plug-in. After a customer upgrades or clones over an instance, the x_nuvo_eam.autoCAD_username and password system properties need to be re-entered. The password can be anything but it needs to be changed after clone because the encryption used on it doesn't copy the original password over, it encrypts the encrypted password. &amp;#13;
+&amp;#13;
+doing a direct value check for sys_user.user_password and property value wlll not work.  it needs to be checked based on last updated timestamp of user and property.&amp;#13;
+&amp;#13;
+&amp;#13;
+Second Description: &amp;#13;
+&amp;#13;
+Description: CAD Record Details process is stuck at Space Creation - Processing status. Unable to proceed further.&amp;#13;
+&amp;#13;
+-&amp;gt; geoCache Attachment not created&amp;#13;
+-&amp;gt; geoCache records are not created with active entries&amp;#13;
+&amp;#13;
+Check for CAD Record Datails with space creation - processing status for X amount of time (30 minutes) and check for the absence of attachment and geoCache records.&amp;#13;
+&amp;#13;
+The possible issues are due to the following:&amp;#13;
+&amp;#13;
+1.) Autocad user and password system property should be present and defined.  (check to ensure user exist, have the right roles (rest_api, x_nuvo_eam_space_admin), password matches by checking updated timestamp, user is active and not locked out)&amp;#13;
+2.) check to make sure the endpoint is reachable with the user (rewrite it to be diagnostic do not run the actual logic)&amp;#13;
+&amp;#13;
+ &amp;#13;
+&amp;#13;
+Remediation: Click Build GeoCache UI Action related link from floor record on x_nuvo_eam_space table&amp;#13;
+&amp;#13;
+&amp;#13;
+clone_instance&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;Space Creation Stuck&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;Go to the sys_properties table and find the above mentioned properties, and reset the password/check if the user has the autoCAD role. &lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+var gr = new GlideRecord('clone_instance');
+gr.addEncodedQuery('completed&gt;=javascript:gs.beginningOfLast30Days()');
+gr.query();
+
+var gr2 = new GlideRecord('x_nuvo_eam_dxf_record_details');
+gr2.addEncodedQuery('statusINspace_create_in_progress^sys_created_on&gt;=javascript:gs.beginningOfLast7Days()');
+gr2.query();
+
+var gr3 = new GlideRecord('sys_properties');
+gr3.get('8d505c440f487600eb7e09bce1050eeb');
+var user = gr3.value;
+
+var gr4 = new GlideRecord('sys_user_has_role');
+gr4.addEncodedQuery('user=' + user + '^role=3dfd67229f22110041a496fcc67fcf6c^ORrole=d0d45ba0470002004695d7527c9a71c6');
+gr4.query();
+
+if (gr4.getRowCount() &lt; 2) {
+ util.handleOutput('The User record ' + user + ' is currently the link to Autocad uploads. This user requires the roles rest_api_explorer and rest_service in order to properly upload drawings to SN. Please add these roles to the listed user.', 'Warning', 'Cad Extension');
+}
+
+if (gr.getRowCount() &gt; 0 &amp;&amp; gr2.getRowCount() &gt; 0){
+ util.handleOutput('If you have cloned or upgrades this instance recently, the sys_property "x_nuvo_eam.autoCAD_password" needs to be updated. It does not matter what it is changed to, but it has to eb updated post clone or upgrade. Failure to do this will cause issues with upload of autoCAD drawings.', 'Warning', 'Cad Extension');
+}
+
+var gr5 = new GlideRecord('sysevent');
+gr5.addEncodedQuery('name=x_nuvo_eam.fm_build_cache^processed&gt;=javascript:gs.beginningOfThisWeek()');
+gr5.query();
+
+if (!gr5.next() &amp;&amp; gr2.getRowCount() &gt; 0){
+ util.handleOutput('The event x_nuvo_eam.fm_build_cache is stuck in the event processing table. Please check the event for errors.', 'Warning', 'Cad Extension');
+}
+
+
+
+
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Michael.Piazza@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-15 17:52:35&lt;/sys_created_on&gt;&lt;sys_id&gt;626604901b7c9150ae5b21b5ec4bcbc2&lt;/sys_id&gt;&lt;sys_mod_count&gt;8&lt;/sys_mod_count&gt;&lt;sys_name&gt;Space Creation Stuck&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_626604901b7c9150ae5b21b5ec4bcbc2&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:27&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1086494478</payload_hash>
+        <record_name>Space Creation Stuck</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>8acd7e9c477722106d8ba835126d43f6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c8440000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>c2cd7e9c42772210417f584e51487cf6</update_guid>
+        <update_guid_history>c2cd7e9c42772210417f584e51487cf6:0,4f5496d5baf8e2107c7d02965de7e4e9:0,42e5748ca3f41250c63f49987abc3149:-1150314744,8ee5748c7ef41250500a4e0357795a47:301988295</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Space Creation Stuck">bca3cb1447b722106d8ba835126d4305</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:40</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>48c01fc08956426b9fca8b6d83a48a19</sys_id>
+        <sys_metadata>626604901b7c9150ae5b21b5ec4bcbc2</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Space Creation Stuck</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_626604901b7c9150ae5b21b5ec4bcbc2</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_626604901b7c9150ae5b21b5ec4bcbc2">8acd7e9c477722106d8ba835126d43f6</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

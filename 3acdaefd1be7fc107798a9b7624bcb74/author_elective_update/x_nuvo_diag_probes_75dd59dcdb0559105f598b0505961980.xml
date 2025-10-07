@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probes">
+    <x_nuvo_diag_probes action="DELETE">
+        <active>true</active>
+        <description>User Modify and Delete reservations of other users.&#13;
+End users can able to modify and delete reservations for other users who are part of the same reservation owner in case where reservation class is "Private".&#13;
+They can able to do this through the Reservation History option and then navigating to the "Upcoming" option.&#13;
+</description>
+        <healthcheck_type/>
+        <name>User Modify and Delete reservations</name>
+        <order>100</order>
+        <probe_type/>
+        <product_version/>
+        <remediation>This issue is in Norway and there is no hotfix for it. It is fixed in the Qatar version. We suggest you upgrade your instance to Qatar so that this issue might be resolved.&#13;
+</remediation>
+        <script><![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+//Checking if connected workplace version is on Norway
+var queryString = "name=Connected Workplace^active=true^versionSTARTSWITH15.";
+var checkVersion = new GlideRecord("sys_app");
+checkVersion.addEncodedQuery(queryString);
+checkVersion.query();
+
+if(checkVersion.next()) {
+    util.handleOutput('Hey, you are using Nuvolo Norway Version. There is a Reservations issue on Norway involving users being able to modify and delete other users reservations when part of the same ownership, and there is no hotfix for it. It is fixed in the Qatar version. We suggest you upgrade your instance to Qatar so that this issue might be resolved.', 'warning', 'Reservation');
+}]]></script>
+        <sys_class_name>x_nuvo_diag_probes</sys_class_name>
+        <sys_created_by>Harshal.Sonawane@nuvolo.com</sys_created_by>
+        <sys_created_on>2022-07-28 10:27:16</sys_created_on>
+        <sys_id>75dd59dcdb0559105f598b0505961980</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>User Modify and Delete reservations</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probes_75dd59dcdb0559105f598b0505961980</sys_update_name>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2024-09-17 11:21:27</sys_updated_on>
+        <tool>diagnostic</tool>
+    </x_nuvo_diag_probes>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probes_75dd59dcdb0559105f598b0505961980</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probes"&gt;&lt;x_nuvo_diag_probes action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;User Modify and Delete reservations of other users.&amp;#13;
+End users can able to modify and delete reservations for other users who are part of the same reservation owner in case where reservation class is "Private".&amp;#13;
+They can able to do this through the Reservation History option and then navigating to the "Upcoming" option.&amp;#13;
+&lt;/description&gt;&lt;healthcheck_type/&gt;&lt;name&gt;User Modify and Delete reservations&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;probe_type/&gt;&lt;product_version/&gt;&lt;remediation&gt;This issue is in Norway and there is no hotfix for it. It is fixed in the Qatar version. We suggest you upgrade your instance to Qatar so that this issue might be resolved.&amp;#13;
+&lt;/remediation&gt;&lt;script&gt;&lt;![CDATA[var util = new x_nuvo_diag.DiagnosticUtil();
+
+//Checking if connected workplace version is on Norway
+var queryString = "name=Connected Workplace^active=true^versionSTARTSWITH15.";
+var checkVersion = new GlideRecord("sys_app");
+checkVersion.addEncodedQuery(queryString);
+checkVersion.query();
+
+if(checkVersion.next()) {
+    util.handleOutput('Hey, you are using Nuvolo Norway Version. There is a Reservations issue on Norway involving users being able to modify and delete other users reservations when part of the same ownership, and there is no hotfix for it. It is fixed in the Qatar version. We suggest you upgrade your instance to Qatar so that this issue might be resolved.', 'warning', 'Reservation');
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probes&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Harshal.Sonawane@nuvolo.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-28 10:27:16&lt;/sys_created_on&gt;&lt;sys_id&gt;75dd59dcdb0559105f598b0505961980&lt;/sys_id&gt;&lt;sys_mod_count&gt;10&lt;/sys_mod_count&gt;&lt;sys_name&gt;User Modify and Delete reservations&lt;/sys_name&gt;&lt;sys_package display_value="Diagnostic Tool" source="x_nuvo_diag"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probes_75dd59dcdb0559105f598b0505961980&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;Stefan.Popov@nuvolo.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-09-17 11:21:27&lt;/sys_updated_on&gt;&lt;tool&gt;diagnostic&lt;/tool&gt;&lt;/x_nuvo_diag_probes&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1058135941</payload_hash>
+        <record_name>User Modify and Delete reservations</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-01 15:13:06</sys_created_on>
+        <sys_id>42cdbe9c477722106d8ba835126d430f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19905d6c8ee0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:13:06</sys_updated_on>
+        <type>Probes</type>
+        <update_guid>8acdbe9c0577221006b894bbd200920e</update_guid>
+        <update_guid_history>8acdbe9c0577221006b894bbd200920e:0,df54d6d5e9f8e210f3b0ba8e6a20c425:0,42e5748cb4f41250e1b929660a5d4e82:-38602838,8ee5748c2ef412505fed35c3338a2d80:-1760764311</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="User Modify and Delete reservations">74a3cb1447b722106d8ba835126d432b</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Stefan.Popov@nuvolo.com</sys_created_by>
+        <sys_created_on>2025-09-01 15:38:41</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probes">x_nuvo_diag_probes</sys_db_object>
+        <sys_id>52bc8c91f04a4d538f19b59f911b7971</sys_id>
+        <sys_metadata>75dd59dcdb0559105f598b0505961980</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>User Modify and Delete reservations</sys_name>
+        <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probes_75dd59dcdb0559105f598b0505961980</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probes_75dd59dcdb0559105f598b0505961980">42cdbe9c477722106d8ba835126d430f</sys_update_version>
+        <sys_updated_by>Stefan.Popov@nuvolo.com</sys_updated_by>
+        <sys_updated_on>2025-09-01 15:38:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
