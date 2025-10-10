@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nuvo_diag_probe_script_item">
+    <x_nuvo_diag_probe_script_item action="DELETE">
+        <name>Without Stops</name>
+        <order/>
+        <probe display_value="Clinical Work Rounds">9b0239b59384fe10052ef5cd0bba102a</probe>
+        <script><![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_stops', 'work_roundISEMPTY');]]></script>
+        <sys_class_name>x_nuvo_diag_probe_script_item</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-18 11:48:49</sys_created_on>
+        <sys_id>530239b59384fe10052ef5cd0bba1031</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Without Stops</sys_name>
+        <sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan">3f4a67a593241a10052ef5cd0bba10f0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_update_name>x_nuvo_diag_probe_script_item_530239b59384fe10052ef5cd0bba1031</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-18 11:48:49</sys_updated_on>
+        <threshold>0</threshold>
+    </x_nuvo_diag_probe_script_item>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</application>
+        <file_path/>
+        <instance_id>11ac2c71db72ac5052cec5970596197c</instance_id>
+        <instance_name>ven04351</instance_name>
+        <name>x_nuvo_diag_probe_script_item_530239b59384fe10052ef5cd0bba1031</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_nuvo_diag_probe_script_item"&gt;&lt;x_nuvo_diag_probe_script_item action="INSERT_OR_UPDATE"&gt;&lt;name&gt;Without Stops&lt;/name&gt;&lt;order/&gt;&lt;probe display_value="Clinical Work Rounds"&gt;9b0239b59384fe10052ef5cd0bba102a&lt;/probe&gt;&lt;script&gt;&lt;![CDATA[new HealthCheckProbeUtils().getRecordsCount('x_nuvo_eam_stops', 'work_roundISEMPTY');]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;x_nuvo_diag_probe_script_item&lt;/sys_class_name&gt;&lt;sys_created_by&gt;system&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-09-18 11:48:49&lt;/sys_created_on&gt;&lt;sys_id&gt;530239b59384fe10052ef5cd0bba1031&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Without Stops&lt;/sys_name&gt;&lt;sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan"&gt;3f4a67a593241a10052ef5cd0bba10f0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Diagnostic Tool"&gt;3acdaefd1be7fc107798a9b7624bcb74&lt;/sys_scope&gt;&lt;sys_update_name&gt;x_nuvo_diag_probe_script_item_530239b59384fe10052ef5cd0bba1031&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;system&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-09-18 11:48:49&lt;/sys_updated_on&gt;&lt;threshold&gt;0&lt;/threshold&gt;&lt;/x_nuvo_diag_probe_script_item&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>787894415</payload_hash>
+        <record_name>Without Stops</record_name>
+        <reverted_from/>
+        <source>7cdf88c6db0620106f7d1cbd139619a7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-09-18 11:48:49</sys_created_on>
+        <sys_id>9f0239b59384fe10052ef5cd0bba1032</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1995ca7dd8e0000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-09-18 11:48:49</sys_updated_on>
+        <type>Probe Script Item</type>
+        <update_guid>530239b56284fe10904e2001ea837b32</update_guid>
+        <update_guid_history>530239b56284fe10904e2001ea837b32:787894415</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Without Stops">64c23df093207a10052ef5cd0bba10d5</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-10-10 05:49:21</sys_created_on>
+        <sys_db_object display_value="" name="x_nuvo_diag_probe_script_item">x_nuvo_diag_probe_script_item</sys_db_object>
+        <sys_id>22997d7f1e5c4318a403b24d37530e84</sys_id>
+        <sys_metadata>530239b59384fe10052ef5cd0bba1031</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Without Stops</sys_name>
+        <sys_package display_value="Health Scan Processor" source="x_nuvo_health_scan">3f4a67a593241a10052ef5cd0bba10f0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
+        <sys_scope_delete display_value="">241d85aa10a64a40ba89630d1fbfb900</sys_scope_delete>
+        <sys_update_name>x_nuvo_diag_probe_script_item_530239b59384fe10052ef5cd0bba1031</sys_update_name>
+        <sys_update_version display_value="x_nuvo_diag_probe_script_item_530239b59384fe10052ef5cd0bba1031">9f0239b59384fe10052ef5cd0bba1032</sys_update_version>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-10-10 05:49:21</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

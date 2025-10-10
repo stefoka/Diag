@@ -11,16 +11,16 @@
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2025-09-03 09:39:43</sys_created_on>
         <sys_id>3e7404c593732210052ef5cd0bba100c</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>x_nuvo_diag.nuvolo_general_overview</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy/>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_properties_3e7404c593732210052ef5cd0bba100c</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-09-03 09:39:43</sys_updated_on>
+        <sys_updated_on>2025-10-10 05:59:04</sys_updated_on>
         <type>string</type>
-        <value>021212df3b2bae50c920898aa4e45ad3</value>
+        <value>74ef0e353b443250bed8777aa5e45a92</value>
         <write_roles/>
     </sys_properties>
     <sys_translated_text action="delete_multiple" query="documentkey=3e7404c593732210052ef5cd0bba100c"/>
