@@ -414,6 +414,8 @@ HealthCheckProbeUtils.prototype = {
 					//GET OLD PROBES
                     var probesToDelete = this.getOldProbesToDelete(probeType);
 
+					gs.info("IN007 Pulled Probes: " + JSON.stringify(result));
+
                     var result = JSON.parse(responseBody).result;
 
                     for (var j = 0; j < result.length; j++) {
@@ -429,12 +431,16 @@ HealthCheckProbeUtils.prototype = {
                         allProbes.push(probeObj);
                     }
 
+					gs.info("IN007 Probes IDS: " + probeSysIDs.join(','));
+
                     //GET ALL RELATED PROBE SCRIPT ITEMS
-                    allProbeScriptItems = this.pullProbeScriptItems(inst, probeSysIDs);
+                    allProbeScriptItems = this.pullProbeScriptItems(inst, probeSysIDs.join(','));
 
                     //CREATE ALL NEW PROBES IN THE CLIENT FOR THE CURRENT PROBE TYPE
                     for (var k = 0; k < allProbes.length; k++) {
                         var probe = allProbes[k];
+
+						gs.ingo("IN007 Probe record: "  + JSON.stringify(record));
 						
                         var newProbeGr = new GlideRecord('x_nuvo_diag_probes');
                         newProbeGr.initialize();
@@ -460,6 +466,9 @@ HealthCheckProbeUtils.prototype = {
                         var probeItems = allProbeScriptItems.filter(function(item) {
                             return item.probe.value == probe.sys_id;
                         });
+
+						gs.info("IN007 ProbeItems: " + JSON.stringify(probeItems));
+
 
                         //CREATE ALL NEW PROBE SCRIPT ITEMS IN THE CLIENT FOR THE CURRENT PROBE TYPE
                         for (var m = 0; m < probeItems.length; m++) {
@@ -537,7 +546,7 @@ HealthCheckProbeUtils.prototype = {
 
                 return probeScriptItems;
             } else {
-                gs.info("pullProbeScriptItems API FAIL! -  x_nuvo_diag.HealthCheckProbeUtils  ");
+                gs.info("pullProbeScriptItems API FAIL! -  x_nuvo_diag.HealthCheckProbeUtils " + JSON.stringify(responseBody));
             }
         } catch (ex) {
             gs.error("pullProbeScriptItems Error: " + ex.message);
@@ -635,14 +644,14 @@ HealthCheckProbeUtils.prototype = {
         <sys_created_by>iliyan.nedelchev@nuvolo.com</sys_created_by>
         <sys_created_on>2024-09-13 08:30:53</sys_created_on>
         <sys_id>c218e32e47e4da109d9f9915126d43a2</sys_id>
-        <sys_mod_count>161</sys_mod_count>
+        <sys_mod_count>162</sys_mod_count>
         <sys_name>HealthCheckProbeUtils</sys_name>
         <sys_package display_value="Diagnostic Tool" source="x_nuvo_diag">3acdaefd1be7fc107798a9b7624bcb74</sys_package>
         <sys_policy>protected</sys_policy>
         <sys_scope display_value="Diagnostic Tool">3acdaefd1be7fc107798a9b7624bcb74</sys_scope>
         <sys_update_name>sys_script_include_c218e32e47e4da109d9f9915126d43a2</sys_update_name>
         <sys_updated_by>iliyan.nedelchev@nuvolo.com</sys_updated_by>
-        <sys_updated_on>2025-09-18 11:55:22</sys_updated_on>
+        <sys_updated_on>2025-10-14 11:06:52</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>c218e32e47e4da109d9f9915126d43a2</id>
